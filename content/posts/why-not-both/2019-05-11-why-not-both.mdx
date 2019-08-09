@@ -8,6 +8,25 @@ bgColor: "#fff"
 style: light
 ---
 
+import Helmet from "react-helmet"
+
+<Helmet>
+  <script>{`alert('hello')`}</script>
+  <script
+    async
+    className="speakerdeck-embed"
+    data-slide="53"
+    data-id="492fb00803b144aba89a2d9dfeeca2fc"
+    data-ratio="1.77777777777778"
+    src="https://speakerdeck.com/assets/embed.js"
+  ></script>
+  <script
+    async
+    src="https://platform.twitter.com/widgets.js"
+    charset="utf-8"
+  ></script>
+</Helmet>
+
 The web is defined by the interplay of various components: back-end technologies such as servers and databases to support the website itself, client-side technologies to present content and provide interactivity, and the network to deliver the website to the user.
 
 While there are a lot of layers to this medium I want to focus on the presentation layer — HTML, CSS & JS. In this article I am going to be using the shorthand _web_ to refer to this presentational layer. (I realize that is inaccurate but, I don't have a better word for it.)
@@ -37,7 +56,7 @@ Jen Simmons often speaks about how everything about web design just changed. We 
 
 <script
   async
-  class="speakerdeck-embed"
+  className="speakerdeck-embed"
   data-slide="53"
   data-id="492fb00803b144aba89a2d9dfeeca2fc"
   data-ratio="1.77777777777778"
@@ -66,15 +85,7 @@ Tools like [Framer](https://www.framer.com/features/react/), [Modulz](https://ww
 
 Fundamentally these are still design tools. They are visual code editors with the purpose of building living prototypes not the actual application itself. They don't allow you to define behaviour and functionality. They are not meant to replace any development tools.
 
-![Why not both?](./why-not-both.jpg)
-
-<p>
-  <img
-    style="max-width: 350px; margin: 0 auto;"
-    alt="Why not both?"
-    src={"./assets/why-not-both.gif"}
-  />
-</p>
+![Why not both?](./why-not-both.gif)
 
 My hope is that we will get something like [Unity](https://unity.com/) for the web. Something that both developers and designers can use. A tool that allows us to define both aesthetic and functionality with an intuitive interface. That interface is going to be some combination of GUI and code editor.
 

@@ -8,6 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { MDXProvider } from "@mdx-js/react"
 
 import Header from "./header"
 import "./layout.css"
@@ -34,7 +35,13 @@ const Layout = ({ children }) => {
           paddingTop: 0,
         }}
       >
+        {/* <MDXProvider
+          components={{
+            h2: props => <p {...props} style={{ color: "rebeccapurple" }} />,
+          }}
+        > */}
         <main>{children}</main>
+        {/* </MDXProvider> */}
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
