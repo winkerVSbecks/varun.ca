@@ -139,23 +139,37 @@ export const SVG = styled.svg(
 //   borderRadius: 1,
 // };
 
-// export const Button = styled(Box)(
-//   {
-//     appearance: 'none',
-//     display: 'inline-block',
-//     textAlign: 'center',
-//     lineHeight: 'inherit',
-//     textDecoration: 'none',
-//   },
-//   typography,
-//   border,
-//   buttonStyle
-// );
+export const Button = styled(Box).attrs(props => ({
+  as: 'button',
+  fontFamily: 'systemSans',
+}))(
+  {
+    appearance: 'none',
+    display: 'inline-block',
+    textAlign: 'center',
+    lineHeight: 'inherit',
+    textDecoration: 'none',
+  },
+  compose(
+    typography,
+    buttonStyle
+  )
+);
 
-// Button.defaultProps = {
-//   as: 'button',
-//   border: 0,
-// };
+Button.defaultProps = {
+  border: 0,
+};
+
+export const TransparentButton = styled(Button)`
+  background-color: transparent;
+  &:hover {
+    background-color: transparent;
+  }
+`;
+
+TransparentButton.defaultProps = {
+  p: 0,
+};
 
 // export const PrimaryButton = styled(Button)({
 //   display: 'block',
@@ -203,22 +217,6 @@ export const SVG = styled.svg(
 //   maxWidth: 1184,
 //   position: 'relative',
 // };
-
-// export const TransparentButton = styled(Button)`
-//   background-color: transparent;
-//   &:hover {
-//     background-color: transparent;
-//   }
-//   & > div {
-//     display: flex;
-//   }
-// `;
-
-// export const IconButton = ({ name, icon, ...props }) => (
-//   <TransparentButton {...props}>
-//     <div aria-label={name}>{icon}</div>
-//   </TransparentButton>
-// );
 
 // export const Input = styled.input(
 //   {

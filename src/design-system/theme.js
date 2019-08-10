@@ -6,7 +6,7 @@ module.exports = {
   fontSizes: [12, 14, 16, 20, 24, 36, 48, 80, 96],
   fontWeights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
   fonts: {
-    sans:
+    systemSans:
       "-apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif",
   },
   lineHeights: {

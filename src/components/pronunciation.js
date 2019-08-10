@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Icon } from 'ds';
+import { Icon, TransparentButton } from 'ds';
 
 function useNameAudio() {
   const [nameAudio, setNameAudio] = useState(null);
@@ -17,9 +17,10 @@ export const Pronunciation = () => {
   const nameAudio = useNameAudio();
 
   return (
-    <span
+    <TransparentButton
+      fontSize="inherit"
+      fontWeight="inherit"
       onClick={() => nameAudio.play()}
-      className="pointer relative bg-child bg-child-gold"
     >
       Varun Vachhar
       <Icon
@@ -33,6 +34,6 @@ export const Pronunciation = () => {
         width="10px"
         height="10px"
       />
-    </span>
+    </TransparentButton>
   );
 };
