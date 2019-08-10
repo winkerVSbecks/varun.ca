@@ -1,10 +1,11 @@
-const path = require("path")
+const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Varun Vachhar`,
+    description: `I am a developer with a strong focus on design, interactivity and animation. Originally from New Delhi, I currently live in Toronto and am the Director, UI Architecture at Rangle.io. In my spare time, I like to experiment with creative coding, making triangles and other playful experiences for the web.`,
+    author: `@winkerVSbecks`,
+    writingDesc: 'writing about JavaScript, CSS and reactive animations.',
   },
   plugins: [
     {
@@ -26,11 +27,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
+        name: `varun.ca`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#4e4bec`,
+        theme_color: `#4e4bec`,
         display: `minimal-ui`,
         icon: `content/assets/gatsby-icon.png`, // This path is relative to the root of the site.
       },
@@ -55,7 +56,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        defaultLayouts: { default: path.resolve("./src/components/layout.js") },
+        defaultLayouts: { default: path.resolve('./src/components/layout.js') },
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
@@ -78,4 +79,4 @@ module.exports = {
       },
     },
   ],
-}
+};

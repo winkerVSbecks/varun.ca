@@ -1,9 +1,9 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import Layout from "../components/Layout"
+import React from 'react';
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import Layout from './layout';
 
-export default function PageTemplate({ data: { mdx } }) {
+export default function PostTemplate({ data: { mdx } }) {
   return (
     <Layout>
       <div>
@@ -11,7 +11,7 @@ export default function PageTemplate({ data: { mdx } }) {
         <MDXRenderer>{mdx.body}</MDXRenderer>
       </div>
     </Layout>
-  )
+  );
 }
 
 export const pageQuery = graphql`
@@ -24,4 +24,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
