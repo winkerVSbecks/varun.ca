@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
-import { theme } from 'ds';
+import * as DesignSystem from 'ds';
+import dsToMdx from './ds-to-mdx';
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -17,7 +18,7 @@ const Layout = ({ children }) => {
   `);
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={DesignSystem.theme}>
       <div
         style={{
           margin: `0 auto`,
@@ -26,7 +27,7 @@ const Layout = ({ children }) => {
           paddingTop: 0,
         }}
       >
-        <MDXProvider components={{}}>
+        <MDXProvider components={dsToMdx}>
           <main>{children}</main>
         </MDXProvider>
         <footer className="pt3 pt6-ns mb6 system-sans {{ include.class }}">

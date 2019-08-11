@@ -7,6 +7,12 @@ module.exports = {
     description: `I am a developer with a strong focus on design, interactivity and animation. Originally from New Delhi, I currently live in Toronto and am the Director, UI Architecture at Rangle.io. In my spare time, I like to experiment with creative coding, making triangles and other playful experiences for the web.`,
     author: `@winkerVSbecks`,
     writingDesc: 'writing about JavaScript, CSS and reactive animations.',
+    keywords: [
+      'generative design',
+      'creative coding',
+      'design systems',
+      'javascript',
+    ],
   },
   plugins: [
     {

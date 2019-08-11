@@ -1,9 +1,20 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import { createGlobalStyle } from 'styled-components';
 import Layout from 'layouts/layout';
 import SEO from 'components/seo';
 import { Pronunciation } from 'components/pronunciation';
-import { Icon } from 'ds';
+import { Box, H1, Text, Icon } from 'ds';
+
+const GlobalStyle = createGlobalStyle`
+  ::-moz-selection {
+    background: ${props => props.theme.colors.brand.faded};
+  }
+
+  ::selection {
+    background: ${props => props.theme.colors.brand.faded};
+  }
+`;
 
 const Home = () => {
   const { site } = useStaticQuery(
@@ -14,6 +25,7 @@ const Home = () => {
             title
             description
             writingDesc
+            keywords
           }
         }
       }
@@ -22,20 +34,18 @@ const Home = () => {
 
   return (
     <Layout>
-      <SEO
-        title="Varun Vachhar"
-        keywords={['generative design', 'javascript', 'creative coding']}
-      />
+      <GlobalStyle />
+      <SEO title="Varun Vachhar" keywords={site.siteMetadata.keywords} />
 
       <div className="mw9 center ph5-l f5 lh-copy dark-gray sans-serif">
-        <header className="mt6 mb5 ph3">
-          <h1 className="ma0 f4">
+        <Box as="header" mt={6} mb={5} px={3}>
+          <H1 fontSize={3} mb={0} lineHeight="copy">
             <Pronunciation />
-          </h1>
-          <p className="mt0 measure-wide">
+          </H1>
+          <Text mt={0} className="measure-wide">
             finder of new ways to confuse myself
-          </p>
-        </header>
+          </Text>
+        </Box>
 
         <section className="mb4 ph3">
           <h2 className="ma0 f4">About</h2>

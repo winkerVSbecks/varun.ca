@@ -1,4 +1,6 @@
+export { default as theme } from './theme';
 export * from './skeletor';
 export * from './icon';
 export * from './primitives';
-export { default as theme } from './theme';
+export * from './type';
+export * from './image';

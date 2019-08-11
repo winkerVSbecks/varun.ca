@@ -39,105 +39,20 @@ export const SVG = styled.svg(
   )
 );
 
-// export const Flex = styled(Box)({
-//   display: 'flex',
-// });
+export const Flex = styled(Box)({
+  display: 'flex',
+});
 
-// export const Text = styled(Box)(typography);
+export const Card = styled(Box)(
+  { display: 'flex', overflow: 'hidden' },
+  shadow,
+  background,
+  grid
+);
 
-// Text.defaultProps = {
-//   as: 'p',
-//   mb: 0,
-//   mt: 0,
-//   fontFamily: 'inter',
-//   lineHeight: 'copy',
-//   color: 'gray',
-// };
-
-// export const Heading = styled(Text)();
-
-// Heading.defaultProps = {
-//   as: 'h2',
-//   mb: 0,
-//   mt: 0,
-//   fontSize: 4,
-//   fontWeight: 'bold',
-//   fontFamily: 'inter',
-//   lineHeight: 'title',
-//   color: 'black',
-// };
-
-// export const Label = styled(Text)({
-//   display: 'block',
-// });
-
-// Label.defaultProps = {
-//   as: 'label',
-//   mb: 2,
-//   mt: 0,
-//   lineHeight: 'solid',
-//   color: 'currentColor',
-//   fontWeight: 5,
-//   fontSize: 1,
-// };
-
-// export const Image = styled(Box)(
-//   {
-//     maxWidth: '100%',
-//   },
-//   border
-// );
-
-// Image.defaultProps = {
-//   as: 'img',
-//   m: 0,
-//   height: 'auto',
-// };
-
-// export const BackgroundImage = styled.div(
-//   {
-//     backgroundPosition: 'center',
-//     backgroundSize: 'cover',
-//     backgroundRepeat: 'no-repeat',
-//   },
-//   props => ({
-//     backgroundColor: props.theme.colors.gray,
-//     backgroundImage: props.image ? `url(${props.image})` : null,
-//   }),
-//   layout,
-//   flexbox
-// );
-
-// export const AspectRatioImage = styled.div(
-//   {
-//     backgroundPosition: 'center',
-//     backgroundSize: 'cover',
-//     backgroundRepeat: 'no-repeat',
-//     height: 0,
-//   },
-//   props => ({
-//     backgroundColor: props.theme.colors.gray,
-//     backgroundImage: props.image ? `url(${props.image})` : null,
-//     paddingBottom: `${(1 / props.aspectRatio) * 100}%`,
-//   }),
-//   space,
-//   layout,
-//   flexbox
-// );
-// AspectRatioImage.defaultProps = {
-//   aspectRatio: 1,
-// };
-
-// export const Card = styled(Box)(
-//   { display: 'flex', overflow: 'hidden' },
-//   shadow,
-//   background,
-//   grid
-// );
-
-// Card.defaultProps = {
-//   borderRadius: 1,
-// };
+Card.defaultProps = {
+  borderRadius: 1,
+};
 
 export const Button = styled(Box).attrs(props => ({
   as: 'button',
@@ -216,43 +131,6 @@ TransparentButton.defaultProps = {
 //   height: '100vh',
 //   maxWidth: 1184,
 //   position: 'relative',
-// };
-
-// export const Input = styled.input(
-//   {
-//     appearance: 'none',
-//     display: 'block',
-//     width: '100%',
-//     fontFamily: 'inherit',
-//     color: 'inherit',
-//     backgroundColor: 'transparent',
-//     borderWidth: 0,
-//     borderStyle: 'solid',
-//     '::-ms-clear': {
-//       display: 'none',
-//     },
-//   },
-//   border,
-//   space,
-//   props => ({
-//     '::placeholder': {
-//       color: props.theme.gray,
-//     },
-//   })
-// );
-
-// Input.defaultProps = {
-//   fontSize: 1,
-//   fontWeight: 400,
-//   pt: 3,
-//   pb: 3,
-//   pl: 2,
-//   pr: 2,
-//   borderRadius: 0,
-//   mt: 0,
-//   mb: 0,
-//   ml: 0,
-//   mr: 0,
 // };
 
 // export const Hidden = styled.span`
