@@ -13,6 +13,7 @@ import {
   buttonStyle,
   grid,
 } from 'styled-system';
+import { measure } from './system-functions';
 
 export const Box = styled.div(
   {
@@ -24,7 +25,8 @@ export const Box = styled.div(
     color,
     layout,
     flexbox,
-    border
+    border,
+    measure
   )
 );
 

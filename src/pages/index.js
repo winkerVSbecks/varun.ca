@@ -1,10 +1,11 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { createGlobalStyle } from 'styled-components';
+import 'normalize.css';
 import Layout from 'layouts/layout';
 import SEO from 'components/seo';
 import { Pronunciation } from 'components/pronunciation';
-import { Box, H1, Text, Icon } from 'ds';
+import { Box, H1, Text, Icon, H2 } from 'ds';
 
 const GlobalStyle = createGlobalStyle`
   ::-moz-selection {
@@ -37,19 +38,21 @@ const Home = () => {
       <GlobalStyle />
       <SEO title="Varun Vachhar" keywords={site.siteMetadata.keywords} />
 
-      <div className="mw9 center ph5-l f5 lh-copy dark-gray sans-serif">
+      <Box maxWidth={9} mx="auto" px={[0, 0, 5]}>
         <Box as="header" mt={6} mb={5} px={3}>
           <H1 fontSize={3} mb={0} lineHeight="copy">
             <Pronunciation />
           </H1>
-          <Text mt={0} className="measure-wide">
+          <Text mt={0} measure="wide">
             finder of new ways to confuse myself
           </Text>
         </Box>
 
-        <section className="mb4 ph3">
-          <h2 className="ma0 f4">About</h2>
-          <p className="mt0 measure-wide">
+        <Box as="section" mb={4} px={3}>
+          <H2 mb={1} fontSize={3}>
+            About
+          </H2>
+          <Text measure="wide">
             I am a developer with a strong focus on design, interactivity and
             animation. Originally from New Delhi, I currently live in Toronto
             and am the Director, UI Architecture at{' '}
@@ -62,8 +65,8 @@ const Home = () => {
               triangles
             </a>{' '}
             and other playful experiences for the web.
-          </p>
-        </section>
+          </Text>
+        </Box>
 
         <nav className="measure-wide mb6">
           <a
@@ -102,7 +105,7 @@ const Home = () => {
             Dribbble
           </a>
         </nav>
-      </div>
+      </Box>
     </Layout>
   );
 };

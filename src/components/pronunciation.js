@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Box, Icon, TransparentButton } from 'ds';
 
-const StyledIcon = styled(Icon)``;
+const StyledIcon = styled(Icon)`
+  transition: background-color ${props => props.theme.animations.easeIn};
+`;
 
-const Name = styled(Box)`
-  ${StyledIcon} {
-    transition: background-color ${props => props.theme.animations.easeIn};
-  }
-
-  :hover ${StyledIcon}, ${TransparentButton}:focus ${StyledIcon} {
+const PronunciationButton = styled(TransparentButton)`
+  :hover ${StyledIcon}, TransparentButton ${StyledIcon}:focus {
     background-color: ${props => props.theme.colors.brand.main};
   }
 `;
@@ -18,9 +16,9 @@ export const Pronunciation = () => {
   const nameAudio = useNameAudio();
 
   return (
-    <Name as="span">
+    <Box as="span">
       Varun Vachhar
-      <TransparentButton
+      <PronunciationButton
         fontSize="inherit"
         fontWeight="inherit"
         aria-label="pronunciation"
@@ -38,8 +36,8 @@ export const Pronunciation = () => {
           width="10px"
           height="10px"
         />
-      </TransparentButton>
-    </Name>
+      </PronunciationButton>
+    </Box>
   );
 };
 

@@ -8,6 +8,7 @@ import {
   typography,
   border,
 } from 'styled-system';
+import { measure } from './system-functions';
 
 const defaultTypeProps = {
   mb: 3,
@@ -23,7 +24,8 @@ export const Text = styled.p(
     layout,
     flexbox,
     typography,
-    border
+    border,
+    measure
   )
 );
 
