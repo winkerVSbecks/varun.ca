@@ -12,6 +12,16 @@ import {
 } from 'styled-system';
 import { measure } from './system-functions';
 
+const typographyFunctions = compose(
+  space,
+  color,
+  layout,
+  flexbox,
+  typography,
+  border,
+  measure
+);
+
 const defaultTypeProps = {
   mb: 3,
   mt: 0,
@@ -19,17 +29,7 @@ const defaultTypeProps = {
   color: 'neutral.0',
 };
 
-export const Text = styled.p(
-  compose(
-    space,
-    color,
-    layout,
-    flexbox,
-    typography,
-    border,
-    measure
-  )
-);
+export const Text = styled.p(typographyFunctions);
 
 Text.defaultProps = {
   ...defaultTypeProps,
@@ -37,7 +37,9 @@ Text.defaultProps = {
   lineHeight: 'copy',
 };
 
-const StyledLink = styled(Text)`
+const StyledLink = styled.a`
+  ${typographyFunctions}
+
   opacity: 1;
   transition: opacity ${props => props.theme.animations.easeIn};
 
@@ -51,14 +53,17 @@ const StyledLink = styled(Text)`
 `;
 
 StyledLink.defaultProps = {
+  ...defaultTypeProps,
   as: 'a',
   color: 'brand.main',
+  mb: 0,
+  fontSize: 2,
+  lineHeight: 'copy',
 };
 
 export const Link = ({ to = '', ...props }) =>
   to.startsWith('http') ? (
     <StyledLink
-      as="a"
       href={to}
       target="_blank"
       rel="noopener noreferrer"
@@ -100,7 +105,7 @@ H1.defaultProps = {
   ...defaultTypeProps,
   as: 'h1',
   fontSize: [4, 5, 6],
-  fontWeight: 700,
+  fontWeight: 7,
   lineHeight: 'title',
 };
 
@@ -109,7 +114,7 @@ H2.defaultProps = {
   ...defaultTypeProps,
   as: 'h2',
   fontSize: [4, 5],
-  fontWeight: 700,
+  fontWeight: 7,
   lineHeight: 'title',
 };
 
@@ -118,7 +123,7 @@ H3.defaultProps = {
   ...defaultTypeProps,
   as: 'h3',
   fontSize: [3, 4],
-  fontWeight: 700,
+  fontWeight: 7,
   lineHeight: 'title',
 };
 
@@ -127,7 +132,7 @@ H4.defaultProps = {
   ...defaultTypeProps,
   as: 'h4',
   fontSize: 3,
-  fontWeight: 700,
+  fontWeight: 7,
   lineHeight: 'title',
 };
 
@@ -136,7 +141,7 @@ H5.defaultProps = {
   ...defaultTypeProps,
   as: 'h5',
   fontSize: 3,
-  fontWeight: 700,
+  fontWeight: 7,
   lineHeight: 'title',
 };
 
@@ -145,6 +150,6 @@ H6.defaultProps = {
   ...defaultTypeProps,
   as: 'h6',
   fontSize: 3,
-  fontWeight: 700,
+  fontWeight: 7,
   lineHeight: 'title',
 };

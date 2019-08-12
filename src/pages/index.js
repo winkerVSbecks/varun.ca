@@ -3,9 +3,10 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { createGlobalStyle } from 'styled-components';
 import 'normalize.css';
 import Layout from 'layouts/layout';
+import { Box, H1, Text, Link, Icon, H2 } from 'ds';
 import SEO from 'components/seo';
 import { Pronunciation } from 'components/pronunciation';
-import { Box, H1, Text, Link, Icon, H2 } from 'ds';
+import { ProfileLinks } from '../components/profile-links';
 
 const GlobalStyle = createGlobalStyle`
   ::-moz-selection {
@@ -48,58 +49,24 @@ const Home = () => {
           </Text>
         </Box>
 
-        <Box as="section" mb={4} px={3}>
-          <H2 mb={1} fontSize={3}>
-            About
-          </H2>
-          <Text measure="wide">
-            I am a developer with a strong focus on design, interactivity and
-            animation. Originally from New Delhi, I currently live in Toronto
-            and am the Director, UI Architecture at{' '}
-            <Link to="https://rangle.io">Rangle.io</Link>. In my spare time, I
-            like to experiment with creative coding, making{' '}
-            <Link to="http://triangle.life">triangles</Link> and other playful
-            experiences for the web.
-          </Text>
-        </Box>
+        <main>
+          <Box as="section" mb={4} px={3}>
+            <H2 mb={1} fontSize={3}>
+              About
+            </H2>
+            <Text measure="wide">
+              I am a developer with a strong focus on design, interactivity and
+              animation. Originally from New Delhi, I currently live in Toronto
+              and am the Director, UI Architecture at{' '}
+              <Link to="https://rangle.io">Rangle.io</Link>. In my spare time, I
+              like to experiment with creative coding, making{' '}
+              <Link to="http://triangle.life">triangles</Link> and other playful
+              experiences for the web.
+            </Text>
+          </Box>
 
-        <nav className="measure-wide mb6">
-          <a
-            className="fw5 ph3 pv2 pv3-ns flex-auto link dark-gray dim dib"
-            title={site.siteMetadata.writingDesc}
-            href="{{ 'writing' | absolute_url }}"
-          >
-            Writing
-          </a>
-          <a
-            className="fw5 ph3 pv2 pv3-ns flex-auto link dark-gray dim dib"
-            title="varun vachhar on twitter"
-            href="http://twitter.com/winkerVSbecks"
-          >
-            Twitter
-          </a>
-          <a
-            className="fw5 ph3 pv2 pv3-ns flex-auto link dark-gray dim dib"
-            title="varun vachhar on github"
-            href="http://github.com/winkerVSbecks"
-          >
-            Github
-          </a>
-          <a
-            className="fw5 ph3 pv2 pv3-ns flex-auto link dark-gray dim dib"
-            title="varun vachhar on CodePen"
-            href="http://codepen.io/winkerVSbecks"
-          >
-            CodePen
-          </a>
-          <a
-            className="fw5 ph3 pv2 pv3-ns flex-auto link dark-gray dim dn dib-ns"
-            title="varun vachhar on dribbble"
-            href="http://dribbble.com/winkerVSbecks"
-          >
-            Dribbble
-          </a>
-        </nav>
+          <ProfileLinks />
+        </main>
       </Box>
     </Layout>
   );
