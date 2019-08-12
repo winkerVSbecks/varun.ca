@@ -11,7 +11,7 @@ ProfileLink.defaultProps = {
   px: 3,
   py: [2, 3],
   mb: 0,
-  flex: '1 1 auto',
+  mr: 1,
   display: 'inline-block',
 };
 
