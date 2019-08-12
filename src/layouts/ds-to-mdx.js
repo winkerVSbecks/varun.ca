@@ -19,6 +19,6 @@ export default {
   // delete:	Delete,
   // code:	InlineCode,
   // hr:	Break,
-  // a:	Link,
+  a: DesignSystem.Link,
   // img:	Image,
 };

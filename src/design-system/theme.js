@@ -10,7 +10,7 @@ module.exports = {
       "-apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif",
   },
   measures: {
-    normal: '30em',
+    regular: '30em',
     // Measure is limited to ~80 characters
     wide: '34em',
     // Measure is limited to ~45 characters

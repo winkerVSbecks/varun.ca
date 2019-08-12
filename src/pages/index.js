@@ -5,7 +5,7 @@ import 'normalize.css';
 import Layout from 'layouts/layout';
 import SEO from 'components/seo';
 import { Pronunciation } from 'components/pronunciation';
-import { Box, H1, Text, Icon, H2 } from 'ds';
+import { Box, H1, Text, Link, Icon, H2 } from 'ds';
 
 const GlobalStyle = createGlobalStyle`
   ::-moz-selection {
@@ -56,15 +56,10 @@ const Home = () => {
             I am a developer with a strong focus on design, interactivity and
             animation. Originally from New Delhi, I currently live in Toronto
             and am the Director, UI Architecture at{' '}
-            <a className="link dim primary" href="https://rangle.io">
-              Rangle.io
-            </a>
-            . In my spare time, I like to experiment with creative coding,
-            making{' '}
-            <a className="link dim primary" href="http://triangle.life">
-              triangles
-            </a>{' '}
-            and other playful experiences for the web.
+            <Link to="https://rangle.io">Rangle.io</Link>. In my spare time, I
+            like to experiment with creative coding, making{' '}
+            <Link to="http://triangle.life">triangles</Link> and other playful
+            experiences for the web.
           </Text>
         </Box>
 

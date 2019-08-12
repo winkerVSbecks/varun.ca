@@ -112,29 +112,6 @@ TransparentButton.defaultProps = {
 //   fontWeight: 6,
 // };
 
-// export const Link = styled(Text)(props => ({
-//   textDecoration: 'none',
-
-//   ':hover, :focus': {
-//     color: props.theme.colors.primary,
-//   },
-// }));
-
-// Link.defaultProps = {
-//   as: 'a',
-//   color: 'white',
-// };
-
-// export const Container = styled(Flex)({ overflow: 'hidden' });
-
-// Container.defaultProps = {
-//   alignItems: 'center',
-//   mx: 'auto',
-//   height: '100vh',
-//   maxWidth: 1184,
-//   position: 'relative',
-// };
-
 // export const Hidden = styled.span`
 //   border: 0 !important;
 //   clip: rect(0 0 0 0) !important;

@@ -1,4 +1,6 @@
+import React from 'react';
 import styled from 'styled-components';
+import { Link as GatsbyLink } from 'gatsby';
 import {
   compose,
   space,
@@ -34,6 +36,37 @@ Text.defaultProps = {
   fontSize: 2,
   lineHeight: 'copy',
 };
+
+const StyledLink = styled(Text)`
+  opacity: 1;
+  transition: opacity ${props => props.theme.animations.easeIn};
+
+  :hover,
+  :focus {
+    opacity: 0.5;
+  }
+  :active {
+    opacity: 0.8;
+  }
+`;
+
+StyledLink.defaultProps = {
+  as: 'a',
+  color: 'brand.main',
+};
+
+export const Link = ({ to = '', ...props }) =>
+  to.startsWith('http') ? (
+    <StyledLink
+      as="a"
+      href={to}
+      target="_blank"
+      rel="noopener noreferrer"
+      {...props}
+    />
+  ) : (
+    <StyledLink as={GatsbyLink} to={to} {...props} />
+  );
 
 const HeadingBase = styled(Text)`
   display: flex;
