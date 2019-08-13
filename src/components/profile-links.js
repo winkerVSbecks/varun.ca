@@ -1,27 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box, Link, SrOnly } from 'ds';
+import { Box, SimpleLink, SrOnly } from 'ds';
 
-const ProfileLink = styled(Link)`
-  text-decoration: none;
-`;
-ProfileLink.defaultProps = {
-  color: 'neutral.0',
-  fontWeight: 5,
-  px: 3,
-  py: [2, 3],
-  mb: 0,
-  mr: 1,
-  display: 'inline-block',
-};
+const profileLinks = [
+  { title: 'Writing', to: '/writing' },
+  { title: 'Twitter', to: 'http://twitter.com/winkerVSbecks' },
+  { title: 'Github', to: 'http://github.com/winkerVSbecks' },
+  { title: 'CodePen', to: 'http://codepen.io/winkerVSbecks' },
+  { title: 'Dribbble', to: 'http://dribbble.com/winkerVSbecks' },
+];
 
 export const ProfileLinks = () => (
   <Box as="nav" measure="wide" mb={6}>
     <SrOnly as="h2">profile links</SrOnly>
-    <ProfileLink to="/writing">Writing</ProfileLink>
-    <ProfileLink to="http://twitter.com/winkerVSbecks">Twitter</ProfileLink>
-    <ProfileLink to="http://github.com/winkerVSbecks">Github</ProfileLink>
-    <ProfileLink to="http://codepen.io/winkerVSbecks">CodePen</ProfileLink>
-    <ProfileLink to="http://dribbble.com/winkerVSbecks">Dribbble</ProfileLink>
+    {profileLinks.map(link => (
+      <SimpleLink
+        to={link.to}
+        fontWeight={5}
+        px={3}
+        py={[2, 3]}
+        mb={0}
+        mr={1}
+        display={'inline-block'}
+      >
+        {link.title}
+      </SimpleLink>
+    ))}
   </Box>
 );

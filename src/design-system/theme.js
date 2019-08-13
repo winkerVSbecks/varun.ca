@@ -22,7 +22,7 @@ module.exports = {
     copy: 1.5,
   },
   letterSpacings: {
-    normal: 'normal',
+    default: 'normal',
     tracked: '0.1em',
     tight: '-0.05em',
     mega: '0.25em',

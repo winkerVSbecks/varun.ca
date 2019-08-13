@@ -4,3 +4,4 @@ export * from './icon';
 export * from './primitives';
 export * from './typography';
 export * from './image';
+export * from './lists';

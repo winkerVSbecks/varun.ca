@@ -6,7 +6,8 @@ import Layout from 'layouts/layout';
 import { Box, H1, Text, Link, Icon, H2 } from 'ds';
 import SEO from 'components/seo';
 import { Pronunciation } from 'components/pronunciation';
-import { ProfileLinks } from '../components/profile-links';
+import { ProfileLinks } from 'components/profile-links';
+import { Footer } from 'components/footer';
 
 const GlobalStyle = createGlobalStyle`
   ::-moz-selection {
@@ -67,6 +68,7 @@ const Home = () => {
 
           <ProfileLinks />
         </main>
+        <Footer px={3} />
       </Box>
     </Layout>
   );

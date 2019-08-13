@@ -1,73 +1,44 @@
 import React from 'react';
+import { Box, Text, FlatList, SimpleLink } from 'ds';
 
-export const Footer = () => (
-  <footer className="pt3 pt6-ns mb6 system-sans {{ include.class }}">
-    <ul className="list pl0 mb3">
-      <li className="dib mr3">
-        <a
-          title="about varun vachhar"
-          className="db b f6 tracked link dim dark-gray"
-          href="{{ '/' | absolute_url }}"
-        >
-          About
-        </a>
-      </li>
-      <li className="dib">
-        <a
-          title="{{ site.writing_desc }}"
-          className="db b f6 tracked link dim dark-gray"
-          href="{{ 'writing' | absolute_url }}"
-        >
-          Writing
-        </a>
-      </li>
-    </ul>
-    <ul className="list pl0 db">
-      <li className="dib mr3">
-        <a
-          className="db f6 link dim dark-gray"
-          title="varun vachhar on twitter"
-          href="http://twitter.com/winkerVSbecks"
-        >
-          Twitter
-        </a>
-      </li>
-      <li className="dib mr3">
-        <a
-          className="db f6 link dim dark-gray"
-          title="varun vachhar on github"
-          href="http://github.com/winkerVSbecks"
-        >
-          Github
-        </a>
-      </li>
-      <li className="dib mr3">
-        <a
-          className="db f6 link dim dark-gray"
-          title="varun vachhar on CodePen"
-          href="http://codepen.io/winkerVSbecks"
-        >
-          CodePen
-        </a>
-      </li>
-      <li className="dib mr3">
-        <a
-          className="db f6 link dim dark-gray"
-          title="varun vachhar on dribbble"
-          href="http://dribbble.com/winkerVSbecks"
-        >
-          Dribbble
-        </a>
-      </li>
-      <li className="dib mr3">
-        <a
-          className="db f6 link dim dark-gray"
-          title="email varun vachhar"
-          href="mailto:varunvachhar@gmail.com"
-        >
-          Email
-        </a>
-      </li>
-    </ul>
-  </footer>
+const siteLinks = [
+  { title: 'About', to: '/' },
+  { title: 'Writing', to: '/writing' },
+];
+
+const socialLinks = [
+  { title: 'Twitter', to: '/http://twitter.com/winkerVSbecks' },
+  { title: 'Github', to: '/http://github.com/winkerVSbecks' },
+  { title: 'CodePen', to: '/http://codepen.io/winkerVSbecks' },
+  { title: 'Dribbble', to: '/http://dribbble.com/winkerVSbecks' },
+  { title: 'Email', to: '/mailto:varunvachhar@gmail.com' },
+];
+
+export const Footer = props => (
+  <Box as="footer" pt={[3, 6]} mb={6} {...props}>
+    <FlatList>
+      {siteLinks.map(link => (
+        <Text as="li" display="inline-block" mb={0} mr={3}>
+          <SimpleLink
+            letterSpacing="tracked"
+            display="block"
+            fontWeight={7}
+            fontSize={1}
+            to={link.to}
+          >
+            {link.title}
+          </SimpleLink>
+        </Text>
+      ))}
+    </FlatList>
+    <FlatList display="block" mb={0}>
+      {socialLinks.map(link => (
+        <Text as="li" display="inline-block" mb={0} mr={3}>
+          <SimpleLink display="block" fontSize={1} to={link.to}>
+            {link.title}
+          </SimpleLink>
+        </Text>
+      ))}
+    </FlatList>
+  </Box>
 );

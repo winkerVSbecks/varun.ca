@@ -73,6 +73,13 @@ export const Link = ({ to = '', ...props }) =>
     <StyledLink as={GatsbyLink} to={to} {...props} />
   );
 
+export const SimpleLink = styled(Link)`
+  text-decoration: none;
+`;
+SimpleLink.defaultProps = {
+  color: 'neutral.0',
+};
+
 const HeadingBase = styled(Text)`
   display: flex;
   align-items: center;

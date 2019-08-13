@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
-import * as DesignSystem from 'ds';
 import dsToMdx from './ds-to-mdx';
-import { Footer } from '../components/footer';
+import { theme } from 'ds';
 
-const Layout = ({ children }) => {
+const Layout = ({ maxWidth = 7, children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -19,12 +18,9 @@ const Layout = ({ children }) => {
   `);
 
   return (
-    <ThemeProvider theme={DesignSystem.theme}>
+    <ThemeProvider theme={theme}>
       <>
-        <MDXProvider components={dsToMdx}>
-          <div>{children}</div>
-        </MDXProvider>
-        <Footer />
+        <MDXProvider components={dsToMdx}>{children}</MDXProvider>
       </>
     </ThemeProvider>
   );
