@@ -5,3 +5,5 @@ export * from './primitives';
 export * from './typography';
 export * from './image';
 export * from './lists';
+export * from './links';
+export * from './blockquote';

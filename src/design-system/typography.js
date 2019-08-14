@@ -22,7 +22,7 @@ const typographyFunctions = compose(
   measure
 );
 
-const defaultTypeProps = {
+export const defaultTypeProps = {
   mb: 3,
   mt: 0,
   fontFamily: 'systemSans',
@@ -30,7 +30,6 @@ const defaultTypeProps = {
 };
 
 export const Text = styled.p(typographyFunctions);
-
 Text.defaultProps = {
   ...defaultTypeProps,
   fontSize: 2,
