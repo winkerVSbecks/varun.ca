@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
-import { Text } from './typography';
+import { Text, typographyFunctions } from './typography';
 
-const StyledLink = styled(Text)`
+const StyledLink = styled.a`
+  ${typographyFunctions}
   opacity: 1;
   transition: opacity ${props => props.theme.animations.easeIn};
 
@@ -18,8 +19,7 @@ const StyledLink = styled(Text)`
 StyledLink.defaultProps = {
   as: 'a',
   color: 'brand.main',
-  fontSize: 2,
-  lineHeight: 'copy',
+  fontFamily: 'systemSans',
 };
 
 export const Link = ({ to = '', ...props }) =>

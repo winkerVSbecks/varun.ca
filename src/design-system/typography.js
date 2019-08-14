@@ -12,7 +12,7 @@ import {
 } from 'styled-system';
 import { measure } from './system-functions';
 
-const typographyFunctions = compose(
+export const typographyFunctions = compose(
   space,
   color,
   layout,
@@ -23,7 +23,7 @@ const typographyFunctions = compose(
 );
 
 export const defaultTypeProps = {
-  mb: 3,
+  mb: 4,
   mt: 0,
   fontFamily: 'systemSans',
   color: 'neutral.0',
@@ -32,51 +32,8 @@ export const defaultTypeProps = {
 export const Text = styled.p(typographyFunctions);
 Text.defaultProps = {
   ...defaultTypeProps,
-  fontSize: 2,
+  fontSize: [2, 3],
   lineHeight: 'copy',
-};
-
-const StyledLink = styled.a`
-  ${typographyFunctions}
-
-  opacity: 1;
-  transition: opacity ${props => props.theme.animations.easeIn};
-
-  :hover,
-  :focus {
-    opacity: 0.5;
-  }
-  :active {
-    opacity: 0.8;
-  }
-`;
-
-StyledLink.defaultProps = {
-  ...defaultTypeProps,
-  as: 'a',
-  color: 'brand.main',
-  mb: 0,
-  fontSize: 2,
-  lineHeight: 'copy',
-};
-
-export const Link = ({ to = '', ...props }) =>
-  to.startsWith('http') ? (
-    <StyledLink
-      href={to}
-      target="_blank"
-      rel="noopener noreferrer"
-      {...props}
-    />
-  ) : (
-    <StyledLink as={GatsbyLink} to={to} {...props} />
-  );
-
-export const SimpleLink = styled(Link)`
-  text-decoration: none;
-`;
-SimpleLink.defaultProps = {
-  color: 'neutral.0',
 };
 
 const HeadingBase = styled(Text)`

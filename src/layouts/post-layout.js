@@ -1,15 +1,58 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import SEO from 'components/seo';
+import { Box, Flex, H1, SimpleLink, Text } from 'ds';
 import Layout from './layout';
 
 export default function PostTemplate({ data: { mdx } }) {
   return (
     <Layout>
-      <div>
-        <h1>{mdx.frontmatter.title}</h1>
-        <MDXRenderer>{mdx.body}</MDXRenderer>
-      </div>
+      <SEO title={mdx.frontmatter.title} />
+
+      <Box maxWidth={7} mx="auto" px={3}>
+        <Flex as="header" mx="auto" mt={6} display={['block', 'flex']}>
+          <SimpleLink
+            href="https://varun.ca/writing"
+            style={{ textTransform: 'uppercase' }}
+            mr={2}
+            color="neutral.1"
+            letterSpacing="tracked"
+            fontSize={1}
+            fontWeight={7}
+            lineHeight="solid"
+          >
+            Varun Vachhar
+          </SimpleLink>{' '}
+          <Text
+            color="neutral.3"
+            fontSize={1}
+            lineHeight="solid"
+            letterSpacing="tracked"
+            mb={0}
+          >
+            finder of new ways to confuse myself
+          </Text>
+        </Flex>
+
+        <Box as="article" my={6}>
+          <Box mb={6}>
+            <Text
+              as="date"
+              datetime={mdx.frontmatter.date}
+              lineHeight="solid"
+              color="neutral.2"
+              fontSize={1}
+            >
+              {mdx.frontmatter.date}
+            </Text>
+            <H1 mt={1} mb={4}>
+              {mdx.frontmatter.title}
+            </H1>
+          </Box>
+          <MDXRenderer>{mdx.body}</MDXRenderer>
+        </Box>
+      </Box>
     </Layout>
   );
 }
@@ -21,6 +64,7 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
+        date(formatString: "Do MMMM, YYYY")
       }
     }
   }

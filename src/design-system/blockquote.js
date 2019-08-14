@@ -1,14 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
-import {
-  compose,
-  space,
-  color,
-  layout,
-  flexbox,
-  typography,
-  border,
-} from 'styled-system';
+import { compose, space, color, layout, flexbox, border } from 'styled-system';
 import { Text } from './typography';
 
 export const Blockquote = styled.blockquote`
@@ -24,7 +15,7 @@ ${compose(
 Blockquote.defaultProps = {
   as: 'blockquote',
   ml: 0,
-  pl: 2,
+  pl: 3,
   mb: 3,
 };
 

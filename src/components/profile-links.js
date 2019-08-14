@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Box, SimpleLink, SrOnly } from 'ds';
 
 const profileLinks = [

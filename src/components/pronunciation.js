@@ -29,8 +29,8 @@ export const Pronunciation = () => {
           role="img"
           type="speaker"
           borderRadius="circle"
-          color="neutral.6"
-          bg="neutral.3"
+          color="neutral.7"
+          bg="neutral.4"
           fontSize={2}
           p="2px"
           width="10px"

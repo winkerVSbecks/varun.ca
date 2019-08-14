@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { compose, space, layout, flexbox } from 'styled-system';
 import { Box } from './primitives';
