@@ -54,17 +54,6 @@ const Home = () => {
           </Box>
 
           <ProfileLinks />
-
-          <blockquote className="twitter-tweet" data-conversation="none">
-            <p lang="en" dir="ltr">
-              Making progress{' '}
-              <a href="https://t.co/IGrZWzqqbT">pic.twitter.com/IGrZWzqqbT</a>
-            </p>
-            &mdash; Compositor (@getcompositor){' '}
-            <a href="https://twitter.com/getcompositor/status/929689837971623936?ref_src=twsrc%5Etfw">
-              November 12, 2017
-            </a>
-          </blockquote>
         </main>
         <Footer px={3} />
       </Box>
