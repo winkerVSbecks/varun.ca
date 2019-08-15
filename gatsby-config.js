@@ -60,6 +60,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-twitter`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {

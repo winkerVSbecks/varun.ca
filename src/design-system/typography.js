@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import { Link as GatsbyLink } from 'gatsby';
 import {
   compose,
   space,
@@ -23,7 +21,6 @@ export const typographyFunctions = compose(
 );
 
 export const defaultTypeProps = {
-  mb: 4,
   mt: 0,
   fontFamily: 'systemSans',
   color: 'neutral.0',
@@ -32,6 +29,7 @@ export const defaultTypeProps = {
 export const Text = styled.p(typographyFunctions);
 Text.defaultProps = {
   ...defaultTypeProps,
+  mb: 4,
   fontSize: [2, 3],
   lineHeight: 'copy',
 };
@@ -70,6 +68,7 @@ H1.defaultProps = {
   fontSize: [4, 5, 6],
   fontWeight: 7,
   lineHeight: 'title',
+  mb: 3,
 };
 
 export const H2 = styled(HeadingBase)``;
@@ -79,6 +78,7 @@ H2.defaultProps = {
   fontSize: [4, 5],
   fontWeight: 7,
   lineHeight: 'title',
+  mb: 3,
 };
 
 export const H3 = styled(HeadingBase)``;
@@ -88,6 +88,7 @@ H3.defaultProps = {
   fontSize: [3, 4],
   fontWeight: 7,
   lineHeight: 'title',
+  mb: 3,
 };
 
 export const H4 = styled(HeadingBase)``;
@@ -97,6 +98,7 @@ H4.defaultProps = {
   fontSize: 3,
   fontWeight: 7,
   lineHeight: 'title',
+  mb: 3,
 };
 
 export const H5 = styled(HeadingBase)``;
@@ -106,6 +108,7 @@ H5.defaultProps = {
   fontSize: 3,
   fontWeight: 7,
   lineHeight: 'title',
+  mb: 3,
 };
 
 export const H6 = styled(HeadingBase)``;
@@ -115,4 +118,5 @@ H6.defaultProps = {
   fontSize: 3,
   fontWeight: 7,
   lineHeight: 'title',
+  mb: 3,
 };

@@ -10,13 +10,13 @@ ${compose(
   flexbox,
   border
 )}
-  border-left: 0.25rem solid ${props => props.theme.colors.brand.main};
+  border-left: 4px solid ${props => props.theme.colors.brand.main};
+  margin-left: ${props => -props.theme.space[3] - 4}px
 `;
 Blockquote.defaultProps = {
   as: 'blockquote',
-  ml: 0,
   pl: 3,
-  mb: 3,
+  mb: 4,
 };
 
 export const Cite = styled(Text)``;

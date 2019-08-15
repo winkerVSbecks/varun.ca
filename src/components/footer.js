@@ -7,11 +7,11 @@ const siteLinks = [
 ];
 
 const socialLinks = [
-  { title: 'Twitter', to: '/http://twitter.com/winkerVSbecks' },
-  { title: 'Github', to: '/http://github.com/winkerVSbecks' },
-  { title: 'CodePen', to: '/http://codepen.io/winkerVSbecks' },
-  { title: 'Dribbble', to: '/http://dribbble.com/winkerVSbecks' },
-  { title: 'Email', to: '/mailto:varunvachhar@gmail.com' },
+  { title: 'Twitter', to: 'http://twitter.com/winkerVSbecks' },
+  { title: 'Github', to: 'http://github.com/winkerVSbecks' },
+  { title: 'CodePen', to: 'http://codepen.io/winkerVSbecks' },
+  { title: 'Dribbble', to: 'http://dribbble.com/winkerVSbecks' },
+  { title: 'Email', to: 'mailto:varunvachhar@gmail.com' },
 ];
 
 export const Footer = props => (

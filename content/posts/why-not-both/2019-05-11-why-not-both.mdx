@@ -4,24 +4,22 @@ date: '2019-05-11'
 preview: /img/why-not-both.jpg
 ---
 
-import Helmet from 'react-helmet';
+<TweetEmbed username="getcompositor" id="929689837971623936">
+  Making progress{' '}
+  <a href="https://t.co/IGrZWzqqbT">pic.twitter.com/IGrZWzqqbT</a>
+</TweetEmbed>
 
-<Helmet>
-  <script>{`alert('hello')`}</script>
-  <script
-    async
-    className="speakerdeck-embed"
-    data-slide="53"
-    data-id="492fb00803b144aba89a2d9dfeeca2fc"
-    data-ratio="1.77777777777778"
-    src="https://speakerdeck.com/assets/embed.js"
-  ></script>
-  <script
-    async
-    src="https://platform.twitter.com/widgets.js"
-    charset="utf-8"
-  ></script>
-</Helmet>
+<blockquote className="twitter-tweet">
+  <p lang="en" dir="ltr">
+    Continuing with generative grid experiments. Took one of the{' '}
+    <a href="https://twitter.com/tachyons_css">@tachyons_css</a> examples,
+    sliced up the different sections into components and randomly sizing them in
+    the container. You can then lock items and continue regenerating the grid
+    until you find an interesting layout.{' '}
+    <a href="https://t.co/1cUSnz9VRN">pic.twitter.com/1cUSnz9VRN</a>
+  </p>
+  &mdash; Varun Vachhar (@winkerVSbecks) <a href="https://twitter.com/winkerVSbecks/status/1101502912675627014">March 1, 2019</a>
+</blockquote>
 
 The web is defined by the interplay of various components: back-end technologies such as servers and databases to support the website itself, client-side technologies to present content and provide interactivity, and the network to deliver the website to the user.
 
@@ -81,7 +79,7 @@ Tools like [Framer](https://www.framer.com/features/react/), [Modulz](https://ww
 
 Fundamentally these are still design tools. They are visual code editors with the purpose of building living prototypes not the actual application itself. They don't allow you to define behaviour and functionality. They are not meant to replace any development tools.
 
-![Why not both?](./why-not-both.gif)
+![Why not both?](../../assets/why-not-both.gif)
 
 My hope is that we will get something like [Unity](https://unity.com/) for the web. Something that both developers and designers can use. A tool that allows us to define both aesthetic and functionality with an intuitive interface. That interface is going to be some combination of GUI and code editor.
 
@@ -91,12 +89,12 @@ The convergence of design and development tools will allow us to discover new an
 
 The [Compositor](http://compositor.io/) team has been working on some truly interesting tools. Modifying the UI directly or dragging components to create layouts is again a much better developer experience. It also allows you to explore and iterate with very little friction.
 
-<div class="flex-ns items-center">
-  <blockquote class="twitter-tweet" data-conversation="none"><p lang="und" dir="ltr">🙀 <a href="https://t.co/q0BqSsTRHi">pic.twitter.com/q0BqSsTRHi</a></p>&mdash; Compositor (@getcompositor) <a href="https://twitter.com/getcompositor/status/931592802697469953?ref_src=twsrc%5Etfw">November 17, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div className="flex-ns items-center">
+  <blockquote class="twitter-tweet" data-conversation="none"><p lang="und" dir="ltr">🙀 <a href="https://t.co/q0BqSsTRHi">pic.twitter.com/q0BqSsTRHi</a></p>&mdash; Compositor (@getcompositor) <a href="https://twitter.com/getcompositor/status/931592802697469953?ref_src=twsrc%5Etfw">November 17, 2017</a></blockquote>
 
-<div class="w1-ns"></div>
+<div className="w1-ns"></div>
 
-  <blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Making progress <a href="https://t.co/IGrZWzqqbT">pic.twitter.com/IGrZWzqqbT</a></p>&mdash; Compositor (@getcompositor) <a href="https://twitter.com/getcompositor/status/929689837971623936?ref_src=twsrc%5Etfw">November 12, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Making progress <a href="https://t.co/IGrZWzqqbT">pic.twitter.com/IGrZWzqqbT</a></p>&mdash; Compositor (@getcompositor) <a href="https://twitter.com/getcompositor/status/929689837971623936?ref_src=twsrc%5Etfw">November 12, 2017</a></blockquote>
 </div>
 
 [Project Phoebe](https://medium.com/project-phoebe) was a brief attempt at using mutative design for UI and Adobe seems to be [exploring](https://www.fastcompany.com/3068884/adobe-is-building-an-ai-to-automate-web-design-should-you-worry) this space too. But, we are just scratching the surface. What would the UI design equivalent of [Real Time Topology Optimization](https://www.frustum.com/) look like? Can we define a set of constraints, allow the UI to morph around it and iterate?
@@ -124,12 +122,12 @@ Let's focus on one category — layout. Much of web design is stuck in the mind
 
 Frank describes web design as "creating assemblages of elements, then associating them with the appropriate space". I did an experiment very much inspired by that statement. Start by defining a high level fluid grid, say 6x4. Take a document and slice up the different sections into components, give them random grid sizing and drop them into the layout. The user can then lock items and continue regenerating the grid until they find a satisfying layout. You can try it yourself in this [CodeSandbox](https://codesandbox.io/s/8r6k4j9k2).
 
-<div class="flex-l items-stretch">
-  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Playing with the idea of procedurally generated layout grids.<a href="https://t.co/yAsPbkpDZJ">https://t.co/yAsPbkpDZJ</a> <a href="https://t.co/bHQIvlF9nC">pic.twitter.com/bHQIvlF9nC</a></p>&mdash; Varun Vachhar (@winkerVSbecks) <a href="https://twitter.com/winkerVSbecks/status/1095479837534441474?ref_src=twsrc%5Etfw">February 13, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div className="flex-l items-stretch">
+  <blockquote className="twitter-tweet"><p lang="en" dir="ltr">Playing with the idea of procedurally generated layout grids.<a href="https://t.co/yAsPbkpDZJ">https://t.co/yAsPbkpDZJ</a> <a href="https://t.co/bHQIvlF9nC">pic.twitter.com/bHQIvlF9nC</a></p>&mdash; Varun Vachhar (@winkerVSbecks) <a href="https://twitter.com/winkerVSbecks/status/1095479837534441474?ref_src=twsrc%5Etfw">February 13, 2019</a></blockquote>
 
-<div class="w1-l"></div>
+<div className="w1-l"></div>
 
-  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Continuing with generative grid experiments. Took one of the <a href="https://twitter.com/tachyons_css?ref_src=twsrc%5Etfw">@tachyons_css</a> examples, sliced up the different sections into components and randomly sizing them in the container. You can then lock items and continue regenerating the grid until you find an interesting layout. <a href="https://t.co/1cUSnz9VRN">pic.twitter.com/1cUSnz9VRN</a></p>&mdash; Varun Vachhar (@winkerVSbecks) <a href="https://twitter.com/winkerVSbecks/status/1101502912675627014?ref_src=twsrc%5Etfw">March 1, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <blockquote className="twitter-tweet"><p lang="en" dir="ltr">Continuing with generative grid experiments. Took one of the <a href="https://twitter.com/tachyons_css?ref_src=twsrc%5Etfw">@tachyons_css</a> examples, sliced up the different sections into components and randomly sizing them in the container. You can then lock items and continue regenerating the grid until you find an interesting layout. <a href="https://t.co/1cUSnz9VRN">pic.twitter.com/1cUSnz9VRN</a></p>&mdash; Varun Vachhar (@winkerVSbecks) <a href="https://twitter.com/winkerVSbecks/status/1101502912675627014?ref_src=twsrc%5Etfw">March 1, 2019</a></blockquote>
 </div>
 
 The results were a lot better than I expected. It has been hard to break out of the twelve column mindset for me. This helped.

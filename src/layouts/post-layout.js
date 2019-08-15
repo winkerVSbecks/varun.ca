@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import SEO from 'components/seo';
-import { Box, Flex, H1, SimpleLink, Text } from 'ds';
+import { Box, H1, SimpleLink, Text } from 'ds';
 import Layout from './layout';
 
 export default function PostTemplate({ data: { mdx } }) {
@@ -10,8 +10,8 @@ export default function PostTemplate({ data: { mdx } }) {
     <Layout>
       <SEO title={mdx.frontmatter.title} />
 
-      <Box maxWidth={7} mx="auto" px={3}>
-        <Flex as="header" mx="auto" mt={6} display={['block', 'flex']}>
+      <Box maxWidth={7} mx="auto" px={[4, 4, 3]}>
+        <Box as="header" mx="auto" mt={6} display={['block', 'flex']}>
           <SimpleLink
             href="https://varun.ca/writing"
             style={{ textTransform: 'uppercase' }}
@@ -29,11 +29,12 @@ export default function PostTemplate({ data: { mdx } }) {
             fontSize={1}
             lineHeight="solid"
             letterSpacing="tracked"
+            mt={[1, 0]}
             mb={0}
           >
             finder of new ways to confuse myself
           </Text>
-        </Flex>
+        </Box>
 
         <Box as="article" my={6}>
           <Box mb={6}>

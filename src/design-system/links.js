@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
-import { Text, typographyFunctions } from './typography';
+import { typographyFunctions } from './typography';
 
 const StyledLink = styled.a`
   ${typographyFunctions}
@@ -23,7 +23,7 @@ StyledLink.defaultProps = {
 };
 
 export const Link = ({ to = '', ...props }) =>
-  to.startsWith('http') ? (
+  to.startsWith('http') || to.startsWith('mailto') ? (
     <StyledLink
       href={to}
       target="_blank"

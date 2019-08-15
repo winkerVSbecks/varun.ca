@@ -6,6 +6,7 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
     resolve: {
       alias: {
         ds: path.resolve(__dirname, 'src/design-system'),
+        assets: path.resolve(__dirname, 'content/assets'),
       },
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     },

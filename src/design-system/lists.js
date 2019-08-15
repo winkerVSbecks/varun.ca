@@ -16,20 +16,20 @@ export const List = styled(Box)({});
 List.defaultProps = {
   as: 'ul',
   mt: 0,
-  mb: 3,
+  mb: 4,
 };
 
 export const OrderedList = styled(Box)({});
 OrderedList.defaultProps = {
   as: 'ol',
   mt: 0,
-  mb: 3,
+  mb: 4,
 };
 
 export const ListItem = styled(Text)({});
 ListItem.defaultProps = {
   as: 'li',
-  fontSize: 2,
+  fontSize: [2, 3],
   mb: 0,
 };
 
