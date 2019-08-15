@@ -61,5 +61,5 @@ exports.onRouteUpdate = () => {
         window.twttr.widgets.load();
       }
     }
-  }, 100);
+  }, 10);
 };
