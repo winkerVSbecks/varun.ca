@@ -14,6 +14,13 @@ const GlobalStyle = createGlobalStyle`
   ::selection {
     background: ${props => props.theme.colors.brand.faded};
   }
+
+  *:focus{
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: ${props => props.theme.colors.brand.main};
+    outline-offset: 2px;
+  }
 `;
 
 const Layout = ({ maxWidth = 7, children }) => (

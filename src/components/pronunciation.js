@@ -6,8 +6,17 @@ const StyledIcon = styled(Icon)`
   transition: background-color ${props => props.theme.animations.easeIn};
 `;
 
+const PronunciationContainer = styled(Box)`
+  :hover ${StyledIcon} {
+    background-color: ${props => props.theme.colors.brand.main};
+  }
+`;
+
 const PronunciationButton = styled(TransparentButton)`
-  :hover ${StyledIcon}, TransparentButton ${StyledIcon}:focus {
+  :focus {
+    outline: 0;
+  }
+  :focus ${StyledIcon} {
     background-color: ${props => props.theme.colors.brand.main};
   }
 `;
@@ -16,7 +25,7 @@ export const Pronunciation = () => {
   const nameAudio = useNameAudio();
 
   return (
-    <Box as="span">
+    <PronunciationContainer as="span">
       Varun Vachhar
       <PronunciationButton
         fontSize="inherit"
@@ -37,7 +46,7 @@ export const Pronunciation = () => {
           height="10px"
         />
       </PronunciationButton>
-    </Box>
+    </PronunciationContainer>
   );
 };
 
