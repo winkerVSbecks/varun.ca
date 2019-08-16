@@ -1,7 +1,9 @@
-import React from 'react';
 import * as DesignSystem from 'ds';
+import { Tweet } from 'components/tweet';
 
 export default {
+  Flex: DesignSystem.Flex,
+  Box: DesignSystem.Box,
   h1: DesignSystem.H1,
   h2: DesignSystem.H2,
   h3: DesignSystem.H3,
@@ -9,8 +11,8 @@ export default {
   h5: DesignSystem.H5,
   h6: DesignSystem.H6,
   p: DesignSystem.Text,
-  // blockquote: DesignSystem.Blockquote,
-  TweetEmbed,
+  blockquote: DesignSystem.Blockquote,
+  Tweet,
   cite: DesignSystem.Cite,
   ul: DesignSystem.List,
   ol: DesignSystem.OrderedList,
@@ -25,17 +27,3 @@ export default {
   a: DesignSystem.Link,
   // img:	Image,
 };
-
-function TweetEmbed({ children, username, id }) {
-  return (
-    <blockquote className="twitter-tweet" data-conversation="none">
-      <p lang="en" dir="ltr">
-        {children}
-      </p>
-      ―{' '}
-      <a href={`https://twitter.com/${username}/status/${id}`}>
-        Tweet by @{username}
-      </a>
-    </blockquote>
-  );
-}

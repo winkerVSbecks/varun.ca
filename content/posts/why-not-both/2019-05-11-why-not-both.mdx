@@ -4,20 +4,6 @@ date: '2019-05-11'
 preview: /img/why-not-both.jpg
 ---
 
-<TweetEmbed username="getcompositor" id="929689837971623936">
-  Making progress{' '}
-  <a href="https://t.co/IGrZWzqqbT">pic.twitter.com/IGrZWzqqbT</a>
-</TweetEmbed>
-
-<TweetEmbed username="winkerVSbecks" id="1101502912675627014">
-  Continuing with generative grid experiments. Took one of the{' '}
-  <a href="https://twitter.com/tachyons_css">@tachyons_css</a> examples, sliced
-  up the different sections into components and randomly sizing them in the
-  container. You can then lock items and continue regenerating the grid until
-  you find an interesting layout.{' '}
-  <a href="https://t.co/1cUSnz9VRN">pic.twitter.com/1cUSnz9VRN</a>
-</TweetEmbed>
-
 The web is defined by the interplay of various components: back-end technologies such as servers and databases to support the website itself, client-side technologies to present content and provide interactivity, and the network to deliver the website to the user.
 
 While there are a lot of layers to this medium I want to focus on the presentation layer — HTML, CSS & JS. In this article I am going to be using the shorthand _web_ to refer to this presentational layer. (I realize that is inaccurate but, I don't have a better word for it.)
@@ -86,13 +72,17 @@ The convergence of design and development tools will allow us to discover new an
 
 The [Compositor](http://compositor.io/) team has been working on some truly interesting tools. Modifying the UI directly or dragging components to create layouts is again a much better developer experience. It also allows you to explore and iterate with very little friction.
 
-<div className="flex-ns items-center">
-  <blockquote class="twitter-tweet" data-conversation="none"><p lang="und" dir="ltr">🙀 <a href="https://t.co/q0BqSsTRHi">pic.twitter.com/q0BqSsTRHi</a></p>&mdash; Compositor (@getcompositor) <a href="https://twitter.com/getcompositor/status/931592802697469953?ref_src=twsrc%5Etfw">November 17, 2017</a></blockquote>
+<Flex flexWrap={['wrap', 'nowrap']} alignItems="center" mb={4}>
+  <blockquote className="twitter-tweet" data-conversation="none">
+    <p lang="und" dir="ltr">🙀 <a href="https://t.co/q0BqSsTRHi">pic.twitter.com/q0BqSsTRHi</a></p>&mdash; Compositor (@getcompositor) <a href="https://twitter.com/getcompositor/status/931592802697469953?ref_src=twsrc%5Etfw">November 17, 2017</a>
+  </blockquote>
 
-<div className="w1-ns"></div>
+<Box mr={[0, 3]}></Box>
 
-  <blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Making progress <a href="https://t.co/IGrZWzqqbT">pic.twitter.com/IGrZWzqqbT</a></p>&mdash; Compositor (@getcompositor) <a href="https://twitter.com/getcompositor/status/929689837971623936?ref_src=twsrc%5Etfw">November 12, 2017</a></blockquote>
-</div>
+  <blockquote className="twitter-tweet" data-conversation="none">
+    <p lang="en" dir="ltr">Making progress <a href="https://t.co/IGrZWzqqbT">pic.twitter.com/IGrZWzqqbT</a></p>&mdash; Compositor (@getcompositor) <a href="https://twitter.com/getcompositor/status/929689837971623936?ref_src=twsrc%5Etfw">November 12, 2017</a>
+  </blockquote>
+</Flex>
 
 [Project Phoebe](https://medium.com/project-phoebe) was a brief attempt at using mutative design for UI and Adobe seems to be [exploring](https://www.fastcompany.com/3068884/adobe-is-building-an-ai-to-automate-web-design-should-you-worry) this space too. But, we are just scratching the surface. What would the UI design equivalent of [Real Time Topology Optimization](https://www.frustum.com/) look like? Can we define a set of constraints, allow the UI to morph around it and iterate?
 
@@ -119,13 +109,13 @@ Let's focus on one category — layout. Much of web design is stuck in the mind
 
 Frank describes web design as "creating assemblages of elements, then associating them with the appropriate space". I did an experiment very much inspired by that statement. Start by defining a high level fluid grid, say 6x4. Take a document and slice up the different sections into components, give them random grid sizing and drop them into the layout. The user can then lock items and continue regenerating the grid until they find a satisfying layout. You can try it yourself in this [CodeSandbox](https://codesandbox.io/s/8r6k4j9k2).
 
-<div className="flex-l items-stretch">
+<Flex flexWrap={['wrap', 'nowrap']} alignItems="center"  mb={4}>
   <blockquote className="twitter-tweet"><p lang="en" dir="ltr">Playing with the idea of procedurally generated layout grids.<a href="https://t.co/yAsPbkpDZJ">https://t.co/yAsPbkpDZJ</a> <a href="https://t.co/bHQIvlF9nC">pic.twitter.com/bHQIvlF9nC</a></p>&mdash; Varun Vachhar (@winkerVSbecks) <a href="https://twitter.com/winkerVSbecks/status/1095479837534441474?ref_src=twsrc%5Etfw">February 13, 2019</a></blockquote>
 
-<div className="w1-l"></div>
+<Box mr={[0, 3]}></Box>
 
   <blockquote className="twitter-tweet"><p lang="en" dir="ltr">Continuing with generative grid experiments. Took one of the <a href="https://twitter.com/tachyons_css?ref_src=twsrc%5Etfw">@tachyons_css</a> examples, sliced up the different sections into components and randomly sizing them in the container. You can then lock items and continue regenerating the grid until you find an interesting layout. <a href="https://t.co/1cUSnz9VRN">pic.twitter.com/1cUSnz9VRN</a></p>&mdash; Varun Vachhar (@winkerVSbecks) <a href="https://twitter.com/winkerVSbecks/status/1101502912675627014?ref_src=twsrc%5Etfw">March 1, 2019</a></blockquote>
-</div>
+</Flex>
 
 The results were a lot better than I expected. It has been hard to break out of the twelve column mindset for me. This helped.
 

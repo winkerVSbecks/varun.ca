@@ -22,17 +22,20 @@ StyledLink.defaultProps = {
   fontFamily: 'systemSans',
 };
 
-export const Link = ({ to = '', ...props }) =>
-  to.startsWith('http') || to.startsWith('mailto') ? (
+export const Link = ({ to = '', href, ...props }) => {
+  const destination = href ? href : to;
+
+  return destination.startsWith('http') || destination.startsWith('mailto') ? (
     <StyledLink
-      href={to}
+      href={destination}
       target="_blank"
       rel="noopener noreferrer"
       {...props}
     />
   ) : (
-    <StyledLink as={GatsbyLink} to={to} {...props} />
+    <StyledLink as={GatsbyLink} to={destination} {...props} />
   );
+};
 
 export const SimpleLink = styled(Link)`
   text-decoration: none;

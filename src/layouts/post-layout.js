@@ -39,7 +39,7 @@ export default function PostTemplate({ data: { mdx } }) {
         <Box as="article" my={6}>
           <Box mb={6}>
             <Text
-              as="date"
+              as="time"
               datetime={mdx.frontmatter.date}
               lineHeight="solid"
               color="neutral.2"
