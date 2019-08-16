@@ -1,5 +1,4 @@
 import * as DesignSystem from 'ds';
-import { Tweet } from 'components/tweet';
 
 export default {
   Flex: DesignSystem.Flex,
@@ -12,7 +11,6 @@ export default {
   h6: DesignSystem.H6,
   p: DesignSystem.Text,
   blockquote: DesignSystem.Blockquote,
-  Tweet,
   cite: DesignSystem.Cite,
   ul: DesignSystem.List,
   ol: DesignSystem.OrderedList,
