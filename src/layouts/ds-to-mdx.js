@@ -3,6 +3,7 @@ import * as DesignSystem from 'ds';
 export default {
   Flex: DesignSystem.Flex,
   Box: DesignSystem.Box,
+  Text: DesignSystem.Text,
   h1: DesignSystem.H1,
   h2: DesignSystem.H2,
   h3: DesignSystem.H3,
@@ -23,5 +24,5 @@ export default {
   // code:	InlineCode,
   // hr:	Break,
   a: DesignSystem.Link,
-  // img:	Image,
+  img: DesignSystem.Image,
 };

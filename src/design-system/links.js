@@ -25,16 +25,22 @@ StyledLink.defaultProps = {
 export const Link = ({ to = '', href, ...props }) => {
   const destination = href ? href : to;
 
-  return destination.startsWith('http') || destination.startsWith('mailto') ? (
-    <StyledLink
-      href={destination}
-      target="_blank"
-      rel="noopener noreferrer"
-      {...props}
-    />
-  ) : (
-    <StyledLink as={GatsbyLink} to={destination} {...props} />
-  );
+  if (destination.startsWith('#')) {
+    return <StyledLink href={destination} {...props} />;
+  } else if (
+    destination.startsWith('http') ||
+    destination.startsWith('mailto')
+  ) {
+    return (
+      <StyledLink
+        href={destination}
+        target="_blank"
+        rel="noopener noreferrer"
+        {...props}
+      />
+    );
+  }
+  return <StyledLink as={GatsbyLink} to={destination} {...props} />;
 };
 
 export const SimpleLink = styled(Link)`

@@ -13,7 +13,7 @@ export default function PostTemplate({ data: { mdx } }) {
       <Box maxWidth={7} mx="auto" px={[4, 4, 3]}>
         <Box as="header" mx="auto" mt={6} display={['block', 'flex']}>
           <SimpleLink
-            href="https://varun.ca/writing"
+            to="/writing"
             style={{ textTransform: 'uppercase' }}
             mr={2}
             color="neutral.1"

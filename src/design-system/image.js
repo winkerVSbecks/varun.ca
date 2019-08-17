@@ -4,12 +4,12 @@ import { Box } from './primitives';
 
 export const Image = styled(Box)({
   maxWidth: '100%',
+  display: 'block',
 });
 
 Image.defaultProps = {
   as: 'img',
-  m: 0,
-  height: 'auto',
+  mx: 'auto',
 };
 
 export const BackgroundImage = styled.div(
