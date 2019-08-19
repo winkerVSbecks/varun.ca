@@ -14,6 +14,7 @@ export const ProfileLinks = () => (
     <SrOnly as="h2">profile links</SrOnly>
     {profileLinks.map(link => (
       <SimpleLink
+        key={link.to}
         to={link.to}
         fontWeight={5}
         px={3}

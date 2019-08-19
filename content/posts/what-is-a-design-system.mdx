@@ -4,29 +4,20 @@ date: 2019-04-18
 preview: ../assets/design-system.png
 ---
 
-<Text
-  bg="neutral.6"
-  p={3}
-  borderRadius={2}
-  mb={4}
-  fontStyle="italic"
-  fontSize={2}
->
+<CallOut>
   This post was co-authored with{' '}
   <a to="http://www.catherinemaritan.com">Catherine Maritan</a> and originally
   published on the{' '}
   <a to="https://rangle.io/blog/what-is-a-design-system">Rangle.io Blog</a>.
-</Text>
+</CallOut>
 
 Defining what a Design System is and what it means for an organization can be tricky. In this post, we'll take the conversation of Design Systems past style guides and component libraries and get into breaking down silos between development and design.
-
-<!-- This post was co-authored with [Catherine Maritan](http://www.catherinemaritan.com) and originally published on the [Rangle.io Blog](https://rangle.io/blog/what-is-a-design-system). -->
 
 ## The Hand-Off Problem
 
 From our experience, most organizations treat websites as a collection of pages. Pages provide a holistic view of the design problem — what content are we displaying, what is its purpose, how are we going to display this content and how is the user going to interact with it. This ideology is what drives the design and development process. Designers create designs for each page, followed by a hand-off to developers who then work with a product manager to divide the mock-ups into tickets for developers.
 
-![A lot of chaos is introduced when changes are made during the design & development process](/img/catherine-process-image.png)
+![A lot of chaos is introduced when changes are made during the design & development process](../assets/catherine-process-image.png)
 
 The page-based approach, while popular, poses a lot of challenges. Applications are highly dynamic. The interface has to account for many different application states and responsive variants. It's tedious to describe all of these states in static mock-ups. Also, as the development process begins the requirements often change. You discover new states which were previously not considered or there might be implementation challenges. Meanwhile, the designs continue to iterate. Due to the siloed nature of this approach, it makes it hard to resolve pressures coming from either side. Over time, the team starts to experience a number of symptoms:
 
@@ -77,7 +68,7 @@ The component-based model was a massive step in the right direction. There was a
 
 There's a common misconception that a Design System is just a Style Guide or a Component Library, terms people often use interchangeably. However, in our opinion, those are both sub-components of a Design System.
 
-![A design system includes design language, design kit, component library, developer sandbox and a documentation site](/img/design-system.svg)
+![A design system includes design language, design kit, component library, developer sandbox and a documentation site](../assets/design-system.svg)
 
 A Design System is a systematic approach to product development — complete with guidelines, principles, philosophies, and code. It shines a spotlight on _how_ a team designs, making it a fantastic tool for scaling your design practice, reducing the need for hand-off and promoting more collaboration. As [Nathan Curtis](https://medium.com/eightshapes-llc/a-design-system-isn-t-a-project-it-s-a-product-serving-products-74dcfffef935) says, a “Design System isn't a project, it's a product serving products”. Our approach to a Design System includes:
 

@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import { compose, space, layout, flexbox } from 'styled-system';
 import { Box } from './primitives';
 
-export const Image = styled(Box)({
-  maxWidth: '100%',
-  display: 'block',
-});
+export const Image = styled(Box)`
+  max-width: 100%;
+  display: block;
+`;
 
 Image.defaultProps = {
   as: 'img',

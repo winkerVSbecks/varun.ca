@@ -18,7 +18,7 @@ export const Footer = props => (
   <Box as="footer" pt={[3, 6]} mb={6} {...props}>
     <FlatList>
       {siteLinks.map(link => (
-        <Text as="li" display="inline-block" mb={0} mr={3}>
+        <Text key={link.to} as="li" display="inline-block" mb={0} mr={3}>
           <SimpleLink
             letterSpacing="tracked"
             display="block"
@@ -33,7 +33,7 @@ export const Footer = props => (
     </FlatList>
     <FlatList display="block" mb={0}>
       {socialLinks.map(link => (
-        <Text as="li" display="inline-block" mb={0} mr={3}>
+        <Text key={link.to} as="li" display="inline-block" mb={0} mr={3}>
           <SimpleLink display="block" fontSize={1} to={link.to}>
             {link.title}
           </SimpleLink>

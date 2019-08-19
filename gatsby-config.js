@@ -18,19 +18,17 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `posts`,
+        name: `content/posts`,
         path: `${__dirname}/content/posts`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `assets`,
+        name: `content/assets`,
         path: `${__dirname}/content/assets`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -43,9 +41,6 @@ module.exports = {
         icon: `content/assets/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {
@@ -65,26 +60,32 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: { default: path.resolve('./src/components/layout.js') },
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1152,
+              linkImagesToOriginal: false,
+              tracedSVG: true,
+            },
+          },
+        ],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1152,
-              sizeByPixelDensity: true,
+              linkImagesToOriginal: false,
+              tracedSVG: true,
             },
           },
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-smartypants`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
-          {
-            resolve: `gatsby-remark-external-links`,
-            options: {
-              target: `_blank`,
-            },
-          },
         ],
       },
     },
+    `gatsby-plugin-sharp`,
   ],
 };
