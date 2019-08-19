@@ -1,15 +1,13 @@
 ---
-layout: post
-title:  'Learning CSS Grid – Part 2'
+title: 'Learning CSS Grid – Part 2'
 demo: https://winkervsbecks.github.io/grid-experiments
 source: https://github.com/winkerVSbecks/grid-experiments
-classes: bg-animate hover-bg-light-purple
-style: dark
+date: 2017-09-04
 ---
 
 <figure class="center pa0 flex justify-center bg-white">
   <pre class="mv0 lh-solid code bg-white">
-+-------------------------+ +---+
+    {`+-------------------------+ +---+
 |                         | |   |
 |  CSS Grid               | |   |
 |  Layout Module          | |   |
@@ -21,7 +19,8 @@ style: dark
 |    | +------------------+ +---+
 |    | +------+ +---------------+
 |    | |      | |        part 2 |
-+----+ +------+ +---------------+</pre>
++----+ +------+ +---------------+`}
+  </pre>
 </figure>
 
 In part one I introduced the CSS Grid Layout Module. We covered some basic terminology and talked about how to create layouts by placing items onto a `grid-area`.
@@ -33,6 +32,7 @@ Let's start with quick refresher. Grid Area is the space created by the intersec
 In this post I am going to introduce another approach to creating grid based layouts – using _grid template areas_.
 
 ## Grid Template Areas
+
 This property allows us to divide the grid into named areas which can then be referenced for placing items. We start by declaring the names in the `grid-template-areas` property. Once declared we can use them as keywords in any of the [grid-placement properties](https://www.w3.org/TR/css-grid-1/#grid-placement-property).
 
 We are still defining grid areas however instead of providing row/column start & end points we are doing it through a layout template.
@@ -42,18 +42,29 @@ We are still defining grid areas however instead of providing row/column start &
 You'll notice that the syntax of the `grid-template-areas` property provides a visualization of the grid structure. This makes it relatively easy to understand the layout. To place items onto this grid we can use `grid-area` property. For example: `grid-area: header;` or `grid-area: content;`, etc.
 
 <p data-height="300" data-theme-id="26435" data-slug-hash="BZvMbM" data-default-tab="css,result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Named Grid Areas – step 1" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/BZvMbM/">Named Grid Areas – step 1</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<script
+  async
+  src="https://production-assets.codepen.io/assets/embed/ei.js"
+></script>
 
 The `grid-template-areas` property allows us to define the shape of the layout, but not the sizing. By default the sizing is dependant on grid items placed within them. You can pair `grid-template-areas` with other properties such as `grid-template-rows` & `grid-template-columns` to control the sizing of the areas too!
 
 <p data-height="400" data-theme-id="26435" data-slug-hash="pwqyYj" data-default-tab="css,result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Named Grid Areas" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/pwqyYj/">Named Grid Areas</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
+<script
+  async
+  src="https://production-assets.codepen.io/assets/embed/ei.js"
+></script>
 
 ## Example 1 – Magazine Style Layout
 
 <p data-height="400" data-theme-id="26435" data-slug-hash="KmoxJp" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="CSS Grid Magazine Style Layout" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/KmoxJp/">CSS Grid Magazine Style Layout</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<script
+  async
+  src="https://production-assets.codepen.io/assets/embed/ei.js"
+></script>
 
 The above is a magazine style layout of <a href="https://theoutline.com/post/1424/hawaii-s-online-gaming-curse">Hawaii's Online Gaming Curse</a> article from The Outline – built using both CSS Grid and [multi-column layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts). Below is a schematic of what the layout looks like at the three break points.
 
@@ -61,11 +72,14 @@ The above is a magazine style layout of <a href="https://theoutline.com/post/142
 
 Given this was one of the first grid layouts I ever built I made some assumptions which later turned out to be false. I defined the `grid-template-areas` for all three breakpoints using the same number of columns. While you _can_ do this you don't have to. You can completely modify the template by changing the values for the `grid-template-areas`, `grid-template-columns` and `grid-template-rows`. The other option you have is to change the area that an element is placed in. More on that in the next example.
 
-
 ## Example 2 – BBC Sport Live Football
 
 <p data-height="500" data-theme-id="26435" data-slug-hash="RgRomv" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="BBC Live Football Coverage (CSS Grid)" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/RgRomv/">BBC Live Football Coverage (CSS Grid)</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<script
+  async
+  src="https://production-assets.codepen.io/assets/embed/ei.js"
+></script>
 
 For this example I recreated the [BBC Sport Live Reporting](http://www.bbc.com/sport/live/football/38322056) page. Below you can see the schematic for the large breakpoint layout on the right and its grid template representation on the left. And yes, you can use [emoji](https://una.im/css-grid/#💁) for template area names!
 

@@ -1,12 +1,9 @@
 ---
-layout: post
 title: Parallax With Angular
 demo: http://winkervsbecks.github.io/explorers-on-the-moon/monument-valley
 source: https://github.com/winkerVSbecks/explorers-on-the-moon
-bgImage: /img/parallax.gif
-bgPosition: center 40%
-bgSize: 175%
-style: dark
+preview: ../assets/parallax.gif
+date: 2015-10-19
 ---
 
 <p data-height="800"
@@ -17,28 +14,30 @@ style: dark
   data-embed-version="2"
   data-pen-title="React Draggable Chat Head" class="codepen">
 </p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<script
+  async
+  src="https://production-assets.codepen.io/assets/embed/ei.js"
+></script>
 
 {% include writing/demo-source.html %}
 
-Lately I've been obsessed with Monument Valley. Love the game and the aesthetic even more. I even set up my  [Electric Object EO1](https://www.electricobjects.com) with a “print” from the game. So, I just had to build something inspired by it – why not a Tintin/Monument Valley mash-up?
+Lately I've been obsessed with Monument Valley. Love the game and the aesthetic even more. I even set up my [Electric Object EO1](https://www.electricobjects.com) with a “print” from the game. So, I just had to build something inspired by it – why not a Tintin/Monument Valley mash-up?
 
 The starting point was this image. The shapes and gradients are easy to replicate with SVG. And instead of worrying about the low-poly sky I decided to focus on introducing some parallax effect.
 
-![](/img/monument-valley.jpg)
+![](../assets/monument-valley.jpg)
 
 ## SVG with AngularJS
 
-For my day job I primarily work with Angular and I was curious to see how the whole *dynamically composed SVG* thing would work out with it. So, instead of `React + SVG` this time it is `Angular + SVG`.
+For my day job I primarily work with Angular and I was curious to see how the whole _dynamically composed SVG_ thing would work out with it. So, instead of `React + SVG` this time it is `Angular + SVG`.
 
 Adopting the same technique as React the SVG layers are just components – known as directives in the Angular world. To create a directive that renders SVG you need to specify `templateNamespace: 'svg'`. This allows you to have templates that contain SVG partials.
 
 I call the top level component in this case the `valley` directive. This is where the SVG starts and the template for it is simply:
 
 ```html
-<svg xmlns="http://www.w3.org/svg/2000"
-  width="100%"
-  height="100%">
+<svg xmlns="http://www.w3.org/svg/2000" width="100%" height="100%">
   <g ng-transclude></g>
 </svg>
 ```
@@ -46,36 +45,39 @@ I call the top level component in this case the `valley` directive. This is wher
 Now, since we are composing these layers in markup we need to set `transclude: true` for this directive. Angular by default strips the content within the directive tags. Enabling transclude allows us to have nested content, like so:
 
 ```html
-<valley id="valley"
-  dx="main.dx"
-  dy="main.dy">
-  <defs ng-include="'templates/gradients'">
-  </defs>
+<valley id="valley" dx="main.dx" dy="main.dy">
+  <defs ng-include="'templates/gradients'"> </defs>
   <g ng-repeat="peak in main.peaks">
-    <peak fill="{ { peak.fill }}"
+    <peak
+      fill="{ { peak.fill }}"
       w="main.width"
       h="main.height"
       def="peak.left"
       dx="main.dx"
       dy="main.dy"
-      ng-attr-opacity="{ { peak.opacity }}"></peak>
-    <peak fill="{ { peak.fill }}"
+      ng-attr-opacity="{ { peak.opacity }}"
+    ></peak>
+    <peak
+      fill="{ { peak.fill }}"
       w="main.width"
       h="main.height"
       def="peak.right"
       dx="main.dx"
       dy="main.dy"
-      ng-attr-opacity="{ { peak.opacity }}"></peak>
+      ng-attr-opacity="{ { peak.opacity }}"
+    ></peak>
   </g>
-  <g mountain-range fill="url(#black-gradient)"
-      w="main.width"
-      h="main.height"
-      dx="main.dx"
-      dy="main.dy">
+  <g
+    mountain-range
+    fill="url(#black-gradient)"
+    w="main.width"
+    h="main.height"
+    dx="main.dx"
+    dy="main.dy"
+  >
   </g>
 </valley>
 ```
-
 
 ## Constructing the Shapes
 
@@ -122,20 +124,21 @@ var mouseY = event.pageY - cardInfo.top;
 var w = cardInfo.width;
 var h = cardInfo.height;
 
-var transformedMouseX = -(w / 2 - x)
-var transformedMouseY =  (h / 2 - y);
+var transformedMouseX = -(w / 2 - x);
+var transformedMouseY = h / 2 - y;
 ```
 
-And finally we  [map](http://p5js.org/reference/#/p5/map) &amp;  [constrain](http://p5js.org/reference/#/p5/constrain) these values between -1 and 1 (again, to make the math easier).
+And finally we [map](http://p5js.org/reference/#/p5/map) &amp; [constrain](http://p5js.org/reference/#/p5/constrain) these values between -1 and 1 (again, to make the math easier).
 
 ```js
 // Re-maps a number from one range to another
 function map(n, start1, stop1, start2, stop2) {
-  return ((n - start1) / (stop1 - start1))*(stop2 - start2) + start2;
+  return ((n - start1) / (stop1 - start1)) * (stop2 - start2) + start2;
 }
 ```
 
 <p data-height="400" data-theme-id="7569" data-slug-hash="rOpRrx" data-default-tab="result" data-user="winkerVSbecks" class='codepen'>See the Pen <a href='http://codepen.io/winkerVSbecks/pen/rOpRrx/'>Mouse Position</a> by Varun Vachhar (<a href='http://codepen.io/winkerVSbecks'>@winkerVSbecks</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 ## The Parallax
@@ -143,8 +146,7 @@ function map(n, start1, stop1, start2, stop2) {
 The easiest way to move the peaks is to use CSS transforms. We could manipulate the `path` too but, that gets a bit more complex.
 
 ```html
-<path ng-attr-d="{ { peak.d() }}"
-  ng-attr-transform="{ { peak.translate() }}">
+<path ng-attr-d="{ { peak.d() }}" ng-attr-transform="{ { peak.translate() }}">
 </path>
 ```
 
@@ -181,6 +183,7 @@ var translate = 'translate(' + xAmt + ',' + yAmt + ')';
 ```
 
 <p data-height="268" data-theme-id="7569" data-slug-hash="QjaXyZ" data-default-tab="result" data-user="winkerVSbecks" class='codepen'>See the Pen <a href='http://codepen.io/winkerVSbecks/pen/QjaXyZ/'>parallax step 1</a> by Varun Vachhar (<a href='http://codepen.io/winkerVSbecks'>@winkerVSbecks</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
 The card movement works in a similar fashion. Except we have to rotate the card instead of translate.
@@ -190,12 +193,19 @@ var yRotation = map(normalizedMouseX, -1, 1, 10, -10);
 var xRotation = map(normalizedMouseX, -1, 1, 5, -5);
 
 return {
-  transform: 'rotateX(' + xRotation+ 'deg)' +
-    ' rotateY(' + yRotation + 'deg) rotateZ(0deg)'
+  transform:
+    'rotateX(' +
+    xRotation +
+    'deg)' +
+    ' rotateY(' +
+    yRotation +
+    'deg) rotateZ(0deg)',
 };
 ```
 
 Mix all the ingredients together for a parallax filled card.
 
-<img src="http://i.giphy.com/yohzBk3lFhUcg.gif"
-  style="margin-left: auto; margin-right: auto;">
+<img
+  src="http://i.giphy.com/yohzBk3lFhUcg.gif"
+  style="margin-left: auto; margin-right: auto;"
+/>

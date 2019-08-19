@@ -1,13 +1,11 @@
 ---
-layout: post
 title: Component based SVG Icon System
 demo: https://react-icon.now.sh
 source: https://github.com/winkerVSbecks/react-icon-system-demo
-classes: bg-animate hover-bg-green
-style: dark
+date: 2017-02-11
 ---
 
-![](/img/icons.png)
+![](../assets/icons.png)
 
 {% include writing/demo-source.html %}
 
@@ -24,11 +22,11 @@ The focus here is on front-end JavaScript frameworks such as React, Angular, Vue
 <icon type="cloud-with-snow" class="f4 blue"></icon>
 ```
 
-
 ## Prepare SVG Files
-Our starting point will be `.svg` files  – one per icon.  In most cases these will be generated using an app such as Illustrator or Sketch, although you can also obtain them from an icon pack, for example: [Material Design icons](https://github.com/google/material-design-icons), [iconmonstr](http://iconmonstr.com/), [SVG Icons](http://svgicons.sparkk.fr/), etc.
 
-![folder full of SVG icon files](/img/folder-of-icons.png)
+Our starting point will be `.svg` files – one per icon. In most cases these will be generated using an app such as Illustrator or Sketch, although you can also obtain them from an icon pack, for example: [Material Design icons](https://github.com/google/material-design-icons), [iconmonstr](http://iconmonstr.com/), [SVG Icons](http://svgicons.sparkk.fr/), etc.
+
+![folder full of SVG icon files](../assets/folder-of-icons.png)
 
 I like to start by running all the files through [GitHub - svg/svgo](https://github.com/svg/svgo) or [SVGOMG](https://jakearchibald.github.io/svgomg/). This not only optimizes the SVG but also strips out any editor artifacts and tries to reduce it to a single `<path>`.
 
@@ -38,18 +36,18 @@ Next we are going to make a couple of modifications to all the `.svg` files.
 
 1. Ensure that all the icons use `viewBox` and remove any `width` or `height` attributes. You can configure SVGO to do this for you automatically. This will [make it easier](https://youtu.be/af4ZQJ14yu8?t=309) to control the size of the icon.
 
-2. Set the `fill` and `stroke` (or whichever of the two you are using) to  `currentColor`. This sets the icon colour to be the same as the surrounding text. We can then control this colour by setting the `color` property on the `icon` element.
+2. Set the `fill` and `stroke` (or whichever of the two you are using) to `currentColor`. This sets the icon colour to be the same as the surrounding text. We can then control this colour by setting the `color` property on the `icon` element.
 
 At this point the SVG files should look something like this:
 
 ```html
 <svg viewBox="0 0 20 20">
-  <path fill="currentColor" d="..."/>
+  <path fill="currentColor" d="..." />
 </svg>
 ```
 
-
 ## Generate the Sprite Sheet
+
 One of the more popular techniques for implementing an icon system is to use `<symbol>` and `<use>` elements.
 
 <blockquote class="mv5">
@@ -63,15 +61,17 @@ One of the more popular techniques for implementing an icon system is to use `<s
 The `<symbol>` element allows us to define an SVG template. It is never displayed. Therefore, we can use it to create an icon sprite sheet.
 
 ```html
-<svg xmlns="http://www.w3.org/2000/svg"
+<svg
+  xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink"
-  style="position:absolute;width:0;height:0;visibility:hidden">
+  style="position:absolute;width:0;height:0;visibility:hidden"
+>
   <defs>
     <symbol id="sun" viewBox="0 0 20 20">
-      <path fill="currentColor" d="..."/>
+      <path fill="currentColor" d="..." />
     </symbol>
     <symbol id="moon" viewBox="0 0 20 20">
-      <path fill="currentColor" d="..."/>
+      <path fill="currentColor" d="..." />
     </symbol>
   </defs>
 </svg>
@@ -81,10 +81,9 @@ We can then render an icon using the `<use>` element.
 
 ```html
 <svg>
-  <use xlink:href="moon"/>
+  <use xlink:href="moon" />
 </svg>
 ```
-
 
 If you are working with React or Angular or Vue.js then there is a good chance that your project was setup using [webpack](https://webpack.js.org/). We will use the [svg-sprite-loader](https://www.npmjs.com/package/svg-sprite-loader) for webpack to convert a folder full of SVG files into an icon sprite sheet.
 
@@ -101,10 +100,9 @@ To do so:
 
 3. The `svg-sprite` loader then generates the sprite sheet and injects it into DOM on run-time. Similar to how [style-loader](https://github.com/webpack/style-loader) works.
 
-![Injected sprite sheet](/img/injected-sprite-sheet.jpg)
+![Injected sprite sheet](../assets/injected-sprite-sheet.jpg)
 
-⚠️ Not using webpack? There are also [node](https://github.com/jkphl/svg-sprite), [gulp](https://github.com/jkphl/gulp-svg-sprite) or  [grunt](https://github.com/jkphl/grunt-svg-sprite) based tools that you can use as an alternative.
-
+⚠️ Not using webpack? There are also [node](https://github.com/jkphl/svg-sprite), [gulp](https://github.com/jkphl/gulp-svg-sprite) or [grunt](https://github.com/jkphl/grunt-svg-sprite) based tools that you can use as an alternative.
 
 ## Icon Component
 
@@ -116,9 +114,8 @@ const files = require.context('!svg-sprite!./assets', false, /.*\.svg$/);
 files.keys().forEach(files);
 
 const Icon = ({ type, className }) => (
-  <svg className={ `dib v-mid ${ className }` }
-    width="1em" height="1em">
-    <use xlinkHref={ `#${ type }` }></use>
+  <svg className={`dib v-mid ${className}`} width="1em" height="1em">
+    <use xlinkHref={`#${type}`}></use>
   </svg>
 );
 
@@ -128,6 +125,7 @@ export default Icon;
 The `width` & `height` attributes are set to `1em`. If needed, adjust the values based on the aspect ratio of your icons. This will give us more flexibility to control the size of the icon.
 
 The component itself has two props:
+
 1. `type`: to pick which icon needs to be rendered.
 2. `className`: to allow us to add more CSS classes to `<svg>` element.
 
@@ -167,11 +165,14 @@ The `<base>` element specifies the base URL to use for resolving all the relativ
 
 ```js
 const baseUrl = window.location.href.replace(window.location.hash, '');
-const xlinkHref =  baseUrl + `#${ type }`;
+const xlinkHref = baseUrl + `#${type}`;
 ```
 
-<cite>&mdash; [svgfixer.js](https://gist.github.com/leonderijke/c5cf7c5b2e424c0061d2)</cite>
+<cite>
+  &mdash;
+  [svgfixer.js](https://gist.github.com/leonderijke/c5cf7c5b2e424c0061d2)
+</cite>
 
 I recently encountered this issue when working with the Angular router. It relies on the `<base>` element being set. However, you can provide `APP_BASE_HREF` instead and still use the router and the SVG sprite sheet.
 
-🍞 Full source for [React](https://github.com/winkerVSbecks/react-icon-system-demo), [Vue.js](https://github.com/winkerVSbecks/vue-icon-system-demo) &  [Angular](https://github.com/winkerVSbecks/ng2-icon-system-demo) versions.
+🍞 Full source for [React](https://github.com/winkerVSbecks/react-icon-system-demo), [Vue.js](https://github.com/winkerVSbecks/vue-icon-system-demo) & [Angular](https://github.com/winkerVSbecks/ng2-icon-system-demo) versions.

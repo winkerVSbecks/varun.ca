@@ -1,9 +1,8 @@
 ---
-layout: post
 title: Vector Field
 demo: http://winkervsbecks.github.io/material-vector-field
 source: https://github.com/winkerVSbecks/material-vector-field
-bgImage: /img/vector-field.gif
+preview: ../assets/vector-field.gif
 style: dark
 ---
 
@@ -20,7 +19,7 @@ My first attempt was to build a grid of vectors and then rotate them towards the
 
 The next step was to look into how vector fields work. With a bit of help from  [Paul's Online Math Notes](http://tutorial.math.lamar.edu/Classes/CalcIII/VectorFields.aspx),  [Wolfram Alpha](http://www.wolframalpha.com/share/clip?f=d41d8cd98f00b204e9800998ecf8427e8rdj53cf6e) and  [math.stackexchange.com](http://math.stackexchange.com/questions/896356/equation-for-a-vector-field-spiraling-to-a-point) I discovered that: `f(x,y) =  [(y−5)-(x−5), -(x−5)-(y−5)]` produces the exact spiralling effect.
 
-![](/img/vector-field.png)
+![](../assets/vector-field.png)
 
 Building this with p5js was fairly straightforward. Processing has an awesome drawing API and p5js brings it to the web. If you are interested in getting started with p5js I have built a  [seed project](https://github.com/winkerVSbecks/p5js-seed). There are some great  [tutorials](http://p5js.org/learn/) on the project site and Daniel Shiffman has ported his amazing  [The Nature of Code Examples](https://github.com/shiffman/The-Nature-of-Code-Examples-p5.js) to p5js too.
 

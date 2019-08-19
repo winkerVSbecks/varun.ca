@@ -1,9 +1,8 @@
 ---
-layout: post
 title: Open & Close
 citation: Open & Close by CreativeDash
 citation-link: https://dribbble.com/shots/1623679-Open-Close
-bgImage: /img/open-close.gif
+preview: ../assets/open-close.gif
 style: dark
 ---
 

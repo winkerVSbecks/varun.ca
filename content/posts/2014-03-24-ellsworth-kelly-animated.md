@@ -1,13 +1,12 @@
 ---
-layout: post
 title: Ellsworth Kelly Animated
 source: https://github.com/winkerVSbecks/ellsworthKellyAnimated
 demo: http://winkervsbecks.github.io/ellsworthKellyAnimated
-bgImage: /img/orange.gif
+preview: ../assets/orange.gif
 bgPosition: center 20%
 ---
 
-![](/img/orange.gif)
+![](../assets/orange.gif)
 
 {% include writing/demo-source.html %}
 
@@ -19,7 +18,7 @@ This was my entry and it ended up being  [shortlisted](https://devart.withgoogle
 
 A couple of years ago I made a  [Processing](http://processing.org/) sketch with the logic described in the image below. Shortly thereafter I came across Ellsworth Kelly's  [Black Relief II](http://www.matthewmarks.com/new-york/exhibitions/2011-02-12_ellsworth-kelly/works-in-exhibition/#/images/5/). It seemed that, unknowingly, I had created an animated version of his painting.
 
-![](/img/polygon.png)
+![](../assets/polygon.png)
 
 This led me to explore more of his work. His paintings carry an immense amount of potential energy in my opinion. It's as if they are kinetic sculptures frozen in time.
 
@@ -41,7 +40,7 @@ To do so, I had two options:
 
 I see these shapes as animated creatures, so I chose the latter. The skeleton is made up of particles and spring-links.
 
-![](/img/skeleton.png)
+![](../assets/skeleton.png)
 
 The bottom three particles are anchors. The remaining are dynamic particles connected to the anchors and adjacent particles using springs.
 
@@ -63,8 +62,8 @@ The other pieces used similar ideas of node based skeleton with an overlaid  sha
 
 ## Early Prototypes Made with Processing
 
-![](/img/springywavybox.gif)
+![](../assets/springywavybox.gif)
 
-![](/img/springytriangles.gif)
+![](../assets/springytriangles.gif)
 
-![](/img/manypolygons.gif)
+![](../assets/manypolygons.gif)

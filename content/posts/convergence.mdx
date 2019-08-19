@@ -1,8 +1,6 @@
 ---
-layout: post
-title: "JavaScript Frameworks: The Year of Convergence"
-classes: bg-animate hover-bg-hot-pink
-style: dark
+title: 'JavaScript Frameworks: The Year of Convergence'
+date: 2017-12-24
 ---
 
 If 2016 was the year of JavaScript fatigue then 2017 was most certainly the year of convergence. Most JavaScript frameworks have converged towards using similar tooling and concepts.
@@ -63,13 +61,15 @@ One of the major benefits of JSX is that it allows you to write all the code for
 </template>
 
 <script>
-export default {
-  props: { name: String }
-};
+  export default {
+    props: { name: String },
+  };
 </script>
 
 <style>
-  .f1 { font-size: 3rem; }
+  .f1 {
+    font-size: 3rem;
+  }
 </style>
 ```
 
@@ -77,9 +77,9 @@ export default {
 
 Styling of components generally comes in three different flavours:
 
-* **Classic:** all your CSS is available globally and the components can use any styles.
-* **Encapsulated:** each component has styles scoped to itself. It doesn’t use any global styles and none of the component styles leak out.
-* **Mix:** your components rely mostly on scoped styles, but there are also some globally defined defaults that cascade down.
+- **Classic:** all your CSS is available globally and the components can use any styles.
+- **Encapsulated:** each component has styles scoped to itself. It doesn’t use any global styles and none of the component styles leak out.
+- **Mix:** your components rely mostly on scoped styles, but there are also some globally defined defaults that cascade down.
 
 Do you prefer one approach over the others? Good news! All three frameworks support all three approaches. Global CSS just works out of the box. You can use the `class` attribute in templates or the `className` prop in JSX.
 
@@ -106,13 +106,15 @@ Vue supports scoping through the single file component syntax. Just add the `sco
 </template>
 
 <script>
-export default {
-  props: { name: String }
-};
+  export default {
+    props: { name: String },
+  };
 </script>
 
 <style scoped>
-  .f1 { font-size: 3rem; }
+  .f1 {
+    font-size: 3rem;
+  }
 </style>
 ```
 
@@ -126,7 +128,9 @@ export default {
 </template>
 
 <style module>
-  .f1 { font-size: 3rem; }
+  .f1 {
+    font-size: 3rem;
+  }
 </style>
 ```
 
@@ -288,7 +292,7 @@ class Counter extends React.Component {
       prevState => ({ count: prevState.count + 1 }),
       () => {
         this.props.handleIncrement(this.state.count);
-      },
+      }
     );
   }
 

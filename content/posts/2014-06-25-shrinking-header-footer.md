@@ -1,7 +1,6 @@
 ---
-layout: post
 title: Two Level Shrinking Header and Footer with Ionic Framework
-bgImage: /img/springytriangles.gif
+preview: ../assets/springytriangles.gif
 bgSize: 300%
 style: dark
 ---

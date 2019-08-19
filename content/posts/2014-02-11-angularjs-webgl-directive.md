@@ -1,15 +1,14 @@
 ---
-layout: post
 title: AngularJS WebGL Directive
 demo: http://winkervsbecks.github.io/angularWebglDirective
 source: https://github.com/winkerVSbecks/angularWebglDirective
 citation: original three.js demo
 citation-link: http://threejs.org/examples/#webgl_geometry_colors
 style: dark
-bgImage: /img/webgl.gif
+preview: ../assets/webgl.gif
 ---
 
-![angularJS webGL Directive](/img/angularWebGL.png)
+![angularJS webGL Directive](../assets/angularWebGL.png)
 
 {% include writing/demo-source.html %}
 

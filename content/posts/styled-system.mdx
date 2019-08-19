@@ -1,8 +1,6 @@
 ---
-layout: post
-title: "Component Based Design System With Styled-System"
-classes: bg-animate hover-bg-dark-blue
-style: dark
+title: Component Based Design System With Styled-System
+date: 2018-05-11
 ---
 
 Component-based design system is the practice of splitting the UI into small, isolated and more manageable parts; backed by a set of design constraints. It builds upon ideas such as [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design), [Style Guides](http://alistapart.com/article/creating-style-guides) and [Component-Based Architecture](https://medium.com/@dan.shapiro1210/understanding-component-based-architecture-3ff48ec0c238). In my [previous](/tachyons-components), post I introduced some foundational concepts of component-based design systems and shared my approach to building one with Tachyons and React. I now want to focus on a different tool called Styled-System which uses a Tachyons like API while giving you a lot more control over the design system implementation.
@@ -30,11 +28,15 @@ render(
     <Box p={3} bg="whites.10" color="orange">
       This is a Box
     </Box>
-  </ThemeProvider>,
+  </ThemeProvider>
 );
 ```
 
-<iframe src="https://codesandbox.io/embed/2vv327jqjp?hidenavigation=1&module=%2Fsrc%2Ftheme.js" style="width:100%; height:200px; border:0; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe
+  src="https://codesandbox.io/embed/2vv327jqjp?hidenavigation=1&module=%2Fsrc%2Ftheme.js"
+  style="width:100%; height:200px; border:0; overflow:hidden;"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+></iframe>
 
 ## Design Constraints Theme
 
@@ -207,7 +209,7 @@ const Box = system(
   'top',
   'right',
   'bottom',
-  'left',
+  'left'
 );
 Box.displayName = 'Box';
 ```
@@ -216,7 +218,7 @@ System-components used `clean-tag` and `clean-element` to strip out styled-syste
 
 System-components automatically apply styled-system functions based on the keys of the default values object. In the example below, `<Text />` will have `fontSize`, `color` and `fontFamily` functions automatically applied so, you don't need to list them out.
 
-This is honestly my favourite way to build UI components right now <img src="/img/parrot.gif" alt="party parrot" style="display:inline !important; width: 1em !important;" />
+This is honestly my favourite way to build UI components right now <img src="../assets/parrot.gif" alt="party parrot" style="display:inline !important; width: 1em !important;" />
 
 ```js
 const Text = system(
@@ -231,7 +233,7 @@ const Text = system(
   'textAlign',
   'lineHeight',
   'fontWeight',
-  'letterSpacing',
+  'letterSpacing'
 );
 Text.displayName = 'Text';
 
@@ -247,7 +249,7 @@ const Heading = system(
   'textAlign',
   'lineHeight',
   'fontWeight',
-  'letterSpacing',
+  'letterSpacing'
 );
 Heading.displayName = 'Heading';
 ```
@@ -256,7 +258,11 @@ In the previous, post I had created a Profile Card component. Here's the whole e
 
 <p style="margin-bottom: -2rem;">
   <a href="https://codesandbox.io/s/v86m4zkyy0" class="dib" style="border: 0;">
-    <img alt="Edit Design System Demo — Profile Card" style="width: 12rem;" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+    <img
+      alt="Edit Design System Demo — Profile Card"
+      style="width: 12rem;"
+      src="https://codesandbox.io/static../assets/play-codesandbox.svg"
+    />
   </a>
 </p>
 
@@ -362,17 +368,21 @@ const HtmlInput = system(
       opacity: 0.25,
       backgroundColor: themeGet('colors.light-gray')(props),
     },
-  }),
+  })
 );
 ```
 
-<iframe src="https://codesandbox.io/embed/myoj1yzwmx?hidenavigation=1&module=%2Fsrc%2Fdesign-system%2FInputWithAdornment.js" style="width:100%; height:500px; border:0; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe
+  src="https://codesandbox.io/embed/myoj1yzwmx?hidenavigation=1&module=%2Fsrc%2Fdesign-system%2FInputWithAdornment.js"
+  style="width:100%; height:500px; border:0; overflow:hidden;"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+></iframe>
 
 ## Product Card Example
 
 The [Aldo](https://www.aldoshoes.com/ca/en/men/footwear/dress-shoes) product card is perfect for demonstrating the power of composition. It displays an image with a particular aspect ratio. Its other contents change based on the status of the product.
 
-<style>
+<style>{`
   .product-card-img {
     width: 49% !important;
     margin-bottom: 0.5rem;
@@ -380,15 +390,15 @@ The [Aldo](https://www.aldoshoes.com/ca/en/men/footwear/dress-shoes) product car
   @media screen and (min-width: 30em) {
     .product-card-img { width: 33% !important; margin-bottom: 0.25rem; }
   }
-</style>
+`}</style>
 
 <figure class="mh0 flex flex-wrap items-center justify-between">
-  <img src="/img/product-card-1.png" class="product-card-img" />
-  <img src="/img/product-card-2.png" class="product-card-img" />
-  <img src="/img/product-card-3.png" class="product-card-img" />
-  <img src="/img/product-card-4.png" class="product-card-img" />
-  <img src="/img/product-card-5.png" class="product-card-img" />
-  <img src="/img/product-card-6.png" class="product-card-img" />
+  <img src="../assets/product-card-1.png" class="product-card-img" />
+  <img src="../assets/product-card-2.png" class="product-card-img" />
+  <img src="../assets/product-card-3.png" class="product-card-img" />
+  <img src="../assets/product-card-4.png" class="product-card-img" />
+  <img src="../assets/product-card-5.png" class="product-card-img" />
+  <img src="../assets/product-card-6.png" class="product-card-img" />
 
   <figcaption class="clip">Product Cards </figcaption>
 </figure>
@@ -414,7 +424,7 @@ const BackgroundImage = system(
   'ratio',
   props => ({
     backgroundImage: props.src ? `url(${props.src})` : undefined,
-  }),
+  })
 );
 ```
 
@@ -472,7 +482,11 @@ const ProductCard = ({ shoe, ...props }) => (
 );
 ```
 
-<iframe src="https://codesandbox.io/embed/woy5w424zl??view=split&hidenavigation=1&module=%2Fsrc%2FProductCard%2FProductCard.js" style="width:100%; height:500px; border:0; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe
+  src="https://codesandbox.io/embed/woy5w424zl??view=split&hidenavigation=1&module=%2Fsrc%2FProductCard%2FProductCard.js"
+  style="width:100%; height:500px; border:0; overflow:hidden;"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+></iframe>
 
 These are just a few examples that demonstrate how you can use styled-system. There are other features such as [complex-styles](https://github.com/jxnblk/styled-system#complexstyle), [pseudo-styles](https://github.com/jxnblk/styled-system#pseudostyle) and even creating custom style [utilities](https://github.com/jxnblk/styled-system#style) for you to explore. For further real-world examples check out [Rebass](https://github.com/jxnblk/rebass) and [Priceline Design System](https://github.com/pricelinelabs/design-system).
 
@@ -480,6 +494,6 @@ In my opinion, styled-system is a genuinely fantastic tool for building a compon
 
 #### Further reading
 
-* [Patterns For Style Composition In React](http://jxnblk.com/writing/posts/patterns-for-style-composition-in-react)
-* [Flattening Deep Hierarchies of Components](http://varun.ca/flattening-deep-hierarchies-of-components)
-* [Subatomic Design Systems](https://daneden.me/2018/01/05/subatomic-design-systems)
+- [Patterns For Style Composition In React](http://jxnblk.com/writing/posts/patterns-for-style-composition-in-react)
+- [Flattening Deep Hierarchies of Components](http://varun.ca/flattening-deep-hierarchies-of-components)
+- [Subatomic Design Systems](https://daneden.me/2018/01/05/subatomic-design-systems)

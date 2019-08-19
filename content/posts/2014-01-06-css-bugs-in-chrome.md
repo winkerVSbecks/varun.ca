@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Funky CSS Bugs in Chrome
 published: false
 ---

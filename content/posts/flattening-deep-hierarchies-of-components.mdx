@@ -1,18 +1,14 @@
 ---
-layout: post
 title: Flattening Deep Hierarchies of Components
-bgImage: /img/splash.gif
-bgPosition: center 75%
-bgSize: 400px 300px
-bgColor: '#231F20'
-style: dark
+preview: ../assets/splash.gif
+date: 2016-10-18
 ---
 
 Components are an awesome tool for building interfaces. They allow you to break down the UI into distinct reusable elements. These can then be composed to build complex applications in a more sustainable way.
 
 Each component has its own well defined public API. In React this is defined by the component props. Where as, in Angular 2 it's inputs and outputs. The choice of this API can have a drastic impact on your application. Consider the following example of a `Card` component.
 
-![Basic card with a title](/img/card-with-title.png)
+![Basic card with a title](../assets/card-with-title.png)
 
 It has one job: display an image with a title. You might be tempted to build it out such that it abstracts away all the logic for its constituent parts: image, title, etc.
 
@@ -25,9 +21,7 @@ It has one job: display an image with a title. You might be tempted to build it 
 
 As the complexity of your app grows you might introduce other scenarios for this `Card` component. The card should now be able to display a caption or an icon with a click action?
 
-
-
-![Card with other requirements such as caption and icon](/img/cards-with-other-requirements.png)
+![Card with other requirements such as caption and icon](../assets/cards-with-other-requirements.png)
 
 ```
 // Card with title and caption
@@ -74,21 +68,29 @@ function complexFunction(x) {
 Here the `complexFunction` is very similar to what we attempted with the `Card` component. This one function is trying to do too much. We can achieve the same behaviour using `compose` instead:
 
 ```js
-function add(r, x)      { return x + r; }
-function multiply(r, x) { return x * r; }
-function divideBy(r, x) { return x / r; }
+function add(r, x) {
+  return x + r;
+}
+function multiply(r, x) {
+  return x * r;
+}
+function divideBy(r, x) {
+  return x / r;
+}
 
 const complexFunction = compose(
   multiply(12),
   divideBy(2),
-  compose(add(5), multiply(2))
+  compose(
+    add(5),
+    multiply(2)
+  )
 );
 ```
 
 Here we have broken out the various math operations into pure functions. We can now `compose` these functions to create the `complexFunction` or any other type of combination.
 
 Instead of having one massive function which accounts for various scenarios we have created a toolbox of smaller single responsibility functions. Testing this is much easier since you don't have to account for the different scenarios.
-
 
 ## Applying Function Composition to Components
 
@@ -100,7 +102,7 @@ Let us apply this same principle to the `Card` component. We start by breaking o
 - `Caption`: card caption
 - `Icon`: a generic icon component
 
-![example of a basic card](/img/card-example.png)
+![example of a basic card](../assets/card-example.png)
 
 Now, instead of passing all data into the `Card` component we instead use `children` (React) or `ng-content` (known as projection in Angular 2, and transclusion in Angular 1). The card on the right will now look something like this:
 
@@ -131,7 +133,6 @@ This is much better. Let's observe some benefits:
 - Each component has one responsibility which makes testing trivial.
 
 - We gain a lot more flexibility. Developers can compose different types of cards or even create new ones since they have full control over the content of the card.
-
 
 ## Highly Reusable Components
 

@@ -1,8 +1,6 @@
 ---
-layout: post
 title: Polar Coordinates 🌀
-classes: bg-animate hover-bg-light-blue
-style: light
+date: 2017-11-23
 ---
 
 ## Cartesian Coordinate System
@@ -31,15 +29,29 @@ const y = r * Math.sin(theta);
 Below I have a few animations by [Dave Whyte](https://dribbble.com/beesandbombs) aka bees & bombs. They all have one thing in common, they use polar coordinates to generate a pattern.
 
 <figure class="mh0 flex flex-wrap justify-center">
-  <img style="width: 8rem; height: 6rem;" class="pa1 ba b--light-gray br2 ma1"
-    src="//cdn.dribbble.com/users/583436/screenshots/1735131/bubbles2.gif" />
-  <img style="width: 8rem; height: 6rem;" class="pa1 ba b--light-gray br2 ma1"
-    src="//cdn.dribbble.com/users/583436/screenshots/1702158/spiraldots.gif" />
-  <img style="width: 8rem; height: 6rem;" class="pa1 ba b--light-gray br2 ma1"
-    src="//cdn.dribbble.com/users/583436/screenshots/1660784/spins.gif" />
-  <img style="width: 8rem; height: 6rem;" class="pa1 ba b--light-gray br2 ma1"
-    src="//cdn.dribbble.com/users/583436/screenshots/1570346/spiralbig.gif" />
-  <figcaption class="tc mt3 code"><b>Figure 3:</b> Patterns generated using polar coordinates</figcaption>
+  <img
+    style="width: 8rem; height: 6rem;"
+    class="pa1 ba b--light-gray br2 ma1"
+    src="//cdn.dribbble.com/users/583436/screenshots/1735131/bubbles2.gif"
+  />
+  <img
+    style="width: 8rem; height: 6rem;"
+    class="pa1 ba b--light-gray br2 ma1"
+    src="//cdn.dribbble.com/users/583436/screenshots/1702158/spiraldots.gif"
+  />
+  <img
+    style="width: 8rem; height: 6rem;"
+    class="pa1 ba b--light-gray br2 ma1"
+    src="//cdn.dribbble.com/users/583436/screenshots/1660784/spins.gif"
+  />
+  <img
+    style="width: 8rem; height: 6rem;"
+    class="pa1 ba b--light-gray br2 ma1"
+    src="//cdn.dribbble.com/users/583436/screenshots/1570346/spiralbig.gif"
+  />
+  <figcaption class="tc mt3 code">
+    <b>Figure 3:</b> Patterns generated using polar coordinates
+  </figcaption>
 </figure>
 
 Cartesian coordinates are a great choice for placing things evenly on a rectangular grid. However, if you want to distribute things evenly around a circle then polar coordinates are generally the better option. Keeping the radius constant we compute the angle for each point as `angle = 360° * index / number of sides`.
@@ -67,7 +79,7 @@ function range(count) {
 }
 
 function degreesToRadians(angleInDegrees) {
-  return Math.PI * angleInDegrees / 180;
+  return (Math.PI * angleInDegrees) / 180;
 }
 ```
 
@@ -104,14 +116,26 @@ function toCartesian({ r, theta }) {
 Seems simple but, you can do a lot of interesting things with it. Here are a couple of examples:
 
 <figure class="tc">
-  <img alt="fallback" class="center pa2 ba b--light-gray br2" src="/img/gems.gif" style="max-width: 400px;">
+  <img
+    alt="fallback"
+    class="center pa2 ba b--light-gray br2"
+    src="../assets/gems.gif"
+    style="max-width: 400px;"
+  />
   <figcaption class="tc mt3 code">
-    <b>Gems</b> <a href="http://winkervsbecks.github.io/gems">winkervsbecks.github.io/gems</a>
+    <b>Gems</b>{' '}
+    <a href="http://winkervsbecks.github.io/gems">
+      winkervsbecks.github.io/gems
+    </a>
   </figcaption>
 </figure>
 
 <p data-height="600" data-theme-id="26435" data-slug-hash="PmNJpJ" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Hex-a-portal (Dynamic + RGB)" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/PmNJpJ/">Hex-a-portal (Dynamic + RGB)</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<script
+  async
+  src="https://production-assets.codepen.io/assets/embed/ei.js"
+></script>
 
 ## Relative Polar Coordinates
 
@@ -139,7 +163,11 @@ function toCartesian({ r, theta }, [cx, cy]) {
 ```
 
 <p data-height="700" data-theme-id="26435" data-slug-hash="wrZQQm" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="SVG Polygon Generator" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/wrZQQm/">SVG Polygon Generator</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<script
+  async
+  src="https://production-assets.codepen.io/assets/embed/ei.js"
+></script>
 
 ## Rotation
 
@@ -156,7 +184,11 @@ window.setInterval(() => {
 ```
 
 <p data-height="500" data-theme-id="26435" data-slug-hash="aOEeXB" data-default-tab="result" data-user="Yakudoo" data-embed-version="2" data-pen-title="Rocket around the moon" class="codepen">See the Pen <a href="https://codepen.io/Yakudoo/pen/aOEeXB/">Rocket around the moon</a> by Karim Maaloul (<a href="https://codepen.io/Yakudoo">@Yakudoo</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<script
+  async
+  src="https://production-assets.codepen.io/assets/embed/ei.js"
+></script>
 
 ## Polar curves
 
@@ -177,7 +209,11 @@ const y = cy + r * Math.sin(theta);
 ```
 
 <p data-height="600" data-theme-id="26435" data-slug-hash="pdVLPo" data-default-tab="js,result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Cardioid" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/pdVLPo/">Cardioid</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<script
+  async
+  src="https://production-assets.codepen.io/assets/embed/ei.js"
+></script>
 
 ## Eukleides
 

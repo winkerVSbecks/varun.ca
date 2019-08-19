@@ -1,15 +1,13 @@
 ---
-layout: post
-title:  Learning CSS Grid
+title: Learning CSS Grid
 demo: https://winkervsbecks.github.io/grid-experiments
 source: https://github.com/winkerVSbecks/grid-experiments
-classes: bg-animate hover-bg-purple
-style: dark
+date: 2017-05-16
 ---
 
 <figure class="center pa0 flex justify-center bg-white">
   <pre class="mv0 lh-solid code bg-white">
-+-------------------------+ +---+
+    {`+-------------------------+ +---+
 |                         | |   |
 |  CSS Grid               | |   |
 |  Layout Module          | |   |
@@ -21,12 +19,14 @@ style: dark
 |    | +------------------+ +---+
 |    | +------+ +---------------+
 |    | |      | |               |
-+----+ +------+ +---------------+</pre>
++----+ +------+ +---------------+`}
+  </pre>
 </figure>
 
 CSS Grid is here! As of March 2017, all major browsers support it. Given this good news I decided to spend some time to better understand how to use it. The learning curve was much steeper than I expected – the module introduces something like 17 new concepts. It was quite overwhelming to take it all in, so I started breaking things down, taking notes and making demos, which I am going to share here. This is by no means an exhaustive guide. It might not even be 100% factually correct. But this should be enough information for you to form a basic mental model of how CSS Grids work and start building layouts with it.
 
 ## Terminology
+
 Before we start creating grid layouts we need to learn a few new terms. A **Grid Container** is an element on which `display: grid` has been applied. All its direct descendants become **Grid Items**.
 
 When we define the grid we specify the number of rows and columns we want. The grid layout system then generates numbered lines which divide the grid horizontally and vertically. These are known as **Grid Lines**. The space between any two adjacent grid lines is called **Grid Track**. This is essentially a generic term for _columns_ and _rows_.
@@ -40,6 +40,7 @@ A **Grid Cell** is the smallest unit on the grid. It is the intersection of a ro
 {% include diagrams/grid-area.html %}
 
 ## Defining a Grid
+
 There are many different ways to define a grid. I'm going to start by focusing on a basic scenario: 4 columns x 5 rows. `grid-template-rows` & `grid-template-columns` allow us to define the count and sizing of rows and columns respectively. We can list out the tracks as shown in the example below.
 
 {% include diagrams/fixed-grid.html %}
@@ -49,11 +50,13 @@ We have a grid ✅ Not the most useful grid ever, but a grid nonetheless. In the
 In this example, the grid has fixed track sizes. Which is a fancy way of saying that rows and/or columns have fixed widths. Therefore, the grid will remain the same size regardless of how big/small the container is.
 
 ### Flexible Grids
+
 We can also define grids with flexible track sizes. Or even have both fixed and flexible tracks at the same time! (See the example below.) Here percentage values refer to a percentage of the grid container.
 
 {% include diagrams/flexible-grid.html %}
 
 ### The fr Unit
+
 Let's look at another example of a flexible grid. In this case we are still building a 4x5 grid, but we want the rows and columns to stretch out and fill the entire container. To do this, we will use the `fr` unit.
 
 At this point you are probably asking yourself. _The what unit?_ 🤷🏽‍♂️
@@ -65,14 +68,15 @@ We have a new unit! The `fr` unit represents a fraction of the available space i
 📝 We can define track sizing as length, percentage or `fr`.
 
 ### Gutters
+
 It wouldn't be a real grid without some gutters. For this we can use `grid-column-gap` and `grid-row-gap` properties, or the shorthand `grid-gap`. The grid only generates gutters between the tracks. There is no gutter before the first track or after the last track.
 
 ⚠️ Even though there is a gap between two adjacent tracks there is still only one grid line.
 
 {% include diagrams/grid-gutters.html %}
 
-
 ## Positioning Grid Items
+
 Now that we have defined a grid, let's explore some options for how to place items on it. Much like flexbox, grid placement is not dependent on source order. This allows us to create complex layouts that can be drastically re-arranged using media queries. More on that later. Let's focus on some basics for now.
 
 Positioning items on a grid is quite similar to using absolute positioning. Except, instead of specifying locations in measurement units we specify start and end grid lines.
@@ -84,8 +88,11 @@ Grid lines are automatically numbered. Starting with `1` for the topmost and lef
 Below is a CodePen that demonstrates a few different positioning styles. Notice how grid items can overlap. We can use the `z-index` property to [control the stacking order](https://drafts.csswg.org/css-grid/#z-order).
 
 <p data-height="500" data-theme-id="26435" data-slug-hash="pPKBqB" data-default-tab="css,result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="CSS Grid Positioning" class="codepen">See the Pen <a href="http://codepen.io/winkerVSbecks/pen/pPKBqB/">CSS Grid Positioning</a> by Varun Vachhar (<a href="http://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
+<script
+  async
+  src="https://production-assets.codepen.io/assets/embed/ei.js"
+></script>
 
 ## 🤖 Automate All the Things
 
@@ -99,19 +106,23 @@ I want to end by showcasing a couple more concepts through an example. I am goin
 - The maximum width of the grid is restricted to `60em`
 
 <p data-height="500" data-theme-id="26435" data-slug-hash="Gmdwxj" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Aldo Style Product Grid (CSS Grid)" class="codepen">See the Pen <a href="http://codepen.io/winkerVSbecks/pen/Gmdwxj/">Aldo Style Product Grid (CSS Grid)</a> by Varun Vachhar (<a href="http://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<script
+  async
+  src="https://production-assets.codepen.io/assets/embed/ei.js"
+></script>
 
 The grid also changes based on break points. It reduces to 3 columns on medium-sized devices (`30em ↔️ 60em`) and 2 columns on small devices `< 30em`. Finally, we need to maintain `1000 : 1270` ratio between the row and column track sizing.
 
 {% include diagrams/aldo-layout.html %}
 
-
 ### Defining the Row and Column Sizes
+
 Previously, we used something like `grid-template-columns: repeat(4, 1fr)` and `grid-template-rows: repeat(5, 1fr)` to generate the grid. Because of the `1000 : 1270` ratio we can no longer do that. Instead, we need to use a bit of math to figure out the row and column sizes. For this we can use CSS variables and `calc` 🏄 We can calculate the width of the columns and height of the rows using this formula:
 
 ```js
-width = (width_of_grid - (gutters + padding)) / number_of_columns
-height = 1270 * width / 1000
+width = (width_of_grid - (gutters + padding)) / number_of_columns;
+height = (1270 * width) / 1000;
 ```
 
 <div class="mv4 overflow-auto">
@@ -132,7 +143,11 @@ height = 1270 * width / 1000
         <td class="pa3 tc">2</td>
       </tr>
       <tr class="striped--light-gray">
-        <td class="pa3">min-width: 30em and<br />max-width: 60em</td>
+        <td class="pa3">
+          min-width: 30em and
+          <br />
+          max-width: 60em
+        </td>
         <td class="pa3 tc">100vw</td>
         <td class="pa3 tc">(2 + 2)rem</td>
         <td class="pa3 tc">3</td>
@@ -151,61 +166,85 @@ So, for the default case `width = (100vw - 3rem) / 2`. Awesome! Let's put it all
 
 ```css
 :root {
-  --width: calc( (100vw - 3rem) / 2 );
-  --height: calc( 1270 * var(--width) / 1000 );
+  --width: calc((100vw - 3rem) / 2);
+  --height: calc(1270 * var(--width) / 1000);
 }
 
 .layout {
   grid-gap: 1rem;
-  grid-template-columns: repeat( 2, var(--width) );
+  grid-template-columns: repeat(2, var(--width));
   grid-auto-rows: var(--height);
 }
 
 @media screen and (min-width: 30em) and (max-width: 60em) {
-  :root { --width: calc( (100vw - 4rem) / 3 ); }
-  .layout { grid-template-columns: repeat( 3, var(--width) ); }
+  :root {
+    --width: calc((100vw - 4rem) / 3);
+  }
+  .layout {
+    grid-template-columns: repeat(3, var(--width));
+  }
 }
 
 @media screen and (min-width: 60em) {
-  :root { --width: calc( (60em - 5rem) / 4 ); }
-  .layout { grid-template-columns: repeat( 4, var(--width) ); }
+  :root {
+    --width: calc((60em - 5rem) / 4);
+  }
+  .layout {
+    grid-template-columns: repeat(4, var(--width));
+  }
 }
 ```
 
 ### Auto Rows
+
 In the code snippet above you might have noticed `grid-auto-rows: var(--height)`. This tells the browser to automatically generate just enough rows to fit all the items. So if we add more items, it will add more rows and vice versa. The value for `grid-auto-rows` is what we want the height of the row to be.
 
 The CodePen below demonstrates what the grid would look like at this point. Open it in the [edit mode](http://codepen.io/winkerVSbecks/pen/dWjjWw) to see how the resizing works and what happens when you add or remove items.
 
 <p data-height="300" data-theme-id="26435" data-slug-hash="dWjjWw" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Aldo Style Product Grid (CSS Grid) STEP 1 for blogpost" class="codepen">See the Pen <a href="http://codepen.io/winkerVSbecks/pen/dWjjWw/">Aldo Style Product Grid (CSS Grid) STEP 1 for blogpost</a> by Varun Vachhar (<a href="http://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<script
+  async
+  src="https://production-assets.codepen.io/assets/embed/ei.js"
+></script>
 
 📝 Did you notice that we did not have to place the items on the grid?! If you don't specify positioning then the browser automatically places items on the grid. This is known as [auto flow](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow).
 
 ### Item Spans ↔️
+
 As I mentioned earlier, some items span multiple tracks. For this we can use the `grid-<row|column>-end: span <number>` technique. The span size for the images remains the same across all break points. However, the product info spans 3 columns on medium-sized devices and 2 columns for all other breakpoints. Therefore, we apply `wide-2 wide-3-m` to it. The other items use `wide-2 tall-2`.
 
 ```css
-.wide-2 { grid-column-end: span 2; }
-.tall-2 { grid-row-end: span 2; }
+.wide-2 {
+  grid-column-end: span 2;
+}
+.tall-2 {
+  grid-row-end: span 2;
+}
 
 @media screen and (min-width: 30em) and (max-width: 60em) {
-  .wide-3-m { grid-column-end: span 3; }
+  .wide-3-m {
+    grid-column-end: span 3;
+  }
 }
 ```
 
 <p data-height="500" data-theme-id="26435" data-slug-hash="vmazxG" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Aldo Style Product Grid (CSS Grid) STEP 2 for blogpost" class="codepen">See the Pen <a href="http://codepen.io/winkerVSbecks/pen/vmazxG/">Aldo Style Product Grid (CSS Grid) STEP 2 for blogpost</a> by Varun Vachhar (<a href="http://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<script
+  async
+  src="https://production-assets.codepen.io/assets/embed/ei.js"
+></script>
 
 > Want to learn more about auto placement? Check out Rachel Andrew's fantastic [tutorial](http://gridbyexample.com/video/series-auto-placement-span) and [demo](http://codepen.io/rachelandrew/pen/LRWPNp).
 
-
 ### Dense Packing
+
 We have a grid. We used auto placement to position items and some items span multiple columns & rows. So we're done? Not quite. If you inspect the above CodePen in [edit mode](http://codepen.io/winkerVSbecks/pen/vmazxG) you will notice that the grid ends up with _holes_ at certain break points.
 
-![holes in the grid](/img/grid-holes.png)
+![holes in the grid](../assets/grid-holes.png)
 
-This is because by default auto placement uses a _sparse_ packing algorithm which can lead to _holes_ in the layout. The good news is that we can switch to a _dense_ packing algorithm which causes the browser to backtrack and fill any empty cells in the layout <img src="/img/parrot.gif" alt="party parrot" style="display:inline !important; width: 1em !important;" />
+This is because by default auto placement uses a _sparse_ packing algorithm which can lead to _holes_ in the layout. The good news is that we can switch to a _dense_ packing algorithm which causes the browser to backtrack and fill any empty cells in the layout <img src="../assets/parrot.gif" alt="party parrot" style="display:inline !important; width: 1em !important;" />
 
 ```diff
 .layout {
@@ -219,27 +258,35 @@ This is because by default auto placement uses a _sparse_ packing algorithm whic
 That's it! Below is the final version. And here's [another example](https://winkervsbecks.github.io/grid-experiments/vinyl) that uses auto layout and dense packing to display music albums.
 
 <p data-height="500" data-theme-id="26435" data-slug-hash="Gmdwxj" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Aldo Style Product Grid (CSS Grid)" class="codepen">See the Pen <a href="http://codepen.io/winkerVSbecks/pen/Gmdwxj/">Aldo Style Product Grid (CSS Grid)</a> by Varun Vachhar (<a href="http://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+<script
+  async
+  src="https://production-assets.codepen.io/assets/embed/ei.js"
+></script>
 
 {% include writing/demo-source.html %}
 
-
 ## Conclusion
+
 Take a moment to think about the possibilities 🤔 Think of all the crazy layouts we can build now. Can't think of any? Not a problem. Hop on over to Jen Simmons's [Layout Lab](http://labs.jensimmons.com) for some ideas. CSS Grids will likely have a drastic impact on web design. All those layouts you abandoned because they were not possible with CSS will likely be possible thanks to CSS Grids.
 
 What Next? Did you know you can name grid lines? Did you know you can align items in a track using `align` and `justify` properties? Did you know you can specify sizes as a range using `minmax`? There is so much more to discover! I know it can feel a bit overwhelming. Take little steps. Build things. Experiment. It's okay to not understand everything at once.
 
-
 <h5>Further Reading</h5>
+
 <ul>
   <li class="mb2">
     <a href="http://gridbyexample.com">Grid by Example</a>
   </li>
   <li class="mb2">
-    <a href="http://jonibologna.com/spring-into-css-grid">Spring Into CSS Grid 🌼</a>
+    <a href="http://jonibologna.com/spring-into-css-grid">
+      Spring Into CSS Grid 🌼
+    </a>
   </li>
   <li class="mb2">
-    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">Basic concepts of grid layout –  MDN</a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">
+      Basic concepts of grid layout – MDN
+    </a>
   </li>
   <li class="mb2">
     <a href="https://drafts.csswg.org/css-grid">CSS Grid Spec</a>

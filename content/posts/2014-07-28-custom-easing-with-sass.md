@@ -1,9 +1,8 @@
 ---
-layout: post
 title: Custom Easing with Sass
 citation: patakk.tumblr.com
 citation-link: http://patakk.tumblr.com/post/88602945835/heres-a-simple-function-you-can-use-for-easing
-bgImage: /img/spring.gif
+preview: ../assets/spring.gif
 bgPosition: center 40%
 ---
 

@@ -1,8 +1,6 @@
 ---
-layout: post
-title:  Git Rebase
-classes: bg-animate hover-bg-light-red
-style: dark
+title: Git Rebase
+date: 2017-03-01
 ---
 
 ### What is a rebase?
@@ -26,10 +24,10 @@ After `git rebase master` this would become:
 - `git rebase origin/master` rebases your current branch against master
 - `git rebase -i origin/master` is the interactive version which allows you to do things such as squashing commits.
 
-
 ## Workflow for Single Remote
 
 This is assuming:
+
 1. Everyone on your team is working from one repository.
 2. You are currently on a feat/chore/fix branch and not on `master`.
 
@@ -40,22 +38,22 @@ git rebase -i origin/master
 
 At this point the editor will launch and will allow you to pick commits for squashing:
 
-![rebase starts](/img/rebase-open.png)
+![rebase starts](../assets/rebase-open.png)
 
 We are going to squash all commits into one. Leave the first commit untouched and convert all the other `pick` into `squash` or `s`. Save and close the editor window.
 
-![squash the commits](/img/rebase-squash.png)
+![squash the commits](../assets/rebase-squash.png)
 
 If no conflicts were encountered the rebase will complete and you move to the final step. Your editor will open up again. This time it shows you the messages from the various commits that are going to be squashed. Here you get a chance to compose the message for the new squashed commit.
 
 - Use a descriptive commit message.
 - If you have a Pivotal Tracker, JIRA, or Github issue number for the feature, reference it in the commit.
 
-![all the commit messages](/img/all-the-messages.png)
+![all the commit messages](../assets/all-the-messages.png)
 
 Save and close the editor window once you have composed a new git message.
 
-![new commit message](/img/new-message.png)
+![new commit message](../assets/new-message.png)
 
 At this point the rebase is complete 🎉 Last step, push your changes to remote.
 
@@ -65,12 +63,11 @@ $ git push origin my-feature -f
 
 Yes, that's a force push there. Because you have successfully re-written git history. Where you previously had multiple commits you now only have one commit.
 
-
 ### Resolving Conflicts
 
 During the rebase process you might encounter conflicts.
 
-![conflitc](/img/conflicts.png)
+![conflitc](../assets/conflicts.png)
 
 Relax. Take a deep to breath. We can deal with this 💪
 
@@ -112,7 +109,6 @@ Do the same for all the other files with conflicts. Then:
 2. Continue the rebase `git rebase --contine`
 
 If you messed something up you can always `git rebase --abort`. Remember to rebase early and often. This will prevent messy merge conflicts.
-
 
 ## Workflow for Multiple Remotes
 
@@ -160,19 +156,22 @@ $ git push origin my-feature -f
 ```
 
 ## Github
-If you are using github then a lot of this stuff can be done through their GUI. Read more about it [here](/img/https://github.com/blog/2243-rebase-and-merge-pull-requests).
-![github squash and rebase features](/img/github.png)
 
+If you are using github then a lot of this stuff can be done through their GUI. Read more about it [here](../assets/https://github.com/blog/2243-rebase-and-merge-pull-requests).
+![github squash and rebase features](../assets/github.png)
 
 ## Undo
 
 Scenario: I messed up conflict resolution during a rebase, pushed changes to remote and lost hours of work 😭
 
-<img src="/img/ive-made-a-huge-mistake.gif" alt="i've made a huge mistake"
-  class="center" style="width: 275px;" />
+<img
+  src="../assets/ive-made-a-huge-mistake.gif"
+  alt="i've made a huge mistake"
+  class="center"
+  style="width: 275px;"
+/>
 
-Use `git reflog` to undo your rebase. Running the command will show you the [reflog](/img/https://git-scm.com/docs/git-reflog) for your local repository. For example:
-
+Use `git reflog` to undo your rebase. Running the command will show you the [reflog](../assets/https://git-scm.com/docs/git-reflog) for your local repository. For example:
 
 ```
 adc164e HEAD@{0}: rebase -i (finish): returning to refs/heads/my-feature

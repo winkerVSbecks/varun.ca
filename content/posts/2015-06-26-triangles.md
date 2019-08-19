@@ -1,13 +1,12 @@
 ---
-layout: post
 title: Triangle.life
 demo: http://triangle.life
 source: https://github.com/winkerVSbecks/triangle.life
-bgImage: /img/trails.gif
+preview: ../assets/trails.gif
 style: dark
 ---
 
-![](/img/triangle-life.gif)
+![](../assets/triangle-life.gif)
 
 {% include writing/demo-source.html %}
 
