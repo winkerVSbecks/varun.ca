@@ -87,6 +87,16 @@ TransparentButton.defaultProps = {
   p: 0,
 };
 
+export const Divider = styled(Box)`
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+`;
+Divider.defaultProps = {
+  width: 3,
+  my: 5,
+  borderColor: 'neutral.5',
+};
+
 // export const PrimaryButton = styled(Button)({
 //   display: 'block',
 //   backfaceVisibility: 'hidden',

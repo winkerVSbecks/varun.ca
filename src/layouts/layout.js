@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
 
   *:focus{
     outline-width: 2px;
-    outline-style: solid;
+    outline-style: dotted;
     outline-color: ${props => props.theme.colors.brand.main};
     outline-offset: 2px;
   }

@@ -1,24 +1,26 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
+import { H1, Divider } from 'ds';
+import PageTemplate from 'layouts/page-layout';
+import { PostList } from 'components/post-list';
 
 const BlogIndex = ({ data }) => {
   const { edges: posts } = data.allMdx;
 
   return (
-    <div>
-      <h1>Awesome MDX Blog</h1>
+    <PageTemplate title="Writing">
+      <div className="mw7 center ph3 mv6 dark-gray">
+        <header>
+          <H1 className="f3 f2-m f1-ns ma0">Writing</H1>
+        </header>
 
-      <ul>
-        {posts.map(({ node: post }) => (
-          <li key={post.id}>
-            <Link to={post.fields.slug}>
-              <h2>{post.frontmatter.title}</h2>
-            </Link>
-            <p>{post.excerpt}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+        <Divider />
+
+        <main>
+          <PostList posts={posts} />
+        </main>
+      </div>
+    </PageTemplate>
   );
 };
 
@@ -31,6 +33,8 @@ export const pageQuery = graphql`
           excerpt
           frontmatter {
             title
+            date(formatString: "Do MMMM, YYYY")
+            timestamp: date
           }
           fields {
             slug

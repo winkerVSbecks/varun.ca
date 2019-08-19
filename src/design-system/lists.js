@@ -32,7 +32,3 @@ ListItem.defaultProps = {
   fontSize: [2, 3],
   mb: 0,
 };
-
-// ul:	List,
-// ol:	Ordered list,
-// li:	List item,

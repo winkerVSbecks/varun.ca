@@ -3,20 +3,18 @@ title: Swipe-Li
 demo: http://winkervsbecks.github.io/swipe-li
 source: https://github.com/winkerVSbecks/swipe-li
 preview: ../assets/swipe-li.gif
-bgPosition: center top
+date: 2014-03-28
 ---
 
-![](../assets/swipe-li-small.gif)
+![swipable list elements](../assets/swipe-li-small.gif)
 
 {% include writing/demo-source.html %}
 
-Recently we &ndash; at  [rangle.io](http://rangle.io) &ndash; had a chance to work on a short project. The app was largely a functional prototype built in 1 week. One of the requirements was to build an interface to allow the user to quickly accept or reject items. We came up with **swipe-li**: a three pane swipeable `<li>` element. Swipe right for accept. Swipe left for reject.
+Recently we &ndash; at [rangle.io](http://rangle.io) &ndash; had a chance to work on a short project. The app was largely a functional prototype built in 1 week. One of the requirements was to build an interface to allow the user to quickly accept or reject items. We came up with **swipe-li**: a three pane swipeable `<li>` element. Swipe right for accept. Swipe left for reject.
 
+Most of the _swiping_ code is taken from the [hammer.js](http://hammerjs.github.io/) carousel example. To support the directive I built a **hammerRemote** service. This delegate service allows you to register/destroy/control multiple instances of hammer.
 
-
-Most of the *swiping* code is taken from the  [hammer.js](http://hammerjs.github.io/) carousel example. To support the directive I built a **hammerRemote** service. This delegate service allows you to register/destroy/control multiple instances of hammer.
-
-{% highlight html %}
+```html
 <div
   swipe-li
   disabled=""
@@ -28,7 +26,7 @@ Most of the *swiping* code is taken from the  [hammer.js](http://hammerjs.github
   reject-content="'reject-content.html'"
   reset-to-content="false"
 ></div>
-{% endhighlight %}
+```
 
 Where:
 
