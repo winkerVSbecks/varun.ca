@@ -1,0 +1,21 @@
+---
+title: Squiggle
+demo: http://winkervsbecks.github.io/jupiter
+source: https://github.com/winkerVSbecks/jupiter
+preview: ../assets/squiggle.gif
+date: 2014-07-30
+---
+
+<p data-height="268" data-theme-id="7569" data-slug-hash="kdFsh" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/winkerVSbecks/pen/kdFsh/'>Squiggle</a> by Varun Vachhar (<a href='http://codepen.io/winkerVSbecks'>@winkerVSbecks</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+{% include writing/demo-source.html %}
+
+I've been obsessed with this [illustration](https://dribbble.com/shots/1128300-Jupiter-Study-no-01) for a while now and really want to build an animated/generative version of it. But, as usual I have no idea how to do that.
+
+The aim is to get those paths to flow across the screen with an organic movement. Which probably means using a 2D [Perlin noise](http://en.wikipedia.org/wiki/Perlin_noise) field. This is just a first step towards animating Jupiter.
+
+Next step is figuring out how to make those tentacle like paths. Probably using [spline extrusions](http://marcinignac.com/blog/cindermedusae-making-generative-creatures/mesh05.html).
+
+Built using [Joseph Gentle's noisejs](https://github.com/josephg/noisejs) library and [Two.js](http://jonobr1.github.io/two.js) for the graphics.

@@ -6,6 +6,7 @@ export default {
   Flex: DesignSystem.Flex,
   Box: DesignSystem.Box,
   Text: DesignSystem.Text,
+  Image: DesignSystem.Image,
   CallOut,
   // HTML elements
   h1: DesignSystem.H1,
@@ -28,5 +29,5 @@ export default {
   // code:	InlineCode,
   // hr:	Break,
   a: DesignSystem.Link,
-  // img: DesignSystem.Image,
+  img: DesignSystem.Image,
 };

@@ -6,8 +6,7 @@ date: 2016-11-15
 
 If you have built a web app in the past few years, you've probably had to deal with touch events. In many cases this was limited to handling tap and removing that pesky [300ms delay](https://developers.google.com/web/updates/2013/12/300ms-tap-delay-gone-away). However with touch devices becoming more powerful, we now have to implement more complex gestures— gestures that work for both mouse and touch.
 
-{: .ba .b--secondary center }
-![chat-head demo](../assets/chat-head-demo.gif)
+<img alt="chat-head demo" src="../assets/chat-head-demo.gif" border="bright" />
 
 In this post we will walk through the process of implementing one such gesture– pan. I will demonstrate this by building a draggable chat-head component.
 
@@ -118,8 +117,11 @@ The pan gesture can be broken down into three stages: pan start, pan & pan end. 
   onDragEnd={ this.onPanEnd}>
   ```
 
-{: .ba .b--secondary center }
-![breakdown of the drag gesture](../assets/drag.gif)
+<img
+  alt="breakdown of the drag gesture"
+  src="../assets/drag.gif"
+  border="bright"
+/>
 
 ### Pan Start
 
@@ -136,8 +138,11 @@ onPanStart = e => {
 
 When you drag an element on desktop you end up with a _ghost_ image. This is know as the [drag image](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Drag_operations#dragfeedback). To get around this we can set the drag image to a fake `0px × 0px` image.
 
-{: .ba .b--secondary center }
-![ghost image that appears while dragging on desktop](../assets/ghost.gif)
+<img
+  alt="ghost image that appears while dragging on desktop"
+  src="../assets/ghost.gif"
+  border="bright"
+/>
 
 ```js
 function getDragImage() {

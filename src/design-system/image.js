@@ -10,6 +10,7 @@ export const Image = styled(Box)`
 Image.defaultProps = {
   as: 'img',
   mx: 'auto',
+  mb: 4,
 };
 
 export const BackgroundImage = styled.div(

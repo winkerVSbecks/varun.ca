@@ -1,3 +1,21 @@
+const colors = {
+  brand: {
+    main: '#4e4bec',
+    bright: '#dedefb',
+    faded: '#ececfd',
+  },
+  neutral: [
+    '#333', // 0
+    '#555', // 1
+    '#777', // 2
+    '#aaa', // 3
+    '#ccc', // 4
+    '#eee', // 5
+    '#f4f4f4', // 6
+    '#fff', // 7
+  ],
+};
+
 module.exports = {
   breakpoints: ['40em', '52em', '64em', '72em'],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
@@ -27,24 +45,11 @@ module.exports = {
     tight: '-0.05em',
     mega: '0.25em',
   },
-  colors: {
-    brand: {
-      main: '#4e4bec',
-      bright: '#dedefb',
-      faded: '#ececfd',
-    },
-    neutral: [
-      '#333', // 0
-      '#555', // 1
-      '#777', // 2
-      '#aaa', // 3
-      '#ccc', // 4
-      '#eee', // 5
-      '#f4f4f4', // 6
-      '#fff', // 7
-    ],
-  },
+  colors,
   animations: {
     easeIn: '0.15s ease-in',
+  },
+  borders: {
+    bright: `1px solid ${colors.brand.bright}`,
   },
 };
