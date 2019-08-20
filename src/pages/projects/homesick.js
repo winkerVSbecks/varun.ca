@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import { GatsbyImage, Description, PageHeader } from '@ds';
 import PageLayout from '@layouts/page-layout';
 
-const TetheredMotion = ({ data }) => (
+const Homesick = ({ data }) => (
   <PageLayout title="Homesick">
     <PageHeader title="Homesick">
       <Description>
@@ -30,7 +30,7 @@ const TetheredMotion = ({ data }) => (
   </PageLayout>
 );
 
-export default TetheredMotion;
+export default Homesick;
 
 export const query = graphql`
   query {
