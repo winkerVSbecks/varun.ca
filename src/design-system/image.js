@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { compose, space, layout, flexbox } from 'styled-system';
+import Img from 'gatsby-image';
 import { Box } from './primitives';
 
 export const Image = styled(Box)`
@@ -49,4 +50,23 @@ export const AspectRatioImage = styled.div(
 );
 AspectRatioImage.defaultProps = {
   aspectRatio: 1,
+};
+
+/*
+ * This component is built using `gatsby-image` to automatically serve optimized
+ * images with lazy loading and reduced file sizes. The image is loaded using a
+ * `useStaticQuery`, which allows us to load the image from directly within this
+ * component, rather than having to pass the image data down from pages.
+ *
+ * MDX pages handle this automatically. This component is meant to be used for
+ * JS pages where you manually query images
+ *
+ * For more information, see the docs:
+ * - `gatsby-image`: https://gatsby.dev/gatsby-image
+ */
+export const GatsbyImage = styled(Image)({});
+GatsbyImage.defaultProps = {
+  as: Img,
+  mx: 'auto',
+  mb: 4,
 };

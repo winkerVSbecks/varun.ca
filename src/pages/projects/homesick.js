@@ -1,10 +1,9 @@
 import React from 'react';
-import { Text, Image, Box, Description, PageHeader } from '@ds';
+import { graphql } from 'gatsby';
+import { GatsbyImage, Description, PageHeader } from '@ds';
 import PageLayout from '@layouts/page-layout';
-import tetheredMotion from '@assets/tethered-motion.gif';
-import wave from '@assets/wave.gif';
 
-const TetheredMotion = () => (
+const TetheredMotion = ({ data }) => (
   <PageLayout title="Homesick">
     <PageHeader title="Homesick">
       <Description>
@@ -20,15 +19,69 @@ const TetheredMotion = () => (
     </PageHeader>
 
     <main>
-      <Image src="assets/colours.png" />
-      <Image src="assets/homesick1.png" />
-      <Image src="assets/homesick2.png" />
-      <Image src="assets/homesick3.png" />
-      <Image src="assets/homesick4.png" />
-      <Image src="assets/homesick5.png" />
-      <Image src="assets/logo.png" />
+      <GatsbyImage fluid={data.colours.childImageSharp.fluid} />
+      <GatsbyImage fluid={data.homesick1.childImageSharp.fluid} />
+      <GatsbyImage fluid={data.homesick2.childImageSharp.fluid} />
+      <GatsbyImage fluid={data.homesick3.childImageSharp.fluid} />
+      <GatsbyImage fluid={data.homesick4.childImageSharp.fluid} />
+      <GatsbyImage fluid={data.homesick5.childImageSharp.fluid} />
+      <GatsbyImage fluid={data.logo.childImageSharp.fluid} />
     </main>
   </PageLayout>
 );
 
 export default TetheredMotion;
+
+export const query = graphql`
+  query {
+    colours: file(relativePath: { eq: "homesick/colours.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1024) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    homesick1: file(relativePath: { eq: "homesick/homesick1.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1024) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    homesick2: file(relativePath: { eq: "homesick/homesick2.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1024) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    homesick3: file(relativePath: { eq: "homesick/homesick3.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1024) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    homesick4: file(relativePath: { eq: "homesick/homesick4.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1024) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    homesick5: file(relativePath: { eq: "homesick/homesick5.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1024) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    logo: file(relativePath: { eq: "homesick/logo.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 1024) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+  }
+`;

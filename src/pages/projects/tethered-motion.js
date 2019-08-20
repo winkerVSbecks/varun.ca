@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Image, Box, Description, PageHeader } from '@ds';
+import { Image, Box, Description, PageHeader } from '@ds';
 import PageLayout from '@layouts/page-layout';
 import tetheredMotion from '@assets/tethered-motion.gif';
 import wave from '@assets/wave.gif';
