@@ -1,11 +1,12 @@
 import React from 'react';
-import Layout from 'layouts/layout';
-import SEO from 'components/seo';
-import { Skeletor } from 'ds';
+import Layout from '@layouts/layout';
+import SEO from '@components/seo';
+import { Skeletor } from '@ds';
 
 const NotFoundPage = () => (
   <Layout>
     <SEO title="404: Page not found" />
+
     <div className="vh-100 bg-near-white flex items-center">
       <section className="measure-narrow measure-ns center gray">
         <header className="flex items-end justify-center">

@@ -1,0 +1,23 @@
+---
+layout: default
+title: Projects
+---
+
+<article class="mw8 center ph3 ph5-l f5 lh-copy dark-gray sans-serif mv6">
+  <header class="system-sans">
+    <h1 class="f3 f2-m f1-ns ma0">
+      Projects
+    </h1>
+  </header>
+
+  <div class="bb b--light-gray bw2 w3 mv5"></div>
+
+  <div class="nl2 nr2 flex flex-wrap">
+    {% for project in site.data.projects %} {% include about/card.html
+    img=project.img title=project.name link=project.link class='ma2 flex-auto
+    border-box' %} {% endfor %}
+    <div class="flex-auto w5 ma2"></div>
+  </div>
+
+  {% include footer.html %}
+</article>

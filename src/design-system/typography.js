@@ -34,6 +34,13 @@ Text.defaultProps = {
   lineHeight: 'copy',
 };
 
+export const Description = styled(Text)({});
+Description.defaultProps = {
+  fontSize: 2,
+  color: 'neutral.3',
+  mb: 3,
+};
+
 const HeadingBase = styled(Text)`
   display: flex;
   align-items: center;

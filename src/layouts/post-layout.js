@@ -1,20 +1,19 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { Box, H1, SimpleLink, Text } from 'ds';
-import SEO from 'components/seo';
-import { PageHeader } from 'components/page-header';
-import { Footer } from 'components/footer';
-import { Date } from 'components/date';
+import { Box, H1, GlobalHeader } from '@ds';
+import SEO from '@components/seo';
+import { Footer } from '@components/footer';
+import { Date } from '@components/date';
 import Layout from './layout';
 
-export default function PostTemplate({ data: { mdx } }) {
+export default function PostLayout({ data: { mdx } }) {
   return (
     <Layout>
       <SEO title={mdx.frontmatter.title} />
 
       <Box maxWidth={7} mx="auto" px={[4, 4, 3]}>
-        <PageHeader />
+        <GlobalHeader />
         <Box as="article" my={6}>
           <Box as="header" mb={6}>
             <Date

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, SimpleLink, SrOnly } from 'ds';
+import { Box, SimpleLink, SrOnly } from '@ds';
 
 const profileLinks = [
   { title: 'Writing', to: '/writing' },

@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'styled-system';
-import { SimpleLink, FlatList, ListItem, Text } from 'ds';
+import { SimpleLink, FlatList, ListItem, Text } from '@ds';
 import { Date } from './date';
 
 export const PostList = ({ posts }) => (
@@ -12,7 +11,13 @@ export const PostList = ({ posts }) => (
             timestamp={post.frontmatter.timestamp}
             date={post.frontmatter.date}
           />
-          <Text as="span" display="block" mb={0} fontSize={[4, 5]}>
+          <Text
+            as="span"
+            display="block"
+            mb={0}
+            lineHeight="solid"
+            fontSize={[4, 5]}
+          >
             {post.frontmatter.title}
           </Text>
         </SimpleLink>

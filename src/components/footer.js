@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, FlatList, SimpleLink } from 'ds';
+import { Box, Text, FlatList, SimpleLink } from '@ds';
 
 const siteLinks = [
   { title: 'About', to: '/' },

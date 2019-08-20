@@ -1,11 +1,11 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Layout from 'layouts/layout';
-import { Box, H1, Text, Link, H2 } from 'ds';
-import SEO from 'components/seo';
-import { Pronunciation } from 'components/pronunciation';
-import { ProfileLinks } from 'components/profile-links';
-import { Footer } from 'components/footer';
+import Layout from '@layouts/layout';
+import { Box, H1, Text, Link, H2 } from '@ds';
+import SEO from '@components/seo';
+import { Pronunciation } from '@components/pronunciation';
+import { ProfileLinks } from '@components/profile-links';
+import { Footer } from '@components/footer';
 
 const Home = () => {
   const { site } = useStaticQuery(

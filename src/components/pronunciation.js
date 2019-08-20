@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Box, Icon, TransparentButton } from 'ds';
+import { Box, Icon, TransparentButton } from '@ds';
 
 const StyledIcon = styled(Icon)`
   transition: background-color ${props => props.theme.animations.easeIn};

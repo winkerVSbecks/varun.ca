@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
 import 'normalize.css';
-import { theme } from 'ds';
+import { theme } from '@ds';
 import dsToMdx from './ds-to-mdx';
 
 const GlobalStyle = createGlobalStyle`
@@ -16,8 +16,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   *:focus{
-    outline-width: 2px;
-    outline-style: dotted;
+    outline-width: 1px;
+    outline-style: solid;
     outline-color: ${props => props.theme.colors.brand.main};
     outline-offset: 2px;
   }

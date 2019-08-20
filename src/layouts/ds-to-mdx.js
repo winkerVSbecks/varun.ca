@@ -1,5 +1,5 @@
-import * as DesignSystem from 'ds';
-import { CallOut } from 'components/call-out';
+import * as DesignSystem from '@ds';
+import { CallOut } from '@components/call-out';
 
 export default {
   // Components
