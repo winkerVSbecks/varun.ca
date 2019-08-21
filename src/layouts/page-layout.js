@@ -12,7 +12,7 @@ export default function PageLayout({ title, children, ...props }) {
       <Box maxWidth={8} mx="auto" px={[3, 3, 5]} {...props}>
         <GlobalHeader />
         {children}
-        <Footer px={3} />
+        <Footer />
       </Box>
     </Layout>
   );

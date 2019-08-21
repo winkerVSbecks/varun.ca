@@ -51,4 +51,30 @@ const iconsMap = {
       ></path>
     </SVG>
   ),
+
+  toggleDarkMode: props => (
+    <SVG
+      viewBox="0 0 32 32"
+      fill="currentcolor"
+      width="1em"
+      height="1em"
+      {...props}
+    >
+      <circle
+        cx="16"
+        cy="16"
+        r="14"
+        fill="none"
+        stroke="currentcolor"
+        strokeWidth="4"
+      ></circle>
+      <path
+        d="
+          M 16 0
+          A 16 16 0 0 0 16 32
+          z
+        "
+      ></path>
+    </SVG>
+  ),
 };

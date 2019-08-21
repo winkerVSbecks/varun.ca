@@ -13,7 +13,7 @@ export default function PostLayout({ data: { mdx } }) {
       <SEO title={mdx.frontmatter.title} />
 
       <Box maxWidth={7} mx="auto" px={[4, 4, 3]}>
-        <GlobalHeader />
+        <GlobalHeader linkTo="/writing" />
         <Box as="article" my={6}>
           <Box as="header" mb={6}>
             <Date
@@ -26,7 +26,7 @@ export default function PostLayout({ data: { mdx } }) {
           </Box>
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </Box>
-        <Footer px={3} />
+        <Footer />
       </Box>
     </Layout>
   );
