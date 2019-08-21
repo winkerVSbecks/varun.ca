@@ -1,0 +1,159 @@
+[
+  {
+    "name": "Stacks",
+    "link": "https://codepen.io/winkerVSbecks/full/rdXBLr/",
+    "image": "../content/assets/stacks.gif",
+    "featured": true
+  },
+  {
+    "name": "Isometric Ball",
+    "link": "https://codepen.io/winkerVSbecks/full/rdXBLr/",
+    "image": "../content/assets/isometric-ball.gif"
+  },
+  {
+    "name": "Carnival Nights",
+    "link": "https://codepen.io/winkerVSbecks/full/rdXBLr/",
+    "image": "../content/assets/carnival-nights.gif"
+  },
+  {
+    "name": "Circle Trapped In A Card",
+    "link": "https://codepen.io/winkerVSbecks/full/LdqVVL/",
+    "image": "../content/assets/circle-trapped-in-a-card.gif"
+  },
+  {
+    "name": "Omniplan",
+    "link": "https://codepen.io/winkerVSbecks/full/Wzamxd/",
+    "image": "../content/assets/omniplan.gif"
+  },
+  {
+    "name": "Patterned Circles",
+    "link": "https://codepen.io/winkerVSbecks/full/rdQQBv/",
+    "image": "../content/assets/patterned-circles.gif",
+    "featured": true
+  },
+  {
+    "name": "SA 15",
+    "link": "https://codepen.io/winkerVSbecks/full/gXOdEL/",
+    "image": "../content/assets/sa15.gif",
+    "featured": true
+  },
+  {
+    "name": "Amoeba",
+    "link": "https://codepen.io/winkerVSbecks/full/RLyNEE/",
+    "image": "../content/assets/amoeba.gif",
+    "featured": true
+  },
+  {
+    "name": "Napoleon's Theorem",
+    "link": "https://codepen.io/winkerVSbecks/full/yoVQbp/",
+    "image": "../content/assets/napoleon-theorem.gif",
+    "featured": true
+  },
+  {
+    "name": "Reactive O",
+    "link": "http://codepen.io/winkerVSbecks/full/RVVYbR/",
+    "image": "../content/assets/reactive-o.gif",
+    "featured": true
+  },
+  {
+    "name": "Nederland Expo 70",
+    "link": "http://codepen.io/winkerVSbecks/full/VPgpJL/",
+    "image": "../content/assets/nederland-expo-70.gif"
+  },
+  {
+    "name": "Luna 9 Flight",
+    "link": "https://winkervsbecks.github.io/luna-9-flight/",
+    "image": "../content/assets/luna-9.gif"
+  },
+  {
+    "name": "Path Compiler",
+    "link": "https://path-compiler-ysmnxsvmhh.now.sh",
+    "image": "../content/assets/path-compiler.gif"
+  },
+  {
+    "name": "Weight Selector",
+    "link": "http://codepen.io/winkerVSbecks/pen/amPaVz",
+    "image": "../content/assets/weight-selector.gif",
+    "featured": false
+  },
+  {
+    "name": "Joystick",
+    "link": "https://winkervsbecks.github.io/joystick",
+    "image": "../content/assets/joystick.gif",
+    "featured": true
+  },
+  {
+    "name": "Splash",
+    "link": "https://winkervsbecks.github.io/splash",
+    "image": "../content/assets/splash.gif",
+    "featured": false
+  },
+  {
+    "name": "Touch ID",
+    "link": "http://codepen.io/winkerVSbecks/full/vGojNb/",
+    "image": "../content/assets/touch-id.gif",
+    "featured": true
+  },
+  {
+    "name": "Chillwave",
+    "link": "http://winkervsbecks.github.io/chillwave",
+    "image": "../content/assets/chillwave-alt.gif",
+    "featured": true
+  },
+  {
+    "name": "Pressed",
+    "link": "http://codepen.io/winkerVSbecks/pen/PZEvQd",
+    "image": "../content/assets/pressed.gif"
+  },
+  {
+    "name": "Pizza Theorem",
+    "link": "http://winkervsbecks.github.io/pizza-theorem",
+    "image": "../content/assets/pizza-theorem.gif"
+  },
+  {
+    "name": "Polygon Slicer",
+    "link": "http://winkervsbecks.github.io/polygon-slicer",
+    "image": "../content/assets/polygon-slicer.gif"
+  },
+  {
+    "name": "Hooke’s Law",
+    "link": "http://winkervsbecks.github.io/hookes-law",
+    "image": "../content/assets/spring.gif"
+  },
+  {
+    "name": "Truncation",
+    "link": "https://github.com/winkerVSbecks/truncation",
+    "image": "../content/assets/truncation.gif",
+    "featured": true
+  },
+  {
+    "name": "Fermat Point",
+    "link": "http://winkervsbecks.github.io/fermat-point",
+    "image": "../content/assets/fermat-point.gif"
+  },
+  {
+    "name": "चतुर्पाश्वीय",
+    "link": "http://winkervsbecks.github.io/react-tetrahedrons",
+    "image": "../content/assets/tetrahedron.gif"
+  },
+  {
+    "name": "The Core",
+    "link": "http://winkervsbecks.github.io/the-core",
+    "image": "../content/assets/core.gif"
+  },
+  {
+    "name": "Vector Field",
+    "link": "http://winkervsbecks.github.io/material-vector-field/",
+    "image": "../content/assets/vector-field.gif"
+  },
+  {
+    "name": "Jupiter",
+    "link": "http://winkervsbecks.github.io/jupiter",
+    "image": "../content/assets/squiggle.gif"
+  },
+  {
+    "name": "Jamie XX",
+    "link": "http://winkervsbecks.github.io/jamieXX",
+    "image": "../content/assets/jamiexx.gif"
+  }
+]

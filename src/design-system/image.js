@@ -16,6 +16,7 @@ Image.defaultProps = {
 
 export const BackgroundImage = styled.div(
   {
+    position: 'relative',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',

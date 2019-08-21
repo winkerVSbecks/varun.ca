@@ -9,3 +9,4 @@ export * from './links';
 export * from './blockquote';
 export * from './global-header';
 export * from './page-header';
+export * from './card';
