@@ -1,13 +1,13 @@
 [
   {
     "name": "Stacks",
-    "link": "https://codepen.io/winkerVSbecks/full/rdXBLr/",
+    "link": "https://codepen.io/winkerVSbecks/full/pVGRxm",
     "image": "../content/assets/stacks.gif",
     "featured": true
   },
   {
     "name": "Isometric Ball",
-    "link": "https://codepen.io/winkerVSbecks/full/rdXBLr/",
+    "link": "https://codepen.io/winkerVSbecks/full/mLQjRX/",
     "image": "../content/assets/isometric-ball.gif"
   },
   {
@@ -122,7 +122,7 @@
   },
   {
     "name": "Truncation",
-    "link": "https://github.com/winkerVSbecks/truncation",
+    "link": "http://winkervsbecks.github.io/truncation/",
     "image": "../content/assets/truncation.gif",
     "featured": true
   },
