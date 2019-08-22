@@ -22,17 +22,18 @@ StyledLink.defaultProps = {
   fontFamily: 'systemSans',
 };
 
-export const Link = ({ to = '', href, ...props }) => {
+export const Link = ({ to = '', href, as = StyledLink, ...props }) => {
   const destination = href ? href : to;
+  const Tag = as;
 
   if (destination.startsWith('#')) {
-    return <StyledLink href={destination} {...props} />;
+    return <Tag href={destination} {...props} />;
   } else if (
     destination.startsWith('http') ||
     destination.startsWith('mailto')
   ) {
     return (
-      <StyledLink
+      <Tag
         href={destination}
         target="_blank"
         rel="noopener noreferrer"
@@ -40,7 +41,7 @@ export const Link = ({ to = '', href, ...props }) => {
       />
     );
   }
-  return <StyledLink as={GatsbyLink} to={destination} {...props} />;
+  return <Tag as={GatsbyLink} to={destination} {...props} />;
 };
 
 export const SimpleLink = styled(Link)`

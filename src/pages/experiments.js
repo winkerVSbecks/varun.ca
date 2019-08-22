@@ -1,29 +1,26 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { GatsbyImage, PageHeader, CardLink, Box } from '@ds';
+import { Flex, PageHeader, CardLink, Box } from '@ds';
 import PageLayout from '@layouts/page-layout';
 
 const Experiments = ({ data }) => (
   <PageLayout title="Experiments">
     <PageHeader title="Experiments" />
     <main>
-      <div class="nl2 nr2 flex flex-wrap">
+      <Flex ml={-2} mr={-2} flexWrap="wrap">
         {data.experiments.nodes.map(experiment => (
-          <>
-            <CardLink
-              title={experiment.title}
-              link={experiment.link}
-              image={
-                experiment.image.childImageSharp !== null
-                  ? experiment.image.childImageSharp.fluid
-                  : experiment.image.publicURL
-              }
-            />
-          </>
+          <CardLink
+            key={experiment.id}
+            title={experiment.name}
+            link={experiment.link}
+            image={experiment.image.publicURL}
+            flex="1 0 auto"
+            m={2}
+          />
         ))}
 
-        <div class="flex-auto w5 ma2"></div>
-      </div>
+        <Box flex="1 0 auto" width={5} m={2} />
+      </Flex>
     </main>
   </PageLayout>
 );
@@ -34,15 +31,11 @@ export const query = graphql`
   {
     experiments: allExperimentsJson {
       nodes {
+        id
         name
         link
         image {
           publicURL
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid_tracedSVG
-            }
-          }
         }
       }
     }

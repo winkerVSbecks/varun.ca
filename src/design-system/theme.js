@@ -14,6 +14,18 @@ const colors = {
     '#f4f4f4', // 6
     '#fff', // 7
   ],
+  transparentNeutral: [
+    'rgba(255, 255, 255, 0.05)', // 0
+    'rgba(255, 255, 255, .1)', // 1
+    'rgba(255, 255, 255, .2)', // 2
+    'rgba(255, 255, 255, .3)', // 3
+    'rgba(255, 255, 255, .4)', // 4
+    'rgba(255, 255, 255, .5)', // 5
+    'rgba(255, 255, 255, .6)', // 6
+    'rgba(255, 255, 255, .7)', // 7
+    'rgba(255, 255, 255, .8)', // 8
+    'rgba(255, 255, 255, .9)', // 9
+  ],
 };
 
 module.exports = {
@@ -51,5 +63,6 @@ module.exports = {
   },
   borders: {
     bright: `1px solid ${colors.brand.bright}`,
+    faded: `1px solid ${colors.brand.faded}`,
   },
 };

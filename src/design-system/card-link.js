@@ -1,17 +1,56 @@
 import React from 'react';
-import { GatsbyImage, AspectRatioImage } from './image';
+import styled from 'styled-components';
+import { AspectRatioImage } from './image';
+import { typographyFunctions, Text } from './typography';
+import { Box } from './primitives';
+import { Link } from './links';
 
-export const CardLink = ({ link, title, image }) => (
-  <a class="dib w5 ba b--secondary pointer pa1 hide-child relative" href={link}>
-    <div class="aspect-ratio aspect-ratio--4x3">
-      <AspectRatioImage
-        class="aspect-ratio aspect-ratio--object cover bg-center"
-        image={image}
+const BlockLink = styled(Box).attrs({
+  as: 'a',
+})`
+  ${typographyFunctions}
+  display: block;
+  text-decoration: none;
+
+  ${AspectRatioImage} {
+    position: relative;
+  }
+
+  ${Text} {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity ${props => props.theme.animations.easeIn};
+  }
+
+  :hover,
+  :focus,
+  :active {
+    ${Text} {
+      opacity: 1;
+    }
+  }
+`;
+
+export const CardLink = ({ link, title, image, ...props }) => (
+  <Link as={BlockLink} width={5} p={1} border="faded" href={link} {...props}>
+    <AspectRatioImage aspectRatio={4 / 3} image={image}>
+      <Text
+        mb={0}
+        fontSize={2}
+        fontWeight={7}
+        w="100%"
+        h="100%"
+        bg="transparentNeutral.9"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
       >
-        <div class="dark-gray b w-100 h-100 child bg-white-90 flex items-center justify-center">
-          {title}
-        </div>
-      </AspectRatioImage>
-    </div>
-  </a>
+        {title}
+      </Text>
+    </AspectRatioImage>
+  </Link>
 );
