@@ -3,97 +3,97 @@
     "name": "tachyons-tldr",
     "link": "https://tachyons-tldr.now.sh",
     "repo": "https://github.com/winkerVSbecks/tachyons-tldr",
-    "img": "/img/tachyons-tldr.gif"
+    "image": "../content/assets/tachyons-tldr.gif"
   },
   {
     "name": "tachyons-measured",
     "link": "https://github.com/winkerVSbecks/tachyons-measured",
     "repo": "https://github.com/winkerVSbecks/tachyons-measured",
-    "img": "/img/tachyons-measured.jpg"
+    "image": "../content/assets/tachyons-measured.jpg"
   },
   {
     "name": "xvg",
     "link": "https://xvg.now.sh",
     "repo": "https://github.com/winkerVSbecks/xvg",
-    "img": "/img/xvg.gif"
+    "image": "../content/assets/xvg.gif"
   },
   {
     "name": "Gems",
     "link": "http://winkervsbecks.github.io/gems",
     "repo": "https://github.com/winkerVSbecks/gems",
-    "img": "/img/gems.gif"
+    "image": "../content/assets/gems.gif"
   },
   {
     "name": "Draper",
     "repo": "https://github.com/winkerVSbecks/draper",
     "link": "https://github.com/winkerVSbecks/draper",
-    "img": "/img/draper.svg"
+    "image": "../content/assets/draper.svg"
   },
   {
     "name": "OAM",
     "link": "http://ooaamm.com",
     "repo": "https://github.com/winkerVSbecks/oam-site",
-    "img": "/img/oam-alt.gif"
+    "image": "../content/assets/oam-alt.gif"
   },
   {
     "name": "A Triangle Every Day",
     "repo": "https://github.com/winkerVSbecks/a-triangle-everyday",
     "link": "http://winkervsbecks.github.io/a-triangle-everyday",
-    "img": "/img/triangleninja.gif"
+    "image": "../content/assets/triangleninja.gif"
   },
   {
     "name": "Ellsworth Kelly Animated",
     "repo": "https://github.com/winkerVSbecks/ellsworthKellyAnimated",
     "link": "http://winkervsbecks.github.io/ellsworthKellyAnimated",
-    "img": "/img/ellsworth-kelly.gif"
+    "image": "../content/assets/ellsworth-kelly.gif"
   },
   {
     "name": "Swipe-Li",
     "repo": "https://github.com/winkerVSbecks/swipe-li",
     "link": "https://github.com/winkerVSbecks/swipe-li",
-    "img": "/img/swipe-li.gif"
+    "image": "../content/assets/swipe-li.gif"
   },
   {
     "name": "Homesick",
     "link": "/projects/homesick",
-    "img": "/img/homesick.png"
+    "image": "../content/assets/homesick.png"
   },
   {
     "name": "Tethered Motion",
     "link": "/projects/tethered-motion",
-    "img": "/img/wave.gif"
+    "image": "../content/assets/wave.gif"
   },
   {
     "name": "Moti",
     "repo": "https://github.com/winkerVSbecks/gems",
     "link": "http://moti.ph",
-    "img": "/img/moti.jpg"
+    "image": "../content/assets/moti.jpg"
   },
   {
     "name": "The Receipt Site",
     "repo": "https://github.com/winkerVSbecks/The-Receipt-Site",
     "link": "http://winkervsbecks.github.io/The-Receipt-Site",
-    "img": "/img/cbi.png"
+    "image": "../content/assets/cbi.png"
   },
   {
     "name": "Chaos Theory",
     "repo": "https://github.com/winkervsbecks/chaos-theory/",
     "link": "https://vimeo.com/23056893",
-    "img": "/img/chaostheory.png"
+    "image": "../content/assets/chaostheory.png"
   },
   {
     "name": "What's In A Motor",
     "link": "http://winkervsbecks.github.io/whatsInAMotor",
-    "img": "/img/whats-in-a-motor.jpg"
+    "image": "../content/assets/whats-in-a-motor.jpg"
   },
   {
     "name": "Console Font",
     "link": "/projects/consolefont",
-    "img": "/img/consolefont.png"
+    "image": "../content/assets/consolefont.png"
   },
   {
     "name": "FM Belfast (Cover Art)",
     "link": "https://open.spotify.com/album/7rRgmi1aCKg3l8OEe247VY",
-    "img": "/img/fmbelfast.png"
+    "image": "../content/assets/fmbelfast.png"
   }
 ]
