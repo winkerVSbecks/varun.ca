@@ -13,9 +13,6 @@ const PronunciationContainer = styled(Box)`
 `;
 
 const PronunciationButton = styled(TransparentButton)`
-  :focus {
-    outline: 0;
-  }
   :focus ${StyledIcon} {
     background-color: ${props => props.theme.colors.brand.main};
   }

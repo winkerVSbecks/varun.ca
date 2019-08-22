@@ -17,9 +17,8 @@ const GlobalStyle = createGlobalStyle`
 
   *:focus{
     outline-width: 1px;
-    outline-style: solid;
-    outline-color: ${props => props.theme.colors.brand.main};
-    outline-offset: 2px;
+    outline-style: dotted;
+    outline-color: ${props => props.theme.colors.neutral[1]};
   }
 `;
 

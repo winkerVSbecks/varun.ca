@@ -45,24 +45,24 @@ const HeadingBase = styled(Text)`
   display: flex;
   align-items: center;
 
-  a {
+  .heading-anchor {
     margin-left: -24px;
     margin-right: 8px;
     transition: opacity 0.15s ease-in;
     opacity: 0;
   }
 
-  a > svg {
+  .heading-anchor > svg {
     display: inline-block;
     fill: ${props => props.theme.colors.secondary};
   }
 
-  a:focus {
+  .heading-anchor:focus {
     opacity: 1;
   }
 
   :hover {
-    a {
+    .heading-anchor {
       opacity: 1;
     }
   }

@@ -60,9 +60,11 @@ module.exports = {
   colors,
   animations: {
     easeIn: '0.15s ease-in',
+    easeInOut: '0.3s ease-in-out',
   },
   borders: {
     bright: `1px solid ${colors.brand.bright}`,
     faded: `1px solid ${colors.brand.faded}`,
+    neutral0: `1px solid ${colors.neutral[0]}`,
   },
 };

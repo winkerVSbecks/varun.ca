@@ -90,7 +90,12 @@ module.exports = {
               tracedSVG: true,
             },
           },
-          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              className: `heading-anchor`,
+            },
+          },
           `gatsby-remark-smartypants`,
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,

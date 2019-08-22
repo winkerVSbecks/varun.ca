@@ -1,27 +1,18 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import Layout from '@layouts/layout';
 import { Box, H1, Text, Link, H2 } from '@ds';
 import SEO from '@components/seo';
 import { Pronunciation } from '@components/pronunciation';
 import { ProfileLinks } from '@components/profile-links';
 import { Footer } from '@components/footer';
+import { WritingFeatured } from '@components/writing-featured';
 
-const Home = () => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            writingDesc
-            keywords
-          }
-        }
-      }
-    `
-  );
+const Home = ({ data }) => {
+  const {
+    site,
+    writingFeatured: { posts },
+  } = data;
 
   return (
     <Layout>
@@ -54,6 +45,8 @@ const Home = () => {
           </Box>
 
           <ProfileLinks />
+
+          <WritingFeatured posts={posts} />
         </main>
         <Footer px={3} />
       </Box>
@@ -62,18 +55,30 @@ const Home = () => {
 };
 
 export const pageQuery = graphql`
-  query writingFeatured {
-    allMdx(limit: 4) {
-      edges {
-        node {
-          id
-          excerpt
-          frontmatter {
-            title
-          }
-          fields {
-            slug
-          }
+  query AboutPage {
+    site {
+      siteMetadata {
+        title
+        description
+        writingDesc
+        keywords
+      }
+    }
+
+    writingFeatured: allMdx(
+      limit: 4
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      posts: nodes {
+        id
+        excerpt
+        frontmatter {
+          title
+          date(formatString: "Do MMMM, YYYY")
+          timestamp: date
+        }
+        fields {
+          slug
         }
       }
     }
