@@ -1,7 +1,8 @@
 import React from 'react';
+import { SVG } from './primitives';
 
 export const Skeletor = props => (
-  <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" {...props}>
+  <SVG viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" {...props}>
     <g fill="none" fill-rule="evenodd">
       <path
         d="M209.999997 20c60.00001-10 83.487107 22.807098 121.24356 71.5 37.756452 48.692902 79.756427 208.167877 58.75644 248.5-20.999988 40.332123-80.000006 50-180 60C110 410 49 379.248383 29.999997 340 10.999993 300.751617 49 140.698357 88.756444 91.5 128.512888 42.301643 150 30 209.999997 20z"
@@ -46,5 +47,5 @@ export const Skeletor = props => (
         </g>
       </g>
     </g>
-  </svg>
+  </SVG>
 );

@@ -1,33 +1,48 @@
 import React from 'react';
 import Layout from '@layouts/layout';
 import SEO from '@components/seo';
-import { Skeletor } from '@ds';
+import { Skeletor, Flex, Box, H1, Text, Link } from '@ds';
 
 const NotFoundPage = () => (
   <Layout>
     <SEO title="404: Page not found" />
 
-    <div className="vh-100 bg-near-white flex items-center">
-      <section className="measure-narrow measure-ns center gray">
-        <header className="flex items-end justify-center">
+    <Flex height="100vh" bg="neutral.6" alignItems="center">
+      <Box as="section" measure={['narrow', 'regular']} mx="auto">
+        <Flex as="header" alignItems="flex-end" justifyContent="center">
           <Skeletor
-            className="mr3 f1 f-headline-ns"
             width="1.6em"
             height="1.6em"
+            mr={3}
+            fontSize={[6, 8]}
+            color="neutral.2"
           />
-          <h1 className="f1 f-headline-ns lh-solid ma0 mb1 mb3-ns">404</h1>
-        </header>
+          <H1
+            color="neutral.2"
+            fontSize={[6, 8]}
+            lineHeight="solid"
+            mb={[1, 3]}
+          >
+            404
+          </H1>
+        </Flex>
 
-        <p className="f5 f4-ns lh-copy mb0 mt3 mt4-ns tc">
+        <Text
+          color="neutral.2"
+          fontSize={[2, 3]}
+          mb={0}
+          mt={[3, 4]}
+          textAlign="center"
+        >
           Sorry, we have misplaced that URL or it is pointing to something that
           doesn't exist. Head{' '}
-          <a className="link dim gray fw6" href="{{ '/' | absolute_url }}">
+          <Link fontWeight={7} color="neutral.2" to="/">
             back home
-          </a>{' '}
+          </Link>{' '}
           to try finding it again.
-        </p>
-      </section>
-    </div>
+        </Text>
+      </Box>
+    </Flex>
   </Layout>
 );
 
