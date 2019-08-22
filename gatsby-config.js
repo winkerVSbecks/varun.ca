@@ -1,9 +1,11 @@
 const path = require('path');
 const theme = require('./src/design-system/theme');
+const mdxFeed = require('gatsby-plugin-mdx/feed');
 
 module.exports = {
   siteMetadata: {
     title: `Varun Vachhar`,
+    siteUrl: `https://varun.ca`,
     description: `I am a developer with a strong focus on design, interactivity and animation. Originally from New Delhi, I currently live in Toronto and am the Director, UI Architecture at Rangle.io. In my spare time, I like to experiment with creative coding, making triangles and other playful experiences for the web.`,
     author: `@winkerVSbecks`,
     writingDesc: 'writing about JavaScript, CSS and reactive animations.',
@@ -97,5 +99,9 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: mdxFeed,
+    },
   ],
 };
