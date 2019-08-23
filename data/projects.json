@@ -3,97 +3,114 @@
     "name": "tachyons-tldr",
     "link": "https://tachyons-tldr.now.sh",
     "repo": "https://github.com/winkerVSbecks/tachyons-tldr",
-    "image": "../content/assets/tachyons-tldr.gif"
+    "image": "../content/assets/tachyons-tldr.gif",
+    "featured": true
   },
   {
     "name": "tachyons-measured",
     "link": "https://github.com/winkerVSbecks/tachyons-measured",
     "repo": "https://github.com/winkerVSbecks/tachyons-measured",
-    "image": "../content/assets/tachyons-measured.jpg"
+    "image": "../content/assets/tachyons-measured.jpg",
+    "featured": false
   },
   {
     "name": "xvg",
     "link": "https://xvg.now.sh",
     "repo": "https://github.com/winkerVSbecks/xvg",
-    "image": "../content/assets/xvg.gif"
+    "image": "../content/assets/xvg.gif",
+    "featured": true
   },
   {
     "name": "Gems",
     "link": "http://winkervsbecks.github.io/gems",
     "repo": "https://github.com/winkerVSbecks/gems",
-    "image": "../content/assets/gems.gif"
+    "image": "../content/assets/gems.gif",
+    "featured": true
   },
   {
     "name": "Draper",
     "repo": "https://github.com/winkerVSbecks/draper",
     "link": "https://github.com/winkerVSbecks/draper",
-    "image": "../content/assets/draper.svg"
+    "image": "../content/assets/draper.svg",
+    "featured": false
   },
   {
     "name": "OAM",
     "link": "http://ooaamm.com",
     "repo": "https://github.com/winkerVSbecks/oam-site",
-    "image": "../content/assets/oam-alt.gif"
+    "image": "../content/assets/oam-alt.gif",
+    "featured": true
   },
   {
     "name": "A Triangle Every Day",
     "repo": "https://github.com/winkerVSbecks/a-triangle-everyday",
     "link": "http://winkervsbecks.github.io/a-triangle-everyday",
-    "image": "../content/assets/triangleninja.gif"
+    "image": "../content/assets/triangleninja.gif",
+    "featured": true
   },
   {
     "name": "Ellsworth Kelly Animated",
     "repo": "https://github.com/winkerVSbecks/ellsworthKellyAnimated",
     "link": "http://winkervsbecks.github.io/ellsworthKellyAnimated",
-    "image": "../content/assets/ellsworth-kelly.gif"
+    "image": "../content/assets/ellsworth-kelly.gif",
+    "featured": true
   },
   {
     "name": "Swipe-Li",
     "repo": "https://github.com/winkerVSbecks/swipe-li",
     "link": "https://github.com/winkerVSbecks/swipe-li",
-    "image": "../content/assets/swipe-li.gif"
+    "image": "../content/assets/swipe-li.gif",
+    "featured": false
   },
   {
     "name": "Homesick",
     "link": "/projects/homesick",
-    "image": "../content/assets/homesick.png"
+    "image": "../content/assets/homesick.png",
+    "featured": true
   },
   {
     "name": "Tethered Motion",
     "link": "/projects/tethered-motion",
-    "image": "../content/assets/wave.gif"
+    "image": "../content/assets/wave.gif",
+    "featured": true
   },
   {
     "name": "Moti",
     "repo": "https://github.com/winkerVSbecks/gems",
     "link": "http://moti.ph",
-    "image": "../content/assets/moti.jpg"
+    "image": "../content/assets/moti.jpg",
+    "featured": true
   },
   {
     "name": "The Receipt Site",
     "repo": "https://github.com/winkerVSbecks/The-Receipt-Site",
     "link": "http://winkervsbecks.github.io/The-Receipt-Site",
-    "image": "../content/assets/cbi.png"
+    "image": "../content/assets/cbi.png",
+    "featured": false
   },
   {
     "name": "Chaos Theory",
     "repo": "https://github.com/winkervsbecks/chaos-theory/",
     "link": "https://vimeo.com/23056893",
-    "image": "../content/assets/chaostheory.png"
+    "image": "../content/assets/chaostheory.png",
+    "featured": true
   },
   {
     "name": "What's In A Motor",
     "link": "http://winkervsbecks.github.io/whatsInAMotor",
-    "image": "../content/assets/whats-in-a-motor.jpg"
+    "image": "../content/assets/whats-in-a-motor.jpg",
+    "featured": true
   },
   {
     "name": "Console Font",
     "link": "/projects/consolefont",
-    "image": "../content/assets/consolefont.png"
+    "image": "../content/assets/consolefont.png",
+    "featured": true
   },
   {
     "name": "FM Belfast (Cover Art)",
     "link": "https://open.spotify.com/album/7rRgmi1aCKg3l8OEe247VY",
-    "image": "../content/assets/fmbelfast.png"
+    "image": "../content/assets/fmbelfast.png",
+    "featured": true
   }
 ]

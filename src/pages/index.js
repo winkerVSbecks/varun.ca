@@ -8,12 +8,16 @@ import { ProfileLinks } from '@components/profile-links';
 import { Footer } from '@components/footer';
 import { WritingFeatured } from '@components/writing-featured';
 import { SpeakingFeatured } from '@components/speaking-featured';
+import { ProjectsFeatured } from '@components/projects-featured';
+import { ExperimentsFeatured } from '@components/experiments-featured';
 
 const Home = ({ data }) => {
   const {
     site,
     writingFeatured: { posts },
     speakingFeatured: { speaking },
+    projectsFeatured: { projects },
+    experimentsFeatured: { experiments },
   } = data;
 
   return (
@@ -52,6 +56,9 @@ const Home = ({ data }) => {
             <WritingFeatured posts={posts} mr={[3, 3, 5]} />
             <SpeakingFeatured speaking={speaking} mr={[3, 0]} />
           </Flex>
+
+          <ProjectsFeatured projects={projects} />
+          <ExperimentsFeatured experiments={experiments} />
         </main>
         <Footer px={3} />
       </Box>
@@ -98,6 +105,34 @@ export const pageQuery = graphql`
         title
         conference
         featured
+      }
+    }
+
+    projectsFeatured: allProjectsJson(
+      limit: 8
+      filter: { featured: { eq: true } }
+    ) {
+      projects: nodes {
+        id
+        name
+        link
+        image {
+          publicURL
+        }
+      }
+    }
+
+    experimentsFeatured: allExperimentsJson(
+      limit: 6
+      filter: { featured: { eq: true } }
+    ) {
+      experiments: nodes {
+        id
+        name
+        link
+        image {
+          publicURL
+        }
       }
     }
   }

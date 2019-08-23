@@ -8,28 +8,32 @@
   {
     "name": "Isometric Ball",
     "link": "https://codepen.io/winkerVSbecks/full/mLQjRX/",
-    "image": "../content/assets/isometric-ball.gif"
+    "image": "../content/assets/isometric-ball.gif",
+    "featured": false
   },
   {
     "name": "Carnival Nights",
     "link": "https://codepen.io/winkerVSbecks/full/rdXBLr/",
-    "image": "../content/assets/carnival-nights.gif"
+    "image": "../content/assets/carnival-nights.gif",
+    "featured": false
   },
   {
     "name": "Circle Trapped In A Card",
     "link": "https://codepen.io/winkerVSbecks/full/LdqVVL/",
-    "image": "../content/assets/circle-trapped-in-a-card.gif"
+    "image": "../content/assets/circle-trapped-in-a-card.gif",
+    "featured": false
   },
   {
     "name": "Omniplan",
     "link": "https://codepen.io/winkerVSbecks/full/Wzamxd/",
-    "image": "../content/assets/omniplan.gif"
+    "image": "../content/assets/omniplan.gif",
+    "featured": false
   },
   {
     "name": "Patterned Circles",
     "link": "https://codepen.io/winkerVSbecks/full/rdQQBv/",
     "image": "../content/assets/patterned-circles.gif",
-    "featured": true
+    "featured": false
   },
   {
     "name": "SA 15",
@@ -80,7 +84,7 @@
     "name": "Joystick",
     "link": "https://winkervsbecks.github.io/joystick",
     "image": "../content/assets/joystick.gif",
-    "featured": true
+    "featured": false
   },
   {
     "name": "Splash",

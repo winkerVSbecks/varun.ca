@@ -45,6 +45,12 @@ export const Flex = styled(Box)({
   display: 'flex',
 });
 
+export const HorizontalScroll = styled(Flex)`
+  -webkit-overflow-scrolling: touch;
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+`;
+
 export const Card = styled(Box)(
   { display: 'flex', overflow: 'hidden' },
   shadow,

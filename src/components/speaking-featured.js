@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Text } from '@ds';
+import { Stack, Text, Box } from '@ds';
 
 export const SpeakingFeatured = ({ speaking, ...props }) => (
   <Stack {...props}>
@@ -11,10 +11,13 @@ export const SpeakingFeatured = ({ speaking, ...props }) => (
         to={talk.link || '/'}
         justifyContent="space-between"
       >
-        {talk.title}
+        <Box measure="narrow" mr={3} flex="1 1 auto" truncate>
+          {talk.title}
+        </Box>
         <Text
           as="span"
           mb={0}
+          style={{ whiteSpace: 'nowrap' }}
           lineHeight="solid"
           color="neutral.2"
           fontSize={0}

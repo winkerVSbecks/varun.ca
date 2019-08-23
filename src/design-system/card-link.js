@@ -36,7 +36,7 @@ const BlockLink = styled(Box).attrs({
 `;
 
 export const CardLink = ({ link, title, image, ...props }) => (
-  <Link as={BlockLink} width={5} p={1} border="faded" href={link} {...props}>
+  <Link as={BlockLink} width={5} p={1} border="faded" to={link} {...props}>
     <AspectRatioImage aspectRatio={4 / 3} image={image}>
       <Text
         mb={0}
