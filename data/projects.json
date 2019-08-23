@@ -25,7 +25,7 @@
     "link": "http://winkervsbecks.github.io/gems",
     "repo": "https://github.com/winkerVSbecks/gems",
     "image": "../content/assets/gems.gif",
-    "featured": true
+    "featured": false
   },
   {
     "name": "Draper",

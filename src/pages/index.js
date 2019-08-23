@@ -109,7 +109,7 @@ export const pageQuery = graphql`
     }
 
     projectsFeatured: allProjectsJson(
-      limit: 8
+      limit: 6
       filter: { featured: { eq: true } }
     ) {
       projects: nodes {
