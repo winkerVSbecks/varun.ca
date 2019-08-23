@@ -50,7 +50,7 @@ const Home = ({ data }) => {
 
           <Flex flexWrap="wrap">
             <WritingFeatured posts={posts} mr={[3, 3, 5]} />
-            <SpeakingFeatured speaking={speaking} />
+            <SpeakingFeatured speaking={speaking} mr={[3, 0]} />
           </Flex>
         </main>
         <Footer px={3} />
