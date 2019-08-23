@@ -30,9 +30,9 @@ const Home = ({ data }) => {
 
         <main>
           <Box as="section" mb={4} px={3}>
-            <H2 mb={1} fontSize={3}>
+            <H1 mb={1} fontSize={3}>
               About
-            </H2>
+            </H1>
             <Text measure="wide" fontSize={2}>
               I am a developer with a strong focus on design, interactivity and
               animation. Originally from New Delhi, I currently live in Toronto

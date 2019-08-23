@@ -1,17 +1,15 @@
 import React from 'react';
-import { Stack, StackTitle, StackItem, Icon } from '@ds';
+import { Stack, StackTitle, StackItem, StackMoreLink } from '@ds';
 
 export const WritingFeatured = ({ posts }) => (
   <Stack>
-    <StackTitle to="/writing">
-      Writing
-      <Icon type="arrow-right" ml={1} />
-    </StackTitle>
+    <Stack.Title to="/writing">Writing</Stack.Title>
 
     {posts.map(post => (
-      <StackItem key={post.id} to={post.fields.slug}>
+      <Stack.Item key={post.id} to={post.fields.slug}>
         {post.frontmatter.title}
-      </StackItem>
+      </Stack.Item>
     ))}
+    <Stack.MoreLink to="/writing">View all posts</Stack.MoreLink>
   </Stack>
 );
