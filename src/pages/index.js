@@ -7,13 +7,13 @@ import { Pronunciation } from '@components/pronunciation';
 import { ProfileLinks } from '@components/profile-links';
 import { Footer } from '@components/footer';
 import { WritingFeatured } from '@components/writing-featured';
-import { TalksFeatured } from '@components/talks-featured';
+import { SpeakingFeatured } from '@components/speaking-featured';
 
 const Home = ({ data }) => {
   const {
     site,
     writingFeatured: { posts },
-    talksFeatured: { talks },
+    speakingFeatured: { speaking },
   } = data;
 
   return (
@@ -50,7 +50,7 @@ const Home = ({ data }) => {
 
           <Flex flexWrap="wrap">
             <WritingFeatured posts={posts} mr={[3, 3, 5]} />
-            <TalksFeatured talks={talks} />
+            <SpeakingFeatured speaking={speaking} />
           </Flex>
         </main>
         <Footer px={3} />
@@ -88,8 +88,11 @@ export const pageQuery = graphql`
       }
     }
 
-    talksFeatured: allTalksJson(limit: 4, filter: { featured: { eq: true } }) {
-      talks: nodes {
+    speakingFeatured: allSpeakingJson(
+      limit: 4
+      filter: { featured: { eq: true } }
+    ) {
+      speaking: nodes {
         id
         link
         title

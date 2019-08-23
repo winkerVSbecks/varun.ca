@@ -1,12 +1,16 @@
 import React from 'react';
 import { Stack, Text } from '@ds';
 
-export const TalksFeatured = ({ talks, ...props }) => (
+export const SpeakingFeatured = ({ speaking, ...props }) => (
   <Stack {...props}>
-    <Stack.Title>Talks</Stack.Title>
+    <Stack.Title>Speaking</Stack.Title>
 
-    {talks.map(talk => (
-      <Stack.Item key={talk.id} to={talk.link} justifyContent="space-between">
+    {speaking.map(talk => (
+      <Stack.Item
+        key={talk.id}
+        to={talk.link || '/'}
+        justifyContent="space-between"
+      >
         {talk.title}
         <Text
           as="span"
@@ -19,6 +23,6 @@ export const TalksFeatured = ({ talks, ...props }) => (
         </Text>
       </Stack.Item>
     ))}
-    <Stack.MoreLink to="/talks">View all talks</Stack.MoreLink>
+    <Stack.MoreLink to="/speaking">View all speaking</Stack.MoreLink>
   </Stack>
 );

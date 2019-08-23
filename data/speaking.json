@@ -1,26 +1,29 @@
 [
   {
-    "title": "Cut it Up ✂️",
+    "title": "Cut it Up",
     "conference": "Web Unleashed 2019",
     "link": "https://fitc.ca/presentation/cut-it-up/",
     "featured": true
   },
   {
-    "title": "Mathematics of Animation 📐✏️",
+    "title": "Mathematics of Animation",
     "conference": ".concat() 2018",
     "link": "https://www.youtube.com/watch?v=o59ioaZ6x3g",
+    "slides": "https://winkervsbecks.github.io/mathematics-of-animation",
     "featured": true
   },
   {
-    "title": "Slaying Your Webpack Dragon 🐲",
+    "title": "Slaying Your Webpack Dragon",
     "conference": "CSS Dev Conf 2017",
     "link": "https://winkervsbecks.github.io/slaying-your-webpack-dragon",
+    "slides": "https://winkervsbecks.github.io/slaying-your-webpack-dragon",
     "featured": true
   },
   {
     "title": "Mathematics of Animation",
     "conference": "FITC Toronto 2017",
     "link": "https://www.youtube.com/watch?v=tBzmc98_STE",
+    "slides": "https://github.com/winkerVSbecks/mathematics-of-animation/tree/v1.0",
     "featured": false
   },
   {
@@ -30,6 +33,7 @@
   },
   {
     "title": "Workshop: Angular 2",
+    "slides": "https://angular-2-training-book.rangle.io",
     "conference": "Web Unleashed 2016",
     "featured": false
   },
@@ -37,12 +41,14 @@
     "title": "Creative Coding with React & SVG",
     "conference": "FITC Toronto 2016",
     "link": "https://www.youtube.com/watch?v=D40JphLwqpk",
+    "slides": "http://winkervsbecks.github.io/creative-coding-with-react-svg",
     "featured": true
   },
   {
     "title": "Intro To React Native",
     "conference": "Spotlight React 2016",
     "link": "https://www.youtube.com/watch?v=5qYxYpbaR5k",
+    "slides": "http://winkervsbecks.github.io/intro-to-react-native/#/?_k=ju7s1d",
     "featured": true
   },
   {
