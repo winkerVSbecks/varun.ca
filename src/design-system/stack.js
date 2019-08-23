@@ -28,7 +28,7 @@ StackTitleLink.defaultProps = {
 
 const StackItem = props => (
   <SimpleLink
-    display="block"
+    display="flex"
     fontSize={3}
     py={3}
     borderBottom="neutral0"
@@ -66,7 +66,9 @@ const StackMoreLink = ({ children, ...props }) => (
   </Link>
 );
 
-export const Stack = props => <Box measure="wide" mx={3} mb={6} {...props} />;
+export const Stack = props => (
+  <Box as="section" measure="wide" width="34em" ml={3} mb={6} {...props} />
+);
 
 Stack.Item = StackItem;
 Stack.Title = StackTitle;

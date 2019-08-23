@@ -1,27 +1,54 @@
 [
   {
+    "title": "Cut it Up ✂️",
+    "conference": "Web Unleashed 2019",
+    "link": "https://fitc.ca/presentation/cut-it-up/",
+    "featured": true
+  },
+  {
     "title": "Mathematics of Animation 📐✏️",
     "conference": ".concat() 2018",
-    "link": "https://www.youtube.com/watch?v=o59ioaZ6x3g"
+    "link": "https://www.youtube.com/watch?v=o59ioaZ6x3g",
+    "featured": true
   },
   {
     "title": "Slaying Your Webpack Dragon 🐲",
     "conference": "CSS Dev Conf 2017",
-    "link": "https://winkervsbecks.github.io/slaying-your-webpack-dragon"
+    "link": "https://winkervsbecks.github.io/slaying-your-webpack-dragon",
+    "featured": true
   },
   {
     "title": "Mathematics of Animation",
     "conference": "FITC Toronto 2017",
-    "link": "https://www.youtube.com/watch?v=tBzmc98_STE"
+    "link": "https://www.youtube.com/watch?v=tBzmc98_STE",
+    "featured": false
   },
   {
-    "title": "Creative Coding with React &amp; SVG",
+    "title": "A Round Table on The State of Front-End: (Ember, Angular, React)",
+    "conference": "Web Unleashed 2016",
+    "featured": false
+  },
+  {
+    "title": "Workshop: Angular 2",
+    "conference": "Web Unleashed 2016",
+    "featured": false
+  },
+  {
+    "title": "Creative Coding with React & SVG",
     "conference": "FITC Toronto 2016",
-    "link": "https://www.youtube.com/watch?v=D40JphLwqpk"
+    "link": "https://www.youtube.com/watch?v=D40JphLwqpk",
+    "featured": true
   },
   {
     "title": "Intro To React Native",
-    "conference": "Spotlight React 2017",
-    "link": "https://www.youtube.com/watch?v=5qYxYpbaR5k"
+    "conference": "Spotlight React 2016",
+    "link": "https://www.youtube.com/watch?v=5qYxYpbaR5k",
+    "featured": true
+  },
+  {
+    "title": "Squishy Pixels",
+    "conference": "Web Unleashed 2014",
+    "link": "https://www.youtube.com/watch?v=OrCOZwQLeIA",
+    "featured": false
   }
 ]

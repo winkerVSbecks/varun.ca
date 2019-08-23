@@ -6,3 +6,12 @@ export const measure = system({
     scale: 'measures',
   },
 });
+
+export const truncate = props =>
+  props.truncate
+    ? {
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+      }
+    : {};

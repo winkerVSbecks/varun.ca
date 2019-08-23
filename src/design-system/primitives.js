@@ -12,7 +12,7 @@ import {
   buttonStyle,
   grid,
 } from 'styled-system';
-import { measure } from './system-functions';
+import { measure, truncate } from './system-functions';
 
 export const Box = styled.div(
   {
@@ -26,7 +26,8 @@ export const Box = styled.div(
     flexbox,
     border,
     measure
-  )
+  ),
+  truncate
 );
 
 export const SVG = styled.svg(

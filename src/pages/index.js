@@ -1,17 +1,19 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '@layouts/layout';
-import { Box, H1, Text, Link, H2 } from '@ds';
+import { Box, H1, Text, Link, Flex } from '@ds';
 import SEO from '@components/seo';
 import { Pronunciation } from '@components/pronunciation';
 import { ProfileLinks } from '@components/profile-links';
 import { Footer } from '@components/footer';
 import { WritingFeatured } from '@components/writing-featured';
+import { TalksFeatured } from '@components/talks-featured';
 
 const Home = ({ data }) => {
   const {
     site,
     writingFeatured: { posts },
+    talksFeatured: { talks },
   } = data;
 
   return (
@@ -46,7 +48,10 @@ const Home = ({ data }) => {
 
           <ProfileLinks />
 
-          <WritingFeatured posts={posts} />
+          <Flex flexWrap="wrap">
+            <WritingFeatured posts={posts} mr={[3, 3, 5]} />
+            <TalksFeatured talks={talks} />
+          </Flex>
         </main>
         <Footer px={3} />
       </Box>
@@ -80,6 +85,16 @@ export const pageQuery = graphql`
         fields {
           slug
         }
+      }
+    }
+
+    talksFeatured: allTalksJson(limit: 4, filter: { featured: { eq: true } }) {
+      talks: nodes {
+        id
+        link
+        title
+        conference
+        featured
       }
     }
   }
