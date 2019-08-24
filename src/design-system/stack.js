@@ -31,7 +31,7 @@ const StackItem = props => (
     display="flex"
     fontSize={3}
     py={3}
-    borderBottom="neutral0"
+    borderBottom="faded"
     alignItems="center"
     width="100%"
     {...props}
@@ -42,7 +42,7 @@ const StackTitle = props => (
   <H1
     fontSize={3}
     py={3}
-    borderBottom="neutral0"
+    borderBottom="faded"
     alignItems="center"
     width="100%"
     mb={0}

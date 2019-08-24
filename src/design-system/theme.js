@@ -65,6 +65,5 @@ module.exports = {
   borders: {
     bright: `1px solid ${colors.brand.bright}`,
     faded: `1px solid ${colors.brand.faded}`,
-    neutral0: `1px solid ${colors.neutral[0]}`,
   },
 };

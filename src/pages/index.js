@@ -52,8 +52,8 @@ const Home = ({ data }) => {
 
           <ProfileLinks />
 
-          <Flex flexWrap="wrap">
-            <WritingFeatured posts={posts} mr={[3, 3, 5]} />
+          <Flex flexWrap="wrap" justifyContent="space-between">
+            <WritingFeatured posts={posts} mr={[3, 4]} />
             <SpeakingFeatured speaking={speaking} mr={[3, 0]} />
           </Flex>
 
