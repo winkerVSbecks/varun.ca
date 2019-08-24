@@ -54,7 +54,7 @@ const Home = ({ data }) => {
 
           <Flex flexWrap="wrap" justifyContent="space-between">
             <WritingFeatured posts={posts} mr={[3, 4]} />
-            <SpeakingFeatured speaking={speaking} mr={[3, 0]} />
+            <SpeakingFeatured speaking={speaking} mr={3} />
           </Flex>
 
           <ProjectsFeatured projects={projects} />

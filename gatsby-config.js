@@ -108,5 +108,6 @@ module.exports = {
       resolve: `gatsby-plugin-feed`,
       options: mdxFeed,
     },
+    `gatsby-plugin-netlify`,
   ],
 };
