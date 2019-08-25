@@ -1,4 +1,3 @@
-export { default as theme } from './theme';
 export * from './skeletor';
 export * from './icon';
 export * from './primitives';
@@ -7,7 +6,6 @@ export * from './image';
 export * from './lists';
 export * from './links';
 export * from './blockquote';
-export * from './global-header';
 export * from './page-header';
 export * from './card-link';
 export * from './stack';

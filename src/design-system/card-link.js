@@ -44,6 +44,7 @@ export const CardLink = ({ link, title, image, ...props }) => (
         fontWeight={7}
         w="100%"
         h="100%"
+        color="neutral.1"
         bg="transparentNeutral.9"
         display="flex"
         alignItems="center"

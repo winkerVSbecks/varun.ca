@@ -109,7 +109,7 @@ const iconsMap = {
     </SVG>
   ),
 
-  toggleDarkMode: props => (
+  themeMode: props => (
     <SVG
       viewBox="0 0 32 32"
       fill="currentcolor"

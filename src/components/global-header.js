@@ -1,8 +1,6 @@
 import React from 'react';
-import { Box, Flex } from './primitives';
-import { Text } from './typography';
-import { SimpleLink } from './links';
-import { Icon } from './icon';
+import { Box, Flex, Text, SimpleLink } from '@ds';
+import { CycleMode } from './cycle-mode';
 
 export const GlobalHeader = ({ linkTo = '/' }) => (
   <Flex as="nav" mx="auto" my={6} alignItems={['flex-start', 'center']}>
@@ -31,6 +29,6 @@ export const GlobalHeader = ({ linkTo = '/' }) => (
       </Text>
     </Box>
     <Box flex={1} />
-    <Icon type="toggleDarkMode" color="neutral.1" />
+    <CycleMode />
   </Flex>
 );

@@ -1,5 +1,4 @@
 const path = require('path');
-const theme = require('./src/design-system/theme');
 const mdxFeed = require('gatsby-plugin-mdx/feed');
 
 module.exports = {
@@ -44,8 +43,8 @@ module.exports = {
         name: `varun.ca`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: theme.colors.primary,
-        theme_color: theme.colors.primary,
+        background_color: '#4e4bec',
+        theme_color: '#4e4bec',
         display: `minimal-ui`,
         icon: `content/assets/gatsby-icon.png`, // This path is relative to the root of the site.
       },

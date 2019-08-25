@@ -1,10 +1,11 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { Box, H1, GlobalHeader } from '@ds';
+import { Box, H1 } from '@ds';
 import SEO from '@components/seo';
 import { Footer } from '@components/footer';
 import { Date } from '@components/date';
+import { GlobalHeader } from '@components/global-header';
 import Layout from './layout';
 
 export default function PostLayout({ data: { mdx } }) {

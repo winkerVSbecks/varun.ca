@@ -3,10 +3,15 @@ import PropTypes from 'prop-types';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
 import 'normalize.css';
-import { theme } from '@ds';
 import dsToMdx from './ds-to-mdx';
+import { theme, createColorStyles } from '../theme';
+import { useColorMode, ColorModeContext } from '../use-color-mode';
 
 const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${props => props.theme.colors.neutral[7]};
+  }
+
   ::-moz-selection {
     background: ${props => props.theme.colors.brand.faded};
   }
@@ -22,14 +27,19 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Layout = ({ maxWidth = 7, children }) => (
-  <ThemeProvider theme={theme}>
-    <>
-      <GlobalStyle />
-      <MDXProvider components={dsToMdx}>{children}</MDXProvider>
-    </>
-  </ThemeProvider>
-);
+const Layout = ({ maxWidth = 7, children }) => {
+  const [mode, setColorMode] = useColorMode('light');
+  return (
+    <ThemeProvider theme={{ ...theme, ...createColorStyles(mode) }}>
+      <ColorModeContext.Provider value={{ mode, setColorMode }}>
+        <>
+          <GlobalStyle />
+          <MDXProvider components={dsToMdx}>{children}</MDXProvider>
+        </>
+      </ColorModeContext.Provider>
+    </ThemeProvider>
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

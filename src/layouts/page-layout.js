@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, GlobalHeader } from '@ds';
+import { Box } from '@ds';
 import SEO from '@components/seo';
 import { Footer } from '@components/footer';
+import { GlobalHeader } from '@components/global-header';
 import Layout from './layout';
 
 export default function PageLayout({ title, children, ...props }) {
