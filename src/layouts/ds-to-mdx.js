@@ -8,6 +8,7 @@ export default {
   Text: DesignSystem.Text,
   Image: DesignSystem.Image,
   CallOut,
+  DemoSource: DesignSystem.DemoSource,
   // HTML elements
   h1: DesignSystem.H1,
   h2: DesignSystem.H2,

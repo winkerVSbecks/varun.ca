@@ -9,7 +9,6 @@ import {
   border,
   shadow,
   background,
-  buttonStyle,
   grid,
 } from 'styled-system';
 import { measure, truncate } from './system-functions';
@@ -62,38 +61,6 @@ Card.defaultProps = {
   borderRadius: 1,
 };
 
-export const Button = styled(Box).attrs(props => ({
-  as: 'button',
-  fontFamily: 'systemSans',
-}))(
-  {
-    appearance: 'none',
-    display: 'inline-block',
-    textAlign: 'center',
-    lineHeight: 'inherit',
-    textDecoration: 'none',
-  },
-  compose(
-    typography,
-    buttonStyle
-  )
-);
-
-Button.defaultProps = {
-  border: 0,
-};
-
-export const TransparentButton = styled(Button)`
-  background-color: transparent;
-  &:hover {
-    background-color: transparent;
-  }
-`;
-
-TransparentButton.defaultProps = {
-  p: 0,
-};
-
 export const Divider = styled(Box)`
   border-bottom-style: solid;
   border-bottom-width: 4px;
@@ -103,30 +70,6 @@ Divider.defaultProps = {
   my: 5,
   borderColor: 'neutral.5',
 };
-
-// export const PrimaryButton = styled(Button)({
-//   display: 'block',
-//   backfaceVisibility: 'hidden',
-//   transform: 'translateZ(0)',
-//   transition: 'transform .25s ease-out',
-//   outline: 0,
-//   ':hover,:focus': {
-//     transform: 'scale( 1.05 )',
-//   },
-//   ':active': {
-//     transform: 'scale( .90 )',
-//   },
-// });
-
-// PrimaryButton.defaultProps = {
-//   as: 'button',
-//   border: 0,
-//   backgroundColor: 'secondary',
-//   borderRadius: 1,
-//   color: 'primary',
-//   fontSize: 1,
-//   fontWeight: 6,
-// };
 
 export const SrOnly = styled.span`
   border: 0 !important;

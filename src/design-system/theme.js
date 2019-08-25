@@ -63,6 +63,7 @@ module.exports = {
     easeInOut: '0.3s ease-in-out',
   },
   borders: {
+    main: `1px solid ${colors.brand.main}`,
     bright: `1px solid ${colors.brand.bright}`,
     faded: `1px solid ${colors.brand.faded}`,
   },

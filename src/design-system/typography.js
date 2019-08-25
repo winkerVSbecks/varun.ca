@@ -50,6 +50,9 @@ const HeadingBase = styled(Text)`
     margin-right: 8px;
     transition: opacity 0.15s ease-in;
     opacity: 0;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
   }
 
   .heading-anchor > svg {
