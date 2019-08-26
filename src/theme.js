@@ -105,11 +105,5 @@ export const theme = {
     easeIn: '0.15s ease-in',
     easeInOut: '0.3s ease-in-out',
   },
-  // colors: colorModes.light,
-  // borders: {
-  //   main: `1px solid red`,
-  //   bright: `1px solid red`,
-  //   faded: `1px solid red`,
-  // },
   ...createColorStyles('light'),
 };

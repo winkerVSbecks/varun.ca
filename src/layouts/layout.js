@@ -34,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
 
 const Layout = ({ maxWidth = 7, children }) => {
   const [mode, setColorMode] = useColorMode('light');
+  console.log({ ...theme, ...createColorStyles(mode) });
   return (
     <ThemeProvider theme={{ ...theme, ...createColorStyles(mode) }}>
       <ColorModeContext.Provider value={{ mode, setColorMode }}>

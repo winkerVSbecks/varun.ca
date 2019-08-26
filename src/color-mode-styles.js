@@ -56,8 +56,7 @@ export const createColorModeStyles = modes => {
   Object.keys(modes).forEach(mode => {
     const key = `&.varun-ca-${mode}`;
     globalStyles[key] = objectToVars('colors', modes[mode]);
-
-    colors[mode] = toCustomProperties(modes[mode]);
+    colors[mode] = toCustomProperties(modes[mode], 'colors');
     borders[mode] = createBorderStyles(colors[mode]);
   });
 

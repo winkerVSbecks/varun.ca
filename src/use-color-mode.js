@@ -23,7 +23,7 @@ export const useColorState = initialColorMode => {
   useEffect(() => {
     // initialize
     const stored = storage.get();
-    document.body.classList.remove('varun-' + stored);
+    document.body.classList.remove('varun-ca-' + stored);
     const dark = getMediaQuery();
     if (!stored && dark) return setMode('dark');
     if (!stored || stored === mode) return;
