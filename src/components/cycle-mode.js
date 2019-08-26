@@ -3,7 +3,7 @@ import { TransparentButton, Icon } from '@ds';
 import { ColorModeContext } from '../use-color-mode';
 
 export const CycleMode = () => {
-  const { mode, setColorMode } = useContext(ColorModeContext);
+  const { setColorMode } = useContext(ColorModeContext);
 
   return (
     <TransparentButton title="cycle colour mode" p={1} onClick={setColorMode}>

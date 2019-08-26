@@ -54,6 +54,7 @@ export const InitializeColorMode = () => (
     dangerouslySetInnerHTML={{
       __html: `(function() { try {
         var mode = localStorage.getItem('${STORAGE_KEY}');
+        console.log(mode)
         if (!mode) return
         document.body.classList.add('varun-ca-' + mode);
       } catch (e) {} })();`,
@@ -61,7 +62,7 @@ export const InitializeColorMode = () => (
   />
 );
 
-export const ColorModeContext = React.createContext({
+export const ColorModeContext = createContext({
   mode: 'light',
   setColorMode: () => {},
 });
