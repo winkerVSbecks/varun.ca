@@ -4,7 +4,7 @@ import { GatsbyImage, Description, PageHeader } from '@ds';
 import PageLayout from '@layouts/page-layout';
 
 const ConsoleFont = ({ data }) => (
-  <PageLayout title="Console Font">
+  <PageLayout title="Console Font" pathname="/projects/consolefont">
     <PageHeader title="Console Font">
       <Description mb={0}>
         A typeface created using only the silhouettes of gaming consoles.

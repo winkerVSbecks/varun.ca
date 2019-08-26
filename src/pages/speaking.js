@@ -9,7 +9,7 @@ const Speaking = ({
     speaking: { talks },
   },
 }) => (
-  <PageLayout title="Speaking" maxWidth={7} px={3}>
+  <PageLayout title="Speaking" pathname="/speaking" maxWidth={7} px={3}>
     <PageHeader title="Speaking" />
 
     <main>

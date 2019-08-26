@@ -1,12 +1,9 @@
 import React from 'react';
 import Layout from '@layouts/layout';
-import SEO from '@components/seo';
 import { Skeletor, Flex, Box, H1, Text, Link } from '@ds';
 
 const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404: Page not found" />
-
+  <Layout title="404: Page not found" pathname="/404">
     <Flex height="100vh" bg="neutral.6" alignItems="center">
       <Box as="section" measure={['narrow', 'regular']} mx="auto">
         <Flex as="header" alignItems="flex-end" justifyContent="center">

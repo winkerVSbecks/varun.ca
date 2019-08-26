@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { MDXProvider } from '@mdx-js/react';
 import 'normalize.css';
+import { SEO } from '@components/seo';
 import dsToMdx from './ds-to-mdx';
 import { theme, createColorStyles, modeCustomProperties } from '../theme';
 import {
@@ -32,13 +33,14 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Layout = ({ maxWidth = 7, children }) => {
+const Layout = ({ title, maxWidth = 7, children }) => {
   const [mode, setColorMode] = useColorMode('light');
-  console.log({ ...theme, ...createColorStyles(mode) });
+
   return (
     <ThemeProvider theme={{ ...theme, ...createColorStyles(mode) }}>
       <ColorModeContext.Provider value={{ mode, setColorMode }}>
         <>
+          <SEO title={title} />
           <InitializeColorMode />
           <GlobalStyle />
           <MDXProvider components={dsToMdx}>{children}</MDXProvider>

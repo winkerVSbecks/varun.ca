@@ -2,6 +2,7 @@
  * Taken from https://github.com/system-ui/theme-ui/blob/9656dba5f22205427d4c36dd9181b6a24b85dd91/packages/theme-ui/src/color-modes.js
  */
 import React, { useState, useEffect, createContext } from 'react';
+import Helmet from 'react-helmet';
 
 const STORAGE_KEY = 'varun-ca-color-mode';
 
@@ -49,17 +50,16 @@ export const useColorMode = initialMode => {
 };
 
 export const InitializeColorMode = () => (
-  <script
-    key="varun-ca-no-flash"
-    dangerouslySetInnerHTML={{
-      __html: `(function() { try {
-        var mode = localStorage.getItem('${STORAGE_KEY}');
-        console.log(mode)
-        if (!mode) return
-        document.body.classList.add('varun-ca-' + mode);
-      } catch (e) {} })();`,
-    }}
-  />
+  <Helmet>
+    <script
+      key="varun-ca-no-flash"
+      source={`(function() { try {
+          var mode = localStorage.getItem('${STORAGE_KEY}');
+          if (!mode) return
+          document.body.classList.add('varun-ca-' + mode);
+        } catch (e) {} })();`}
+    />
+  </Helmet>
 );
 
 export const ColorModeContext = createContext({

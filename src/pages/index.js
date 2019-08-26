@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '@layouts/layout';
 import { Box, H1, Text, Link, Flex } from '@ds';
-import SEO from '@components/seo';
 import { Pronunciation } from '@components/pronunciation';
 import { ProfileLinks } from '@components/profile-links';
 import { Footer } from '@components/footer';
@@ -22,9 +21,7 @@ const Home = ({ data }) => {
   } = data;
 
   return (
-    <Layout>
-      <SEO title="Varun Vachhar" keywords={site.siteMetadata.keywords} />
-
+    <Layout title="About" description={site.siteMetadata.description}>
       <Box maxWidth={9} mx="auto" px={[0, 0, 5]} alignItems="center">
         <Flex as="header" mt={6} mb={5} px={3}>
           <Box flex="1 1 auto">
@@ -76,7 +73,6 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         description
-        writingDesc
         keywords
       }
     }

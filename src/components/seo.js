@@ -5,70 +5,91 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 import React from 'react';
-import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-function SEO({ description, lang, meta, title }) {
+export function SEO({
+  description,
+  lang,
+  meta,
+  title,
+  image,
+  pathname = '/',
+  article = false,
+}) {
   const { site } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
+            siteUrl
             title
-            description
             author
-            writingDesc
           }
         }
       }
     `
   );
 
-  const metaDescription = description || site.siteMetadata.description;
-
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
+    <>
+      <Helmet
+        htmlAttributes={{
+          lang,
+        }}
+        title={title}
+        titleTemplate={`%s | ${site.siteMetadata.title}`}
+        meta={[
+          {
+            name: `description`,
+            content: description,
+          },
+          // {
+          //   property: `og:title`,
+          //   content: title,
+          // },
+          // {
+          //   property: `og:description`,
+          //   content: description,
+          // },
+          // {
+          //   property: `og:type`,
+          //   content: `website`,
+          // },
+          // {
+          //   name: `twitter:card`,
+          //   content: `summary`,
+          // },
+          // {
+          //   name: `twitter:creator`,
+          //   content: site.siteMetadata.author,
+          // },
+          // {
+          //   name: `twitter:title`,
+          //   content: title,
+          // },
+          // {
+          //   name: `twitter:description`,
+          //   content: description,
+          // },
+        ].concat(meta)}
+      />
+      <Facebook
+        desc={description}
+        image={image}
+        title={title}
+        type={article ? 'article' : 'website'}
+        url={`${site.siteMetadata.siteUrl}${pathname}`}
+        locale="en_CA"
+        name={site.siteMetadata.title}
+      />
+      <Twitter
+        title={title}
+        image={image}
+        desc={description}
+        username={site.siteMetadata.author}
+      />
+    </>
   );
 }
 
@@ -78,11 +99,40 @@ SEO.defaultProps = {
   description: ``,
 };
 
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-};
+const Facebook = ({
+  url,
+  name,
+  type = 'website',
+  title,
+  desc,
+  image,
+  locale,
+}) => (
+  <Helmet>
+    {name && <meta property="og:site_name" content={name} />}
+    <meta property="og:locale" content={locale} />
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={desc} />
+  </Helmet>
+);
 
-export default SEO;
+const Twitter = ({
+  type = 'summary_large_image',
+  username,
+  title,
+  desc,
+  image,
+}) => (
+  <Helmet>
+    {username && <meta name="twitter:creator" content={username} />}
+    <meta name="twitter:card" content={type} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content={desc} />
+  </Helmet>
+);

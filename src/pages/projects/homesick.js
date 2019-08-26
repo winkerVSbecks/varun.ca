@@ -4,7 +4,7 @@ import { GatsbyImage, Description, PageHeader } from '@ds';
 import PageLayout from '@layouts/page-layout';
 
 const Homesick = ({ data }) => (
-  <PageLayout title="Homesick">
+  <PageLayout title="Homesick" pathname="/projects/homesick">
     <PageHeader title="Homesick">
       <Description>
         An installation I built to overcome the loss of my childhood home in

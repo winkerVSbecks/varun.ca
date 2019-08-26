@@ -5,7 +5,7 @@ import tetheredMotion from '@assets/tethered-motion.gif';
 import wave from '@assets/wave.gif';
 
 const TetheredMotion = () => (
-  <PageLayout title="Tethered Motion">
+  <PageLayout title="Tethered Motion" pathname="/projects/tethered-motion">
     <PageHeader title="Tethered Motion">
       <Description>
         Tethered Motion is a giant wind-up toy that comes to life when

@@ -8,7 +8,13 @@ const Writing = ({ data }) => {
   const { edges: posts } = data.allMdx;
 
   return (
-    <PageLayout title="Writing" maxWidth={7} px={3}>
+    <PageLayout
+      title="Writing"
+      description="writing about JavaScript, CSS and reactive animations."
+      pathname="/writing"
+      maxWidth={7}
+      px={3}
+    >
       <PageHeader title="Writing" />
 
       <main>

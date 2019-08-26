@@ -4,7 +4,7 @@ import { Flex, PageHeader, CardLink, Box } from '@ds';
 import PageLayout from '@layouts/page-layout';
 
 const Projects = ({ data }) => (
-  <PageLayout title="Projects">
+  <PageLayout title="Projects" pathname="/projects">
     <PageHeader title="Projects" />
     <main>
       <Flex ml={-2} mr={-2} flexWrap="wrap">
