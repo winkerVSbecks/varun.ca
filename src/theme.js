@@ -45,7 +45,7 @@ const colorModes = {
       4: '#777',
       5: '#555',
       6: '#333',
-      7: '#222',
+      7: '#111',
     },
     transparentNeutral: {
       0: 'rgba(0, 0, 0, 0.05)',

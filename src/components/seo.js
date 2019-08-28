@@ -23,14 +23,17 @@ export function SEO({
         site {
           siteMetadata {
             siteUrl
-            title
+            siteTitle: title
             author
+            defaultImage: image
           }
         }
       }
     `
   );
 
+  const { siteTitle, siteUrl, defaultImage, author } = site.siteMetadata;
+  console.log(siteUrl);
   return (
     <>
       <Helmet
@@ -38,7 +41,7 @@ export function SEO({
           lang,
         }}
         title={title}
-        titleTemplate={`%s | ${site.siteMetadata.title}`}
+        titleTemplate={`%s | ${siteTitle}`}
         meta={[
           {
             name: `description`,
@@ -48,18 +51,18 @@ export function SEO({
       />
       <Facebook
         desc={description}
-        image={image}
+        image={`${siteUrl}${image || defaultImage}`}
         title={title}
         type={article ? 'article' : 'website'}
-        url={`${site.siteMetadata.siteUrl}${pathname}`}
+        url={`${siteUrl}${pathname}`}
         locale="en_CA"
-        name={site.siteMetadata.title}
+        name={siteTitle}
       />
       <Twitter
         title={title}
-        image={image}
+        image={`${siteUrl}${image || defaultImage}`}
         desc={description}
-        username={site.siteMetadata.author}
+        username={author}
       />
     </>
   );

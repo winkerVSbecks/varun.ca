@@ -57,7 +57,7 @@ const HeadingBase = styled(Text)`
 
   .heading-anchor > svg {
     display: inline-block;
-    fill: ${props => props.theme.colors.secondary};
+    stroke: ${props => props.theme.colors.neutral[2]};
   }
 
   .heading-anchor:focus {

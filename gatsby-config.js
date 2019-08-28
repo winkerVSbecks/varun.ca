@@ -7,6 +7,7 @@ module.exports = {
     siteUrl: `https://varun.ca`,
     description: `I am a developer with a strong focus on design, interactivity and animation. Originally from New Delhi, I currently live in Toronto and am the Director, UI Architecture at Rangle.io. In my spare time, I like to experiment with creative coding, making triangles and other playful experiences for the web.`,
     author: `@winkerVSbecks`,
+    image: `/content/assets/icon.png`,
     keywords: [
       'generative design',
       'creative coding',
@@ -45,7 +46,7 @@ module.exports = {
         background_color: '#4e4bec',
         theme_color: '#4e4bec',
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `content/assets/icon.png`,
       },
     },
     {
@@ -92,7 +93,7 @@ module.exports = {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               className: `heading-anchor`,
-              icon: `<svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>`,
+              icon: `<svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>`,
             },
           },
           `gatsby-remark-smartypants`,
