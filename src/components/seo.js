@@ -33,7 +33,7 @@ export function SEO({
   );
 
   const { siteTitle, siteUrl, defaultImage, author } = site.siteMetadata;
-  console.log(siteUrl);
+
   return (
     <>
       <Helmet

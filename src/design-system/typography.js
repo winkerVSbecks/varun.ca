@@ -57,6 +57,8 @@ const HeadingBase = styled(Text)`
 
   .heading-anchor > svg {
     display: inline-block;
+    stroke-linecap: round;
+    stroke-linejoin: round;
     stroke: ${props => props.theme.colors.neutral[2]};
   }
 
