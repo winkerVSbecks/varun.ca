@@ -1,5 +1,6 @@
 import * as DesignSystem from '@ds';
 import { CallOut } from '@components/call-out';
+import { CodePen } from '@components/codepen';
 
 export default {
   // Components
@@ -9,6 +10,7 @@ export default {
   Image: DesignSystem.Image,
   CallOut,
   DemoSource: DesignSystem.DemoSource,
+  CodePen,
   // HTML elements
   h1: DesignSystem.H1,
   h2: DesignSystem.H2,
