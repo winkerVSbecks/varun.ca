@@ -18,7 +18,7 @@ export const CodePen = ({
     title={title}
     src={`//codepen.io/${user}/embed/${hash}/?height=${height}&theme-id=${themeId}&default-tab=${defaultTab}&embed-version=2`}
     frameBorder="no"
-    allowTransparency
+    allowtransparency="true"
     allowFullScreen
     style={{ width: '100%' }}
     {...props}

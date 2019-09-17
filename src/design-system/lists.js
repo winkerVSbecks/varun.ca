@@ -26,9 +26,14 @@ OrderedList.defaultProps = {
   mb: 4,
 };
 
-export const ListItem = styled(Text)({});
+export const ListItem = styled(Text)`
+  & > ol,
+  & > ul {
+    margin-bottom: 0;
+  }
+`;
 ListItem.defaultProps = {
   as: 'li',
   fontSize: [2, 3],
-  mb: 0,
+  mb: 2,
 };
