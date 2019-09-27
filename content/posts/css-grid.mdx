@@ -85,12 +85,12 @@ Grid lines are automatically numbered. Starting with `1` for the topmost and lef
 
 Below is a CodePen that demonstrates a few different positioning styles. Notice how grid items can overlap. We can use the `z-index` property to [control the stacking order](https://drafts.csswg.org/css-grid/#z-order).
 
-<p data-height="500" data-theme-id="26435" data-slug-hash="pPKBqB" data-default-tab="css,result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="CSS Grid Positioning" class="codepen">See the Pen <a href="http://codepen.io/winkerVSbecks/pen/pPKBqB/">CSS Grid Positioning</a> by Varun Vachhar (<a href="http://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="pPKBqB"
+  title="CSS Grid Positioning"
+  height="500"
+  defaultTab="result"
+/>
 
 ## 🤖 Automate All the Things
 
@@ -103,12 +103,12 @@ I want to end by showcasing a couple more concepts through an example. I am goin
 - There is a `1rem` gutter and a `1rem` padding all around the grid
 - The maximum width of the grid is restricted to `60em`
 
-<p data-height="500" data-theme-id="26435" data-slug-hash="Gmdwxj" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Aldo Style Product Grid (CSS Grid)" class="codepen">See the Pen <a href="http://codepen.io/winkerVSbecks/pen/Gmdwxj/">Aldo Style Product Grid (CSS Grid)</a> by Varun Vachhar (<a href="http://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="Gmdwxj"
+  title="Aldo Style Product Grid (CSS Grid)"
+  height="500"
+  defaultTab="result"
+/>
 
 The grid also changes based on break points. It reduces to 3 columns on medium-sized devices (`30em ↔️ 60em`) and 2 columns on small devices `< 30em`. Finally, we need to maintain `1000 : 1270` ratio between the row and column track sizing.
 
@@ -199,12 +199,12 @@ In the code snippet above you might have noticed `grid-auto-rows: var(--height)`
 
 The CodePen below demonstrates what the grid would look like at this point. Open it in the [edit mode](http://codepen.io/winkerVSbecks/pen/dWjjWw) to see how the resizing works and what happens when you add or remove items.
 
-<p data-height="300" data-theme-id="26435" data-slug-hash="dWjjWw" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Aldo Style Product Grid (CSS Grid) STEP 1 for blogpost" class="codepen">See the Pen <a href="http://codepen.io/winkerVSbecks/pen/dWjjWw/">Aldo Style Product Grid (CSS Grid) STEP 1 for blogpost</a> by Varun Vachhar (<a href="http://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="dWjjWw"
+  title="Aldo Style Product Grid (CSS Grid) STEP 1 for blogpost"
+  height="500"
+  defaultTab="result"
+/>
 
 📝 Did you notice that we did not have to place the items on the grid?! If you don't specify positioning then the browser automatically places items on the grid. This is known as [auto flow](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow).
 
@@ -227,12 +227,12 @@ As I mentioned earlier, some items span multiple tracks. For this we can use the
 }
 ```
 
-<p data-height="500" data-theme-id="26435" data-slug-hash="vmazxG" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Aldo Style Product Grid (CSS Grid) STEP 2 for blogpost" class="codepen">See the Pen <a href="http://codepen.io/winkerVSbecks/pen/vmazxG/">Aldo Style Product Grid (CSS Grid) STEP 2 for blogpost</a> by Varun Vachhar (<a href="http://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="vmazxG"
+  title="Aldo Style Product Grid (CSS Grid) STEP 2 for blogpost"
+  height="500"
+  defaultTab="result"
+/>
 
 > Want to learn more about auto placement? Check out Rachel Andrew's fantastic [tutorial](http://gridbyexample.com/video/series-auto-placement-span) and [demo](http://codepen.io/rachelandrew/pen/LRWPNp).
 
@@ -255,12 +255,12 @@ This is because by default auto placement uses a _sparse_ packing algorithm whic
 
 That's it! Below is the final version. And here's [another example](https://winkervsbecks.github.io/grid-experiments/vinyl) that uses auto layout and dense packing to display music albums.
 
-<p data-height="500" data-theme-id="26435" data-slug-hash="Gmdwxj" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Aldo Style Product Grid (CSS Grid)" class="codepen">See the Pen <a href="http://codepen.io/winkerVSbecks/pen/Gmdwxj/">Aldo Style Product Grid (CSS Grid)</a> by Varun Vachhar (<a href="http://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="Gmdwxj"
+  title="Aldo Style Product Grid (CSS Grid)"
+  height="500"
+  defaultTab="result"
+/>
 
 <DemoSource
   demo="https://winkervsbecks.github.io/grid-experiments"

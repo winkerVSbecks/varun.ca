@@ -65,15 +65,21 @@ const Button = ({ className = '', ...props }) => {
 render(<Button>Button Text</Button>);
 ```
 
-<p data-height="150" data-theme-id="26435" data-slug-hash="PeJowy" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="basic tachyons-component" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/PeJowy/">basic tachyons-component</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<CodePen
+  hash="PeJowy"
+  title="basic tachyons-component"
+  height="200"
+  defaultTab="result"
+/>
 
 There is a problem with this approach. You won't always be able to customize the component when using it. For example, `<Button className="f7">Button Text</Button>` will work because `.f7` class is declared after `.f6` in the Tachyons stylesheet. However, `<Button className="f1">Button Text</Button>` won't work as intended. The `.f6` class is declared after `.f1` so, it has a higher specificity and will win out.
 
-<p data-height="180" data-theme-id="26435" data-slug-hash="deVRgj" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="basic tachyons-component" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/deVRgj/">basic tachyons-component</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<CodePen
+  hash="deVRgj"
+  title="basic tachyons-components"
+  height="200"
+  defaultTab="result"
+/>
 
 ### Design System As Props
 
@@ -108,9 +114,12 @@ render(
 );
 ```
 
-<p data-height="150" data-theme-id="26435" data-slug-hash="PeJKzw" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="tachyons components with design system as props" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/PeJKzw/">tachyons components with design system as props</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<CodePen
+  hash="PeJKzw"
+  title="tachyons components with design system as props"
+  height="200"
+  defaultTab="result"
+/>
 
 ### Props 🔀 Design System ➡️ className
 
@@ -208,11 +217,11 @@ const ProfileCard = ({ name, title, image, ...props }) => (
 );
 ```
 
-<iframe
+<Embed
   src="https://codesandbox.io/embed/ywwpmp1jy1?hidenavigation=1&module=%2Fsrc%2Fwith-style-props%2Fwith-style-props.hoc.js"
   style="width:100%; height:530px; border:0; overflow:hidden;"
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-></iframe>
+></Embed>
 
 ### Tachyons-Components
 
@@ -253,11 +262,11 @@ Then apply Tachyons classes as props when using the component to extend or custo
 </Text>
 ```
 
-<iframe
+<Embed
   src="https://codesandbox.io/embed/xp61ww84mw?view=split&hidenavigation=1&module=%2Fsrc%2Fwith-style-props%2Fwith-style-props.hoc.js"
   style="width:100%; height:530px; border:0; overflow:hidden;"
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-></iframe>
+></Embed>
 
 **TL;DR use tachyons-components**
 

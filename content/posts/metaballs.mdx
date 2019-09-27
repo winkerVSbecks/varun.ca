@@ -4,43 +4,39 @@ preview: ../assets/amoeba.gif
 date: 2017-10-16
 ---
 
-<p data-height="400" data-theme-id="26435" data-slug-hash="RLyNEE" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="amoeba" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/RLyNEE/">amoeba</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen hash="RLyNEE" title="amoeba" height="400" defaultTab="result" />
 
 Metaballs, not to be confused with meatballs, are organic looking squishy gooey blobs. From a mathematical perspective they are an iso-surface. They are rendered using equations such as <code class="dib b">f(x,y,z) = r / ((x - x<sub>0</sub>)<sup>2</sup> + (y - y<sub>0</sub>)<sup>2</sup> + (z - z<sub>0</sub>)<sup>2</sup>)</code>. Jamie Wong has a fantastic [tutorial](http://jamie-wong.com/2014/08/19/metaballs-and-marching-squares) on rendering metaballs with canvas.
 
 We can replicate the metaball effect using CSS & SVG by applying both [blur and contrast filters](https://css-tricks.com/shape-blobbing-css/) to an element. For example in Chris Gannon's Bubble Slider below.
 
-<p data-height="300" data-theme-id="26435" data-slug-hash="GZNgLw" data-default-tab="result" data-user="chrisgannon" data-embed-version="2" data-pen-title="SVG Bubble Slider" class="codepen">See the Pen <a href="https://codepen.io/chrisgannon/pen/GZNgLw/">SVG Bubble Slider</a> by Chris Gannon (<a href="https://codepen.io/chrisgannon">@chrisgannon</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="GZNgLw"
+  title="SVG Bubble Slider"
+  user="chrisgannon"
+  height="300"
+  defaultTab="result"
+/>
 
 ## SVG Metaball
 
 I discovered another approach to creating this metaball effect from [Paper.js examples](http://paperjs.org/examples/meta-balls). Back in the days of Scriptographer [Hiroyuki Sato](http://shspage.com) created a script for generating gooey blobs in Adobe Illustrator. Unlike the previous techniques this does not render pixels or rely on filters. Instead it connects two circles with a membrane. Which means that the we can generate the entire blob as a path. For the Amoeba CodePen I followed exactly this technique.
 
-<p data-height="320" data-theme-id="26435" data-slug-hash="NazWxg" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Meta balls Debug" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/NazWxg/">Meta balls Debug</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="NazWxg"
+  title="Meta balls Debug"
+  height="320"
+  defaultTab="result"
+/>
 
 In this blog post I am going break down the steps required to generate the metaball. We are going to go through a function called `metaball` which generates the black shaded path that you see below. This consists of the connector plus a part of the second circle.
 
-<p data-height="200" data-theme-id="8427" data-slug-hash="qPQZPN" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Metaballs debug — the path" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/qPQZPN/">Metaballs debug — the path</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="qPQZPN"
+  title="Metaballs debug — the path"
+  height="300"
+  defaultTab="result"
+/>
 
 ## Building the Metaball
 
@@ -60,12 +56,12 @@ Why? This took me a while to figure out. I could attempt to explain here, but yo
 
 This is the maximum possible spread that the connector can have. We can control spread amount by multiplying it with a factor called `v`. The Paper.js code has `v = 0.5`. That seems to work well.
 
-<p data-height="200" data-theme-id="8427" data-slug-hash="aLQBdb" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Metaballs debug — spread" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/aLQBdb/">Metaballs debug — spread</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="aLQBdb"
+  title="Metaballs debug — spread"
+  height="300"
+  defaultTab="result"
+/>
 
 The spread for the smaller circle is `(Math.PI - maxSpread) * v`. This is because the sum of the opposite angles of a polygon is 180°.
 
@@ -95,12 +91,12 @@ const p4 = getVector(center2, angle4, radius2);
 
 To convert the trapezium shaped connector into a curved one we need to add handles to all four points. The next part of the process is to figure out the location of the handles.
 
-<p data-height="200" data-theme-id="8427" data-slug-hash="rGQyVJ" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Metaballs debug — handles" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/rGQyVJ/">Metaballs debug — handles</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="rGQyVJ"
+  title="Metaballs debug — handles"
+  height="300"
+  defaultTab="result"
+/>
 
 The handle for a particular point should be aligned to the tangent to the circle at that point. Again we'll use polar coords to locate the handle. This time however, it will be relative to the point itself.
 
@@ -142,12 +138,12 @@ function metaballToPath(p1, p2, p3, p4, h1, h2, h3, h4, escaped, r) {
 
 We have a gooey metaball! But you'll notice that path gets all weird and twisty when the circles start to overlapping. We are going to fix this by expanding the spread in proportion to how much the circles are overlapping.
 
-<p data-height="200" data-theme-id="8427" data-slug-hash="boQadp" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Metaballs debug — no overlap" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/boQadp/">Metaballs debug — no overlap</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="boQadp"
+  title="Metaballs debug — no overlap"
+  height="300"
+  defaultTab="result"
+/>
 
 The spread expansion will be controlled using the angles `u1` and `u2`. We can calculate these using the [law of cosines](https://en.wikipedia.org/wiki/Law_of_cosines).
 
@@ -174,12 +170,12 @@ const angle4 =
   angleBetweenCenters - (Math.PI - u2 - (Math.PI - u2 - maxSpread) * v);
 ```
 
-<p data-height="200" data-theme-id="8427" data-slug-hash="PJxQom" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Metaballs debug — overlap" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/PJxQom/">Metaballs debug — overlap</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="PJxQom"
+  title="Metaballs debug — overlap"
+  height="300"
+  defaultTab="result"
+/>
 
 And one final change to account for overlapping circles. The length of the handles will also be proportional to the distance between the circles.
 
@@ -198,12 +194,12 @@ const r2 = radius2 * d2;
 
 And here is the final result and the entire code snippet for `metaball`. Try forking it and playing around with different values of `handleSize` and `v`. See how they impact the shape of the connector. There are so many amazing little details in these 70 lines of code. Fascinating work by Hiroyuki Sato. I learnt so much from it!
 
-<p data-height="300" data-theme-id="26435" data-slug-hash="pWQajO" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Metaballs debug — final" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/pWQajO/">Metaballs debug — final</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="pWQajO"
+  title="Metaballs debug — final"
+  height="300"
+  defaultTab="result"
+/>
 
 ```js
 /**
@@ -286,25 +282,13 @@ function metaball(
   return metaballToPath(p1, p2, p3, p4, h1, h2, h3, h4, d > radius1, radius2);
 }
 
+// prettier-ignore
 function metaballToPath(p1, p2, p3, p4, h1, h2, h3, h4, escaped, r) {
   return [
-    'M',
-    p1,
-    'C',
-    h1,
-    h3,
-    p3,
-    'A',
-    r,
-    r,
-    0,
-    escaped ? 1 : 0,
-    0,
-    p4,
-    'C',
-    h4,
-    h2,
-    p2,
+    'M', p1,
+    'C', h1, h3, p3,
+    'A', r, r, 0, escaped ? 1 : 0, 0, p4,
+    'C', h4, h2, p2,
   ].join(' ');
 }
 ```

@@ -4,12 +4,12 @@ preview: ../assets/napoleon-theorem.gif
 date: 2017-08-27
 ---
 
-<p data-height="600" data-theme-id="26435" data-slug-hash="yoRBMj" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Curves and Handles" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/yoRBMj/">Curves and Handles</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="yoRBMj"
+  title="Curves and Handles"
+  height="600"
+  defaultTab="result"
+/>
 
 I've written previously about making DOM elements draggable using a combination of [mouse and touch events](/touch-and-mouse-together). Recently I discovered a more elegant way to achieve this using RxJS and Hammer.
 
@@ -131,12 +131,12 @@ function mapFromToRange(x, x1, x2, y1, y2) {
 
 And here's the complete example:
 
-<p data-height="400" data-theme-id="26435" data-slug-hash="RZeNRE" data-default-tab="js,result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Drag Gesture with RxJS & Hammer – without smooth motion" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/RZeNRE/">Drag Gesture with RxJS & Hammer – without smooth motion</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="RZeNRE"
+  title="Drag Gesture with RxJS & Hammer – without smooth motion"
+  height="400"
+  defaultTab="js,result"
+/>
 
 ### Smooth Motion
 
@@ -146,20 +146,20 @@ For smooth motion I am using the LERP-ing technique. It is described in detail b
 
 Here's the final version with smooth motion.
 
-<p data-height="500" data-theme-id="26435" data-slug-hash="QMVymp" data-default-tab="js,result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Drag Gesture with RxJS & Hammer" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/QMVymp/">Drag Gesture with RxJS & Hammer</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="QMVymp"
+  title="Drag Gesture with RxJS & Hammer"
+  height="500"
+  defaultTab="js,result"
+/>
 
 ## Conclusion
 
 You can see the power of RxJS here. We were able to convert events into observable streams. Then we composed those streams to create the `drag$` observable. And finally we added the animation layer to smooth out the motion. The code is quite declarative. Each layer that we created is modular and can be easily composed to create complex scenarios – for example see the demo below and the one at the top of the page. Looking for more inspiration? Checkout CodePen for many more [examples](https://codepen.io/search/pens/?q=rxcss).
 
-<p data-height="400" data-theme-id="26435" data-slug-hash="yoVQbp" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Napoleon's Theorem" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/yoVQbp/">Napoleon's Theorem</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="yoVQbp"
+  title="Napoleon's Theoremr"
+  height="400"
+  defaultTab="result"
+/>

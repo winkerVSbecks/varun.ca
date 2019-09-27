@@ -1,3 +1,4 @@
+import React from 'react';
 import * as DesignSystem from '@ds';
 import { CallOut } from '@components/call-out';
 import { CodePen } from '@components/codepen';
@@ -11,6 +12,7 @@ export default {
   CallOut,
   DemoSource: DesignSystem.DemoSource,
   CodePen,
+  Embed: props => <DesignSystem.Box as="iframe" mb={4} {...props} />,
   // HTML elements
   h1: DesignSystem.H1,
   h2: DesignSystem.H2,

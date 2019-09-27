@@ -4,12 +4,7 @@ preview: ../assets/sa15.gif
 date: 2017-10-31
 ---
 
-<p data-height="400" data-theme-id="26435" data-slug-hash="gXOdEL" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="SA 15" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/gXOdEL/">SA 15</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen hash="gXOdEL" title="SA 15" height="500" defaultTab="result" />
 
 Another [#postAboutYourPen](http://postaboutyourpen.online/) post. This time I'm going to explain how I recreated Herry Koo's [SA 15](https://dribbble.com/shots/3478023-SA-15) dribbble shot using SVG and animejs.
 
@@ -39,12 +34,12 @@ Dribbble shots are `800 x 600px` so that's what I picked for the `vieBox`. This 
 <path class="js-right-slice" d="M 441.6 195  A 113 113 0 0 1 441.6 405 Z" />
 ```
 
-<p data-height="300" data-theme-id="26435" data-slug-hash="aVOaqY" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="SA 15 Process 1" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/aVOaqY/">SA 15 Process 1</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="aVOaqY"
+  title="SA 15 Process 1"
+  height="500"
+  defaultTab="result"
+/>
 
 These paths create the outline. The sliding fill inside them was created using clipped rectangles. For the `clipPath` we use the same paths as the outline and then apply them to the rectangles using the `clip-path` attribute.
 
@@ -72,53 +67,58 @@ These paths create the outline. The sliding fill inside them was created using c
 
 To slide the fill in-and-out I animate the `x` value using animejs. The `clipPath` remains static. It's only the rectangles that are moving.
 
-<p data-height="300" data-theme-id="26435" data-slug-hash="XzbyQj" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="SA 15 Process 2" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/XzbyQj/">SA 15 Process 2</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="XzbyQj"
+  title="SA 15 Process 2"
+  height="500"
+  defaultTab="result"
+/>
 
 The combined shape is moved up-down and left-right by animating `translateX` and `translateY`. We apply the same animation at the same time to both the arc slice and clipped rectangle. Note, you do not need to animate the position of the `clipPath`.
 
-<p data-height="300" data-theme-id="26435" data-slug-hash="pdJGOZ" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="SA 15 Process 5" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/pdJGOZ/">SA 15 Process 5</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="pdJGOZ"
+  title="SA 15 Process 5"
+  height="500"
+  defaultTab="result"
+/>
 
 The little circle that burst out. Well… that's just a circle. At the appropriate time I hide the left slice and rectangle and show the circle instead. The circle scales down as it moves to the left and then stretches — using `scaleX` — as it moves back to the right.
 
-<p data-height="300" data-theme-id="26435" data-slug-hash="mqJaLY" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="SA 15 Process 3" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/mqJaLY/">SA 15 Process 3</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="mqJaLY"
+  title="SA 15 Process 3"
+  height="500"
+  defaultTab="result"
+/>
 
 The squirmy line effect that everything has is known as [squigglevision](https://css-tricks.com/squigglevision-in-css-and-svg). I used the code from [this](https://tympanus.net/codrops/2016/03/21/animated-animals-css-svg) example.
 
-<p data-height="300" data-theme-id="26435" data-slug-hash="Nwqoav" data-default-tab="css,result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="SA 15 Process 4" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/Nwqoav/">SA 15 Process 4</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
+<CodePen
+  hash="Nwqoav"
+  title="SA 15 Process 4"
+  height="500"
+  defaultTab="css,result"
+/>
 
 The rest is all about matching the movement and timing of the original animation.
 
 Here are a couple more examples of animating clipped shapes. For these I used a slightly different technique. They have shapes which are filled with an animated SVG pattern.
 
-<div class="flex-ns justify-around">
-  <p data-height="600" data-theme-id="26435" data-slug-hash="GvyrbO" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Animated 📕 – The Doctor and the Soul" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/GvyrbO/">Animated 📕 – The Doctor and the Soul</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-  <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+<Box display={['block', 'flex']} justifyContent="space-around">
+  <CodePen
+    mr={3}
+    hash="GvyrbO"
+    title="Animated 📕 – The Doctor and the Soul"
+    height="600"
+    defaultTab="result"
+  />
 
-<p data-height="600" data-theme-id="26435" data-slug-hash="xLXNRQ" data-default-tab="result" data-user="winkerVSbecks" data-embed-version="2" data-pen-title="Animated 📕 – The New Technology and Human Values" class="codepen">See the Pen <a href="https://codepen.io/winkerVSbecks/pen/xLXNRQ/">Animated 📕 – The New Technology and Human Values</a> by Varun Vachhar (<a href="https://codepen.io/winkerVSbecks">@winkerVSbecks</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<CodePen
+  hash="xLXNRQ"
+  title="Animated 📕 – The New Technology and Human Values"
+  height="600"
+  defaultTab="result"
+/>
 
-<script
-  async
-  src="https://production-assets.codepen.io/assets/embed/ei.js"
-></script>
-
-</div>
+</Box>
