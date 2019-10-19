@@ -37,9 +37,9 @@ const colorModes = {
       faded: '#484858',
     },
     neutral: {
-      0: '#fff',
-      1: '#f4f4f4',
-      // 2: // '#eee',
+      // 0: '#fff',
+      0: '#f4f4f4',
+      1: '#eee',
       2: '#ccc',
       3: '#aaa',
       4: '#777',
