@@ -28,6 +28,7 @@
     "gatsby-transformer-json": "^2.2.3",
     "gatsby-transformer-sharp": "^2.2.6",
     "normalize.css": "^8.0.1",
+    "prism-themes": "^1.2.0",
     "prismjs": "^1.17.1",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",

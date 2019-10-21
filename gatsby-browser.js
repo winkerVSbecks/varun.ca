@@ -3,3 +3,6 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
+require('prism-themes/themes/prism-duotone-dark.css');
+// require('prism-themes/themes/prism-base16-ateliersulphurpool.light.css');
+// require('prism-themes/themes/prism-ghcolors.css');

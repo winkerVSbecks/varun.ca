@@ -23,29 +23,33 @@ export const useColorState = initialColorMode => {
   useEffect(() => {
     // initialize
     const stored = storage.get();
-    document.body.classList.remove('varun-ca-' + stored);
     const dark = getMediaQuery();
-    if (!stored && dark) return setMode('dark');
+    if (!stored && dark) return setModeWithSideEffects('dark');
     if (!stored || stored === mode) return;
-    setMode(stored);
+    setModeWithSideEffects(stored);
   }, []);
 
-  useEffect(() => {
-    if (!mode) return;
-    storage.set(mode);
-  }, [mode]);
+  const setModeWithSideEffects = () => {
+    setMode(state => {
+      const nextMode = state === 'light' ? 'dark' : 'light';
+      document.body.classList.remove('varun-ca-' + state);
 
-  return [mode, setMode];
-};
+      document.body.classList.add('varun-ca-' + nextMode);
+      storage.set(nextMode);
 
-export const useColorMode = initialMode => {
-  const [mode, setMode] = useColorState(initialMode);
-
-  const setColorMode = () => {
-    setMode(state => (state === 'light' ? 'dark' : 'light'));
+      return nextMode;
+    });
   };
 
-  return [mode, setColorMode];
+  return [mode, setModeWithSideEffects];
+};
+
+export const useColorMode = () => {
+  const [mode, setMode] = useColorState(
+    typeof window !== `undefined` ? storage.get() : 'light'
+  );
+
+  return [mode, setMode];
 };
 
 export const InitializeColorMode = () => (

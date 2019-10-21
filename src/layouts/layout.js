@@ -34,7 +34,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Layout = ({ title, description, maxWidth = 7, children }) => {
-  const [mode, setColorMode] = useColorMode('light');
+  const [mode, setColorMode] = useColorMode();
 
   return (
     <ThemeProvider theme={{ ...theme, ...createColorStyles(mode) }}>
