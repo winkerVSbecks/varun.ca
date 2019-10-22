@@ -5,6 +5,7 @@ import 'normalize.css';
 import { SEO } from '@components/seo';
 import dsToMdx from './ds-to-mdx';
 import { theme, createColorStyles, modeCustomProperties } from '../theme';
+import prismStyles from '../theme/prism-styles';
 import {
   useColorMode,
   ColorModeContext,
@@ -17,6 +18,8 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${props => props.theme.colors.neutral[7]};
     ${modeCustomProperties}
   }
+
+  ${prismStyles}
 
   ::-moz-selection {
     background: ${props => props.theme.colors.brand.faded};

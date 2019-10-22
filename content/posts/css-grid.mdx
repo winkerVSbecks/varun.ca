@@ -4,8 +4,56 @@ date: 2017-05-16
 ---
 
 ```js
-width = (width_of_grid - (gutters + padding)) / number_of_columns;
-height = (1270 * width) / 1000;
+const width = (width_of_grid - (gutters + padding)) / number_of_columns;
+const height = (1270 * width) / 1000;
+
+function reuleauxPolygonConstruction([cx, cy], radius, sideCount) {
+
+const pts = polygon([cx, cy], sideCount, radius);
+const r = dist(pts[0], pts[2]);
+const [head, ...tail] = pts;
+
+return [
+  // move to the first vertex
+  'M', head[0], head[1],
+  // Connect adjacent vertices with an arc
+  ...tail.map(p => `A ${r} ${r} 0 0 1 ${p[0]} ${p[1]}`),
+  // Connect the last and the first vertices with an arc
+  `A ${r} ${r} 0 0 1 ${head[0]} ${head[1]}`,
+  // Close the shape
+  'Z',
+].join(' ');
+```
+
+```css
+:root {
+  --width: calc((100vw - 3rem) / 2);
+  --height: calc(1270 * var(--width) / 1000);
+}
+
+.layout {
+  grid-gap: 1rem;
+  grid-template-columns: repeat(2, var(--width));
+  grid-auto-rows: var(--height);
+}
+
+@media screen and (min-width: 30em) and (max-width: 60em) {
+  :root {
+    --width: calc((100vw - 4rem) / 3);
+  }
+  .layout {
+    grid-template-columns: repeat(3, var(--width));
+  }
+}
+
+@media screen and (min-width: 60em) {
+  :root {
+    --width: calc((60em - 5rem) / 4);
+  }
+  .layout {
+    grid-template-columns: repeat(4, var(--width));
+  }
+}
 ```
 
 <Flex as="figure" mx="auto" p={0} mt={3} mb={4} justifyContent="center">
