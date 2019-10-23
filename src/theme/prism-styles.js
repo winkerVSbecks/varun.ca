@@ -40,6 +40,10 @@ export default props => {
     '.gatsby-highlight pre::-webkit-scrollbar-track': {
       background: c.scrollbarTrack,
     },
+    '.gatsby-highlight-code-line': {
+      background: c.lineHighlightBackground,
+      display: `block`,
+    },
     /* Inline code */
     ':not(pre) > code[class*="language-"]': {
       padding: '.1em',

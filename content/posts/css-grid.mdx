@@ -5,10 +5,11 @@ date: 2017-05-16
 
 ```js
 const width = (width_of_grid - (gutters + padding)) / number_of_columns;
-const height = (1270 * width) / 1000;
+const height = (1270 * width) / 1000; // highlight-line
 
 function reuleauxPolygonConstruction([cx, cy], radius, sideCount) {
 
+{ /* highlight-range{1,4-9,12} */ }
 const pts = polygon([cx, cy], sideCount, radius);
 const r = dist(pts[0], pts[2]);
 const [head, ...tail] = pts;
