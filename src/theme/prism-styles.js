@@ -50,34 +50,86 @@ export default props => {
       borderRadius: '.3em',
     },
     // PrismJS syntax highlighting token styles
-    // https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/
-    '.token': {
-      display: `inline`,
-    },
     '.token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata': {
       color: c.comment,
-    },
-    '.token.property, .token.tag, .token.boolean, .token.number, .token.function-name, .token.constant, .token.symbol': {
-      color: c.tag,
     },
     '.token.punctuation': {
       color: c.punctuation,
     },
-    '.token.selector, .token.attr-name, .token.string, .token.char, .token.function, .token.builtin': {
-      color: c.selector,
+    '.token.property': {
+      color: c.property,
     },
-    '.token.operator, .token.entity, .token.url, .token.variable': {},
-    '.token.atrule, .token.attr-value, .token.keyword, .token.class-name': {
-      color: c.keyword,
+    '.token.tag': {
+      color: c.tag,
     },
-    '.token.inserted': {
-      color: c.add,
+    '.token.boolean': {
+      color: c.boolean,
+    },
+    '.token.number': {
+      color: c.number,
+    },
+    '.token.function-name': {
+      color: c.functionName,
+    },
+    '.token.constant': {
+      color: c.constant,
+    },
+    '.token.symbol': {
+      color: c.symbol,
     },
     '.token.deleted': {
-      color: c.remove,
+      color: c.deleted,
     },
-    '.token.regex, .token.important': {
+    '.token.selector': {
+      color: c.selector,
+    },
+    '.token.attr-name': {
+      color: c.attrName,
+    },
+    '.token.string': {
+      color: c.string,
+    },
+    '.token.char': {
+      color: c.char,
+    },
+    '.token.function': {
+      color: c.function,
+    },
+    '.token.builtin': {
+      color: c.builtin,
+    },
+    '.token.inserted': {
+      color: c.inserted,
+    },
+    '.token.operator': {
+      color: c.operator,
+    },
+    '.token.entity': {
+      color: c.entity,
+    },
+    '.token.url': {
+      color: c.url,
+    },
+    '.token.variable': {
+      color: c.variable,
+    },
+    '.token.atrule': {
+      color: c.atrule,
+    },
+    '.token.attr-value': {
+      color: c.attrValue,
+    },
+    '.token.keyword': {
+      color: c.keyword,
+    },
+    '.token.class-name': {
+      color: c.className,
+    },
+    '.token.regex': {
       color: c.regex,
+    },
+    '.token.important': {
+      color: c.important,
     },
     '.language-css .token.string, .style .token.string': {
       color: c.cssString,
@@ -97,7 +149,6 @@ export default props => {
     '.namespace': {
       opacity: 0.7,
     },
-    // PrismJS plugin styles
     '.token.tab:not(:empty):before, .token.cr:before, .token.lf:before': {
       color: c.invisibles,
     },
