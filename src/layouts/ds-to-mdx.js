@@ -13,6 +13,15 @@ export default {
   DemoSource: DesignSystem.DemoSource,
   CodePen,
   Embed: props => <DesignSystem.Box as="iframe" mb={4} {...props} />,
+  AsciiDiagram: props => (
+    <DesignSystem.Text
+      as="pre"
+      lineHeight="solid"
+      fontSize={1}
+      fontFamily="code"
+      {...props}
+    />
+  ),
   // HTML elements
   h1: DesignSystem.H1,
   h2: DesignSystem.H2,
@@ -26,9 +35,9 @@ export default {
   ul: DesignSystem.List,
   ol: DesignSystem.OrderedList,
   li: DesignSystem.ListItem,
-  pre: props => (
-    <DesignSystem.Text as="pre" fontSize={1} fontFamily="code" {...props} />
-  ),
+  // pre: props => (
+  //   <DesignSystem.Text as="pre" fontSize={1} fontFamily="code" {...props} />
+  // ),
   // code:	Code,
   // em:	Emphasis,
   // strong:	Strong,
@@ -37,4 +46,26 @@ export default {
   // hr:	Break,
   a: DesignSystem.Link,
   img: DesignSystem.Image,
+  th: props => (
+    <DesignSystem.Text
+      as="th"
+      fontFamily="code"
+      fontSize={1}
+      fontWeight={8}
+      lineHeight="copy"
+      p={3}
+      {...props}
+    />
+  ),
+  td: props => (
+    <DesignSystem.Text
+      as="th"
+      fontFamily="code"
+      fontSize={1}
+      fontWeight={4}
+      lineHeight="copy"
+      p={3}
+      {...props}
+    />
+  ),
 };

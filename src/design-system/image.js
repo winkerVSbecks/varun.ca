@@ -5,10 +5,10 @@ import { Box } from './primitives';
 
 export const Image = styled(Box)`
   max-width: 100%;
-  display: block;
 `;
 
 Image.defaultProps = {
+  display: 'block',
   as: 'img',
   mx: 'auto',
   mb: 4,

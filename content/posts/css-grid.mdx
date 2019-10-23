@@ -4,7 +4,7 @@ date: 2017-05-16
 ---
 
 <Flex as="figure" mx="auto" p={0} mt={3} mb={4} justifyContent="center">
-  <pre style={{ lineHeight: 1 }} class="mv0 lh-solid code">
+  <AsciiDiagram>
     {`+-------------------------+ +---+
 |                         | |   |
 |  CSS Grid               | |   |
@@ -18,7 +18,7 @@ date: 2017-05-16
 |    | +------+ +---------------+
 |    | |      | |               |
 +----+ +------+ +---------------+`}
-  </pre>
+  </AsciiDiagram>
 </Flex>
 
 CSS Grid is here! As of March 2017, all major browsers support it. Given this good news I decided to spend some time to better understand how to use it. The learning curve was much steeper than I expected – the module introduces something like 17 new concepts. It was quite overwhelming to take it all in, so I started breaking things down, taking notes and making demos, which I am going to share here. This is by no means an exhaustive guide. It might not even be 100% factually correct. But this should be enough information for you to form a basic mental model of how CSS Grids work and start building layouts with it.
@@ -33,7 +33,7 @@ When we define the grid we specify the number of rows and columns we want. The g
 
 A **Grid Cell** is the smallest unit on the grid. It is the intersection of a row and column. Conceptually it is quite similar to a table cell.
 
-**Grid Area** is the space created by the intersection of four grid lines. In other words, it is a collection of one or more adjacent grid cells. ⚠️ Grid area can only be rectangular! It is not possible to create T- or L-shaped grid areas. Which for some reason was the first thing I wanted to do.
+**Grid Area** is the space created by the intersection of four grid lines. In other words, it is a collection of one or more adjacent grid cells. The grid area can only be rectangular! It is not possible to create T- or L-shaped grid areas. Which for some reason was the first thing I wanted to do.
 
 {% include diagrams/grid-area.html %}
 
@@ -119,46 +119,46 @@ The grid also changes based on break points. It reduces to 3 columns on medium-s
 Previously, we used something like `grid-template-columns: repeat(4, 1fr)` and `grid-template-rows: repeat(5, 1fr)` to generate the grid. Because of the `1000 : 1270` ratio we can no longer do that. Instead, we need to use a bit of math to figure out the row and column sizes. For this we can use CSS variables and `calc` 🏄 We can calculate the width of the columns and height of the rows using this formula:
 
 ```js
-width = (width_of_grid - (gutters + padding)) / number_of_columns;
-height = (1270 * width) / 1000;
+const width = (width_of_grid - (gutters + padding)) / number_of_columns;
+const height = (1270 * width) / 1000;
 ```
 
-<div class="mv4 overflow-auto">
-  <table class="mv0 f6 w-100 mw8 center code" cellspacing="0">
+<Box my={5} style={{ overflow: 'auto' }}>
+  <Box as="table" width="100%" mx="auto" cellspacing="0">
     <thead>
-      <tr class="striped--light-gray">
-        <th class="fw6 pa3 bg-white">Break Point</th>
-        <th class="fw6 pa3 bg-white">Width of Grid</th>
-        <th class="fw6 pa3 bg-white">Gutters + Padding</th>
-        <th class="fw6 pa3 bg-white">Number of Columns</th>
+      <tr>
+        <th>Break Point</th>
+        <th>Width of Grid</th>
+        <th>Gutters + Padding</th>
+        <th>Number of Columns</th>
       </tr>
     </thead>
-    <tbody class="lh-copy">
-      <tr class="striped--light-gray">
-        <td class="pa3">Default (less than 30em)</td>
-        <td class="pa3 tc">100vw</td>
-        <td class="pa3 tc">(1 + 2)rem</td>
-        <td class="pa3 tc">2</td>
-      </tr>
-      <tr class="striped--light-gray">
-        <td class="pa3">
+    <tbody>
+      <Box as="tr" bg="neutral.5">
+        <td textAlign="left">Default (less than 30em)</td>
+        <td>100vw</td>
+        <td>(1 + 2)rem</td>
+        <td>2</td>
+      </Box>
+      <tr>
+        <td textAlign="left">
           min-width: 30em and
           <br />
           max-width: 60em
         </td>
-        <td class="pa3 tc">100vw</td>
-        <td class="pa3 tc">(2 + 2)rem</td>
-        <td class="pa3 tc">3</td>
+        <td>100vw</td>
+        <td>(2 + 2)rem</td>
+        <td>3</td>
       </tr>
-      <tr class="striped--light-gray">
-        <td class="pa3">min-width: 60em</td>
-        <td class="pa3 tc">60em</td>
-        <td class="pa3 tc">(3 + 2)rem</td>
-        <td class="pa3 tc">4</td>
-      </tr>
+      <Box as="tr" bg="neutral.5">
+        <td textAlign="left">min-width: 60em</td>
+        <td>60em</td>
+        <td>(3 + 2)rem</td>
+        <td>4</td>
+      </Box>
     </tbody>
-  </table>
-</div>
+  </Box>
+</Box>
 
 So, for the default case `width = (100vw - 3rem) / 2`. Awesome! Let's put it all together. We start by defining the default value in `:root`. Then at each break point we recalculate `width` and update the `grid-template-columns` property.
 
@@ -242,7 +242,7 @@ We have a grid. We used auto placement to position items and some items span mul
 
 ![holes in the grid](../assets/grid-holes.png)
 
-This is because by default auto placement uses a _sparse_ packing algorithm which can lead to _holes_ in the layout. The good news is that we can switch to a _dense_ packing algorithm which causes the browser to backtrack and fill any empty cells in the layout <img src="../assets/parrot.gif" alt="party parrot" style="display:inline !important; width: 1em !important;" />
+This is because by default auto placement uses a _sparse_ packing algorithm which can lead to _holes_ in the layout. The good news is that we can switch to a _dense_ packing algorithm which causes the browser to backtrack and fill any empty cells in the layout <img src="../assets/parrot.gif" alt="party parrot" display="inline" width="1em" mb={0} />
 
 ```diff
 .layout {

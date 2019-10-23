@@ -106,6 +106,7 @@ export default props => {
     },
     '.token.entity': {
       color: c.entity,
+      cursor: `help`,
     },
     '.token.url': {
       color: c.url,
@@ -130,21 +131,16 @@ export default props => {
     },
     '.token.important': {
       color: c.important,
+      fontWeight: 'normal',
     },
     '.language-css .token.string, .style .token.string': {
       color: c.cssString,
-    },
-    '.token.important': {
-      fontWeight: 'normal',
     },
     '.token.bold': {
       fontWeight: 'bold',
     },
     '.token.italic': {
       fontStyle: `italic`,
-    },
-    '.token.entity': {
-      cursor: `help`,
     },
     '.namespace': {
       opacity: 0.7,
