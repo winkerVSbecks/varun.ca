@@ -26,7 +26,9 @@ export default {
   ul: DesignSystem.List,
   ol: DesignSystem.OrderedList,
   li: DesignSystem.ListItem,
-  // pre:	Pre,
+  pre: props => (
+    <DesignSystem.Text as="pre" fontSize={1} fontFamily="code" {...props} />
+  ),
   // code:	Code,
   // em:	Emphasis,
   // strong:	Strong,

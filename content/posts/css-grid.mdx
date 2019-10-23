@@ -4,11 +4,7 @@ date: 2017-05-16
 ---
 
 <Flex as="figure" mx="auto" p={0} mt={3} mb={4} justifyContent="center">
-  <Text
-    as="pre"
-    style={{ fontFamily: 'monospace', lineHeight: 1 }}
-    class="mv0 lh-solid code"
-  >
+  <pre style={{ lineHeight: 1 }} class="mv0 lh-solid code">
     {`+-------------------------+ +---+
 |                         | |   |
 |  CSS Grid               | |   |
@@ -22,7 +18,7 @@ date: 2017-05-16
 |    | +------+ +---------------+
 |    | |      | |               |
 +----+ +------+ +---------------+`}
-  </Text>
+  </pre>
 </Flex>
 
 CSS Grid is here! As of March 2017, all major browsers support it. Given this good news I decided to spend some time to better understand how to use it. The learning curve was much steeper than I expected – the module introduces something like 17 new concepts. It was quite overwhelming to take it all in, so I started breaking things down, taking notes and making demos, which I am going to share here. This is by no means an exhaustive guide. It might not even be 100% factually correct. But this should be enough information for you to form a basic mental model of how CSS Grids work and start building layouts with it.
