@@ -24,6 +24,15 @@ export default {
       {...props}
     />
   ),
+  AsciiDiagramContainer: props => (
+    <DesignSystem.Flex
+      as="figure"
+      mx="auto"
+      mb={4}
+      bg="code.background"
+      {...props}
+    />
+  ),
   SrOnly: DesignSystem.SrOnly,
   // HTML elements
   h1: DesignSystem.H1,

@@ -31,16 +31,7 @@ Before we start creating grid layouts we need to learn a few new terms. A **Grid
 
 When we define the grid we specify the number of rows and columns we want. The grid layout system then generates numbered lines which divide the grid horizontally and vertically. These are known as **Grid Lines**. The space between any two adjacent grid lines is called **Grid Track**. This is essentially a generic term for _columns_ and _rows_.
 
-<!-- {% include diagrams/grid-terms.html %} -->
-
-<Flex
-  as="figure"
-  mx="auto"
-  mb={4}
-  justifyContent="space-around"
-  flexWrap="wrap"
-  bg="code.background"
->
+<AsciiDiagramContainer justifyContent="space-around" flexWrap="wrap">
   <AsciiDiagram>{diagrams.gridLines}</AsciiDiagram>
   <AsciiDiagram>{diagrams.rowTracks}</AsciiDiagram>
   <AsciiDiagram>{diagrams.columnTracks}</AsciiDiagram>
@@ -48,19 +39,40 @@ When we define the grid we specify the number of rows and columns we want. The g
     The grid gives us numbered lines to use when positioning items. A grid track
     is the space between any two lines on the grid.
   </SrOnly>
-</Flex>
+</AsciiDiagramContainer>
 
 A **Grid Cell** is the smallest unit on the grid. It is the intersection of a row and column. Conceptually it is quite similar to a table cell.
 
 **Grid Area** is the space created by the intersection of four grid lines. In other words, it is a collection of one or more adjacent grid cells. The grid area can only be rectangular! It is not possible to create T- or L-shaped grid areas. Which for some reason was the first thing I wanted to do.
 
-{% include diagrams/grid-area.html %}
+<AsciiDiagramContainer justifyContent="center">
+  <AsciiDiagram>{diagrams.gridArea}</AsciiDiagram>
+  <SrOnly as="figcaption">
+    Grid items can span one or more cells – by row or by column – this is called
+    a grid area.
+  </SrOnly>
+</AsciiDiagramContainer>
 
 ## Defining a Grid
 
 There are many different ways to define a grid. I'm going to start by focusing on a basic scenario: 4 columns x 5 rows. `grid-template-rows` & `grid-template-columns` allow us to define the count and sizing of rows and columns respectively. We can list out the tracks as shown in the example below.
 
-{% include diagrams/fixed-grid.html %}
+<AsciiDiagramContainer
+  justifyContent="space-around"
+  flexWrap="wrap"
+>
+  <AsciiDiagram lineHeight="copy">{`.my-grid-container {
+  display: grid;
+  grid-template-columns: 20px 20px 20px 20px;
+  grid-template-rows: 20px 20px 20px 20px 20px;
+}`}</AsciiDiagram>
+<AsciiDiagram>{diagrams.fixedGrid}</AsciiDiagram>
+
+  <SrOnly as="figcaption">
+    A basic grid with 4 columns and 5 rows. The rows are defined using
+    grid-template-rows and columns using grid-template-columns.
+  </SrOnly>
+</AsciiDiagramContainer>
 
 We have a grid ✅ Not the most useful grid ever, but a grid nonetheless. In the above example, each row is `20px` tall and each column is `20px` wide. The one thing to note here is that `grid-template-rows` & `grid-template-columns` allow us to define the grid tracks. The browser then generates the grid lines automatically. These lines are invisible. They are there to help us with positing items on the grid, but do not impact our design visually. That said, being able to see these lines is extremely helpful for debugging. Luckily for us Firefox has a built-in [Grid Inspector](https://www.mozilla.org/en-US/developer/css-grid) which visualizes the grid for us 🙌🏽
 
@@ -70,7 +82,21 @@ In this example, the grid has fixed track sizes. Which is a fancy way of saying 
 
 We can also define grids with flexible track sizes. Or even have both fixed and flexible tracks at the same time! (See the example below.) Here percentage values refer to a percentage of the grid container.
 
-{% include diagrams/flexible-grid.html %}
+<AsciiDiagramContainer
+  justifyContent="space-around"
+  flexWrap="wrap"
+>
+  <AsciiDiagram lineHeight="copy">{`.my-weird-but-flexible-grid {
+  display: grid;
+  grid-template-columns: 20px 5% 80px 40%;
+  grid-template-rows: 4rem 2vh 12% 80px 20em;
+}`}</AsciiDiagram>
+<AsciiDiagram>{diagrams.flexibleGrid}</AsciiDiagram>
+
+  <SrOnly as="figcaption">
+    A flexible grid where we are using a mixture of units for track measurements such as, pixels, percentage, viewport units and ems.
+  </SrOnly>
+</AsciiDiagramContainer>
 
 ### The fr Unit
 
@@ -78,7 +104,27 @@ Let's look at another example of a flexible grid. In this case we are still buil
 
 At this point you are probably asking yourself. _The what unit?_ 🤷🏽‍♂️
 
-{% include diagrams/flexible-fr-grid.html %}
+<AsciiDiagramContainer
+  justifyContent="space-around"
+  flexWrap="wrap"
+>
+  <AsciiDiagram lineHeight="copy">{`.my-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+`}{`  /*
+    The above can also be written as:
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  */`}</AsciiDiagram>
+
+<AsciiDiagram>{diagrams.flexibleFrGrid}</AsciiDiagram>
+
+  <SrOnly as="figcaption">
+    A flexible grid with 4 columns and 5 rows. It is made flexible by setting the rows and columns to 1fr.
+  </SrOnly>
+</AsciiDiagramContainer>
 
 We have a new unit! The `fr` unit represents a fraction of the available space in the grid container. Have you ever used `flex: 1` & `flex: 2`, etc? This works exactly like that. You can specify track sizing as a ratio of free space, eg: `1fr 2fr`.
 
@@ -90,7 +136,22 @@ It wouldn't be a real grid without some gutters. For this we can use `grid-colum
 
 ⚠️ Even though there is a gap between two adjacent tracks there is still only one grid line.
 
-{% include diagrams/grid-gutters.html %}
+<AsciiDiagramContainer
+  justifyContent="space-around"
+  flexWrap="wrap"
+>
+  <AsciiDiagram lineHeight="copy">{`.my-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}`}</AsciiDiagram>
+<AsciiDiagram>{diagrams.gridGutters}</AsciiDiagram>
+
+  <SrOnly as="figcaption">
+    A flexible 4x5 grid with gutters. Gutters can be created by using grid-gap property.
+  </SrOnly>
+</AsciiDiagramContainer>
 
 ## Positioning Grid Items
 
@@ -98,7 +159,14 @@ Now that we have defined a grid, let's explore some options for how to place ite
 
 Positioning items on a grid is quite similar to using absolute positioning. Except, instead of specifying locations in measurement units we specify start and end grid lines.
 
-{% include diagrams/grid-positioning.html %}
+<AsciiDiagramContainer justifyContent="center">
+  <AsciiDiagram>{diagrams.gridPositioning}</AsciiDiagram>
+
+  <SrOnly as="figcaption">
+    We can position items on the grid using grid-column-start, grid-column-end
+    and grid-row-start, grid-row-end.
+  </SrOnly>
+</AsciiDiagramContainer>
 
 Grid lines are automatically numbered. Starting with `1` for the topmost and leftmost lines. We use these numbers to declare `grid-column-start` / `grid-column-end` and `grid-row-start` / `grid-row-end`. We can also start counting from the end. For that we start with `-1` for the rightmost and topmost lines. Lastly, we can also specify these locations as spans. For example, `grid-row-end: span 3` means that the end location is `starting grid line` + `3 tracks`.
 
@@ -131,15 +199,26 @@ I want to end by showcasing a couple more concepts through an example. I am goin
 
 The grid also changes based on break points. It reduces to 3 columns on medium-sized devices (`30em ↔️ 60em`) and 2 columns on small devices `< 30em`. Finally, we need to maintain `1000 : 1270` ratio between the row and column track sizing.
 
-{% include diagrams/aldo-layout.html %}
+<AsciiDiagramContainer
+  justifyContent="space-around"
+  flexWrap="wrap"
+>
+  <AsciiDiagram>{diagrams.aldoLg}</AsciiDiagram>
+  <AsciiDiagram>{diagrams.aldoMd}</AsciiDiagram>
+  <AsciiDiagram>{diagrams.aldoSm}</AsciiDiagram>
+
+  <SrOnly as="figcaption">
+    The aldo style product grid. 2 columns on small devices, 3 on medium and 4 on large devices.
+  </SrOnly>
+</AsciiDiagramContainer>
 
 ### Defining the Row and Column Sizes
 
 Previously, we used something like `grid-template-columns: repeat(4, 1fr)` and `grid-template-rows: repeat(5, 1fr)` to generate the grid. Because of the `1000 : 1270` ratio we can no longer do that. Instead, we need to use a bit of math to figure out the row and column sizes. For this we can use CSS variables and `calc` 🏄 We can calculate the width of the columns and height of the rows using this formula:
 
 ```js
-const width = (width_of_grid - (gutters + padding)) / number_of_columns;
-const height = (1270 * width) / 1000;
+width = (width_of_grid - (gutters + padding)) / number_of_columns;
+height = (1270 * width) / 1000;
 ```
 
 <Box my={5} style={{ overflow: 'auto' }}>
