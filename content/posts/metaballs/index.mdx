@@ -4,6 +4,8 @@ preview: ../assets/amoeba.gif
 date: 2017-10-16
 ---
 
+import Metaballs from './diagrams';
+
 <CodePen hash="RLyNEE" title="amoeba" height="400" defaultTab="result" />
 
 Metaballs, not to be confused with meatballs, are organic looking squishy gooey blobs. From a mathematical perspective they are an iso-surface. They are rendered using equations such as <code class="dib b">f(x,y,z) = r / ((x - x<sub>0</sub>)<sup>2</sup> + (y - y<sub>0</sub>)<sup>2</sup> + (z - z<sub>0</sub>)<sup>2</sup>)</code>. Jamie Wong has a fantastic [tutorial](http://jamie-wong.com/2014/08/19/metaballs-and-marching-squares) on rendering metaballs with canvas.
@@ -34,6 +36,7 @@ In this blog post I am going break down the steps required to generate the metab
 <CodePen
   hash="qPQZPN"
   title="Metaballs debug — the path"
+  themeId="8427"
   height="300"
   defaultTab="result"
 />
@@ -42,7 +45,7 @@ In this blog post I am going break down the steps required to generate the metab
 
 To figure out where the connector touches the two circles we start by locating two tangents that touch both circles. This is the widest the connector can be. BTW I'm focusing on the case when the circles are not overlapping first.
 
-{% include metaball/tangents.html %}
+<Metaballs.Tangents />
 
 We can calculate the maximum angle of spread using:
 
@@ -52,7 +55,7 @@ const maxSpread = Math.acos((radius1 - radius2) / d);
 
 Why? This took me a while to figure out. I could attempt to explain here, but you are probably better of seeing the step-by-step illustration in this [external tangents to two given circles](http://www.mathopenref.com/consttangentsext.html) guide.
 
-{% include metaball/spread.html %}
+<Metaballs.Spread />
 
 This is the maximum possible spread that the connector can have. We can control spread amount by multiplying it with a factor called `v`. The Paper.js code has `v = 0.5`. That seems to work well.
 
@@ -60,6 +63,7 @@ This is the maximum possible spread that the connector can have. We can control 
   hash="aLQBdb"
   title="Metaballs debug — spread"
   height="300"
+  themeId="8427"
   defaultTab="result"
 />
 
@@ -95,12 +99,13 @@ To convert the trapezium shaped connector into a curved one we need to add handl
   hash="rGQyVJ"
   title="Metaballs debug — handles"
   height="300"
+  themeId="8427"
   defaultTab="result"
 />
 
 The handle for a particular point should be aligned to the tangent to the circle at that point. Again we'll use polar coords to locate the handle. This time however, it will be relative to the point itself.
 
-{% include metaball/handles.html %}
+<Metaballs.Handles />
 
 The lines AB and BC are perpendicular because AB is radial and BC is a tangent to the circle. Therefore, the angle for the handle 1 is `angle1 - Math.PI / 2`. Similarly we can calculate the angles for the other three handles.
 
@@ -142,12 +147,13 @@ We have a gooey metaball! But you'll notice that path gets all weird and twisty 
   hash="boQadp"
   title="Metaballs debug — no overlap"
   height="300"
+  themeId="8427"
   defaultTab="result"
 />
 
 The spread expansion will be controlled using the angles `u1` and `u2`. We can calculate these using the [law of cosines](https://en.wikipedia.org/wiki/Law_of_cosines).
 
-{% include metaball/u1-u2.html %}
+<Metaballs.U1U2 />
 
 ```js
 u1 = Math.acos(
@@ -174,6 +180,7 @@ const angle4 =
   hash="PJxQom"
   title="Metaballs debug — overlap"
   height="300"
+  themeId="8427"
   defaultTab="result"
 />
 
