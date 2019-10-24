@@ -3,6 +3,8 @@ title: 'Learning CSS Grid – Part 2'
 date: 2017-09-04
 ---
 
+import diagramsCssGrid2 from './diagrams';
+
 <Flex as="figure" mx="auto" p={0} mt={3} mb={4} justifyContent="center">
   <AsciiDiagram>
     {`+-------------------------+ +---+
@@ -25,7 +27,13 @@ In part one I introduced the CSS Grid Layout Module. We covered some basic termi
 
 Let's start with quick refresher. Grid Area is the space created by the intersection of four grid lines. We define it in terms of start and end points for columns and rows.
 
-{% include diagrams/grid-area-define.html %}
+<AsciiDiagramContainer justifyContent="center">
+  <AsciiDiagram>{diagramsCssGrid2.gridAreaDefine}</AsciiDiagram>
+  <SrOnly as="figcaption">
+    Grid area is made up of a grid column and a grid row. Grid column and row
+    both require a start and an end point.
+  </SrOnly>
+</AsciiDiagramContainer>
 
 In this post I am going to introduce another approach to creating grid based layouts – using _grid template areas_.
 
@@ -35,7 +43,18 @@ This property allows us to divide the grid into named areas which can then be re
 
 We are still defining grid areas however instead of providing row/column start & end points we are doing it through a layout template.
 
-{% include diagrams/named-grid-areas.html %}
+<AsciiDiagramContainer justifyContent="space-around" flexWrap="wrap">
+  <AsciiDiagram>{`.my-grid {
+  display: grid;
+  grid-template-areas: "header   header   header"
+                       "content  content    side"
+                       "footer   footer   footer";
+}`}</AsciiDiagram>
+  <AsciiDiagram>{diagramsCssGrid2.namedGridAreas}</AsciiDiagram>
+  <SrOnly as="figcaption">
+    We can define named grid areas to place content into.
+  </SrOnly>
+</AsciiDiagramContainer>
 
 You'll notice that the syntax of the `grid-template-areas` property provides a visualization of the grid structure. This makes it relatively easy to understand the layout. To place items onto this grid we can use `grid-area` property. For example: `grid-area: header;` or `grid-area: content;`, etc.
 
@@ -66,7 +85,18 @@ The `grid-template-areas` property allows us to define the shape of the layout, 
 
 The above is a magazine style layout of <a href="https://theoutline.com/post/1424/hawaii-s-online-gaming-curse">Hawaii's Online Gaming Curse</a> article from The Outline – built using both CSS Grid and [multi-column layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts). Below is a schematic of what the layout looks like at the three break points.
 
-{% include diagrams/magazine-layout.html %}
+<AsciiDiagramContainer justifyContent="space-around" flexWrap="wrap">
+  <AsciiDiagram>{diagramsCssGrid2.magazineLayoutLg}</AsciiDiagram>
+  <AsciiDiagram>{diagramsCssGrid2.magazineLayoutMd}</AsciiDiagram>
+  <AsciiDiagram>{diagramsCssGrid2.magazineLayoutSm}</AsciiDiagram>
+  <SrOnly as="figcaption">
+    The magazine style layout of{' '}
+    <a href="https://theoutline.com/post/1424/hawaii-s-online-gaming-curse">
+      Hawaii's Online Gaming Curse – The Outline
+    </a>{' '}
+    built using CSS Grid and multi-column layout.
+  </SrOnly>
+</AsciiDiagramContainer>
 
 Given this was one of the first grid layouts I ever built I made some assumptions which later turned out to be false. I defined the `grid-template-areas` for all three breakpoints using the same number of columns. While you _can_ do this you don't have to. You can completely modify the template by changing the values for the `grid-template-areas`, `grid-template-columns` and `grid-template-rows`. The other option you have is to change the area that an element is placed in. More on that in the next example.
 
@@ -81,13 +111,55 @@ Given this was one of the first grid layouts I ever built I made some assumption
 
 For this example I recreated the [BBC Sport Live Reporting](http://www.bbc.com/sport/live/football/38322056) page. Below you can see the schematic for the large breakpoint layout on the right and its grid template representation on the left. And yes, you can use [emoji](https://una.im/css-grid/#💁) for template area names!
 
-{% include diagrams/bbc-sport-live.html %}
+<AsciiDiagramContainer justifyContent="space-around" flexWrap="wrap">
+  <AsciiDiagram lineHeight="copy">{`grid-template-areas:
+  "✈️ ✈️ ✈️ ✈️ ✈️"
+  "⚽️ ⚽️ ⚽️ ⚽️ ⚽️"
+  "🖼 🖼 🖼 🖼 🖼"
+  ".  👀 📻 📊  ."
+  ".  👀 📻 🤼  .";
+`}{`
+Where:
+✈️: Navigation
+⚽️: Match Score
+🖼: Media
+👀: Summary
+📻: Live Reporting
+📊: Stats
+🤼: Line-ups`}</AsciiDiagram>
+
+<AsciiDiagram>{diagramsCssGrid2.bbcSportLive}</AsciiDiagram>
+
+  <SrOnly as="figcaption">
+    <a href="http://www.bbc.com/sport/live/football/38322056">BBC Sport Live Reporting</a> page recreated with CSS Grid.
+  </SrOnly>
+</AsciiDiagramContainer>
 
 In the main content area there are three columns: summary (👀), live-reporting (📻) & stats/line-up (📊/🤼🏽‍). To centre this content I placed an unnamed spacer on either side. You can define [unnamed areas](https://drafts.csswg.org/css-grid/#grid-template-areas-null-cell-token) using a sequence of one or more `.`.
 
 At the medium break point live-reporting (📻), stats (📊) & line-up (🤼) get collapsed into a tab based interface (📋). We can do this by placing those items in the `📋` grid-area instead. And for the small breakpoint things collapse further.
 
-{% include diagrams/bbc-sport-live-tabs.html %}
+<AsciiDiagramContainer justifyContent="space-around" flexWrap="wrap">
+  <AsciiDiagram lineHeight="copy">{`grid-template-areas:
+  "✈️ ✈️ ✈️ ✈️"
+  "⚽️ ⚽️ ⚽️ ⚽️"
+  "🖼 🖼 🖼 🖼"
+  ".  👀 📋  .";
+`}{`
+Where:
+✈️: Navigation
+⚽️: Match Score
+🖼: Media
+👀: Summary
+🗂: Tabs
+📋: Tab-Content`}</AsciiDiagram>
+
+<AsciiDiagram>{diagramsCssGrid2.bbcSportLiveTabs}</AsciiDiagram>
+
+  <SrOnly as="figcaption">
+    <a href="http://www.bbc.com/sport/live/football/38322056">BBC Sport Live Reporting</a> page recreated with CSS Grid.
+  </SrOnly>
+</AsciiDiagramContainer>
 
 Each entry in the live-reporting (📻) section is also using a grid layout, but I'll let you discover that by reading through the code.
 

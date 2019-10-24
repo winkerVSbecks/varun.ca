@@ -3,7 +3,7 @@ title: Learning CSS Grid
 date: 2017-05-16
 ---
 
-import diagrams from './diagrams';
+import diagramsCssGrid from './diagrams';
 
 <Flex as="figure" mx="auto" p={0} mt={3} mb={4} justifyContent="center">
   <AsciiDiagram>
@@ -32,9 +32,9 @@ Before we start creating grid layouts we need to learn a few new terms. A **Grid
 When we define the grid we specify the number of rows and columns we want. The grid layout system then generates numbered lines which divide the grid horizontally and vertically. These are known as **Grid Lines**. The space between any two adjacent grid lines is called **Grid Track**. This is essentially a generic term for _columns_ and _rows_.
 
 <AsciiDiagramContainer justifyContent="space-around" flexWrap="wrap">
-  <AsciiDiagram>{diagrams.gridLines}</AsciiDiagram>
-  <AsciiDiagram>{diagrams.rowTracks}</AsciiDiagram>
-  <AsciiDiagram>{diagrams.columnTracks}</AsciiDiagram>
+  <AsciiDiagram>{diagramsCssGrid.gridLines}</AsciiDiagram>
+  <AsciiDiagram>{diagramsCssGrid.rowTracks}</AsciiDiagram>
+  <AsciiDiagram>{diagramsCssGrid.columnTracks}</AsciiDiagram>
   <SrOnly as="figcaption">
     The grid gives us numbered lines to use when positioning items. A grid track
     is the space between any two lines on the grid.
@@ -46,7 +46,7 @@ A **Grid Cell** is the smallest unit on the grid. It is the intersection of a ro
 **Grid Area** is the space created by the intersection of four grid lines. In other words, it is a collection of one or more adjacent grid cells. The grid area can only be rectangular! It is not possible to create T- or L-shaped grid areas. Which for some reason was the first thing I wanted to do.
 
 <AsciiDiagramContainer justifyContent="center">
-  <AsciiDiagram>{diagrams.gridArea}</AsciiDiagram>
+  <AsciiDiagram>{diagramsCssGrid.gridArea}</AsciiDiagram>
   <SrOnly as="figcaption">
     Grid items can span one or more cells – by row or by column – this is called
     a grid area.
@@ -66,7 +66,7 @@ There are many different ways to define a grid. I'm going to start by focusing o
   grid-template-columns: 20px 20px 20px 20px;
   grid-template-rows: 20px 20px 20px 20px 20px;
 }`}</AsciiDiagram>
-<AsciiDiagram>{diagrams.fixedGrid}</AsciiDiagram>
+<AsciiDiagram>{diagramsCssGrid.fixedGrid}</AsciiDiagram>
 
   <SrOnly as="figcaption">
     A basic grid with 4 columns and 5 rows. The rows are defined using
@@ -91,7 +91,7 @@ We can also define grids with flexible track sizes. Or even have both fixed and 
   grid-template-columns: 20px 5% 80px 40%;
   grid-template-rows: 4rem 2vh 12% 80px 20em;
 }`}</AsciiDiagram>
-<AsciiDiagram>{diagrams.flexibleGrid}</AsciiDiagram>
+<AsciiDiagram>{diagramsCssGrid.flexibleGrid}</AsciiDiagram>
 
   <SrOnly as="figcaption">
     A flexible grid where we are using a mixture of units for track measurements such as, pixels, percentage, viewport units and ems.
@@ -119,7 +119,7 @@ At this point you are probably asking yourself. _The what unit?_ 🤷🏽‍♂�
     grid-template-rows: repeat(5, 1fr);
   */`}</AsciiDiagram>
 
-<AsciiDiagram>{diagrams.flexibleFrGrid}</AsciiDiagram>
+<AsciiDiagram>{diagramsCssGrid.flexibleFrGrid}</AsciiDiagram>
 
   <SrOnly as="figcaption">
     A flexible grid with 4 columns and 5 rows. It is made flexible by setting the rows and columns to 1fr.
@@ -146,7 +146,7 @@ It wouldn't be a real grid without some gutters. For this we can use `grid-colum
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 1rem;
 }`}</AsciiDiagram>
-<AsciiDiagram>{diagrams.gridGutters}</AsciiDiagram>
+<AsciiDiagram>{diagramsCssGrid.gridGutters}</AsciiDiagram>
 
   <SrOnly as="figcaption">
     A flexible 4x5 grid with gutters. Gutters can be created by using grid-gap property.
@@ -160,7 +160,7 @@ Now that we have defined a grid, let's explore some options for how to place ite
 Positioning items on a grid is quite similar to using absolute positioning. Except, instead of specifying locations in measurement units we specify start and end grid lines.
 
 <AsciiDiagramContainer justifyContent="center">
-  <AsciiDiagram>{diagrams.gridPositioning}</AsciiDiagram>
+  <AsciiDiagram>{diagramsCssGrid.gridPositioning}</AsciiDiagram>
 
   <SrOnly as="figcaption">
     We can position items on the grid using grid-column-start, grid-column-end
@@ -203,9 +203,9 @@ The grid also changes based on break points. It reduces to 3 columns on medium-s
   justifyContent="space-around"
   flexWrap="wrap"
 >
-  <AsciiDiagram>{diagrams.aldoLg}</AsciiDiagram>
-  <AsciiDiagram>{diagrams.aldoMd}</AsciiDiagram>
-  <AsciiDiagram>{diagrams.aldoSm}</AsciiDiagram>
+  <AsciiDiagram>{diagramsCssGrid.aldoLg}</AsciiDiagram>
+  <AsciiDiagram>{diagramsCssGrid.aldoMd}</AsciiDiagram>
+  <AsciiDiagram>{diagramsCssGrid.aldoSm}</AsciiDiagram>
 
   <SrOnly as="figcaption">
     The aldo style product grid. 2 columns on small devices, 3 on medium and 4 on large devices.
