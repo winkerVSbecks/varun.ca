@@ -29,7 +29,9 @@ Before we start creating grid layouts we need to learn a few new terms. A **Grid
 
 When we define the grid we specify the number of rows and columns we want. The grid layout system then generates numbered lines which divide the grid horizontally and vertically. These are known as **Grid Lines**. The space between any two adjacent grid lines is called **Grid Track**. This is essentially a generic term for _columns_ and _rows_.
 
-{% include diagrams/grid-terms.html %}
+<GridTerms />
+
+<!-- {% include diagrams/grid-terms.html %} -->
 
 A **Grid Cell** is the smallest unit on the grid. It is the intersection of a row and column. Conceptually it is quite similar to a table cell.
 
@@ -240,9 +242,9 @@ As I mentioned earlier, some items span multiple tracks. For this we can use the
 
 We have a grid. We used auto placement to position items and some items span multiple columns & rows. So we're done? Not quite. If you inspect the above CodePen in [edit mode](http://codepen.io/winkerVSbecks/pen/vmazxG) you will notice that the grid ends up with _holes_ at certain break points.
 
-![holes in the grid](../assets/grid-holes.png)
+![holes in the grid](../../assets/grid-holes.png)
 
-This is because by default auto placement uses a _sparse_ packing algorithm which can lead to _holes_ in the layout. The good news is that we can switch to a _dense_ packing algorithm which causes the browser to backtrack and fill any empty cells in the layout <img src="../assets/parrot.gif" alt="party parrot" display="inline" width="1em" mb={0} />
+This is because by default auto placement uses a _sparse_ packing algorithm which can lead to _holes_ in the layout. The good news is that we can switch to a _dense_ packing algorithm which causes the browser to backtrack and fill any empty cells in the layout <img src="../../assets/parrot.gif" alt="party parrot" display="inline" width="1em" mb={0} />
 
 ```diff
 .layout {

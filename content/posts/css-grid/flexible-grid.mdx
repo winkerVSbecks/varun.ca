@@ -1,0 +1,35 @@
+<figure class="center pa0 flex justify-around flex-wrap bg-tertiary">
+<pre class="mv0 f6 lh-copy code">
+.my-weird-but-flexible-grid {
+  display: grid;
+  grid-template-columns: 20px 5% 80px 40%;
+  grid-template-rows: 4rem 2vh 12% 80px 20em;
+}
+</pre>
+  <pre class="mv0 f6 lh-solid code">
+.my-weird-but-flexible-grid
+
++-+--+----+----------------------+
+| |  |    |                 |    |
++-+--+----+-----------------+    |
++-+--+----+-----------------+    |
+| |  |    |                 |    |
+| |  |    |                 |    |
++-+--+----+-----------------+    |
+| |  |    |                 |    |
++-+--+----+-----------------+    |
+| |  |    |                 |    |
+| |  |    |                 |    |
+| |  |    |                 |    |
+| |  |    |                 |    |
+| |  |    |                 |    |
++-+--+----+-----------------+    |
+|                                |
+|                                |
+|                                |
+|                                |
+|                                |
++--------------------------------+
+</pre>
+  <figcaption class="clip">A flexible grid where we are using a mixture of units for track measurements such as, pixels, percentage, viewport units and ems.</figcaption>
+</figure>

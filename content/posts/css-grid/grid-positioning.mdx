@@ -1,0 +1,28 @@
+<figure class="center pa0 flex justify-center bg-tertiary">
+  <pre class="mv0 f6 lh-solid code">
+                      .my-grid
+
+                      1     2      3      4     5
+                      +----+-+----+-+----+-+----+ 1
+                      |    | |    | |    | |    |
+                      |    | |    | |    | |    |
+                      |    | |    | |    | |    |
+   grid-row-start (2)-------------> o-----------o <-----(5) grid-column-end
+grid-column-start (3) |    | |    | |xxxxxxxxxxx|
+                      |    | |    | |xxxxxxxxxxx|
+                      |    | |    | |xxxxxxxxxxx|
+                      +----+ +----+ |xxxxxxxxxxx|
+                      |    | |    | |xxxxxxxxxxx|
+                      |    | |    | |xxxxxxxxxxx|
+                      |    | |    | |xxxxxxxxxxx|
+grid-row-end (4)------------------> o-----------o 4
+                      |    | |    | |    | |    |
+                      |    | |    | |    | |    |
+                      |    | |    | |    | |    |
+                      +----+ +----+ +----+ +----+ 5
+                      |    | |    | |    | |    |
+                      |    | |    | |    | |    |
+                      |    | |    | |    | |    |
+                      +----+-+----+-+----+-+----+ 6</pre>
+  <figcaption class="clip">We can position items on the grid using grid-column-start, grid-column-end and grid-row-start, grid-row-end.</figcaption>
+</figure>

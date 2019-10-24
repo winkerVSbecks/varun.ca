@@ -1,0 +1,40 @@
+<figure class="center pa0 flex justify-around flex-wrap bg-tertiary">
+<pre class="mv0 f6 lh-copy code">
+.my-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+
+  /*
+  The above can also be written as:
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  */
+}
+</pre>
+  <pre class="mv0 f6 lh-solid code">
+.my-grid
+
++------+------+------+------+
+|      |      |      |      |
+|      |      |      |      |
+|      |      |      |      |
++------+------+------+------+
+|      |      |      |      |
+|      |      |      |      |
+|      |      |      |      |
++------+------+------+------+
+|      |      |      |      |
+|      |      |      |      |
+|      |      |      |      |
++------+------+------+------+
+|      |      |      |      |
+|      |      |      |      |
+|      |      |      |      |
++------+------+------+------+
+|      |      |      |      |
+|      |      |      |      |
+|      |      |      |      |
++------+------+------+------+</pre>
+  <figcaption class="clip">A flexible grid with 4 columns and 5 rows. It is made flexible by setting the rows and columns to 1fr.</figcaption>
+</figure>
