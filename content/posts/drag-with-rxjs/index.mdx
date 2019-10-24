@@ -4,6 +4,8 @@ preview: ../assets/napoleon-theorem.gif
 date: 2017-08-27
 ---
 
+import Drag from './diagrams';
+
 <CodePen
   hash="yoRBMj"
   title="Curves and Handles"
@@ -49,13 +51,13 @@ const pan$ = Rx.Observable.fromEvent(hammerPan, 'panstart panmove panend');
 
 For the drag gesture we want to create an observable stream such that it emits values from the the pan-move event once the pan-start event has been triggered and then stops emitting those values once the pan-end event is triggered.
 
-<figure class="center ma0 tc">
-  {/* {% include diagrams/drag.svg %} */}
-  <figcaption class="f6 mt3">
+<Box as="figure" mt={0} mx={0} mb={4}>
+  <Drag />
+  <figcaption>
     Visualization of the drag observables. Generated using{' '}
     <a href="https://rxviz.com/">rxviz.com</a>
   </figcaption>
-</figure>
+</Box>
 
 The [`filter`](https://www.learnrxjs.io/operators/filtering/filter.html) operator allows us to filter values based on a provided condition. We can use this to target specific events. For example, `pan$.filter(e => e.type === 'panstart')` to subscribe only to pan-start events. Then to generate the `drag$` observable we then need to combine `panstart$`, `panmove$` & `panend$` in the following pattern:
 

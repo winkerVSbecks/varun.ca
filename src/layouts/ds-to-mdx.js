@@ -58,6 +58,15 @@ export default {
   // hr:	Break,
   a: DesignSystem.Link,
   img: DesignSystem.Image,
+  figcaption: props => (
+    <DesignSystem.Text
+      as="figcaption"
+      textAlign="center"
+      fontSize={1}
+      mt={3}
+      {...props}
+    />
+  ),
   th: props => (
     <DesignSystem.Text
       as="th"
