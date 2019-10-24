@@ -9,7 +9,8 @@ const brand = {
   dark: {
     main: '#bb99ff',
     bright: '#d4d1db',
-    faded: '#484858',
+    faded: '#383848',
+    // faded: '#484858',
   },
 };
 

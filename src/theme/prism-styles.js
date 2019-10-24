@@ -46,8 +46,10 @@ export default props => {
     },
     /* Inline code */
     ':not(pre) > code[class*="language-"]': {
-      padding: '.1em',
-      borderRadius: '.3em',
+      fontSize: '70%',
+      backgroundColor: t.colors.brand.faded,
+      padding: '2px 4px',
+      borderRadius: 0,
     },
     // PrismJS syntax highlighting token styles
     '.token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata': {
