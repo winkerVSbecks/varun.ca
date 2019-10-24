@@ -3,6 +3,8 @@ title: Learning CSS Grid
 date: 2017-05-16
 ---
 
+import diagrams from './diagrams';
+
 <Flex as="figure" mx="auto" p={0} mt={3} mb={4} justifyContent="center">
   <AsciiDiagram>
     {`+-------------------------+ +---+
@@ -29,9 +31,24 @@ Before we start creating grid layouts we need to learn a few new terms. A **Grid
 
 When we define the grid we specify the number of rows and columns we want. The grid layout system then generates numbered lines which divide the grid horizontally and vertically. These are known as **Grid Lines**. The space between any two adjacent grid lines is called **Grid Track**. This is essentially a generic term for _columns_ and _rows_.
 
-<GridTerms />
-
 <!-- {% include diagrams/grid-terms.html %} -->
+
+<Flex
+  as="figure"
+  mx="auto"
+  mb={4}
+  justifyContent="space-around"
+  flexWrap="wrap"
+  bg="code.background"
+>
+  <AsciiDiagram>{diagrams.gridLines}</AsciiDiagram>
+  <AsciiDiagram>{diagrams.rowTracks}</AsciiDiagram>
+  <AsciiDiagram>{diagrams.columnTracks}</AsciiDiagram>
+  <SrOnly as="figcaption">
+    The grid gives us numbered lines to use when positioning items. A grid track
+    is the space between any two lines on the grid.
+  </SrOnly>
+</Flex>
 
 A **Grid Cell** is the smallest unit on the grid. It is the intersection of a row and column. Conceptually it is quite similar to a table cell.
 

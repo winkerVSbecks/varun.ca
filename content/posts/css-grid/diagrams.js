@@ -1,8 +1,4 @@
-import React from 'react';
-
-export default () => (
-  <figure class="center pa0 flex justify-around flex-wrap bg-tertiary">
-    <pre>{`Grid Lines
+const gridLines = `Grid Lines
 
 
 +---+---+---+---+---+---+ 1
@@ -18,10 +14,9 @@ export default () => (
 |   |   |   |   |   |   |
 |   |   |   |   |   |   |
 +---+---+---+---+---+---+ 4
-1   2   3   4   5   6   7`}</pre>
+1   2   3   4   5   6   7`;
 
-    <pre>{`
-Row Tracks
+const rowTracks = `Row Tracks
 
 
 +---+---+---+---+---+---+
@@ -36,10 +31,9 @@ Row Tracks
 |   |   |   |   |   |   |
 |   |   |   |   |   |   |
 |   |   |   |   |   |   |
-+---+---+---+---+---+---+`}</pre>
++---+---+---+---+---+---+`;
 
-    <pre>{`
-Column Tracks
+const columnTracks = `Column Tracks
 
 
 +---+---+---+---+---+---+
@@ -54,11 +48,10 @@ Column Tracks
 |xxx|   |   |   |   |   |
 |xxx|   |   |   |   |   |
 |xxx|   |   |   |   |   |
-+---+---+---+---+---+---+`}</pre>
++---+---+---+---+---+---+`;
 
-    <figcaption class="clip">
-      The grid gives us numbered lines to use when positioning items. A grid
-      track is the space between any two lines on the grid.
-    </figcaption>
-  </figure>
-);
+export default {
+  gridLines,
+  rowTracks,
+  columnTracks,
+};

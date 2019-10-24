@@ -2,7 +2,6 @@ import React from 'react';
 import * as DesignSystem from '@ds';
 import { CallOut } from '@components/call-out';
 import { CodePen } from '@components/codepen';
-import GridTerms from '../diagrams/grid-terms';
 
 export default {
   // Components
@@ -20,11 +19,12 @@ export default {
       lineHeight="solid"
       fontSize={1}
       fontFamily="code"
+      p={3}
+      mb={0}
       {...props}
     />
   ),
-  // Diagrams
-  GridTerms,
+  SrOnly: DesignSystem.SrOnly,
   // HTML elements
   h1: DesignSystem.H1,
   h2: DesignSystem.H2,
