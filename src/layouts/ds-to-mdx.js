@@ -49,6 +49,9 @@ export default {
   li: DesignSystem.ListItem,
   a: DesignSystem.Link,
   img: DesignSystem.Image,
+  figure: props => (
+    <DesignSystem.Box as="figure" mt={0} mx={0} mb={4} {...props} />
+  ),
   figcaption: props => (
     <DesignSystem.Text
       as="figcaption"

@@ -1,5 +1,6 @@
 import React from 'react';
 
+/* eslint-disable */
 function Drag() {
   return (
     <svg
@@ -56,17 +57,25 @@ function Drag() {
           d="M0 26L534 26"
           shapeRendering="crispEdges"
         ></path>
-        <path
-          style={{
-            WebkitTransition: 'fill 0.2s ease-in-out',
-            transition: 'fill 0.2s ease-in-out',
-          }}
-          d="M534 21l10 5-10 5z"
-        ></path>
-        <circle r="15" fill="#767676" transform="translate(55.643 26)"></circle>
-        <circle r="15" fill="#767676" transform="translate(71.129 26)"></circle>
+        <path d="M534 21l10 5-10 5z"></path>
         <circle
           r="15"
+          cx="0"
+          cy="0"
+          fill="#767676"
+          transform="translate(55.643 26)"
+        ></circle>
+        <circle
+          r="15"
+          cx="0"
+          cy="0"
+          fill="#767676"
+          transform="translate(71.129 26)"
+        ></circle>
+        <circle
+          r="15"
+          cx="0"
+          cy="0"
           fill="#767676"
           transform="translate(353.188 26)"
         ></circle>
@@ -78,21 +87,8 @@ function Drag() {
           d="M55.643 26L534 26"
           shapeRendering="crispEdges"
         ></path>
-        <path
-          style={{
-            WebkitTransition: 'fill 0.2s ease-in-out',
-            transition: 'fill 0.2s ease-in-out',
-          }}
-          fill="#767676"
-          d="M534 21l10 5-10 5z"
-        ></path>
-        <g
-          transform="translate(55.75 26)"
-          style={{
-            WebkitTransition: 'transform 0.5s ease-in-out',
-            transition: 'transform 0.5s ease-in-out',
-          }}
-        >
+        <path fill="#767676" d="M534 21l10 5-10 5z"></path>
+        <g transform="translate(55.75 26)">
           <circle r="15" fill="#fff" stroke="#767676" strokeWidth="2"></circle>
           <text fill="#767676">⬇️</text>
         </g>
@@ -104,101 +100,40 @@ function Drag() {
           d="M71.129 26L534 26"
           shapeRendering="crispEdges"
         ></path>
-        <path
-          style={{
-            WebkitTransition: 'fill 0.2s ease-in-out',
-            transition: 'fill 0.2s ease-in-out',
-          }}
-          fill="#767676"
-          d="M534 21l10 5-10 5z"
-        ></path>
-        <g
-          transform="translate(71.45 26)"
-          style={{
-            WebkitTransition: 'transform 0.5s ease-in-out',
-            transition: 'transform 0.5s ease-in-out',
-          }}
-        >
+        <path fill="#767676" d="M534 21l10 5-10 5z"></path>
+        <g transform="translate(71.45 26)">
           <circle r="15" fill="#fff" stroke="#767676" strokeWidth="2"></circle>
           <text fill="#767676">🔁</text>
         </g>
-        <g
-          transform="translate(104.984 26)"
-          style={{
-            WebkitTransition: 'transform 0.5s ease-in-out',
-            transition: 'transform 0.5s ease-in-out',
-          }}
-        >
+        <g transform="translate(104.984 26)">
           <circle r="15" fill="#fff" stroke="#767676" strokeWidth="2"></circle>
           <text fill="#767676">🔁</text>
         </g>
-        <g
-          transform="translate(138.84 26)"
-          style={{
-            WebkitTransition: 'transform 0.5s ease-in-out',
-            transition: 'transform 0.5s ease-in-out',
-          }}
-        >
+        <g transform="translate(138.84 26)">
           <circle r="15" fill="#fff" stroke="#767676" strokeWidth="2"></circle>
           <text fill="#767676">🔁</text>
         </g>
-        <g
-          transform="translate(172.589 26)"
-          style={{
-            WebkitTransition: 'transform 0.5s ease-in-out',
-            transition: 'transform 0.5s ease-in-out',
-          }}
-        >
+        <g transform="translate(172.589 26)">
           <circle r="15" fill="#fff" stroke="#767676" strokeWidth="2"></circle>
           <text fill="#767676">🔁</text>
         </g>
-        <g
-          transform="translate(206.444 26)"
-          style={{
-            WebkitTransition: 'transform 0.5s ease-in-out',
-            transition: 'transform 0.5s ease-in-out',
-          }}
-        >
+        <g transform="translate(206.444 26)">
           <circle r="15" fill="#fff" stroke="#767676" strokeWidth="2"></circle>
           <text fill="#767676">🔁</text>
         </g>
-        <g
-          transform="translate(240.3 26)"
-          style={{
-            WebkitTransition: 'transform 0.5s ease-in-out',
-            transition: 'transform 0.5s ease-in-out',
-          }}
-        >
+        <g transform="translate(240.3 26)">
           <circle r="15" fill="#fff" stroke="#767676" strokeWidth="2"></circle>
           <text fill="#767676">🔁</text>
         </g>
-        <g
-          transform="translate(274.049 26)"
-          style={{
-            WebkitTransition: 'transform 0.5s ease-in-out',
-            transition: 'transform 0.5s ease-in-out',
-          }}
-        >
+        <g transform="translate(274.049 26)">
           <circle r="15" fill="#fff" stroke="#767676" strokeWidth="2"></circle>
           <text fill="#767676">🔁</text>
         </g>
-        <g
-          transform="translate(307.904 26)"
-          style={{
-            WebkitTransition: 'transform 0.5s ease-in-out',
-            transition: 'transform 0.5s ease-in-out',
-          }}
-        >
+        <g transform="translate(307.904 26)">
           <circle r="15" fill="#fff" stroke="#767676" strokeWidth="2"></circle>
           <text fill="#767676">🔁</text>
         </g>
-        <g
-          transform="translate(341.76 26)"
-          style={{
-            WebkitTransition: 'transform 0.5s ease-in-out',
-            transition: 'transform 0.5s ease-in-out',
-          }}
-        >
+        <g transform="translate(341.76 26)">
           <circle r="15" fill="#fff" stroke="#767676" strokeWidth="2"></circle>
           <text fill="#767676">🔁</text>
         </g>
@@ -210,21 +145,8 @@ function Drag() {
           d="M353.188 26L534 26"
           shapeRendering="crispEdges"
         ></path>
-        <path
-          style={{
-            WebkitTransition: 'fill 0.2s ease-in-out',
-            transition: 'fill 0.2s ease-in-out',
-          }}
-          fill="#767676"
-          d="M534 21l10 5-10 5z"
-        ></path>
-        <g
-          transform="translate(353.294 26)"
-          style={{
-            WebkitTransition: 'transform 0.5s ease-in-out',
-            transition: 'transform 0.5s ease-in-out',
-          }}
-        >
+        <path fill="#767676" d="M534 21l10 5-10 5z"></path>
+        <g transform="translate(353.294 26)">
           <circle r="15" fill="#fff" stroke="#767676" strokeWidth="2"></circle>
           <text fill="#767676">⬆️</text>
         </g>
