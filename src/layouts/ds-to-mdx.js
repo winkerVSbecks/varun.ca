@@ -47,15 +47,6 @@ export default {
   ul: DesignSystem.List,
   ol: DesignSystem.OrderedList,
   li: DesignSystem.ListItem,
-  // pre: props => (
-  //   <DesignSystem.Text as="pre" fontSize={1} fontFamily="code" {...props} />
-  // ),
-  // code:	Code,
-  // em:	Emphasis,
-  // strong:	Strong,
-  // delete:	Delete,
-  // code:	InlineCode,
-  // hr:	Break,
   a: DesignSystem.Link,
   img: DesignSystem.Image,
   figcaption: props => (
