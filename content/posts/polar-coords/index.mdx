@@ -3,17 +3,31 @@ title: Polar Coordinates 🌀
 date: 2017-11-23
 ---
 
+import PolarCoords from './diagrams';
+
 ## Cartesian Coordinate System
 
 A coordinate system allows us to use numbers to determine the position of points in a 2D or 3D space. The most popular coordinate system is probably the Cartesian coordinate system. It allows you to locate each point by a pair of numerical coordinates `(x, y)`. There is a very good chance that you have used this system. It is everywhere — SVG, Canvas, WebGL and even Sketch & Illustrator.
 
-{% include diagrams/carts-coords.html %}
+<figure width="60%" mx="auto">
+  <PolarCoords.CartsCoords />
+
+  <figcaption fontFamily="code">
+    <b>Figure 1:</b> Cartesian coordinate system
+  </figcaption>
+</figure>
 
 ## Polar Coordinate System
 
 Polar coordinate system is a 2D coordinate system in which each point is determined by `r` & `θ`. Where `r` is the distance from the origin and `θ` is the angle from the x-axis.
 
-{% include diagrams/polar-coords.html %}
+<figure width="70%" mx="auto">
+  <PolarCoords.PolarCoords />
+
+  <figcaption fontFamily="code">
+    <b>Figure 2:</b> Polar coordinate system
+  </figcaption>
+</figure>
 
 ### Converting Between Polar and Cartesian Coordinates
 
@@ -28,35 +42,23 @@ const y = r * Math.sin(theta);
 
 Below I have a few animations by [Dave Whyte](https://dribbble.com/beesandbombs) aka bees & bombs. They all have one thing in common, they use polar coordinates to generate a pattern.
 
-<figure class="mh0 flex flex-wrap justify-center">
-  <img
-    style="width: 8rem; height: 6rem;"
-    class="pa1 ba b--light-gray br2 ma1"
-    src="//cdn.dribbble.com/users/583436/screenshots/1735131/bubbles2.gif"
-  />
-  <img
-    style="width: 8rem; height: 6rem;"
-    class="pa1 ba b--light-gray br2 ma1"
-    src="//cdn.dribbble.com/users/583436/screenshots/1702158/spiraldots.gif"
-  />
-  <img
-    style="width: 8rem; height: 6rem;"
-    class="pa1 ba b--light-gray br2 ma1"
-    src="//cdn.dribbble.com/users/583436/screenshots/1660784/spins.gif"
-  />
-  <img
-    style="width: 8rem; height: 6rem;"
-    class="pa1 ba b--light-gray br2 ma1"
-    src="//cdn.dribbble.com/users/583436/screenshots/1570346/spiralbig.gif"
-  />
-  <figcaption class="tc mt3 code">
+<Flex as="figure" flexWrap="wrap" justifyContent="space-evenly" mx={0} my={5}>
+  <PolarCoords.PatternExamples />
+
+  <figcaption fontFamily="code" width="100%">
     <b>Figure 3:</b> Patterns generated using polar coordinates
   </figcaption>
-</figure>
+</Flex>
 
 Cartesian coordinates are a great choice for placing things evenly on a rectangular grid. However, if you want to distribute things evenly around a circle then polar coordinates are generally the better option. Keeping the radius constant we compute the angle for each point as `angle = 360° * index / number of sides`.
 
-{% include diagrams/polar-patterns.html %}
+<figure>
+  <PolarCoords.PolarPatterns />
+
+  <figcaption fontFamily="code">
+    <b>Figure 4:</b> Placing items evenly around a circle
+  </figcaption>
+</figure>
 
 Below is the JavaScript implementation of this idea. The `points` function also accepts an optional `offset` argument to shift the points along the perimeter of the circle. For example, the outermost circle of points in **Figure 4** can be generated using `points(12, 200)`. The next one inwards using `points(12, 175, 15)`. The one after that using `points(12, 150, 30)` and so on. My [splash](https://codepen.io/winkerVSbecks/pen/oLmqQo) CodePen is was built using this.
 
@@ -87,7 +89,13 @@ function degreesToRadians(angleInDegrees) {
 
 A regular polygon is a polygon that is equiangular i.e., all its angles are equal and all its sides have the same length. This means that all the vertices of a regular polygon are points evenly spaced on a circle. And isn't it handy that we just created a function that generates exactly this!
 
-{% include diagrams/polar-polygon.html %}
+<figure>
+  <PolarCoords.PolarPolygon />
+
+  <figcaption fontFamily="code">
+    <b>Figure 5:</b> Drawing a polygon by connecting polar coordinates
+  </figcaption>
+</figure>
 
 To generate an SVG polygon we will generate the list of of points using the `points` function and then simply connect the dots. With SVG we have two options for this: `<polygon>` or `<path>`. The example below generates the _points_ attribute for a `<polygon>` element.
 
@@ -115,20 +123,11 @@ function toCartesian({ r, theta }) {
 
 Seems simple but, you can do a lot of interesting things with it. Here are a couple of examples:
 
-<figure class="tc">
-  <img
-    alt="fallback"
-    class="center pa2 ba b--light-gray br2"
-    src="../assets/gems.gif"
-    style="max-width: 400px;"
-  />
-  <figcaption class="tc mt3 code">
-    <b>Gems</b>{' '}
-    <a href="http://winkervsbecks.github.io/gems">
-      winkervsbecks.github.io/gems
-    </a>
-  </figcaption>
-</figure>
+<img
+  src="../../assets/gems.gif"
+  alt="Gems generated using polar coordinates"
+  width="400px"
+/>
 
 <CodePen
   hash="PmNJpJ"
@@ -146,7 +145,13 @@ const x = cx + r * Math.cos(theta);
 const y = cy + r * Math.sin(theta);
 ```
 
-{% include diagrams/relative-polar-coords.html %}
+<figure>
+  <PolarCoords.RelativePolarCoords />
+
+  <figcaption fontFamily="code">
+    <b>Figure 6:</b> Relative polar coordinates
+  </figcaption>
+</figure>
 
 We can modify the polygon generator to allow us to draw a polygon centred at any location in the SVG canvas.
 

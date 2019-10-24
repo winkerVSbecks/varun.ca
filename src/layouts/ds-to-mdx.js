@@ -58,6 +58,7 @@ export default {
       textAlign="center"
       fontSize={1}
       mt={3}
+      mb={0}
       {...props}
     />
   ),
