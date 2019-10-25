@@ -11,7 +11,7 @@ const brand = {
     main: '#D8B0B0',
     bright: '#EBC6C6',
     faded: '#48434f',
-    selection: '#BC9090',
+    selection: '#959090',
   },
 };
 
