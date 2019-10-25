@@ -40,7 +40,7 @@ const Home = ({ data }) => {
             <H1 mb={1} fontSize={3}>
               About
             </H1>
-            <Text measure="wide" fontSize={2}>
+            <Text measure="wide" fontSize={[2, 3]}>
               I am a developer with a strong focus on design, interactivity and
               animation. Originally from New Delhi, I currently live in Toronto
               and am the Director, UI Architecture at{' '}

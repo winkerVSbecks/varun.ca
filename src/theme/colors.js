@@ -5,12 +5,13 @@ const brand = {
     main: '#4e4bec',
     bright: '#dedefb',
     faded: '#ececfd',
+    selection: '#ececfd',
   },
   dark: {
-    main: '#bb99ff',
-    bright: '#d4d1db',
-    faded: '#383848',
-    // faded: '#484858',
+    main: '#D8B0B0',
+    bright: '#EBC6C6',
+    faded: '#48434f',
+    selection: '#BC9090',
   },
 };
 
@@ -79,18 +80,14 @@ export const colorModes = {
   dark: {
     brand: brand.dark,
     neutral: {
-      // 0: '#fff',
       0: 'rgb(217, 215, 224)',
-      // 0: '#f4f4f4',
-      1: '#eee',
-      2: '#ccc',
-      3: '#aaa',
-      4: '#777',
-      5: '#555',
-      6: '#333',
-      // 7: '#111',
+      1: '#ccc',
+      2: '#aaa',
+      3: '#777',
+      4: '#555',
+      5: '#333',
+      6: '#222',
       7: 'rgb(19, 18, 23)',
-      // hsla(0,0%,0%,0.04);
     },
     transparentNeutral: {
       0: 'rgba(0, 0, 0, 0.05)',

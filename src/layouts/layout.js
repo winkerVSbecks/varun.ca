@@ -22,11 +22,11 @@ const GlobalStyle = createGlobalStyle`
   ${prismStyles}
 
   ::-moz-selection {
-    background: ${props => props.theme.colors.brand.faded};
+    background: ${props => props.theme.colors.brand.selection};
   }
 
   ::selection {
-    background: ${props => props.theme.colors.brand.faded};
+    background: ${props => props.theme.colors.brand.selection};
   }
 
   *:focus{
