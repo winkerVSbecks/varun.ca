@@ -3,6 +3,8 @@ title: Component Based Design System With Styled-System
 date: 2018-05-11
 ---
 
+import StyledSystem from './diagrams';
+
 Component-based design system is the practice of splitting the UI into small, isolated and more manageable parts; backed by a set of design constraints. It builds upon ideas such as [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design), [Style Guides](http://alistapart.com/article/creating-style-guides) and [Component-Based Architecture](https://medium.com/@dan.shapiro1210/understanding-component-based-architecture-3ff48ec0c238). In my [previous](/tachyons-components), post I introduced some foundational concepts of component-based design systems and shared my approach to building one with Tachyons and React. I now want to focus on a different tool called Styled-System which uses a Tachyons like API while giving you a lot more control over the design system implementation.
 
 ## Styled System
@@ -169,7 +171,7 @@ If you have settled on using styled-components with styled-system, then you can 
 
 That's a lot of libraries with similar sounding names 😅 To avoid confusion, here's a quick overview of the ecosystem:
 
-{% include diagrams/system-components-overview.html %}
+<StyledSystem.SystemComponentsOverview />
 
 Let's start by creating a `<Box />` primitive. I would recommend applying the core functions to all components. Beyond that, it depends on the component you are building. For the `<Box />` component I include border, layout, flex and position functions.
 
@@ -219,7 +221,7 @@ System-components used `clean-tag` and `clean-element` to strip out styled-syste
 
 System-components automatically apply styled-system functions based on the keys of the default values object. In the example below, `<Text />` will have `fontSize`, `color` and `fontFamily` functions automatically applied so, you don't need to list them out.
 
-This is honestly my favourite way to build UI components right now <img src="../assets/parrot.gif" alt="party parrot" display="inline" width="1em" mb={0} />
+This is honestly my favourite way to build UI components right now <img src="../../assets/parrot.gif" alt="party parrot" display="inline" width="1em" mb={0} />
 
 ```js
 const Text = system(
@@ -257,14 +259,10 @@ Heading.displayName = 'Heading';
 
 In the previous, post I had created a Profile Card component. Here's the whole example recreated with system-components.
 
-<p style="margin-bottom: -2rem;">
-  <a href="https://codesandbox.io/s/v86m4zkyy0" class="dib" style="border: 0;">
-    <img
-      alt="Edit Design System Demo — Profile Card"
-      style="width: 12rem;"
-      src="https://codesandbox.io/static../assets/play-codesandbox.svg"
-    />
-  </a>
+<p style={{marginBottom: '-2rem'}}>
+<a href="https://codesandbox.io/s/v86m4zkyy0" style={{border: 0, display: 'inline-block'}}>
+<img alt="Edit Design System Demo — Profile Card" style={{width: '12rem'}} src="https://codesandbox.io/static/img/play-codesandbox.svg" />
+</a>
 </p>
 
 ```js
@@ -290,11 +288,11 @@ export const ProfileCard = ({ image, name, title, ...props }) => (
 
 Moving onto some more complex examples. The `<InputWithAdornment/>` component allows you to place an adornment before or after an input. The adornment can be a bit of text, an icon or any valid node.
 
-{% include diagrams/currency-input.html %}
+<StyledSystem.CurrencyInput />
 
 One possible way of building this is to wrap an HTML `<input />` and containers for the adornments in a `<Box />`. The adornment containers are absolutely positioned while the input has padding to _make room_ for the adornment.
 
-{% include diagrams/input-with-adornment.html %}
+<StyledSystem.InputWithAdornment />
 
 You can pass in any node to the `before` and `after` props, while all other props are spread onto the `<input />` element so as not to limit any functionality.
 
@@ -394,20 +392,11 @@ The [Aldo](https://www.aldoshoes.com/ca/en/men/footwear/dress-shoes) product car
   }
 `}</style>
 
-<figure class="mh0 flex flex-wrap items-center justify-between">
-  <img src="../assets/product-card-1.png" class="product-card-img" />
-  <img src="../assets/product-card-2.png" class="product-card-img" />
-  <img src="../assets/product-card-3.png" class="product-card-img" />
-  <img src="../assets/product-card-4.png" class="product-card-img" />
-  <img src="../assets/product-card-5.png" class="product-card-img" />
-  <img src="../assets/product-card-6.png" class="product-card-img" />
-
-  <figcaption class="clip">Product Cards </figcaption>
-</figure>
+<StyledSystem.ProductCards />
 
 A more generic form of this component is the `<ImageCard />` component. It consists of a `<BackgroundImage />` component and containers for content that can be absolutely positioned on top of it. All wrapped in a `<Box />`.
 
-{% include diagrams/image-card.html %}
+<StyledSystem.ImageCard />
 
 `<BackgroundImage />` is essentially the same as Rebass' [BackgroundImage](http://jxnblk.com/rebass/components/BackgroundImage) component. It uses the [padding technique](https://css-tricks.com/aspect-ratio-boxes) to render images in a specific aspect ratio.
 
