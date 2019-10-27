@@ -3,6 +3,9 @@ title: Component Based Design System With Tachyons
 date: 2018-05-10
 ---
 
+import tachyonsCard from '../assets/tachyons-card.png';
+import tachyonsCardSlice from '../assets/tachyons-card-slice.png';
+
 A Design system is a collection of rules, constraints and principles applied to your design and development process. I most often encounter it as a set of rules that control the typography, colours, [spacing](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62), sizing, icons and other visual styles. These rules form a foundation that guides your work. They reduce inconsistencies in both design and development implementations yet giving you the room to explore creative solutions.
 
 ## Tachyons Design System
@@ -158,27 +161,15 @@ Heading.displayName = 'Heading';
 
 Consider this profile card taken from the Tachyons [documentation](http://tachyons.io/components/cards/profile-card-title-subtitle/index.html). You can start by breaking down this layout into its various constituting components. There are many different ways you can approach this. I would personally break this down into: `<Card />`, `<Box/>`, `<Avatar />`, `<Heading/>` & `<Text/>` components.
 
-<p
-bg="#f4f4f4"
-display="flex"
-flexWrap="wrap"
-alignItems="center"
-justifyContent="space-around"
-
->
-
+<figure display="flex" flexWrap="wrap" mb={0}>
+  <img src={tachyonsCard} alt="tachyons card" mb={4} style="width: 240px;" />
   <img
-    src="../assets/tachyons-card.png"
-    alt="tachyons card"
-    style="width: 240px;"
-  />
-  <img
-    src="../assets/tachyons-card-slice.png"
-    class="ba b--gold"
+    src={tachyonsCardSlice}
     alt="tachyons card slices"
+    mb={4}
     style="width: 240px;"
   />
-</p>
+</figure>
 
 As shown above, `<Box/>` and `<Text/>` are enhanced HTML elements. `<Heading/>` is an enhanced component that uses the `level` prop to decide which heading tag to render. `<Card />` and `<Avatar />` require a bit more work. Using the [defaultProps](https://github.com/acdlite/recompose/blob/master/docs/API.md#defaultprops) HOC from Recompose you can provide some default styling. `<Card />` is essentially an `<article />` with a rounded border and some padding. And `<Avatar />` is a circular image with a border.
 
@@ -240,15 +231,15 @@ Instead of mapping props to the design system, it enables you to apply Tachyons 
 ```js
 import styled from 'tachyons-components';
 
-export const Box = styled('div')`;
+export const Box = styled('div')``;
 Box.displayName = 'Box';
 
-export const Text = styled('p')`;
+export const Text = styled('p')``;
 Text.displayName = 'Text';
 
 export const Heading = styled(({ level = 1, children, ...props }) => {
   return React.createElement('h' + level, props, children);
-})`;
+});
 Heading.displayName = 'Heading';
 
 export const Card = styled('article')`

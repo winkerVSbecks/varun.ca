@@ -41,6 +41,7 @@ export const Link = ({ to = '', href, as = StyledLink, ...props }) => {
       />
     );
   }
+
   return <Tag as={GatsbyLink} to={destination} {...props} />;
 };
 

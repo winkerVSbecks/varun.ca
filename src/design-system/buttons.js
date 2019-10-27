@@ -35,18 +35,22 @@ TransparentButton.defaultProps = {
   p: 0,
 };
 
-export const ButtonLink = styled(SimpleLink)({});
+export const ButtonLink = styled(SimpleLink)(props => ({
+  textTransform: 'uppercase',
+  letterSpacing: '0.05em',
+  paddingTop: props.theme.space[3] * 0.75,
+  paddingBottom: props.theme.space[3] * 0.75,
+}));
 
 ButtonLink.defaultProps = {
   display: 'inline-block',
-  borderBottom: 'bright',
-  fontSize: 1,
-  bg: 'brand.faded',
+  fontSize: 0,
+  bg: 'neutral.5',
   color: 'brand.main',
+  fontWeight: 5,
   textAlign: 'center',
   px: 3,
-  py: 2,
-  lineHeight: 'copy',
+  lineHeight: 'title',
   mr: 3,
   width: 4,
 };

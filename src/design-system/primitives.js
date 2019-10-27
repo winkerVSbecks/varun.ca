@@ -10,6 +10,7 @@ import {
   shadow,
   background,
   grid,
+  position,
 } from 'styled-system';
 import { measure, truncate } from './system-functions';
 
@@ -24,7 +25,8 @@ export const Box = styled.div(
     layout,
     flexbox,
     border,
-    measure
+    measure,
+    position
   ),
   truncate
 );
