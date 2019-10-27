@@ -17,6 +17,8 @@ function Drag() {
         MsUserSelect: 'none',
         userSelect: 'none',
         minHeight: 219,
+        backgroundColor: '#fff',
+        padding: '8px 16px 8px 0',
       }}
       textAnchor="middle"
       viewBox="0 0 565 219"

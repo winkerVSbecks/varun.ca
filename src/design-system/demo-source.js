@@ -7,7 +7,7 @@ export const DemoSource = ({ demo, source }) => (
     <ButtonLink flex="1 1 auto" to={demo}>
       Demo
     </ButtonLink>
-    <ButtonLink flex="1 1 auto" to={source}>
+    <ButtonLink flex="1 1 auto" to={source} mr={0}>
       Source
     </ButtonLink>
   </Text>

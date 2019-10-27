@@ -1,9 +1,14 @@
 import React from 'react';
+import { Box, SVG } from '@ds';
 
 function Tangents() {
   return (
-    <svg
-      style={{ height: 200, width: '100%', margin: '0 auto' }}
+    <SVG
+      height={200}
+      width="100%"
+      mx="auto"
+      bg="white"
+      mb={4}
       preserveAspectRatio="xMidYMid slice"
       viewBox="0 0 1200 1200"
     >
@@ -25,19 +30,19 @@ function Tangents() {
           <circle cx="720.18" cy="528.411" r="8"></circle>
         </g>
       </g>
-    </svg>
+    </SVG>
   );
 }
 
 function Spread() {
   return (
-    <svg
-      style={{
-        height: 200,
-        width: '100%',
-        margin: '0 auto',
-        fontFamily: 'Consolas, monaco, monospace',
-      }}
+    <SVG
+      height={200}
+      width="100%"
+      mx="auto"
+      bg="white"
+      mb={4}
+      fontFamily="code"
       preserveAspectRatio="xMidYMid slice"
       viewBox="0 0 1200 1200"
     >
@@ -63,20 +68,20 @@ function Spread() {
           <circle cx="720.18" cy="528.411" r="8"></circle>
         </g>
       </g>
-    </svg>
+    </SVG>
   );
 }
 
 function Handles() {
   return (
-    <svg
-      style={{
-        height: 200,
-        width: '100%',
-        margin: '0 auto',
-        fontFamily: 'Consolas, monaco, monospace',
-        fontWeight: 'bold',
-      }}
+    <SVG
+      height={200}
+      width="100%"
+      mx="auto"
+      bg="white"
+      mb={4}
+      fontFamily="code"
+      fontWeight="bold"
       preserveAspectRatio="xMidYMid slice"
       viewBox="0 0 1200 1200"
     >
@@ -123,21 +128,20 @@ function Handles() {
           angle 1
         </text>
       </g>
-    </svg>
+    </SVG>
   );
 }
 
 function U1U2() {
   return (
-    <div style={{ height: 200, overflow: 'hidden' }}>
-      <svg
-        style={{
-          height: 200,
-          width: '100%',
-          margin: '0 auto',
-          fontFamily: 'Consolas, monaco, monospace',
-          fontWeight: 'bold',
-        }}
+    <Box height={200} mb={4} style={{ overflow: 'hidden' }}>
+      <SVG
+        height={200}
+        width="100%"
+        mx="auto"
+        bg="white"
+        fontFamily="code"
+        fontWeight="bold"
         preserveAspectRatio="xMidYMid slice"
         transform="scale(1.5)"
         viewBox="0 0 1200 1200"
@@ -175,8 +179,8 @@ function U1U2() {
             u2
           </text>
         </g>
-      </svg>
-    </div>
+      </SVG>
+    </Box>
   );
 }
 

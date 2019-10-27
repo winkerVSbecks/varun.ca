@@ -31,27 +31,24 @@ It was really fast to build and this weird SVG syntax didn't seem that weird any
 
 Let's look at an example of a component. I needed to build an SVG circle and then allow the user to click and drag it around. I started by creating a new component called _Handle_. Here's the template for it:
 
-```
+```js
 <circle
   className="handle"
-  id={ this.props.id }
-  cx={ this.props.x }
-  cy={ this.props.y }
-  fill={ clrs.yellow }
-  onMouseDown={ this.selectElement }
-  onMouseMove={ this.drag }
-  onMouseUp={ this.deSelectElement }
-  onMouseLeave={ this.deSelectElement } />
+  id={this.props.id}
+  cx={this.props.x}
+  cy={this.props.y}
+  fill={clrs.yellow}
+  onMouseDown={this.selectElement}
+  onMouseMove={this.drag}
+  onMouseUp={this.deSelectElement}
+  onMouseLeave={this.deSelectElement}
+/>
 ```
 
 The logic for clicking and dragging and all the event handlers are isolated within this component itself. However, you can still pass in callbacks. This allows you to capture the drag and respond to it. Here's an example of how you would use the _Handle_ component:
 
-```
-<Handle
-  x={ pt[0] }
-  y={ pt[1] }
-  id={ idx }
-  onUpdate={ dragUpdate } />
+```js
+<Handle x={pt[0]} y={pt[1]} id={idx} onUpdate={dragUpdate} />
 ```
 
 In the long term I hope to extend this ideology to Canvas. The idea is to build a library of such components with React. Each component would then be rendered to Canvas using PaperJS.
