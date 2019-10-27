@@ -14,8 +14,8 @@ export const PostList = ({ posts }) => (
           <Text
             as="span"
             display="block"
-            mb={0}
-            lineHeight="solid"
+            mb={1}
+            lineHeight="title"
             fontSize={[4, 5]}
           >
             {post.frontmatter.title}

@@ -39,15 +39,17 @@ const StackItem = props => (
 );
 
 const StackTitle = props => (
-  <H1
-    fontSize={3}
-    py={3}
-    borderBottom="faded"
-    alignItems="center"
-    width="100%"
-    mb={0}
-    {...props}
-  />
+  <H1 mb={0}>
+    <Link
+      as={StackTitleLink}
+      fontSize={3}
+      py={3}
+      borderBottom="faded"
+      alignItems="center"
+      width="100%"
+      {...props}
+    />
+  </H1>
 );
 
 const StackMoreLink = ({ children, ...props }) => (
@@ -73,3 +75,4 @@ export const Stack = props => (
 Stack.Item = StackItem;
 Stack.Title = StackTitle;
 Stack.MoreLink = StackMoreLink;
+Stack.StackTitleLink = StackTitleLink;

@@ -3,7 +3,7 @@ import { Stack, Text, Box } from '@ds';
 
 export const SpeakingFeatured = ({ speaking, ...props }) => (
   <Stack {...props}>
-    <Stack.Title>Speaking</Stack.Title>
+    <Stack.Title to="/speaking">Speaking</Stack.Title>
 
     {speaking.map(talk => (
       <Stack.Item

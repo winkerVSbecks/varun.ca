@@ -4,7 +4,7 @@ import { Date } from '@components/date';
 
 export const WritingFeatured = ({ posts, ...props }) => (
   <Stack {...props}>
-    <Stack.Title>Writing</Stack.Title>
+    <Stack.Title to="/writing">Writing</Stack.Title>
 
     {posts.map(post => (
       <Stack.Item
