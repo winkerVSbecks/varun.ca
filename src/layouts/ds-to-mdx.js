@@ -50,7 +50,7 @@ export default {
   a: DesignSystem.Link,
   img: DesignSystem.Image,
   figure: props => (
-    <DesignSystem.Box as="figure" mt={0} mx={0} mb={4} {...props} />
+    <DesignSystem.Box as="figure" mt={0} ml={0} mr={0} mb={4} {...props} />
   ),
   figcaption: props => (
     <DesignSystem.Text

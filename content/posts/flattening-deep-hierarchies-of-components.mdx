@@ -12,33 +12,39 @@ Each component has its own well defined public API. In React this is defined by 
 
 It has one job: display an image with a title. You might be tempted to build it out such that it abstracts away all the logic for its constituent parts: image, title, etc.
 
-```
-<Card img={ 'img/rotary-phone.png' }
-  title={ 'Choosing the Right Antique Rotary Phone for You.' }
-  contentPaddingX={ 2 }
-  contentPaddingY={ 2 } />
+```js
+<Card
+  img={'img/rotary-phone.png'}
+  title={'Choosing the Right Antique Rotary Phone for You.'}
+  contentPaddingX={2}
+  contentPaddingY={2}
+/>
 ```
 
 As the complexity of your app grows you might introduce other scenarios for this `Card` component. The card should now be able to display a caption or an icon with a click action?
 
 ![Card with other requirements such as caption and icon](../assets/cards-with-other-requirements.png)
 
-```
+```js
 // Card with title and caption
-<Card img={ 'img/rotary-phone.png' }
-      title={ 'Choosing the Right Antique Rotary Phone for You.' }
-      caption={ '21 hours ago' }
-      contentPaddingX={ 2 }
-      contentPaddingY={ 2 } />
+<Card
+  img={'img/rotary-phone.png' }
+  title={'Choosing the Right Antique Rotary Phone for You.'}
+  caption={'21 hours ago'}
+  contentPaddingX={2}
+  contentPaddingY={2}
+/>
 
 // Card with title, caption and icon
-<Card img={ 'img/rotary-phone.png' }
-      title={ 'Choosing the Right Antique Rotary Phone for You.' }
-      caption={ '21 hours ago' }
-      contentPaddingX={ 2 }
-      contentPaddingY={ 2 }
-      icon={ 'add-to-cart' }
-      iconAction={ addToCart } />
+<Card
+  img={'img/rotary-phone.png'}
+  title={'Choosing the Right Antique Rotary Phone for You.'}
+  caption={'21 hours ago'}
+  contentPaddingX={2}
+  contentPaddingY={2}
+  icon={'add-to-cart'}
+  iconAction={addToCart}
+/>
 ```
 
 You now have to add more logic to this component. It has to account for all these permutations and combinations of its constituent parts. You can probably see the issue here. What started as a simple component has bloated into something that is hard to maintain, hard to test and not at all flexible.
@@ -106,21 +112,17 @@ Let us apply this same principle to the `Card` component. We start by breaking o
 
 Now, instead of passing all data into the `Card` component we instead use `children` (React) or `ng-content` (known as projection in Angular 2, and transclusion in Angular 1). The card on the right will now look something like this:
 
-```
+```js
 // Card with title, caption and icon
 <Card>
-  <Media source={ 'img/rotary-phone.png' } />
+  <Media source={'img/rotary-phone.png'} />
 
-  <Body paddingX={ 2 } paddingY={ 2 }>
-    <Title>
-      Choosing the Right Antique Rotary Phone for You.
-    </Title>
+  <Body paddingX={2} paddingY={2}>
+    <Title>Choosing the Right Antique Rotary Phone for You.</Title>
 
     <Caption>
-      { '21 hours ago' }
-      <Icon name="add-to-cart"
-            handleClick={ addToCart }
-      />
+      {'21 hours ago'}
+      <Icon name="add-to-cart" handleClick={addToCart} />
     </Caption>
   </Body>
 </Card>
@@ -144,50 +146,44 @@ We can improve this further. You might notice that `Body`, `Title` and `Caption`
 
 Notice the `muted` property for `Heading`. Instead of creating a `Caption` component we are reusing the `Heading` component and simply passing in a boolean with applies the muted colours.
 
-```
+```js
 // Card with title, caption and icon
 <Card>
-  <Media source={ 'img/rotary-phone.png' } />
+  <Media source={'img/rotary-phone.png'} />
 
-  <Block paddingX={ 2 } paddingY={ 2 }>
-
-    <Heading size={ 2 }>
-      Choosing the Right Antique Rotary Phone for You.
-    </Heading>
+  <Block paddingX={2} paddingY={2}>
+    <Heading size={2}>Choosing the Right Antique Rotary Phone for You.</Heading>
 
     <Block>
-      <Heading size={ 3 } muted>21 hours ago</Heading>
-      <Button style="clear"
-              handleClick={ addToCart }>
+      <Heading size={3} muted>
+        21 hours ago
+      </Heading>
+      <Button style="clear" handleClick={addToCart}>
         <Icon name="add-to-cart" />
       </Button>
     </Block>
-
   </Block>
 </Card>
 ```
 
 And here is the final version in Angular 2:
 
-```
+```html
 <!-- Card with title, caption and icon -->
 <Card>
-  <Media  [source]="'img/rotary-phone.png'"></Media>
+  <Media [source]="'img/rotary-phone.png'"></Media>
 
   <Block paddingX="2" paddingY="2">
-
     <Heading size="2">
       Choosing the Right Antique Rotary Phone for You.
     </Heading>
 
     <Block>
       <Heading size="3" muted>21 hours ago</Heading>
-      <Button style="clear"
-              (handleClick)="addToCart($event)">
+      <button style="clear" (handleClick)="addToCart($event)">
         <Icon name="add-to-cart" />
-      </Button>
+      </button>
     </Block>
-
   </Block>
 </Card>
 ```

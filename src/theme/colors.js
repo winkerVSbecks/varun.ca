@@ -8,9 +8,12 @@ const brand = {
     selection: '#ececfd',
   },
   dark: {
-    main: '#D8B0B0',
-    bright: '#EBC6C6',
+    main: '#ffcccc',
+    bright: '#ffeecc',
     faded: '#48434f',
+    // main: '#D8B0B0',
+    // bright: '#EBC6C6',
+    // faded: '#48434f',
     selection: '#959090',
   },
 };
@@ -104,7 +107,7 @@ export const colorModes = {
     code: {
       background: '#1b191f',
       text: '#d9d7e0',
-      comment: ` #ccc`,
+      comment: ` #777`,
       punctuation: `#ccc`,
       property: `#f8c555`,
       tag: `#e2777a`,

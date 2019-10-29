@@ -14,7 +14,7 @@ export const PostList = ({ posts }) => (
           <Text
             as="span"
             display="block"
-            mb={1}
+            mb={0}
             lineHeight="title"
             fontSize={[4, 5]}
           >
