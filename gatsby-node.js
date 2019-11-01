@@ -33,6 +33,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             fields {
               slug
             }
+            frontmatter {
+              title
+            }
           }
         }
       }
@@ -45,6 +48,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const posts = result.data.allMdx.edges;
   // We'll call `createPage` for each result
   posts.forEach(({ node }, index) => {
+    const relatedPosts = [
+      index - 1,
+      index - 2,
+      index + 1,
+      index + 2,
+      index - 3,
+      index + 3,
+    ]
+      .map(idx => posts[idx])
+      .filter(v => v)
+      .slice(0, 3)
+      .map(post => ({
+        url: post.node.fields.slug,
+        name: post.node.frontmatter.title,
+      }));
+
     createPage({
       // This is the slug we created before
       // (or `node.frontmatter.slug`)
@@ -52,8 +71,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       // This component will wrap our MDX content
       component: path.resolve(`./src/layouts/post-layout.js`),
       // We can use the values in this context in
-      // our page layout component
-      context: { id: node.id },
+      // our post layout component
+      context: {
+        id: node.id,
+        relatedPosts,
+      },
     });
   });
 };
