@@ -45,9 +45,12 @@ export const useColorState = initialColorMode => {
 };
 
 export const useColorMode = () => {
-  const [mode, setMode] = useColorState(
-    typeof window !== `undefined` ? storage.get() : 'light'
-  );
+  let initialMode = 'light';
+  if (typeof window !== `undefined`) {
+    initialMode = storage.get() ? storage.get() : 'light';
+  }
+
+  const [mode, setMode] = useColorState(initialMode);
 
   return [mode, setMode];
 };
