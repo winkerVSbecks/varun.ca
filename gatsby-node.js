@@ -35,6 +35,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
             frontmatter {
               title
+              date(formatString: "Do MMMM, YYYY")
             }
           }
         }
@@ -49,10 +50,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // We'll call `createPage` for each result
   posts.forEach(({ node }, index) => {
     const relatedPosts = [
-      index - 1,
-      index - 2,
       index + 1,
       index + 2,
+      index - 1,
+      index - 2,
       index - 3,
       index + 3,
     ]
@@ -61,7 +62,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       .slice(0, 3)
       .map(post => ({
         url: post.node.fields.slug,
-        name: post.node.frontmatter.title,
+        title: post.node.frontmatter.title,
+        date: post.node.frontmatter.date,
+        timestamp: post.node.frontmatter.timestamp,
       }));
 
     createPage({

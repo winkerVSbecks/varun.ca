@@ -1,13 +1,14 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { Box, H1 } from '@ds';
+import { Box, H1, Text, Link } from '@ds';
 import { Footer } from '@components/footer';
 import { Date } from '@components/date';
 import { GlobalHeader } from '@components/global-header';
+import { RelatedPosts } from '@components/related-posts';
 import Layout from './layout';
 
-export default function PostLayout({ data: { mdx } }) {
+export default function PostLayout({ data: { mdx }, pageContext }) {
   return (
     <Layout
       title={mdx.frontmatter.title}
@@ -29,6 +30,15 @@ export default function PostLayout({ data: { mdx } }) {
           </Box>
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </Box>
+        <Text mb={5} fontSize={2}>
+          Questions, Comments or Suggestions?{' '}
+          <Link
+            href={`https://github.com/winkerVSbecks/varun.ca/issues/new?title=${mdx.frontmatter.title}`}
+          >
+            Open an Issue
+          </Link>
+        </Text>
+        <RelatedPosts posts={pageContext.relatedPosts} />
         <Footer />
       </Box>
     </Layout>
