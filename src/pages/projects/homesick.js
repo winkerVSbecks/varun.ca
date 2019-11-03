@@ -4,7 +4,11 @@ import { GatsbyImage, Description, PageHeader } from '@ds';
 import PageLayout from '@layouts/page-layout';
 
 const Homesick = ({ data }) => (
-  <PageLayout title="Homesick" pathname="/projects/homesick">
+  <PageLayout
+    title="Homesick"
+    pathname="/projects/homesick"
+    image={data.preview.childImageSharp.fixed.src}
+  >
     <PageHeader title="Homesick">
       <Description>
         An installation I built to overcome the loss of my childhood home in
@@ -34,6 +38,13 @@ export default Homesick;
 
 export const query = graphql`
   query {
+    preview: file(relativePath: { eq: "homesick/colours.png" }) {
+      childImageSharp {
+        fixed(width: 800) {
+          src
+        }
+      }
+    }
     colours: file(relativePath: { eq: "homesick/colours.png" }) {
       childImageSharp {
         fluid(maxWidth: 1024) {

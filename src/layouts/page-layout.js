@@ -4,9 +4,9 @@ import { Footer } from '@components/footer';
 import { GlobalHeader } from '@components/global-header';
 import Layout from './layout';
 
-export default function PageLayout({ title, children, ...props }) {
+export default function PageLayout({ title, children, image, ...props }) {
   return (
-    <Layout title={title}>
+    <Layout title={title} image={image}>
       <Box maxWidth={8} mx="auto" px={[3, 3, 5]} {...props}>
         <GlobalHeader />
         {children}
