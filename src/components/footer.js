@@ -4,6 +4,7 @@ import { Box, Text, FlatList, SimpleLink } from '@ds';
 const siteLinks = [
   { title: 'About', to: '/' },
   { title: 'Writing', to: '/writing' },
+  { title: 'RSS', to: '/rss.xml' },
 ];
 
 const socialLinks = [

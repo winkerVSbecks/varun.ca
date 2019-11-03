@@ -14,7 +14,7 @@ export default function PostLayout({ data: { mdx }, pageContext }) {
       title={mdx.frontmatter.title}
       description={mdx.excerpt}
       pathname={mdx.fields.slug}
-      article
+      image={mdx.frontmatter.image ? mdx.frontmatter.image.url : null}
     >
       <Box maxWidth={7} mx="auto" px={[4, 4, 3]}>
         <GlobalHeader linkTo="/writing" />
@@ -55,6 +55,9 @@ export const pageQuery = graphql`
         title
         date(formatString: "Do MMMM, YYYY")
         timestamp: date
+        image {
+          url: publicURL
+        }
       }
       fields {
         slug

@@ -7,7 +7,7 @@ module.exports = {
     siteUrl: `https://varun.ca`,
     description: `I am a developer with a strong focus on design, interactivity and animation. Originally from New Delhi, I currently live in Toronto and am the Director, UI Architecture at Rangle.io. In my spare time, I like to experiment with creative coding, making triangles and other playful experiences for the web.`,
     author: `@winkerVSbecks`,
-    image: `/content/assets/icon.png`,
+    image: `icon.png`,
     keywords: [
       'generative design',
       'creative coding',
@@ -40,7 +40,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `varun.ca`,
+        // name: `varun.ca`,
+        name: `varun-ca.netlify.com`,
         short_name: `starter`,
         start_url: `/`,
         background_color: '#4e4bec',

@@ -17,7 +17,10 @@ export function SEO({
   pathname = '/',
   article = false,
 }) {
-  const { site } = useStaticQuery(
+  const {
+    site,
+    file: { defaultImage },
+  } = useStaticQuery(
     graphql`
       query {
         site {
@@ -25,14 +28,16 @@ export function SEO({
             siteUrl
             siteTitle: title
             author
-            defaultImage: image
           }
+        }
+        file(relativePath: { eq: "icon.png" }) {
+          defaultImage: publicURL
         }
       }
     `
   );
 
-  const { siteTitle, siteUrl, defaultImage, author } = site.siteMetadata;
+  const { siteTitle, siteUrl, author } = site.siteMetadata;
 
   return (
     <>
