@@ -4,13 +4,18 @@ date: 2019-11-05
 preview: ../assets/dark-mode.gif
 ---
 
-<CodePen
-  hash="mddxVLg"
-  title="Dark Mode"
-  height="250"
-  themeId="8427"
-  defaultTab="result"
-/>
+import DarkModeAnimation from './dark-mode-animation';
+
+<Box
+  width={24 * 6}
+  height={24 * 6}
+  ml="auto"
+  mr="auto"
+  mb={4}
+  overflow="hidden"
+>
+  <DarkModeAnimation />
+</Box>
 
 - Picking colors — super high contrast issues
 - Impact — syntax highlighting, shadows, every feature.
