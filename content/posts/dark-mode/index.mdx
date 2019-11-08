@@ -28,58 +28,28 @@ The first step was to pick a colour palette. Inverting shades using `filter: inv
 
 ![Call-out, unintentionally, ends up with higher visual importance in dark mode](../../assets/shifting-importance.png)
 
-I'm using [Styled System](https://styled-system.com/) for components with the following structure for the colour palette. For most things such as text and surface colours I am using the neutral scale. Brand colours are used for highlights and accents.
+Teresa Man shared extremely valuable advice in her post [How to design delightful dark themes](https://blog.superhuman.com/how-to-design-delightful-dark-themes-7b3da644ff1f). Here are some of the key learnings that I applied to my website:
 
-```js
-{
-  colors: {
-    brand: {
-      main: '#ffcccc',
-      bright: '#ffeecc',
-      faded: '#48434f',
-      selection: '#959090',
-    },
-    neutral: {
-      0: 'rgb(217, 215, 224)',
-      1: '#ccc',
-      2: '#aaa',
-      3: '#777',
-      4: '#555',
-      5: '#333',
-      6: '#222',
-      7: 'rgb(19, 18, 23)',
-    },
-  }
-}
-```
+1. Avoid pure black or white. It can lead to eye fatigue and causes [black smearing](https://twitter.com/marcedwards/status/1053519077958803456).
+2. Darken distant surfaces.
+3. Reduce large blocks of bright colour.
 
-Teresa Man shared extremely valuable and actionable advice in her post [How to design delightful dark themes](https://blog.superhuman.com/how-to-design-delightful-dark-themes-7b3da644ff1f).
-
-Avoid pure black or white. It can lead to eye fatigue and causes [black smearing](https://twitter.com/marcedwards/status/1053519077958803456).
+I'm using [Styled System](https://styled-system.com/) for components with the following structure for the colour palette. The colours are split into two categories. Neutral scale, used for most things such as text and surface colours and brand colours, used only used for highlights and accents.
 
 <ColorScale />
 
-1. Darken distant surfaces
-2. Reduce large blocks of bright color
-3. Avoid pure black or white
+Taking Teresa's advice, the extreme ends of the neutral scale are a blue-ish black and a light gray. The background is set to `neutral.7` and other surfaces such as code-blocks or call are set to a lighter `neutral.6`.
 
-I've seen a lot of people use `filter: invert(100%)` to . There is a lot more to consider.
+---
 
-Just add `hue-rotate(180deg)` to at least compensate for the hue inversion! https://codepen.io/daneden/pen/bGbWrpg
-
-and not think too deeply about colours. In my o
-
-- Picking colors — super high contrast issues
-  - not `filter: invert(1)` However, it is difficult to create a delightful dark theme. We cannot simply reuse our colors or invert our shades.
-  - `filter: invert(100%)` can be a hacky/cheap way to get a “dark mode” UI, but it obviously inverts colors too. Just add `hue-rotate(180deg)` to at least compensate for the hue inversion! https://codepen.io/daneden/pen/bGbWrpg
+- Picking colours — super high contrast issues
+  - not `filter: invert(1)` However, it is difficult to create a delightful dark theme. We cannot simply reuse our colours or invert our shades.
+  - `filter: invert(100%)` can be a hacky/cheap way to get a “dark mode” UI, but it obviously inverts colours too. Just add `hue-rotate(180deg)` to at least compensate for the hue inversion! https://codepen.io/daneden/pen/bGbWrpg
 - Impact — syntax highlighting, shadows, every feature.
 - Theme.js, Colour naming
 - First load
   — check for prefers-color-scheme: dark
   - tracking user choice
   - avoiding flash on first load with pre-render
-    - Convert colors to CSS Variables
+    - Convert colours to CSS Variables
     - Change CSS Variables based on theme
-
-[How to design delightful dark themes](https://blog.superhuman.com/how-to-design-delightful-dark-themes-7b3da644ff1f)
-[Designing Dark Mode](https://medium.com/microsoft-design/designing-dark-mode-31400530787a)

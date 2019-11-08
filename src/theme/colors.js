@@ -90,7 +90,7 @@ export const colorModes = {
       3: '#777',
       4: '#555',
       5: '#333',
-      6: '#222',
+      6: '#1b191f',
       7: 'rgb(19, 18, 23)',
     },
     transparentNeutral: {
