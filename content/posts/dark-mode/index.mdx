@@ -34,11 +34,34 @@ Teresa Man shared extremely valuable advice in her post, [How to design delightf
 2. Darken distant surfaces.
 3. Reduce large blocks of bright colour.
 
-I'm using [Styled System](https://styled-system.com/) for components with the following structure for the colour palette. The colours are split into two categories. Neutral scale, used for most things such as text and surface colours, and brand colours, used only used for highlights and accents.
+My colour palette is split into two categories. Neutral scale, used for most things such as text and surface colours, and brand colours, used only used for highlights and accents.
 
 <ColorScale />
 
 Taking Teresa's advice, the extreme ends of the neutral scale are a blue-ish black and a light gray. The background is set to `neutral.7` and other surfaces such as code-blocks or call are set to a lighter `neutral.6`.
+
+## Implementation
+
+I'm using [Styled System](https://styled-system.com/) paired with [Styled Components](https://www.styled-components.com) for UI development.
+
+```js
+const Layout = ({ title, description, image, children }) => {
+  const [mode, setColorMode] = useColorMode();
+
+  return (
+    <ThemeProvider theme={{ ...theme, ...createColorStyles(mode) }}>
+      <ColorModeContext.Provider value={{ mode, setColorMode }}>
+        <>
+          <SEO title={title} description={description} image={image} />
+          <InitializeColorMode />
+          <GlobalStyle />
+          <MDXProvider components={dsToMdx}>{children}</MDXProvider>
+        </>
+      </ColorModeContext.Provider>
+    </ThemeProvider>
+  );
+};
+```
 
 ---
 
