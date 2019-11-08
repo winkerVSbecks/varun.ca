@@ -18,23 +18,23 @@ import ColorScale from './color-scale';
   <DarkModeAnimation />
 </Box>
 
-After several years of using Jekyll, I switched over my website to Gatsby. Jekyll worked great for most things. The part that I struggled with most was adding interactivity. The best I could do was embed CodePen blocks in markdown. Gatsby gives you all the benefits of static rendering and craft amazing interactive experiences with React. Josh Comeau's [Dynamic Bézier Curves post](https://www.joshwcomeau.com/posts/dynamic-bezier-curves/) or Rodrigo Pombo's [crollycoding](https://deploy-preview-3--pomber.netlify.com/build-your-own-react) are good examples of this. There is much out there about [migrating to Gatsby](https://julesforrest.com/moving-to-gatsby), the benefits and the trade-offs. I want to focus on one particular challenge of my migration — dark mode.
+After several years of using Jekyll, I switched over my website to Gatsby. Jekyll worked great for most things. The part that I struggled with most was adding interactivity. The best I could do was embed CodePen blocks in markdown. Gatsby gives you all the benefits of static rendering and craft amazing interactive experiences with React. Josh Comeau's [Dynamic Bézier Curves post](https://www.joshwcomeau.com/posts/dynamic-bezier-curves/) or Rodrigo Pombo's [scrollycoding](https://twitter.com/pomber/status/1191784048152195075?s=20) are good examples of this.
 
-Dark themes are certainly a bit of a trend, but it also happens to be a feature many users rely on on a day-to-day basis. Most devices support it at the OS level. The user preference even cascades down to the browser and can be captured in CSS via the `prefers-color-scheme` media query.
+There is much out there about [migrating to Gatsby](https://julesforrest.com/moving-to-gatsby), the benefits and the trade-offs. I want to focus on one particular challenge of my migration — dark mode. Dark themes are certainly a bit of a trend, but it also happens to be a feature many users rely on on a day-to-day basis. Most devices support it at the OS level. The user preference even cascades down to the browser and can be captured in CSS via the `prefers-color-scheme` media query.
 
 ## Colour Palette
 
-The first step was to pick a colour palette. Inverting shades using `filter: invert(100%)` is a quick and somewhat hacky way to get to dark mode. You can follow [Daniel Eden's](https://mobile.twitter.com/_dte) advice and pair it with `hue-rotate(180deg)` for a better result, it compensates for the hue inversion. However, there is a lot more it. Inverting hues can lead to unintended consiquences such as poor contrast or shiting visual importance of UI elements. We need to be a lot more intentional about the colour palettle.
+The first step was to pick a colour palette. Inverting shades using `filter: invert(100%)` is a quick and somewhat hacky way to get to dark mode. You can follow [Daniel Eden's](https://mobile.twitter.com/_dte) advice and pair it with `hue-rotate(180deg)` for a better result. It compensates for the hue inversion. However, there is a lot more it. Inverting hues can lead to unintended consiquences such as poor contrast or shiting visual importance of UI elements. We need to be a lot more intentional about the colour palettle.
 
 ![Call-out, unintentionally, ends up with higher visual importance in dark mode](../../assets/shifting-importance.png)
 
-Teresa Man shared extremely valuable advice in her post [How to design delightful dark themes](https://blog.superhuman.com/how-to-design-delightful-dark-themes-7b3da644ff1f). Here are some of the key learnings that I applied to my website:
+Teresa Man shared extremely valuable advice in her post, [How to design delightful dark themes](https://blog.superhuman.com/how-to-design-delightful-dark-themes-7b3da644ff1f). Here are some of the key learnings that I applied to my website:
 
 1. Avoid pure black or white. It can lead to eye fatigue and causes [black smearing](https://twitter.com/marcedwards/status/1053519077958803456).
 2. Darken distant surfaces.
 3. Reduce large blocks of bright colour.
 
-I'm using [Styled System](https://styled-system.com/) for components with the following structure for the colour palette. The colours are split into two categories. Neutral scale, used for most things such as text and surface colours and brand colours, used only used for highlights and accents.
+I'm using [Styled System](https://styled-system.com/) for components with the following structure for the colour palette. The colours are split into two categories. Neutral scale, used for most things such as text and surface colours, and brand colours, used only used for highlights and accents.
 
 <ColorScale />
 
@@ -42,9 +42,6 @@ Taking Teresa's advice, the extreme ends of the neutral scale are a blue-ish bla
 
 ---
 
-- Picking colours — super high contrast issues
-  - not `filter: invert(1)` However, it is difficult to create a delightful dark theme. We cannot simply reuse our colours or invert our shades.
-  - `filter: invert(100%)` can be a hacky/cheap way to get a “dark mode” UI, but it obviously inverts colours too. Just add `hue-rotate(180deg)` to at least compensate for the hue inversion! https://codepen.io/daneden/pen/bGbWrpg
 - Impact — syntax highlighting, shadows, every feature.
 - Theme.js, Colour naming
 - First load
