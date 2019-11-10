@@ -42,7 +42,23 @@ Taking Teresa's advice, the extreme ends of the neutral scale are a blue-ish bla
 
 ## Implementation
 
-I'm using [Styled System](https://styled-system.com/) paired with [Styled Components](https://www.styled-components.com) for UI development.
+I was going for an end experience where my site supports two modes — dark and light. On the first load it defaults to the light mode. It then checks to see if the user prefers dark mode using `prefers-color-scheme: dark` media query. If yes, then switch to dark mode. There is also a button that the user can click to toggle modes. On subsequent loads the site needs to track their choice, default to it.
+
+On the surface this seems like a failry straightforward feature set. Howver, I soon discovered that there was a lot of hidden complexity I wasn't accounting for. I'll go through those challenges in a bit but first, I want to give a major shout out to the Theme UI team. My solution is largely based on how Theme UI handles [colour mode](https://theme-ui.com/color-modes#setting-the-color-mode) switching.
+
+### Theme Variants
+
+I'm using [Styled System](https://styled-system.com/) paired with [Styled-Components](https://www.styled-components.com) for the UI. Styled-Components provides theming support through its `<ThemeProvider>` component. My site has a base layout that I use for all pages, the `layout.js` file. It essentially acts at the root of the application and the themeing set up is done there. I created the dark and light variants and choose the appropriate theme based on the active mode.
+
+### Tracking User choice
+
+In order to track the active mode I built a `useColorMode` hook.
+
+1. Create the dark and light variants of the theme object
+2. Create a custom hook to track the active mode `useColorMode`
+3. Use the active `mode` to generate the appropriate theme object and pass that into the `ThemeProvider`
+
+This is what my `layout.js` file looks like:
 
 ```js
 const Layout = ({ title, description, image, children }) => {
@@ -62,6 +78,8 @@ const Layout = ({ title, description, image, children }) => {
   );
 };
 ```
+
+You'll notice a couple of other things here. `ColorModeContext` and `createColorStyles`.
 
 ---
 

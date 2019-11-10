@@ -6,6 +6,7 @@ export const colorModeStyles = createColorModeStyles(colorModes);
 export function createColorStyles(mode) {
   const colors = colorModeStyles.colors[mode];
   const borders = colorModeStyles.borders[mode];
+
   return { colors, borders };
 }
 
