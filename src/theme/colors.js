@@ -9,12 +9,8 @@ const brand = {
   },
   dark: {
     main: '#ffcccc',
-    // main: '#49d3b4',
     bright: '#ffeecc',
     faded: '#48434f',
-    // main: '#D8B0B0',
-    // bright: '#EBC6C6',
-    // faded: '#48434f',
     selection: '#959090',
   },
 };

@@ -17,8 +17,8 @@ const getMediaQuery = () => {
   return dark && mql.matches;
 };
 
-export const useColorState = initialColorMode => {
-  const [mode, setMode] = useState(initialColorMode);
+export const useColorMode = () => {
+  const [mode, setMode] = useState('light');
 
   useEffect(() => {
     // initialize
@@ -42,17 +42,6 @@ export const useColorState = initialColorMode => {
   };
 
   return [mode, setModeWithSideEffects];
-};
-
-export const useColorMode = () => {
-  let initialMode = 'light';
-  if (typeof window !== `undefined`) {
-    initialMode = storage.get() ? storage.get() : 'light';
-  }
-
-  const [mode, setMode] = useColorState(initialMode);
-
-  return [mode, setMode];
 };
 
 export const InitializeColorMode = () => (

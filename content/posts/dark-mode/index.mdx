@@ -48,18 +48,25 @@ On the surface this seems like a failry straightforward feature set. Howver, I s
 
 ### Theme Variants
 
-I'm using [Styled System](https://styled-system.com/) paired with [Styled-Components](https://www.styled-components.com) for the UI. Styled-Components provides theming support through its `<ThemeProvider>` component. My site has a base layout that I use for all pages, the `layout.js` file. It essentially acts at the root of the application and the themeing set up is done there. I created the dark and light variants and choose the appropriate theme based on the active mode.
+I'm using [Styled System](https://styled-system.com/) paired with [Styled-Components](https://www.styled-components.com) for the UI. Styled-Components provides theming support through its `<ThemeProvider>` component. I created the dark and light variants and choose the appropriate theme based on the active mode.
+
+<img
+  width="400px"
+  src="../../assets/color-mode.gif"
+  alt="user toggling the colour mode"
+/>
 
 ### Tracking User choice
 
-The `useColorState` hook allows us to track the active colour mode. On the first load it checks to see if the user's choice is stored in local storage or if the user has enabled dark mode at their OS level. When updating the selected mode there a couple of side-effects that need to happen:
+The `useColorMode` hook allows us to track the active colour mode. On the first load it checks to see if the user's choice is stored in local storage or if the user has enabled dark mode at their OS level. When updating the selected mode there a couple of side-effects that need to happen:
 
 1. Set a class on the `body` element reflecting the active mode, for example, `varun-ca-dark`
 2. Save the active mode in local-storage
+3. Update state
 
-```js
-export const useColorState = initialColorMode => {
-  const [mode, setMode] = useState(initialColorMode);
+```js:title=use-color-mode.js
+export const useColorMode = () => {
+  const [mode, setMode] = useState('light');
 
   useEffect(() => {
     const stored = storage.get();
@@ -73,8 +80,10 @@ export const useColorState = initialColorMode => {
     setMode(state => {
       const nextMode = state === 'light' ? 'dark' : 'light';
       document.body.classList.remove('varun-ca-' + state);
+
       document.body.classList.add('varun-ca-' + nextMode);
       storage.set(nextMode);
+
       return nextMode;
     });
   };
@@ -83,29 +92,13 @@ export const useColorState = initialColorMode => {
 };
 ```
 
-The `useColorMode` hook is essentially a think wrapper around the `useColorState` hook.
-
-```js
-export const useColorMode = () => {
-  let initialMode = 'light';
-  if (typeof window !== `undefined`) {
-    initialMode = storage.get() ? storage.get() : 'light';
-  }
-
-  const [mode, setMode] = useColorState(initialMode);
-  return [mode, setMode];
-};
-```
-
 Check out [use-color-mode.js](https://github.com/winkerVSbecks/varun.ca/blob/master/src/use-color-mode.js) for more context.
 
-1. Create the dark and light variants of the theme object
-2. Create a custom hook to track the active mode `useColorMode`
-3. Use the active `mode` to generate the appropriate theme object and pass that into the `ThemeProvider`
+My site has a base layout that I use for all pages, the `layout.js` file. It essentially acts at the root of the application and the themeing set up is done there. The active `mode` is used to generate the appropriate theme object and passed into the `ThemeProvider`.
 
-This is what my `layout.js` file looks like:
+To allow the user to manually select the colour-mode we need to connect the `mode` state and updater to the toggle button. React's context API works perfectly for sharing this information. The `ColorModeContext` provides `{ mode, setColorMode }` which is then used accessed by the [CycleMode](https://github.com/winkerVSbecks/varun.ca/blob/master/src/components/cycle-mode.js) button.
 
-```js
+```js:title=layout.js
 const Layout = ({ title, description, image, children }) => {
   const [mode, setColorMode] = useColorMode();
 

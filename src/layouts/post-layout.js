@@ -16,7 +16,7 @@ export default function PostLayout({ data: { mdx }, pageContext }) {
       pathname={mdx.fields.slug}
       image={mdx.frontmatter.image ? mdx.frontmatter.image.url : null}
     >
-      <Box maxWidth={7} mx="auto" px={[4, 4, 3]}>
+      <Box maxWidth={7} mx="auto" px={[3, 4, 3]}>
         <GlobalHeader linkTo="/writing" />
         <Box as="article" my={6}>
           <Box as="header" mb={6}>

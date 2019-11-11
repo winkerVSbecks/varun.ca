@@ -11,13 +11,14 @@ const ColorStep = ({ bg, color, name, ...props }) => (
     fontSize={1}
     bg={bg}
     color={color}
+    truncate
     {...props}
   />
 );
 
 export default () => (
-  <Flex mb={4} alignItems="stretch">
-    <Box flex="1 1 auto" mr={3}>
+  <Flex mb={4} alignItems="stretch" flexWrap={['wrap', 'nowrap']}>
+    <Box flex="1 1 auto" mr={[0, 3]} mb={[3, 0]}>
       <ColorStep
         bg={colorModes.dark.neutral[0]}
         color={colorModes.dark.neutral[7]}
@@ -68,7 +69,7 @@ export default () => (
       </ColorStep>
     </Box>
 
-    <Flex flexDirection="column">
+    <Flex flex="1 1 auto" flexDirection={['row', 'column']}>
       <ColorStep
         flex="1 1 auto"
         display="flex"

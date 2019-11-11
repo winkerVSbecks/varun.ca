@@ -31,6 +31,16 @@ export default props => {
       maxHeight: 600,
       WebkitOverflowScrolling: `touch`,
     },
+    '.gatsby-code-title': {
+      borderBottom: `1px solid ${c.scrollbarTrack}`,
+      padding: `${t.space[3]}px`,
+      fontFamily: t.fonts.code,
+      fontSize: t.fontSizes[0],
+      lineHeight: t.lineHeights.copy,
+      backgroundColor: c.background,
+      color: c.comment,
+      zIndex: 0,
+    },
     '.gatsby-highlight pre::-webkit-scrollbar': {
       width: t.space[2],
       height: t.space[2],

@@ -8,7 +8,7 @@ import {
   typography,
   border,
 } from 'styled-system';
-import { measure } from './system-functions';
+import { measure, truncate } from './system-functions';
 
 export const typographyFunctions = compose(
   space,
@@ -26,7 +26,7 @@ export const defaultTypeProps = {
   color: 'neutral.0',
 };
 
-export const Text = styled.p(typographyFunctions);
+export const Text = styled.p(typographyFunctions, truncate);
 Text.defaultProps = {
   ...defaultTypeProps,
   mb: 4,
