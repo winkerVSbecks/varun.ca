@@ -44,7 +44,7 @@ Taking Teresa's advice, the extreme ends of the neutral scale are a blue-ish bla
 
 I was going for an end experience where my site supports two modes — dark and light. On the first load it defaults to the light mode. It then checks to see if the user prefers dark mode using `prefers-color-scheme: dark` media query. If yes, then switch to dark mode. There is also a button that the user can click to toggle modes. On subsequent loads the site needs to track their choice, default to it.
 
-On the surface this seems like a failry straightforward feature set. Howver, I soon discovered that there was a lot of hidden complexity I wasn't accounting for. I'll go through those challenges in a bit but first, I want to give a major shout out to the Theme UI team. My solution is largely based on how Theme UI handles [colour mode](https://theme-ui.com/color-modes#setting-the-color-mode) switching.
+On the surface this seems like a failry straightforward feature set. Howver, I soon discovered that there was a lot of hidden complexity I wasn't accounting for. I'll go through those challenges in a bit but first, I want to give a major shout out to the Theme UI team. My solution is largely based on how Theme UI handles [colour mode](https://theme-ui.com/color-modes#setting-the-color-mode) switching. This blog post could easily have been titled "How Theme UI handles colour mode switching with Gatsby".
 
 ### Theme Variants
 
@@ -52,7 +52,52 @@ I'm using [Styled System](https://styled-system.com/) paired with [Styled-Compon
 
 ### Tracking User choice
 
-In order to track the active mode I built a `useColorMode` hook.
+The `useColorState` hook allows us to track the active colour mode. On the first load it checks to see if the user's choice is stored in local storage or if the user has enabled dark mode at their OS level. When updating the selected mode there a couple of side-effects that need to happen:
+
+1. Set a class on the `body` element reflecting the active mode, for example, `varun-ca-dark`
+2. Save the active mode in local-storage
+
+```js
+export const useColorState = initialColorMode => {
+  const [mode, setMode] = useState(initialColorMode);
+
+  useEffect(() => {
+    const stored = storage.get();
+    const dark = getMediaQuery();
+    if (!stored && dark) return setModeWithSideEffects('dark');
+    if (!stored || stored === mode) return;
+    setModeWithSideEffects(stored);
+  }, []);
+
+  const setModeWithSideEffects = () => {
+    setMode(state => {
+      const nextMode = state === 'light' ? 'dark' : 'light';
+      document.body.classList.remove('varun-ca-' + state);
+      document.body.classList.add('varun-ca-' + nextMode);
+      storage.set(nextMode);
+      return nextMode;
+    });
+  };
+
+  return [mode, setModeWithSideEffects];
+};
+```
+
+The `useColorMode` hook is essentially a think wrapper around the `useColorState` hook.
+
+```js
+export const useColorMode = () => {
+  let initialMode = 'light';
+  if (typeof window !== `undefined`) {
+    initialMode = storage.get() ? storage.get() : 'light';
+  }
+
+  const [mode, setMode] = useColorState(initialMode);
+  return [mode, setMode];
+};
+```
+
+Check out [use-color-mode.js](https://github.com/winkerVSbecks/varun.ca/blob/master/src/use-color-mode.js) for more context.
 
 1. Create the dark and light variants of the theme object
 2. Create a custom hook to track the active mode `useColorMode`

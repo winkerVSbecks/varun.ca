@@ -1,5 +1,5 @@
 /**
- * Taken from https://github.com/system-ui/theme-ui/blob/9656dba5f22205427d4c36dd9181b6a24b85dd91/packages/theme-ui/src/color-modes.js
+ * Based on https://github.com/system-ui/theme-ui/blob/9656dba5f22205427d4c36dd9181b6a24b85dd91/packages/theme-ui/src/color-modes.js
  */
 import React, { useState, useEffect, createContext } from 'react';
 

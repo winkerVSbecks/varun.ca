@@ -28,6 +28,7 @@ export default props => {
       padding: `${t.space[3]}px`,
       margin: `0 0 ${t.space[4]}px 0`,
       overflow: 'auto',
+      maxHeight: 600,
       WebkitOverflowScrolling: `touch`,
     },
     '.gatsby-highlight pre::-webkit-scrollbar': {
@@ -39,6 +40,9 @@ export default props => {
     },
     '.gatsby-highlight pre::-webkit-scrollbar-track': {
       background: c.scrollbarTrack,
+    },
+    '.gatsby-highlight pre::-webkit-scrollbar-corner': {
+      background: c.background,
     },
     '.gatsby-highlight-code-line': {
       background: c.lineHighlightBackground,
