@@ -96,7 +96,7 @@ Check out [use-color-mode.js](https://github.com/winkerVSbecks/varun.ca/blob/mas
 
 My site has a base layout that I use for all pages, the `layout.js` file. It essentially acts at the root of the application and the themeing set up is done there. The active `mode` is used to generate the appropriate theme object and passed into the `ThemeProvider`.
 
-To allow the user to manually select the colour-mode we need to connect the `mode` state and updater to the toggle button. React's context API works perfectly for sharing this information. The `ColorModeContext` provides `{ mode, setColorMode }` which is then used accessed by the [CycleMode](https://github.com/winkerVSbecks/varun.ca/blob/master/src/components/cycle-mode.js) button.
+To allow the user to manually select the colour-mode we need to connect the `mode` state and updater to the toggle button. React's context API works perfectly for this. The `ColorModeContext` provides `{ mode, setColorMode }` which is then used by the [CycleMode](https://github.com/winkerVSbecks/varun.ca/blob/master/src/components/cycle-mode.js) button.
 
 ```js:title=layout.js
 const Layout = ({ title, description, image, children }) => {
@@ -117,15 +117,21 @@ const Layout = ({ title, description, image, children }) => {
 };
 ```
 
-You'll notice a couple of other things here. `ColorModeContext` and `createColorStyles`.
+## Avoiding Flash
 
----
+<img
+  width="400px"
+  src="../../assets/color-mode-flash.gif"
+  alt="user toggling the colour mode"
+/>
 
+<!--
 - Impact — syntax highlighting, shadows, every feature.
-- Theme.js, Colour naming
+✅ Theme.js, Colour naming
 - First load
-  — check for prefers-color-scheme: dark
-  - tracking user choice
+  ✅ check for prefers-color-scheme: dark
+  ✅ tracking user choice
   - avoiding flash on first load with pre-render
     - Convert colours to CSS Variables
     - Change CSS Variables based on theme
+-->
