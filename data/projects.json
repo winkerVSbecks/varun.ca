@@ -3,7 +3,7 @@
     "name": "tachyons-tldr",
     "link": "https://tachyons-tldr.now.sh",
     "repo": "https://github.com/winkerVSbecks/tachyons-tldr",
-    "image": "../content/assets/tachyons-tldr.gif",
+    "image": "../content/assets/tachyons-tldr.jpg",
     "featured": true
   },
   {
@@ -17,14 +17,14 @@
     "name": "xvg",
     "link": "https://xvg.now.sh",
     "repo": "https://github.com/winkerVSbecks/xvg",
-    "image": "../content/assets/xvg.gif",
+    "image": "../content/assets/xvg.jpg",
     "featured": true
   },
   {
     "name": "Gems",
     "link": "http://winkervsbecks.github.io/gems",
     "repo": "https://github.com/winkerVSbecks/gems",
-    "image": "../content/assets/gems.gif",
+    "image": "../content/assets/gems.jpg",
     "featured": false
   },
   {
@@ -38,21 +38,21 @@
     "name": "OAM",
     "link": "http://ooaamm.com",
     "repo": "https://github.com/winkerVSbecks/oam-site",
-    "image": "../content/assets/oam-alt.gif",
+    "image": "../content/assets/oam.jpg",
     "featured": true
   },
   {
     "name": "A Triangle Every Day",
     "repo": "https://github.com/winkerVSbecks/a-triangle-everyday",
     "link": "http://winkervsbecks.github.io/a-triangle-everyday",
-    "image": "../content/assets/triangleninja.gif",
+    "image": "../content/assets/triangleninja.jpg",
     "featured": true
   },
   {
     "name": "Ellsworth Kelly Animated",
     "repo": "https://github.com/winkerVSbecks/ellsworthKellyAnimated",
     "link": "http://winkervsbecks.github.io/ellsworthKellyAnimated",
-    "image": "../content/assets/ellsworth-kelly.gif",
+    "image": "../content/assets/ellsworth-kelly.jpg",
     "featured": true
   },
   {

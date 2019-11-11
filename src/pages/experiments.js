@@ -13,7 +13,7 @@ const Experiments = ({ data }) => (
             key={experiment.id}
             title={experiment.name}
             link={experiment.link}
-            image={experiment.image.publicURL}
+            image={experiment.image}
             flex="1 0 auto"
             m={2}
           />
@@ -34,9 +34,7 @@ export const query = graphql`
         id
         name
         link
-        image {
-          publicURL
-        }
+        image
       }
     }
   }

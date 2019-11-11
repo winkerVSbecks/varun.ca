@@ -130,9 +130,7 @@ export const pageQuery = graphql`
         id
         name
         link
-        image {
-          publicURL
-        }
+        image
       }
     }
   }

@@ -13,7 +13,7 @@ export const ExperimentsFeatured = ({ experiments, ...props }) => (
           key={experiment.id}
           title={experiment.name}
           link={experiment.link}
-          image={experiment.image.publicURL}
+          image={experiment.image}
           flex="1 0 auto"
           mr={4}
         />

@@ -2,162 +2,162 @@
   {
     "name": "Stacks",
     "link": "https://codepen.io/winkerVSbecks/full/pVGRxm",
-    "image": "../content/assets/stacks.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435852/stacks_ykq0pk.jpg",
     "featured": true
   },
   {
     "name": "Isometric Ball",
     "link": "https://codepen.io/winkerVSbecks/full/mLQjRX/",
-    "image": "../content/assets/isometric-ball.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435808/isometric-ball_fiejgm.jpg",
     "featured": false
   },
   {
     "name": "Carnival Nights",
     "link": "https://codepen.io/winkerVSbecks/full/rdXBLr/",
-    "image": "../content/assets/carnival-nights.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435825/carnival-nights_agqf83.jpg",
     "featured": false
   },
   {
     "name": "Circle Trapped In A Card",
     "link": "https://codepen.io/winkerVSbecks/full/LdqVVL/",
-    "image": "../content/assets/circle-trapped-in-a-card.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435843/circle-trapped-in-a-card_d4hr39.jpg",
     "featured": false
   },
   {
     "name": "Omniplan",
     "link": "https://codepen.io/winkerVSbecks/full/Wzamxd/",
-    "image": "../content/assets/omniplan.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435821/omniplan_kzmvcx.jpg",
     "featured": false
   },
   {
     "name": "Patterned Circles",
     "link": "https://codepen.io/winkerVSbecks/full/rdQQBv/",
-    "image": "../content/assets/patterned-circles.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435830/patterned-circles_npkjlx.jpg",
     "featured": false
   },
   {
     "name": "SA 15",
     "link": "https://codepen.io/winkerVSbecks/full/gXOdEL/",
-    "image": "../content/assets/sa15.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435841/sa15_wduajm.jpg",
     "featured": true
   },
   {
     "name": "Amoeba",
     "link": "https://codepen.io/winkerVSbecks/full/RLyNEE/",
-    "image": "../content/assets/amoeba.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435818/amoeba_qjimq3.jpg",
     "featured": true
   },
   {
     "name": "Napoleon's Theorem",
     "link": "https://codepen.io/winkerVSbecks/full/yoVQbp/",
-    "image": "../content/assets/napoleon-theorem.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435818/napoleon-theorem_on9pr8.jpg",
     "featured": true
   },
   {
     "name": "Reactive O",
     "link": "http://codepen.io/winkerVSbecks/full/RVVYbR/",
-    "image": "../content/assets/reactive-o.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435844/reactive-o_hyq0z1.jpg",
     "featured": true
   },
   {
     "name": "Nederland Expo 70",
     "link": "http://codepen.io/winkerVSbecks/full/VPgpJL/",
-    "image": "../content/assets/nederland-expo-70.gif"
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435816/nederland-expo-70_wnfnw1.jpg"
   },
   {
     "name": "Luna 9 Flight",
     "link": "https://winkervsbecks.github.io/luna-9-flight/",
-    "image": "../content/assets/luna-9.gif"
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435812/luna-9_ioebcd.jpg"
   },
   {
     "name": "Path Compiler",
     "link": "https://path-compiler-ysmnxsvmhh.now.sh",
-    "image": "../content/assets/path-compiler.gif"
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435823/path-compiler_o5jl16.jpg"
   },
   {
     "name": "Weight Selector",
     "link": "http://codepen.io/winkerVSbecks/pen/amPaVz",
-    "image": "../content/assets/weight-selector.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435854/weight-selector_yfrovx.jpg",
     "featured": false
   },
   {
     "name": "Joystick",
     "link": "https://winkervsbecks.github.io/joystick",
-    "image": "../content/assets/joystick.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435811/joystick_iz4wcb.jpg",
     "featured": false
   },
   {
     "name": "Splash",
     "link": "https://winkervsbecks.github.io/splash",
-    "image": "../content/assets/splash.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435841/splash_y5gkbr.jpg",
     "featured": false
   },
   {
     "name": "Touch ID",
     "link": "http://codepen.io/winkerVSbecks/full/vGojNb/",
-    "image": "../content/assets/touch-id.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435852/touch-id_hvt2zn.jpg",
     "featured": true
   },
   {
     "name": "Chillwave",
     "link": "http://winkervsbecks.github.io/chillwave",
-    "image": "../content/assets/chillwave-alt.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435819/chillwave-alt_macebu.jpg",
     "featured": true
   },
   {
     "name": "Pressed",
     "link": "http://codepen.io/winkerVSbecks/pen/PZEvQd",
-    "image": "../content/assets/pressed.gif"
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435827/pressed_vir0pz.jpg"
   },
   {
     "name": "Pizza Theorem",
     "link": "http://winkervsbecks.github.io/pizza-theorem",
-    "image": "../content/assets/pizza-theorem.gif"
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435825/pizza-theorem_ez0yhu.jpg"
   },
   {
     "name": "Polygon Slicer",
     "link": "http://winkervsbecks.github.io/polygon-slicer",
-    "image": "../content/assets/polygon-slicer.gif"
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435828/polygon-slicer_nx4ddc.jpg"
   },
   {
     "name": "Hooke’s Law",
     "link": "http://winkervsbecks.github.io/hookes-law",
-    "image": "../content/assets/spring.gif"
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435843/spring_zs0ofz.jpg"
   },
   {
     "name": "Truncation",
     "link": "http://winkervsbecks.github.io/truncation/",
-    "image": "../content/assets/truncation.gif",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435857/truncation_uevqkd.jpg",
     "featured": true
   },
   {
     "name": "Fermat Point",
     "link": "http://winkervsbecks.github.io/fermat-point",
-    "image": "../content/assets/fermat-point.gif"
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435839/fermat-point_zkqmdt.jpg"
   },
   {
     "name": "चतुर्पाश्वीय",
     "link": "http://winkervsbecks.github.io/react-tetrahedrons",
-    "image": "../content/assets/tetrahedron.gif"
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435850/tetrahedron_kfphdw.jpg"
   },
   {
     "name": "The Core",
     "link": "http://winkervsbecks.github.io/the-core",
-    "image": "../content/assets/core.gif"
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435821/core_lsqb53.jpg"
   },
   {
     "name": "Vector Field",
     "link": "http://winkervsbecks.github.io/material-vector-field/",
-    "image": "../content/assets/vector-field.gif"
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435857/vector-field_frkwzp.jpg"
   },
   {
     "name": "Jupiter",
     "link": "http://winkervsbecks.github.io/jupiter",
-    "image": "../content/assets/squiggle.gif"
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435844/squiggle_ga9mbu.jpg"
   },
   {
     "name": "Jamie XX",
     "link": "http://winkervsbecks.github.io/jamieXX",
-    "image": "../content/assets/jamiexx.gif"
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435808/jamiexx_hvovfr.jpg"
   }
 ]
