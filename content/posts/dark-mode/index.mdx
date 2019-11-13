@@ -129,6 +129,43 @@ Gatsby at build time uses a React server side rendering to compile the site into
 
 The generated HTML and CSS uses the default colour mode. When the user loads the page, it renders with that default colour mode. Once the JS loads, it updates the CSS to match the user's preferred choice. This causes the page to flash between the two styles. Not great user experience!
 
+The best way to avoid _the flash_ is to rely on CSS rather than JavaScript. The challenge is that I am using Styled-Components which is a CSS-in-JS library and rely's on the JS bundle to load and parse before the CSS can be appropriately updated. The Theme UI team came up with an interesting solution.
+
+The first step is to convert the colour modes from hard-coded hex values to to CSS Custom Properties.
+
+```js
+{
+  brand: {
+    main: '#4e4bec',
+    bright: '#dedefb',
+    faded: '#ececfd',
+    selection: '#ececfd',
+  }
+  neutral: {
+      0: '#333',
+      1: '#555',
+      ...
+    },
+}
+
+// The above is converted into below
+{
+  brand: {
+    main: "var(--varun-ca-colors-brand-main, #4e4bec)",
+    bright: "var(--varun-ca-colors-brand-bright, #dedefb)",
+    faded: "var(--varun-ca-colors-brand-faded, #ececfd)",
+    selection: "var(--varun-ca-colors-brand-selection, #ececfd)"
+  },
+  neutral: {
+    0: "var(--varun-ca-colors-neutral-0, #333)",
+    1: "var(--varun-ca-colors-neutral-1, #555)",
+    ...
+  },
+}
+```
+
+2. Generate multiple.
+
 <!--
 - Impact — syntax highlighting, shadows, every feature.
 ✅ Theme.js, Colour naming
