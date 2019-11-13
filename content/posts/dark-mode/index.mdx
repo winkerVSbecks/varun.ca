@@ -1,6 +1,6 @@
 ---
 title: Dark Mode
-date: 2019-11-05
+date: 2019-11-12
 preview: ../assets/dark-mode.gif
 ---
 
@@ -119,11 +119,15 @@ const Layout = ({ title, description, image, children }) => {
 
 ## Avoiding Flash
 
+Gatsby at build time uses a React server side rendering to compile the site into files that can be delivered to a web browser. The output is HTML and a JavaScript runtime that takes over in the browser once the initial HTML has loaded.
+
 <img
   width="400px"
   src="../../assets/color-mode-flash.gif"
-  alt="user toggling the colour mode"
+  alt="the site colours flash once the JavaScript is loaded"
 />
+
+The generated HTML and CSS uses the default colour mode. When the user loads the page it renders with that default colour mode. Once the JS loads it checks to see if the user's preferred choice is different and updates the CSS to match that choice. This causes the page to flash between the two styles. Not great user experience!
 
 <!--
 - Impact — syntax highlighting, shadows, every feature.
