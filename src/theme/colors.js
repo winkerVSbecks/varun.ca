@@ -9,12 +9,8 @@ const brand = {
   },
   dark: {
     main: '#ffcccc',
-    // main: '#49d3b4',
     bright: '#ffeecc',
     faded: '#48434f',
-    // main: '#D8B0B0',
-    // bright: '#EBC6C6',
-    // faded: '#48434f',
     selection: '#959090',
   },
 };
@@ -90,7 +86,7 @@ export const colorModes = {
       3: '#777',
       4: '#555',
       5: '#333',
-      6: '#222',
+      6: '#1b191f',
       7: 'rgb(19, 18, 23)',
     },
     transparentNeutral: {

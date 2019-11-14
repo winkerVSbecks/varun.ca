@@ -16,13 +16,8 @@ export const RelatedPosts = ({ posts }) => (
 
     <List pl={4}>
       {posts.map(post => (
-        <ListItem>
-          <SimpleLink
-            to={post.url}
-            color="neutral.0"
-            class="link dim near-black db f5 f4-ns pv2"
-            title={post.title}
-          >
+        <ListItem key={post.title}>
+          <SimpleLink to={post.url} color="neutral.0" title={post.title}>
             {post.title} <Date date={post.date} timestamp={post.timestamp} />
           </SimpleLink>
         </ListItem>

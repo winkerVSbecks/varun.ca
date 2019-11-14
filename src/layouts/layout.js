@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Layout = ({ title, description, image, maxWidth = 7, children }) => {
+const Layout = ({ title, description, image, children }) => {
   const [mode, setColorMode] = useColorMode();
 
   return (

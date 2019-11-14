@@ -6,14 +6,14 @@ import { typographyFunctions } from './typography';
 const StyledLink = styled.a`
   ${typographyFunctions}
   opacity: 1;
-  transition: opacity ${props => props.theme.animations.easeIn};
+  transition: color ${props => props.theme.animations.easeIn};
+  text-decoration: none;
 
   :hover,
-  :focus {
-    opacity: 0.5;
-  }
+  :focus,
   :active {
-    opacity: 0.8;
+    text-decoration: underline;
+    text-decoration-color: ${props => props.theme.colors.brand.faded};
   }
 `;
 StyledLink.defaultProps = {
@@ -47,6 +47,13 @@ export const Link = ({ to = '', href, as = StyledLink, ...props }) => {
 
 export const SimpleLink = styled(Link)`
   text-decoration: none;
+
+  :hover,
+  :focus,
+  :active {
+    color: ${props => props.theme.colors.brand.main};
+    text-decoration: none;
+  }
 `;
 SimpleLink.defaultProps = {
   color: 'neutral.0',

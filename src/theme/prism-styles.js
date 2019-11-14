@@ -28,7 +28,18 @@ export default props => {
       padding: `${t.space[3]}px`,
       margin: `0 0 ${t.space[4]}px 0`,
       overflow: 'auto',
+      maxHeight: 600,
       WebkitOverflowScrolling: `touch`,
+    },
+    '.gatsby-code-title': {
+      borderBottom: `1px solid ${c.scrollbarTrack}`,
+      padding: `${t.space[3]}px`,
+      fontFamily: t.fonts.code,
+      fontSize: t.fontSizes[0],
+      lineHeight: t.lineHeights.copy,
+      backgroundColor: c.background,
+      color: c.comment,
+      zIndex: 0,
     },
     '.gatsby-highlight pre::-webkit-scrollbar': {
       width: t.space[2],
@@ -39,6 +50,9 @@ export default props => {
     },
     '.gatsby-highlight pre::-webkit-scrollbar-track': {
       background: c.scrollbarTrack,
+    },
+    '.gatsby-highlight pre::-webkit-scrollbar-corner': {
+      background: c.background,
     },
     '.gatsby-highlight-code-line': {
       background: c.lineHighlightBackground,

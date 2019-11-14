@@ -1,5 +1,5 @@
 /**
- * Taken from https://github.com/system-ui/theme-ui/blob/9656dba5f22205427d4c36dd9181b6a24b85dd91/packages/theme-ui/src/color-modes.js
+ * Based on https://github.com/system-ui/theme-ui/blob/9656dba5f22205427d4c36dd9181b6a24b85dd91/packages/theme-ui/src/color-modes.js
  */
 import React, { useState, useEffect, createContext } from 'react';
 
@@ -17,8 +17,8 @@ const getMediaQuery = () => {
   return dark && mql.matches;
 };
 
-export const useColorState = initialColorMode => {
-  const [mode, setMode] = useState(initialColorMode);
+export const useColorMode = () => {
+  const [mode, setMode] = useState('light');
 
   useEffect(() => {
     // initialize
@@ -42,17 +42,6 @@ export const useColorState = initialColorMode => {
   };
 
   return [mode, setModeWithSideEffects];
-};
-
-export const useColorMode = () => {
-  let initialMode = 'light';
-  if (typeof window !== `undefined`) {
-    initialMode = storage.get() ? storage.get() : 'light';
-  }
-
-  const [mode, setMode] = useColorState(initialMode);
-
-  return [mode, setMode];
 };
 
 export const InitializeColorMode = () => (

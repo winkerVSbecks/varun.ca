@@ -50,9 +50,7 @@ const Home = ({ data }) => {
               experiences for the web.
             </Text>
           </Box>
-
           <ProfileLinks />
-
           <Flex flexWrap="wrap" justifyContent="space-between">
             <WritingFeatured posts={posts} mr={[3, 4]} />
             <SpeakingFeatured speaking={speaking} mr={3} />
