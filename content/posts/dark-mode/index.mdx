@@ -156,8 +156,8 @@ export const InitializeColorMode = () => (
 );
 ```
 
-We are still using Styled-Components for theming. However, the values point to CSS custom properties and we can switch the theme by changing the class on the `body` element. Since, all the variable values are in global CSS and the above script runs as soon as the page loads, the user no longer sees a flash.
+We are still using Styled-Components for theming. However, the values point to CSS custom properties and we can switch the theme by changing the class on the `body` element. Since, all the variable values are in global CSS and the above script runs as soon as the page loads, the user no longer sees a flash. The only time the user sees a flash is the first time they visit your site and they have enabled dark mode on their OS.
 
-Gatsby does a lot of work to ensure that your site is performant. One of those things is using React SSR to generate a static site. Which unfortunately means that we have to do a bit more work to implement dark mode, but the trade-off is worth it. That said, if you use Theme UI then you it does all this for you too.
+Gatsby does a lot of work to ensure that your site is performant. One of those things is using React SSR to generate a static site. Which unfortunately means that we have to do a bit more work to implement dark mode, but the trade-off is worth it and I got to learn a lot. That said, if you use Theme UI then you get all of this for free.
 
-The one thing that this whole process taught me is that adding dark-mode means that you are creating more work for your future self. Each feature you add to your site will have to support it.
+The one key takeaway from this whole process is that adding dark-mode means that you are creating more work for your future self. Each feature you add to your site will have to support it.
