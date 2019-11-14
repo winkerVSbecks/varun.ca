@@ -25,7 +25,7 @@ There is much out there about [migrating to Gatsby](https://julesforrest.com/mov
 
 ## Colour Palette
 
-The first step was to pick a colour palette. Inverting shades using `filter: invert(100%)` is a quick and somewhat hacky way to get to dark mode. You can follow [Daniel Eden's](https://mobile.twitter.com/_dte) advice and pair it with `hue-rotate(180deg)` for a better result. It compensates for the hue inversion. However, there is a lot more it. Inverting hues can lead to unintended consiquences such as poor contrast or shiting visual importance of UI elements. We need to be a lot more intentional about the colour palettle.
+The first step was to pick a colour palette. Inverting shades using `filter: invert(100%)` is a quick and somewhat hacky way to get to dark mode. You can follow [Daniel Eden's](https://mobile.twitter.com/_dte) advice and pair it with `hue-rotate(180deg)` for a better result. It compensates for the hue inversion. However, there is a lot more to it. Inverting hues can lead to unintended consequences such as poor contrast or shiting visual importance of UI elements. We need to be a lot more intentional about the colour palette.
 
 ![Call-out, unintentionally, ends up with higher visual importance in dark mode](../../assets/shifting-importance.png)
 
@@ -35,11 +35,11 @@ Teresa Man shared extremely valuable advice in her post, [How to design delightf
 2. Darken distant surfaces.
 3. Reduce large blocks of bright colour.
 
-My colour palette is split into two categories. Neutral scale, used for most things such as text and surface colours, and brand colours, used only used for highlights and accents.
+There are two categories in the colour palette: neutral scale, used for most things such as text and surface colours, and brand colours, used only used for highlights and accents.
 
 <ColorScale />
 
-Taking Teresa's advice, the extreme ends of the neutral scale are a blue-ish black and a light gray. The background is set to `neutral.7` and other surfaces such as code-blocks or call are set to a lighter `neutral.6`.
+Taking Teresa's advice, the extreme ends of the neutral scale are a blue-ish black and a light gray. The background is set to `neutral.7`, and other surfaces such as code-blocks all are set to a lighter `neutral.6`.
 
 ## Implementation
 
@@ -49,7 +49,7 @@ On the surface this seems like a failry straightforward feature set. Howver, I s
 
 ### Theme Variants
 
-I'm using [Styled System](https://styled-system.com/) paired with [Styled-Components](https://www.styled-components.com) for the UI. Styled-Components provides theming support through its `<ThemeProvider>` component. I created the dark and light variants and choose the appropriate theme based on the active mode.
+I'm using [Styled System](https://styled-system.com/) paired with [styled-components](https://www.styled-components.com) for the UI. styled-components provides theming support through its `<ThemeProvider>` component. I created the dark and light variants and choose the appropriate theme based on the active mode.
 
 <img
   width="400px"
@@ -97,7 +97,7 @@ Check out [use-color-mode.js](https://github.com/winkerVSbecks/varun.ca/blob/mas
 
 My site has a base layout that I use for all pages, the `layout.js` file. It essentially acts at the root of the application and the themeing set up is done there. The active `mode` is used to generate the appropriate theme object and passed into the `ThemeProvider`.
 
-To allow the user to manually select the colour-mode we need to connect the `mode` state and updater to the toggle button. React's context API works perfectly for this. The `ColorModeContext` provides `{ mode, setColorMode }` which is then used by the [CycleMode](https://github.com/winkerVSbecks/varun.ca/blob/master/src/components/cycle-mode.js) button.
+To allow the user to select the colour-mode manually, we need to connect the `mode` state and updater to the toggle button. React's context API works perfectly for this. The `ColorModeContext` provides `{ mode, setColorMode }` which is then used by the [CycleMode](https://github.com/winkerVSbecks/varun.ca/blob/master/src/components/cycle-mode.js) button.
 
 ```js:title=layout.js
 const Layout = ({ title, description, image, children }) => {
@@ -120,7 +120,7 @@ const Layout = ({ title, description, image, children }) => {
 
 ### Avoiding Flash
 
-Gatsby at build time uses a React server side rendering to compile the site into files that can be delivered to a web browser. The output is HTML and a JavaScript runtime that takes over in the browser once the initial HTML has loaded.
+Gatsby, at build time, uses a React server-side rendering to compile the site into files that can be delivered to a web browser. The output is HTML and a JavaScript runtime that takes over in the browser once the initial HTML has loaded.
 
 <img
   width="400px"
@@ -128,16 +128,15 @@ Gatsby at build time uses a React server side rendering to compile the site into
   alt="the site colours flash once the JavaScript is loaded"
 />
 
-The generated HTML and CSS uses the default colour mode. When the user loads the page, it renders with that default colour mode. Once the JS loads, it updates the CSS to match the user's preferred choice. This causes the page to flash between the two styles. Not great user experience!
+The generated HTML and CSS use the default colour mode. When the user loads the page, it renders with that default colour mode. Once the JS loads, it updates the CSS to match the user's preferred choice. This switch causes the page to flash between the two styles. Not a great user experience!
 
-The best way to avoid _the flash_ is to rely on CSS rather than JavaScript. The challenge here is that I am using Styled-Components which is a CSS-in-JS library and rely's on the JS bundle to load and parse before the CSS can be appropriately updated. The Theme UI team came up with an interesting solution.
+The best way to avoid _the flash_ is to rely on CSS rather than JavaScript. The challenge here is that styled-components is a CSS-in-JS library and relies on the JS bundle to load and parse before the CSS can be appropriately updated. The Theme UI team came up with an innovative solution.
 
-First, convert the colour modes from hard-coded hex values to to CSS Custom Properties.
-Then generate global CSS that controls the value of these CSS Custom Properties using scoped class names, for example: `.varun-ca-dark` and `.varun-ca-light` ([color-mode-styles.js](https://github.com/winkerVSbecks/varun.ca/blob/master/src/theme/color-mode-styles.js)).
+First, convert the colour modes from hard-coded hex values to CSS Custom Properties. Then generate global CSS that controls the value of these CSS Custom Properties using scoped class names, for example: `.varun-ca-dark` and `.varun-ca-light` ([color-mode-styles.js](https://github.com/winkerVSbecks/varun.ca/blob/master/src/theme/color-mode-styles.js)).
 
 <JsToCssVars />
 
-Lastly, inject a tiny script in your HTML to check local-storage for user's preferrence and set the appropriate class name to the body tag ([use-color-mode.js](https://github.com/winkerVSbecks/varun.ca/blob/master/src/use-color-mode.js)).
+Lastly, inject a tiny script in your HTML to check local-storage for the user’s preference and set the appropriate class name to the body tag ([use-color-mode.js](https://github.com/winkerVSbecks/varun.ca/blob/master/src/use-color-mode.js)).
 
 ```js:title=use-color-mode.js
 const STORAGE_KEY = 'varun-ca-color-mode';
@@ -156,8 +155,8 @@ export const InitializeColorMode = () => (
 );
 ```
 
-We are still using Styled-Components for theming. However, the values point to CSS custom properties and we can switch the theme by changing the class on the `body` element. Since, all the variable values are in global CSS and the above script runs as soon as the page loads, the user no longer sees a flash. The only time the user sees a flash is the first time they visit your site and they have enabled dark mode on their OS.
+We are still using Styled-Components for theming. However, the values point to CSS custom properties, and we can switch the theme by changing the class on the `body` element. Since all the variable values are in global CSS, and the above script runs as soon as the page loads, the user no longer sees a flash. The only time the user sees a flash is the first time they visit your site, and if they have enabled dark mode on their OS.
 
-Gatsby does a lot of work to ensure that your site is performant. One of those things is using React SSR to generate a static site. Which unfortunately means that we have to do a bit more work to implement dark mode, but the trade-off is worth it and I got to learn a lot. That said, if you use Theme UI then you get all of this for free.
+Gatsby does a tremendous amount of work to ensure that your site is performant. One of those things is to use React SSR to generate a static website. It, unfortunately, means that we have to do a bit more work to implement dark mode, but the trade-off was worth it, and I got to learn a lot. That said, if you use Theme UI, then you get all of this for free.
 
-The one key takeaway from this whole process is that adding dark-mode means that you are creating more work for your future self. Each feature you add to your site will have to support it.
+The one key takeaway from this whole process is that implementing dark-mode means that you are creating more work for your future self. Each feature you add to your site will have to support it.

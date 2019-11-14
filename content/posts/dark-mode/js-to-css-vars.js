@@ -21,12 +21,12 @@ export default () => (
     >
       <code>{`{
   light: {
-      brand: {
+    brand: {
       main: '#4e4bec',
       bright: '#dedefb',
       faded: '#ececfd',
       selection: '#ececfd',
-    }
+    },
     neutral: {
       0: '#333',
       1: '#555',
