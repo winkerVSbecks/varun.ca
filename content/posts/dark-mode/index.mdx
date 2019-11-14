@@ -6,6 +6,7 @@ preview: ../assets/dark-mode.gif
 
 import DarkModeAnimation from './dark-mode-animation';
 import ColorScale from './color-scale';
+import JsToCssVars from './js-to-css-vars';
 
 <Box
   width={24 * 2.5}
@@ -117,7 +118,7 @@ const Layout = ({ title, description, image, children }) => {
 };
 ```
 
-## Avoiding Flash
+### Avoiding Flash
 
 Gatsby at build time uses a React server side rendering to compile the site into files that can be delivered to a web browser. The output is HTML and a JavaScript runtime that takes over in the browser once the initial HTML has loaded.
 
@@ -131,50 +132,32 @@ The generated HTML and CSS uses the default colour mode. When the user loads the
 
 The best way to avoid _the flash_ is to rely on CSS rather than JavaScript. The challenge here is that I am using Styled-Components which is a CSS-in-JS library and rely's on the JS bundle to load and parse before the CSS can be appropriately updated. The Theme UI team came up with an interesting solution.
 
-1. Convert the colour modes from hard-coded hex values to to CSS Custom Properties.
-2. Generate global CSS that change the value of these CSS Custom Properties using scoped class names, for example: `varun-ca-dark` and `varun-ca-light`
-3. Inject a tiny script in your HTML to check local-storage for user's preferrence and set the appropriate class name to the body tag.
+First, convert the colour modes from hard-coded hex values to to CSS Custom Properties.
+Then generate global CSS that controls the value of these CSS Custom Properties using scoped class names, for example: `.varun-ca-dark` and `.varun-ca-light` ([color-mode-styles.js](https://github.com/winkerVSbecks/varun.ca/blob/master/src/theme/color-mode-styles.js)).
 
-```js
-{
-  brand: {
-    main: '#4e4bec',
-    bright: '#dedefb',
-    faded: '#ececfd',
-    selection: '#ececfd',
-  }
-  neutral: {
-      0: '#333',
-      1: '#555',
-      ...
-    },
-}
+<JsToCssVars />
 
-// The above is converted into below
-{
-  brand: {
-    main: "var(--varun-ca-colors-brand-main, #4e4bec)",
-    bright: "var(--varun-ca-colors-brand-bright, #dedefb)",
-    faded: "var(--varun-ca-colors-brand-faded, #ececfd)",
-    selection: "var(--varun-ca-colors-brand-selection, #ececfd)"
-  },
-  neutral: {
-    0: "var(--varun-ca-colors-neutral-0, #333)",
-    1: "var(--varun-ca-colors-neutral-1, #555)",
-    ...
-  },
-}
+Lastly, inject a tiny script in your HTML to check local-storage for user's preferrence and set the appropriate class name to the body tag ([use-color-mode.js](https://github.com/winkerVSbecks/varun.ca/blob/master/src/use-color-mode.js)).
+
+```js:title=use-color-mode.js
+const STORAGE_KEY = 'varun-ca-color-mode';
+
+export const InitializeColorMode = () => (
+  <script
+    key="varun-ca-no-flash"
+    dangerouslySetInnerHTML={{
+      __html: `(function() { try {
+        var mode = localStorage.getItem('${STORAGE_KEY}');
+        if (!mode) return
+        document.body.classList.add('varun-ca-' + mode);
+      } catch (e) {} })();`,
+    }}
+  />
+);
 ```
 
-2. Generate multiple.
+We are still using Styled-Components for theming. However, the values point to CSS custom properties and we can switch the theme by changing the class on the `body` element. Since, all the variable values are in global CSS and the above script runs as soon as the page loads, the user no longer sees a flash.
 
-<!--
-- Impact — syntax highlighting, shadows, every feature.
-✅ Theme.js, Colour naming
-- First load
-  ✅ check for prefers-color-scheme: dark
-  ✅ tracking user choice
-  - avoiding flash on first load with pre-render
-    - Convert colours to CSS Variables
-    - Change CSS Variables based on theme
--->
+Gatsby does a lot of work to ensure that your site is performant. One of those things is using React SSR to generate a static site. Which unfortunately means that we have to do a bit more work to implement dark mode, but the trade-off is worth it. That said, if you use Theme UI then you it does all this for you too.
+
+The one thing that this whole process taught me is that adding dark-mode means that you are creating more work for your future self. Each feature you add to your site will have to support it.
