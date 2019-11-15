@@ -36,14 +36,19 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Layout = ({ title, description, image, children }) => {
+const Layout = ({ title, description, image, pathname, children }) => {
   const [mode, setColorMode] = useColorMode();
 
   return (
     <ThemeProvider theme={{ ...theme, ...createColorStyles(mode) }}>
       <ColorModeContext.Provider value={{ mode, setColorMode }}>
         <>
-          <SEO title={title} description={description} image={image} />
+          <SEO
+            title={title}
+            description={description}
+            image={image}
+            pathname={pathname}
+          />
           <InitializeColorMode />
           <GlobalStyle />
           <MDXProvider components={dsToMdx}>{children}</MDXProvider>
