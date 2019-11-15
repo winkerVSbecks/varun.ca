@@ -15,6 +15,12 @@ export default function PostLayout({ data: { mdx }, pageContext }) {
       description={mdx.excerpt}
       pathname={mdx.fields.slug}
       image={mdx.frontmatter.image ? mdx.frontmatter.image.url : null}
+      meta={[
+        {
+          name: `author`,
+          content: 'Varun Vachhar',
+        },
+      ]}
     >
       <Box maxWidth={7} mx="auto" px={[3, 4, 3]}>
         <GlobalHeader linkTo="/writing" />

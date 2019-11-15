@@ -47,10 +47,6 @@ export function SEO({
             name: `description`,
             content: description,
           },
-          {
-            name: `author`,
-            content: author,
-          },
         ].concat(meta)}
       />
       <Facebook

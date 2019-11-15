@@ -36,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Layout = ({ title, description, image, pathname, children }) => {
+const Layout = ({ title, description, image, pathname, meta, children }) => {
   const [mode, setColorMode] = useColorMode();
 
   return (
@@ -48,6 +48,7 @@ const Layout = ({ title, description, image, pathname, children }) => {
             description={description}
             image={image}
             pathname={pathname}
+            meta={meta}
           />
           <InitializeColorMode />
           <GlobalStyle />
