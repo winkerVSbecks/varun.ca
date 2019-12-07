@@ -89,7 +89,7 @@ We can then render an icon using the `<use>` element.
 If you are working with React or Angular or Vue.js then there is a good chance that your project was setup using [webpack](https://webpack.js.org/). We will use the [svg-sprite-loader](https://www.npmjs.com/package/svg-sprite-loader) for webpack to convert a folder full of SVG files into an icon sprite sheet.
 
 ```js
-const files = require.context('!svg-sprite!./assets', false, /.*\.svg$/);
+const files = require.context('!svg-sprite-loader!./assets', false, /.*\.svg$/);
 files.keys().forEach(files);
 ```
 
@@ -97,9 +97,9 @@ To do so:
 
 1. We are using [`require.conext`](https://webpack.js.org/guides/dependency-management/#require-context) to generate a list of SVG files in the `assets` folder.
 
-2. We then iterate over this list and load all the files using the `svg-sprite` loader.
+2. We then iterate over this list and load all the files using `svg-sprite-loader`.
 
-3. The `svg-sprite` loader then generates the sprite sheet and injects it into DOM on run-time. Similar to how [style-loader](https://github.com/webpack/style-loader) works.
+3. `svg-sprite-loader` then generates the sprite sheet and injects it into DOM on run-time. Similar to how [style-loader](https://github.com/webpack/style-loader) works.
 
 ![Injected sprite sheet](../assets/injected-sprite-sheet.jpg)
 
@@ -111,7 +111,7 @@ Time to put everything together and build the icon component. Below is the React
 
 ```js
 import React from 'react';
-const files = require.context('!svg-sprite!./assets', false, /.*\.svg$/);
+const files = require.context('!svg-sprite-loader!./assets', false, /.*\.svg$/);
 files.keys().forEach(files);
 
 const Icon = ({ type, className }) => (
