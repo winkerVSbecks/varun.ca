@@ -41,11 +41,13 @@ const Home = ({ data }) => {
               About
             </H1>
             <Text measure="wide" fontSize={[2, 3]}>
-              I am a developer with a strong focus on design, interactivity and
-              animation. Originally from New Delhi, I currently live in Toronto
-              and am the Director, UI Architecture at{' '}
-              <Link to="https://rangle.io">Rangle.io</Link>. In my spare time, I
-              like to experiment with creative coding, making{' '}
+              I help organizations elevate their design maturity level by
+              adopting more sophisticated design and development practices. With
+              a background in engineering and creative coding, I specialize in
+              design systems and computational design. Originally from New
+              Delhi, I currently live in Toronto and am the Director of UI
+              Architecture at <Link to="https://rangle.io">Rangle.io</Link>. In
+              my spare time, I like to experiment with generative art, making{' '}
               <Link to="http://triangle.life">triangles</Link> and other playful
               experiences for the web.
             </Text>
