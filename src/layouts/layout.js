@@ -13,9 +13,6 @@ import {
 } from '../use-color-mode';
 
 const GlobalStyle = createGlobalStyle`
-
-  @import url('https://rsms.me/inter/inter.css');
-
   html { --inter: 'Inter' }
 
   @supports (font-variation-settings: normal) {

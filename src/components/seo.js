@@ -42,6 +42,13 @@ export function SEO({
         }}
         title={title}
         titleTemplate={`%s | ${siteTitle}`}
+        link={[
+          {
+            rel: 'stylesheet',
+            type: 'text/css',
+            href: 'https://rsms.me/inter/inter.css',
+          },
+        ]}
         meta={[
           {
             name: `description`,
