@@ -14,6 +14,14 @@ import {
 
 const GlobalStyle = createGlobalStyle`
 
+  @import url('https://rsms.me/inter/inter.css');
+
+  html { --inter: 'Inter' }
+
+  @supports (font-variation-settings: normal) {
+    html { --inter: 'Inter' }
+  }
+
   body {
     background-color: ${props => props.theme.colors.neutral[7]};
     ${modeCustomProperties}

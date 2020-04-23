@@ -21,7 +21,7 @@ export const theme = {
   fontWeights: [0, 100, 200, 300, 400, 500, 600, 700, 800, 900],
   fonts: {
     systemSans:
-      "-apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif",
+      "var(--inter), -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif",
     code: 'Consolas, monaco, monospace',
   },
   measures: {
