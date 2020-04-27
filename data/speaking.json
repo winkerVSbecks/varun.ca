@@ -1,5 +1,11 @@
 [
   {
+    "title": "Building & Maintaining a Design System",
+    "conference": "DevTO 2019",
+    "link": "https://www.youtube.com/watch?v=aqNNU6kn1R0",
+    "featured": true
+  },
+  {
     "title": "Cut it Up",
     "conference": "Web Unleashed 2019",
     "link": "https://fitc.ca/presentation/cut-it-up/",
