@@ -21,7 +21,7 @@ A website is an HTML page that runs in the browser. You can use CSS to control t
 Similarly, a Figma plugin is a little website that runs inside Figma… kind of. The plugin has two parts:
 
 - **Main Plugin Code —** JavaScript code that can interact with the Figma file, modify its contents or generate new content.
-- **Optional UI —** an iframe that renders the UI associated with your plugin. Inputs, sliders and buttons.
+- **Optional UI —** an iframe that renders the UI associated with your plugin, inputs, sliders, buttons, etc.
 
 The diagram below visualizes a Figma plugin, click to step through the explanation.
 
@@ -38,7 +38,7 @@ The diagram below visualizes a Figma plugin, click to step through the explanati
 Plugins fall into two categories:
 
 - **Run Once —** doesn't require the user to interact with the plugin after it runs once.
-- **With UI & browser APIs —** Allows users to interact with your plugin on the canvas. Provides access to the full set of browser APIs like `<canvas>` and network.
+- **With UI & browser APIs —** allows users to interact with your plugin and provides access to the full set of browser APIs like `<canvas>` and network.
 
 ![Run once plugins require a manifest and plugin file, while With UI plugins require an additional ui.html file](../assets/plugin-types.svg)
 
@@ -63,7 +63,7 @@ Throughout this post, I'll build out the Confetti plugin. It draws a bunch of co
 }
 ```
 
-The ID property will be assigned to you by Figma, through the _Create new Plugin_ feature.
+The ID property will be provided to you by Figma, through the _Create new Plugin_ feature.
 
 ```js:title=plugin.js
 // Draw the confetti
@@ -382,7 +382,7 @@ In the UI code, add a listener for the messages. The `showError` function then d
 
 ## Accelerate the Development Process
 
-At this point, the UI looks pretty raw, just default browser styling. Unfortunately, Figma doesn't offer any out of the box solution. There is no official component library to make your plugin UI match that of Figma. The closest thing we have is Thomas Lowry's [figma-plugin-ds](https://github.com/thomas-lowry/figma-plugin-ds) or [figma-plugin-ds-svelte](https://github.com/thomas-lowry/figma-plugin-ds-svelte) or [figma-ui-components](https://github.com/lessmess-dev/figma-ui-components) by lessmess.
+At this point, the UI looks pretty raw, just default browser styling. Unfortunately, Figma doesn't offer any out of the box solution. There is no official component library to make your plugin UI match that of Figma. There are however, some great open-source options like [figma-plugin-ds](https://github.com/thomas-lowry/figma-plugin-ds), [figma-plugin-ds-svelte](https://github.com/thomas-lowry/figma-plugin-ds-svelte), [figma-ui-components](https://github.com/lessmess-dev/figma-ui-components) and [create-figma-plugin](https://github.com/yuanqing/create-figma-plugin).
 
 <img
   alt="the plugin ui has default browser styling"
@@ -394,7 +394,7 @@ At this point, the UI looks pretty raw, just default browser styling. Unfortunat
   }}
 />
 
-As soon as you introduce UI, the complexity level of building a plugin ramps up pretty quickly — forms, error handling and styling the UI. You could stick with vanilla HTML, CSS and JS. A lot of people prefer to use frameworks such as React, Vue or Svelte to make their life easier. For example, you probably don't want to implement your own colour picker. You could use [colour picker](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color) built into the browser or something fancier like [react-color](http://casesandberg.github.io/react-color).
+As soon as you introduce UI, the complexity level of building a plugin ramps up pretty quickly — forms, error handling and styling the UI. You could stick with vanilla HTML, CSS and JS. A lot of people prefer to use frameworks such as React, Vue or Svelte to make their life easier. For example, you probably don't want to implement your own colour picker. You could use the [colour picker](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color) built into the browser or something fancier like [react-color](http://casesandberg.github.io/react-color).
 
 Figma also recommends using TypeScript to write your plugin. This is not mandatory. You can use vanilla JavaScript or any other language which can be translated to JavaScript. Using TypeScript does give you a better editing experience.
 
@@ -418,7 +418,7 @@ figplug build -w confetti
 
 Here's the full [source-code](https://github.com/winkerVSbecks/figma-plugin-example-confetti/tree/ui-html) for the confetti plugin, using figplug. You'll notice a few modifications to account for TypeScript. Also, the UI code is split into an HTML file and a TS file. Figplug builds and packages it all up for you.
 
-To use React, initialize with the plugin with `-react` flag. Here's the full [source-code](https://github.com/winkerVSbecks/figma-plugin-example-confetti) for the React & figma-plugin-ds version of the plugin. If you are new to React, I highly recommend [React for Web Designers](https://www.framer.com/blog/posts/react-for-web-designers). The ID property will be assigned to you by Figma.
+To use React, initialize the plugin with `-react` flag. Here's the full [source-code](https://github.com/winkerVSbecks/figma-plugin-example-confetti) for the React & figma-plugin-ds version of the plugin. If you are new to React, I highly recommend [React for Web Designers](https://www.framer.com/blog/posts/react-for-web-designers). The ID property will be assigned to you by Figma.
 
 ```bash{4}
 # Install figplug
@@ -454,7 +454,7 @@ You can break up various features of your plugin into multiple commands. These c
 }
 ```
 
-Let's look at an example, Pack. It is a plugin that fills a frame using the [Circle packing](https://generativeartistry.com/tutorials/circle-packing) effect. The user can choose between different fill shapes.
+Let's look at an example, Pack. It is a plugin that fills a frame using the [Circle packing](https://generativeartistry.com/tutorials/circle-packing) effect. The user can choose between two different fill shapes.
 
 ![Circles and squares packed into a rectangle](../assets/pack-demo.png)
 
