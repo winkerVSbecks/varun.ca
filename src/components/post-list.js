@@ -1,12 +1,23 @@
 import React from 'react';
+import styled from 'styled-components';
 import { SimpleLink, FlatList, ListItem, Text } from '@ds';
 import { Date } from './date';
+
+const PostLink = styled(SimpleLink)`
+  :hover,
+  :focus,
+  :active {
+    span {
+      color: ${props => props.theme.colors.brand.main};
+    }
+  }
+`;
 
 export const PostList = ({ posts }) => (
   <FlatList mx={-3}>
     {posts.map(({ node: post }) => (
       <ListItem key={post.id} mb={0}>
-        <SimpleLink to={post.fields.slug} display="block" p={3}>
+        <PostLink to={post.fields.slug} display="block" p={3}>
           <Date
             timestamp={post.frontmatter.timestamp}
             date={post.frontmatter.date}
@@ -20,7 +31,7 @@ export const PostList = ({ posts }) => (
           >
             {post.frontmatter.title}
           </Text>
-        </SimpleLink>
+        </PostLink>
       </ListItem>
     ))}
   </FlatList>
