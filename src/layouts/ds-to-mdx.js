@@ -6,7 +6,9 @@ import { CodePen } from '@components/codepen';
 export default {
   // Components
   Flex: DesignSystem.Flex,
+  flex: DesignSystem.Flex,
   Box: DesignSystem.Box,
+  box: DesignSystem.Box,
   Text: DesignSystem.Text,
   Image: DesignSystem.Image,
   CallOut,
