@@ -49,7 +49,7 @@ const pan$ = Rx.Observable.fromEvent(hammerPan, 'panstart panmove panend');
 
 ### Composing the Drag Observable
 
-For the drag gesture we want to create an observable stream such that it emits values from the the pan-move event once the pan-start event has been triggered and then stops emitting those values once the pan-end event is triggered.
+For the drag gesture we want to create an observable stream such that it emits values from the pan-move event once the pan-start event has been triggered and then stops emitting those values once the pan-end event is triggered.
 
 <figure my={5}>
   <Drag />

@@ -45,7 +45,7 @@ Taking Teresa's advice, the extreme ends of the neutral scale are a blue-ish bla
 
 I was going for an end experience where my site supports two modes — dark and light. On the first load it defaults to the light mode. It then checks to see if the user prefers dark mode using `prefers-color-scheme: dark` media query. If yes, then switch to dark mode. There is also a button that the user can click to toggle modes. On subsequent loads the site needs to track their choice, default to it.
 
-On the surface this seems like a failry straightforward feature set. Howver, I soon discovered that there was a lot of hidden complexity I wasn't accounting for. I'll go through those challenges in a bit but first, I want to give a major shout out to the [Theme UI](https://theme-ui.com/) team. My solution is largely based on how Theme UI handles [colour mode](https://theme-ui.com/color-modes#setting-the-color-mode) switching. This blog post could easily have been titled "How Theme UI handles colour mode switching with Gatsby".
+On the surface this seems like a failry straightforward feature set. However, I soon discovered that there was a lot of hidden complexity I wasn't accounting for. I'll go through those challenges in a bit but first, I want to give a major shout out to the [Theme UI](https://theme-ui.com/) team. My solution is largely based on how Theme UI handles [colour mode](https://theme-ui.com/color-modes#setting-the-color-mode) switching. This blog post could easily have been titled "How Theme UI handles colour mode switching with Gatsby".
 
 ### Theme Variants
 
