@@ -45,6 +45,12 @@ export default function PostLayout({ data: { mdx }, pageContext }) {
           </Link>
         </Text>
         <RelatedPosts posts={pageContext.relatedPosts} />
+        <object
+          type="image/svg+xml"
+          data="https://sidebar.io/webring/banner/hrtg.svg"
+          height="60"
+          width="225"
+        />
         <Footer />
       </Box>
     </Layout>
