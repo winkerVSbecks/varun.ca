@@ -48,6 +48,14 @@ export function SEO({
             type: 'text/css',
             href: 'https://rsms.me/inter/inter.css',
           },
+          {
+            rel: 'webmention',
+            href: 'https://webmention.io/varun.ca/webmention',
+          },
+          {
+            rel: 'pingback',
+            href: 'https://webmention.io/varun.ca/xmlrpc',
+          },
         ]}
         meta={[
           {
