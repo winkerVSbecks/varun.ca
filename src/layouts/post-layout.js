@@ -47,7 +47,7 @@ export default function PostLayout({ data: { mdx }, pageContext }) {
         <RelatedPosts posts={pageContext.relatedPosts} />
         <object
           type="image/svg+xml"
-          data="https://sidebar.io/webring/banner/hrtg.svg"
+          data="https://sidebar.io/webring/banner/hrtg.svg?color=444"
           height="60"
           width="225"
         />

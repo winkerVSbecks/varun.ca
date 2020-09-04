@@ -17,6 +17,7 @@ export const ProfileLinks = () => (
       <SimpleLink
         key={link.to}
         to={link.to}
+        rel="me"
         fontWeight={5}
         px={3}
         py={[2, 3]}
