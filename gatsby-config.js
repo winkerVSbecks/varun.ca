@@ -61,6 +61,12 @@ module.exports = {
         trackingId: `UA-22315045-9`,
       },
     },
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://varun.ca`,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-twitter`,
     {
