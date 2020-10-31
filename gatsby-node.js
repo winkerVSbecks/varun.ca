@@ -9,6 +9,7 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
         '@layouts': path.resolve(__dirname, 'src/layouts'),
         '@components': path.resolve(__dirname, 'src/components'),
         '@theme': path.resolve(__dirname, 'src/theme'),
+        '@utils': path.resolve(__dirname, 'src/utils'),
         '@assets': path.resolve(__dirname, 'content/assets'),
       },
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],

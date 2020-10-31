@@ -8,9 +8,10 @@ export const RelatedPosts = ({ posts }) => (
     borderTopWidth="2px"
     borderTopColor="neutral.5"
     borderTopStyle="solid"
-    py={4}
+    pb={4}
+    pt={5}
   >
-    <H1 fontSize={3} mb={3} mt={3}>
+    <H1 fontSize={3} mb={3} mt={0}>
       Related Posts
     </H1>
 

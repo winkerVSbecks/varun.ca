@@ -3,15 +3,15 @@ import { compose, space, layout, flexbox } from 'styled-system';
 import Img from 'gatsby-image';
 import { Box } from './primitives';
 
-export const Image = styled(Box)`
-  max-width: 100%;
-`;
+export const Image = styled(Box)``;
 
 Image.defaultProps = {
   display: 'block',
   as: 'img',
-  mx: 'auto',
+  ml: 'auto',
+  mr: 'auto',
   mb: 4,
+  maxWidth: '100%',
 };
 
 export const BackgroundImage = styled.div(
@@ -25,10 +25,7 @@ export const BackgroundImage = styled.div(
     backgroundColor: props.theme.colors.gray,
     backgroundImage: props.image ? `url(${props.image})` : null,
   }),
-  compose(
-    layout,
-    flexbox
-  )
+  compose(layout, flexbox)
 );
 
 export const AspectRatioImage = styled.div(
@@ -43,11 +40,7 @@ export const AspectRatioImage = styled.div(
     backgroundImage: props.image ? `url(${props.image})` : null,
     paddingBottom: `${(1 / props.aspectRatio) * 100}%`,
   }),
-  compose(
-    space,
-    layout,
-    flexbox
-  )
+  compose(space, layout, flexbox)
 );
 AspectRatioImage.defaultProps = {
   aspectRatio: 1,

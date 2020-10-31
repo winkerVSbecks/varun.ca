@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { SimpleLink, FlatList, ListItem, Text } from '@ds';
 import { Date } from './date';
 
-const PostLink = styled(SimpleLink)`
+const PostLink = styled(SimpleLink).attrs({ fontWeight: 5 })`
   :hover,
   :focus,
   :active {

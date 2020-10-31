@@ -14,14 +14,42 @@ export const Button = styled(Box).attrs(props => ({
     lineHeight: 'inherit',
     textDecoration: 'none',
   },
-  compose(
-    typography,
-    buttonStyle
-  )
+  compose(typography, buttonStyle)
 );
 
 Button.defaultProps = {
   border: 0,
+};
+
+export const PrimaryButton = styled(Button)`
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  height: 40px;
+
+  opacity: 1;
+  transition: opacity 0.15s ease-in;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+  &:active {
+    opacity: 0.9;
+  }
+`;
+
+PrimaryButton.defaultProps = {
+  display: 'inline-block',
+  fontSize: 0,
+  bg: 'neutral.1',
+  color: 'neutral.7',
+  fontWeight: 5,
+  textAlign: 'center',
+  px: 3,
+  lineHeight: 'title',
+  width: 4,
+  paddingTop: 2,
+  paddingBottom: 2,
 };
 
 export const TransparentButton = styled(Button)`
