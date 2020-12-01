@@ -203,7 +203,7 @@ To be honest, I thought I was done, but there's an issue. Observe the edge. At f
 
 ### 8. Correcting Perspective
 
-<img alt="The double curves join to create a thick edge" src={edgeThickness} width="50%" flex="1 1 50%" maxWidth="300px" />
+<img alt="The double curves join to create a thick edge" src={edgeThickness} maxWidth="300px" />
 
 Let's go back to that control point calculation. Notice the `lerpFrames` here. I added that back in step 4, to animate the bottom control point.
 
@@ -255,6 +255,8 @@ In total there are three parts to the final image:
 1. The twisty rectangle
 2. Which gets replaced by the split faces
 3. And finally the edge that layers on top at all times
+
+<img alt="Edge curve split" src={final} maxWidth="300px" />
 
 Combine them, and success!
 
