@@ -6,9 +6,12 @@ import { Footer } from '@components/footer';
 import { Date } from '@components/date';
 import { GlobalHeader } from '@components/global-header';
 import { RelatedPosts } from '@components/related-posts';
+import { Newsletter } from '@components/newsletter';
 import Layout from './layout';
 
 export default function PostLayout({ data: { mdx }, pageContext }) {
+  const maxWidth = mdx.frontmatter.maxWidth ? mdx.frontmatter.maxWidth : 7;
+
   return (
     <Layout
       title={mdx.frontmatter.title}
@@ -22,7 +25,7 @@ export default function PostLayout({ data: { mdx }, pageContext }) {
         },
       ]}
     >
-      <Box maxWidth={7} mx="auto" px={[3, 4, 3]}>
+      <Box maxWidth={maxWidth} mx="auto" px={[3, 4, 3]}>
         <GlobalHeader linkTo="/writing" />
         <Box as="article" my={6}>
           <Box as="header" mb={6}>
@@ -44,6 +47,7 @@ export default function PostLayout({ data: { mdx }, pageContext }) {
             Open an Issue
           </Link>
         </Text>
+        <Newsletter />
         <RelatedPosts posts={pageContext.relatedPosts} />
         <object
           aria-label="Sidebar webring"
@@ -71,6 +75,7 @@ export const pageQuery = graphql`
         image {
           url: publicURL
         }
+        maxWidth
       }
       fields {
         slug

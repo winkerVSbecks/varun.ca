@@ -11,3 +11,4 @@ export * from './card-link';
 export * from './stack';
 export * from './demo-source';
 export * from './buttons';
+export * from './input';
