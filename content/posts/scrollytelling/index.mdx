@@ -1,0 +1,223 @@
+---
+title: Scrollytelling with React
+image: ../assets/torsions/scrollytelling.gif
+date: 2020-12-12
+---
+
+import scrollytellingWebm from '../../assets/scrollytelling.webm';
+import scrollytellingMp4 from '../../assets/scrollytelling.mp4';
+import { ScrollytellingVis } from './scrollytelling-vis';
+
+Scrollytelling is a visual and interactive form of storytelling. It consists of a logical sequence of visualizations. They accompany a narrative and are driven by the user's scrolling. In my [last post](/torsions/), I used this technique to break down an animation. There are plenty of off-the-shelf [libraries](https://codehike.org/) that one can use. I wanted something minimal that fit my existing publishing setup and didn't impact content portability.
+
+Let's talk about how I built my React and Intersection Observer based solution.
+
+## What Are We Building?
+
+The setup is largely inspired by [Generative Artistry](https://generativeartistry.com/tutorials/). It is incredibly powerful to put words and updating visuals side by side. This approach works particularly well for incremental tutorials and code walkthroughs.
+
+<Video
+  autoplay
+  loop
+  muted
+  playsInline
+  display="block"
+  mx="auto"
+  borderColor="brand.bright"
+  borderWidth="1px"
+  borderStyle="solid"
+  borderRadius="3"
+>
+  <source src={scrollytellingWebm} type="video/webm" />
+  <source src={scrollytellingMp4} type="video/mp4" />
+</Video>
+
+### What's involved?
+
+1. The actual page layout
+2. A sticky container for the visualization
+3. Tracking the user's scrolling and updating the visuals accordingly
+
+## Sectioning Content
+
+The post is broken into discrete steps and each step has a visualization associated with it. But how do you define those steps?
+
+One option would be to define them as an array. That's not a great authoring experience though. You have to breakdown freeform text into JavaScript. Makes writing and editing super annoying.
+
+Instead, I decided to use `<h3>` elements (in markdown) to signify a step.
+
+```md:title=post.mdx
+## Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae. Ut venenatis tellus in metus. Nulla posuere sollicitudin aliquam ultrices sagittis orci a scelerisque purus.
+
+## Mattis aliquam faucibus purus in
+
+Metus aliquam eleifend mi in nulla posuere. Nunc id cursus metus aliquam eleifend mi. Venenatis cras sed felis eget velit aliquet. Sit amet cursus sit amet dictum sit amet. Orci eu lobortis elementum nibh tellus molestie nunc non blandit. Iaculis nunc sed augue lacus. Quis varius quam quisque id diam. Viverra ipsum nunc aliquet bibendum enim facilisis gravida.
+
+## Nunc sed blandit libero volutpat sed cras ornare arcu dui
+
+Id aliquet risus feugiat in ante. Mi eget mauris pharetra et ultrices. Sed arcu non odio euismod. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque. Auctor urna nunc id cursus metus aliquam eleifend. Condimentum mattis pellentesque id nibh tortor.
+
+## Et netus et malesuada fames ac
+
+In est ante in nibh mauris. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc. Id nibh tortor id aliquet lectus proin nibh nisl. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Massa sapien faucibus et molestie ac feugiat sed lectus. Ipsum a arcu cursus vitae congue. Sociis natoque penatibus et magnis dis parturient montes. Interdum velit laoreet id donec ultrices.
+```
+
+Cool. So, each of those `##` headings mark the start of a section.
+
+How do you attach visuals to this?
+
+I write my posts in [MDX](https://github.com/mdx-js/mdx). Which means we can use React components within the content. I created a `Scroller` component which can wrap all or a part of the post. And we can pass in a list of figures to this component.
+
+It's also going to be responsible for the layout and scroll tracking.
+
+```jsx{1-5,11,23}:title=post.mdx
+export const figures = [
+  <img alt="image for section one" src="./img-1" />,
+  <img alt="image for section two" src="./img-2" />,
+  <img alt="image for section three" src="./img-3" />,
+];
+
+## Lorem ipsum dolor sit amet
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae. Ut venenatis tellus in metus. Nulla posuere sollicitudin aliquam ultrices sagittis orci a scelerisque purus.
+
+<Scroller width={300} figures={figures}>
+## Mattis aliquam faucibus purus in
+
+Metus aliquam eleifend mi in nulla posuere. Nunc id cursus metus aliquam eleifend mi. Venenatis cras sed felis eget velit aliquet. Sit amet cursus sit amet dictum sit amet. Orci eu lobortis elementum nibh tellus molestie nunc non blandit. Iaculis nunc sed augue lacus. Quis varius quam quisque id diam. Viverra ipsum nunc aliquet bibendum enim facilisis gravida.
+
+## Nunc sed blandit libero volutpat sed cras ornare arcu dui
+
+Id aliquet risus feugiat in ante. Mi eget mauris pharetra et ultrices. Sed arcu non odio euismod. Nisl condimentum id venenatis a condimentum vitae sapien pellentesque. Auctor urna nunc id cursus metus aliquam eleifend. Condimentum mattis pellentesque id nibh tortor.
+
+## Et netus et malesuada fames ac
+
+In est ante in nibh mauris. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc. Id nibh tortor id aliquet lectus proin nibh nisl. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo. Massa sapien faucibus et molestie ac feugiat sed lectus. Ipsum a arcu cursus vitae congue. Sociis natoque penatibus et magnis dis parturient montes. Interdum velit laoreet id donec ultrices.
+</Scroller>
+```
+
+## Layout
+
+The layout is relatively straightforward. A flex container that puts the text and visuals side-by-side. The visuals container has a fixed width while the text expands to fill the remaining space.
+
+<AsciiDiagramContainer justifyContent="center">
+  <AsciiDiagram>{`+----------------------------------------------------------+
+| Container                                                |
+|                                                          |
+| display: flex;                                           |
+|                                                          |
+| align-items: flex-start;                                 |
+|                                                          |
+|                                                          |
+| +---------------+ +------------------------------------+ |
+| |   visuals     | |                                    | |
+| |               | |   Text Content                     | |
+| |   flex:none   | |                                    | |
+| +---------------+ |   flex: 1 1 auto;                  | |
+|                   |                                    | |
+|                   |                                    | |
+|                   |                                    | |
+|                   +------------------------------------+ |
++----------------------------------------------------------+`}</AsciiDiagram>
+  <SrOnly as="figcaption">Flex container</SrOnly>
+</AsciiDiagramContainer>
+
+## Sticky Visuals
+
+There are no restrictions to what the visuals can be: image, multiple images, video, code blocks, etc. Therefore, they are wrapped in a `<figure>` element. Which in turn uses `position: sticky` for its _sticky_ behaviour.
+
+```css
+flex: none;
+position: sticky;
+top: 64px;
+margin-left: 0;
+margin-top: 0;
+```
+
+## Track scrolling and update visuals
+
+Each section starts with an `<h3>`. We can track to see which of those headings is near the top of the viewport and display the visual for that section.
+
+<ScrollytellingVis />
+
+[Intersection Observer](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) is an efficient tool for this job. I wrote a custom hook that tracks all elements of a specific type, within a particular parent element. And then executes a callback when one of them enters the target area.
+
+```js:title=useIntersection.js
+import { useEffect } from 'react';
+
+export const useIntersection = (ref, selector, handler, options) => {
+  useEffect(() => {
+    const observers = [];
+
+    if (ref.current && typeof IntersectionObserver === 'function') {
+      const handleIntersect = idx => entries => {
+        handler(entries[0], idx);
+      };
+
+      ref.current.querySelectorAll(selector).forEach((node, idx) => {
+        const observer = new IntersectionObserver(
+          handleIntersect(idx),
+          options
+        );
+        observer.observe(node);
+        observers.push(observer);
+      });
+
+      return () => {
+        observers.forEach(observer => {
+          observer.disconnect();
+        });
+      };
+    }
+    return () => {};
+  }, [ref.current, options.threshold, options.rootMargin]);
+};
+```
+
+We're going to use this hook in the Scroller component. It's set up to track all `<h3>` elements within the flex container. Notice the `rootMargin`, that's how I limit the target area to roughly the top of the viewport.
+
+```js{5-14}:title=scroller.js
+export const Scroller = ({ figures = [], width, children }) => {
+  const ScrollerContainerRef = useRef(null);
+  const [activeFigure, setActiveFigure] = useState(0);
+
+  useIntersection(
+    ScrollerContainerRef,
+    'h3',
+    (entry, idx) => {
+      if (entry.intersectionRatio === 1) {
+        setActiveFigure(idx);
+      }
+    },
+    { threshold: 1, rootMargin: '32px 0px -80% 0px' }
+  );
+
+  const figure = figures[activeFigure];
+
+  return (
+    <Flex ref={ScrollerContainerRef} alignItems="flex-start">
+      <StickyFigure width={width} mr={[3, 4]}>
+        {figure}
+      </StickyFigure>
+      <Box maxWidth={7}>{children}</Box>
+    </Flex>
+  );
+};
+```
+
+Now as the user scrolls, the `IntersectionObserver` tracks which heading is near the top. We then update `activeFigure` to that index. Which in turn is used to pick which figure to display.
+
+That's all there is to it!
+
+## Where can you take this next?
+
+One obvious scenario I ran into was mobile. There just isn’t enough space to show text and images side-by-side. So, I split behaviour based on viewport size:
+
+- **Small viewports:** hide the sticky visual container and display the visuals inline instead
+- **Large viewports:** hide the inline visuals and make the sticky visual container visible
+
+The inline visuals are placed by the author in the main content body. Check out the [source](https://github.com/winkerVSbecks/varun.ca/blob/master/src/components/scroller.js) for this responsive version.
+
+This was just a start. The basic concept is to leverage visuals to explain ideas. And drive those visuals via scrolling. You can use it to modify or highlight code snippets. Add transitions between the visuals. Or drive an animation timeline. The possibilities are endless.

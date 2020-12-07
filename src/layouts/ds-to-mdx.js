@@ -36,6 +36,9 @@ export default {
     />
   ),
   SrOnly: DesignSystem.SrOnly,
+  Video: props => (
+    <DesignSystem.Box as="video" width="100%" mb={4} {...props} />
+  ),
   // HTML elements
   h1: DesignSystem.H1,
   h2: DesignSystem.H2,
