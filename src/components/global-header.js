@@ -2,11 +2,11 @@ import React from 'react';
 import { Box, Flex, Text, SimpleLink } from '@ds';
 import { CycleMode } from './cycle-mode';
 
-export const GlobalHeader = ({ linkTo = '/' }) => (
+export const GlobalHeader = () => (
   <Flex as="nav" mx="auto" my={6} alignItems={['flex-start', 'center']}>
     <Box display={['block', 'flex']} alignItems="center">
       <SimpleLink
-        to={linkTo}
+        to="/"
         style={{ textTransform: 'uppercase' }}
         mb={0}
         mr={2}
