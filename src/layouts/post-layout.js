@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { Box, H1, Text, Link } from '@ds';
+import { Box, Flex, H1, Text, Link, SimpleLink, Icon } from '@ds';
 import { Footer } from '@components/footer';
 import { Date } from '@components/date';
 import { GlobalHeader } from '@components/global-header';
@@ -26,8 +26,23 @@ export default function PostLayout({ data: { mdx }, pageContext }) {
       ]}
     >
       <Box maxWidth={maxWidth} mx="auto" px={[3, 4, 3]}>
-        <GlobalHeader linkTo="/writing" />
+        <GlobalHeader />
         <Box as="article" my={6}>
+          <Flex>
+            <SimpleLink
+              color="neutral.2"
+              fontSize={1}
+              letterSpacing="tracked"
+              fontWeight={6}
+              fontSize={1}
+              display="flex"
+              alignItems="center"
+              to="/writing"
+              mb={3}
+            >
+              ← writing
+            </SimpleLink>
+          </Flex>
           <Box as="header" mb={6}>
             <Date
               timestamp={mdx.frontmatter.timestamp}
