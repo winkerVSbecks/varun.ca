@@ -32,6 +32,7 @@ export default {
       mx="auto"
       mb={4}
       bg="code.background"
+      overflow="scroll"
       {...props}
     />
   ),
