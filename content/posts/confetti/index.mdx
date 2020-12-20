@@ -1,0 +1,255 @@
+---
+title: Let's Build a Confetti Cannon
+date: 2020-12-19
+image: ../assets/torsions/torsions.gif
+maxWidth: 8
+---
+
+import { Scroller } from '@components/scroller';
+import { ConfettiVis } from './confetti-vis';
+import confettiParticle from '../../assets/confetti-particle.svg';
+import confettiSpread from '../../assets/confetti-spread.svg';
+import flocking from '../../assets/flocking.gif';
+import confettiHeader from '../../assets/confetti-header.gif';
+
+export const figures = [
+  <img alt="" src={confettiParticle} />,
+  <ConfettiVis singleParticle overrides={{ animDelay: 0 }} />,
+  <ConfettiVis singleParticle decay tweak={{ name: 'decay', value: 0.94, min: 0.8, max: 1, step: 0.01 }} />,
+  <ConfettiVis singleParticle decay gravity tweak={{ name: 'gravity', value: 3, min: 0, max: 10, step: 1 }} />,
+  <ConfettiVis singleParticle decay gravity tilt />,
+  <ConfettiVis singleParticle decay gravity tilt wobble />,
+  <ConfettiVis randomSpread decay gravity tilt wobble />,
+  <img alt="" src={confettiSpread} />,
+  <ConfettiVis decay gravity tilt wobble />,
+];
+
+<img alt="" src={confettiHeader} maxWidth="400px" />
+
+Confetti cannons are fun! Both to play with and to build. Let's learn to make one. Along the way, we'll cover particle systems and a bit of high school physics. I'll also show you how to integrate a Canvas based animation into a larger application.
+
+## The Confetti System 🎉
+
+Confetti is all about a quick pop, followed by a slow, wobbly tumble to the ground. In graphical terms, it can be modelled as a [particle system](https://natureofcode.com/book/chapter-4-particle-systems/).
+
+> “A particle system is a collection of many many minute particles that together represent a fuzzy object. Over a period of time, particles are generated into a system, move and change from within the system, and die from the system.”
+>
+> — William Reeves, "Particle Systems—A Technique for Modeling a Class of Fuzzy Objects"
+
+You've seen these before. They are used to model all sorts of natural phenomena: fire, smoke, waterfall, fog, grass, bubbles, a flock of birds, and so on.
+
+We're not just building any old particle system. We're building one inspired by Laura Belém's [Carnival Nights](https://www.artbasel.com/catalog/artwork/36465/Laura-Bel%C3%A9m-Carnival-Nights).
+
+### But why a particle system?
+
+Confetti is made up of many small pieces of paper. Each piece of paper follows the same rules of physics. A particle allows us to encapsulate this behaviour in code. The system manages a collection of these particles. We don't want to control each particle on its own. Instead, we give the system a few high-level parameters and let it drive the simulation.
+
+<Scroller
+  width={300}
+  figures={figures}>
+
+### The confetti particle
+
+<img alt="" src={confettiParticle} maxWidth="300px" />
+
+Each particle has a few attributes that define its state:
+
+- Start position
+- Angle: the direction of movement
+- Velocity: how fast it's moving
+
+All combined, these tell us where the particle is, which direction it's moving in, and how fast.
+
+### Let's move it
+
+<ConfettiVis className="visualization" mb={4} singleParticle overrides={{ animDelay: 0 }} />
+
+We'll use the [velocity components](https://www.khanacademy.org/science/physics/two-dimensional-motion/two-dimensional-projectile-mot/a/what-are-velocity-components) to move the particle.
+
+```js
+particle.x += Math.cos(particle.angle) * particle.velocity;
+particle.y += Math.sin(particle.angle) * particle.velocity;
+```
+
+This essentially describes the motion in terms of vectors.
+
+```
+New position = Current Position + Velocity Vector
+```
+
+Often graphics & physics libraries use an actual vector object. I'm keeping things simple and breaking up the motion into x and y directions.
+
+This is the foundational movement we'll build on top of. Right now, it lacks any natural characteristics. It is the equivalent of confetti being fired in space. On Earth, its motion is impacted by external forces: friction, air resistance and gravity.
+
+### Decay
+
+<ConfettiVis className="visualization" mb={4} singleParticle decay tweak={{ name: 'decay', value: 0.94, min: 0.8, max: 1, step: 0.01 }} />
+
+Friction is the first of those forces. We model that as a decay multiplier.
+
+The decay should be less than 1 to slow things down. In each frame, we multiply the velocity by decay. The smaller the value, the quicker it'll slow down.
+
+```js{3}
+particle.x += Math.cos(particle.angle) * particle.velocity;
+particle.y += Math.sin(particle.angle) * particle.velocity;
+particle.velocity *= particle.decay;
+```
+
+### Gravity
+
+What goes up must come down, with a bit of gravity.
+
+<ConfettiVis className="visualization" mb={4} singleParticle decay gravity tweak={{ name: 'gravity', value: 3, min: 0, max: 10, step: 1 }} />
+
+The confetti's net motion is a combination of three forces: the initial launch, the decay and the gravity.
+
+It starts by launching upwards. The decay then starts slowing it down. Then eventually, the gravity overpowers it and starts pulling it downwards in the y-direction.
+
+```js{2-3}
+particle.x += Math.cos(particle.angle) * particle.velocity;
+particle.y +=
+  Math.sin(particle.angle) * particle.velocity + particle.gravity;
+particle.velocity *= particle.decay;
+```
+
+Too little gravity, and it'll look like the confetti was fired on the Moon. And too much gravity will stop it from getting very far. You can tweak the value to find the right balance.
+
+### Tilt
+
+The confetti also tilts as it moves. Sometimes rotating just one way and sometimes back and forth.
+
+<ConfettiVis className="visualization" mb={4} singleParticle decay gravity tilt />
+
+Each particle will have a starting tilt angle. Chosen randomly at launch. Which is then animated using [noise](https://github.com/jwagner/simplex-noise.js). Which gives it a more natural tumbling look.
+
+```js
+const tiltOffset = Random.noise2D(
+  particle.x / particle.random,
+  particle.y / particle.random,
+  1,
+  Math.PI / 16
+);
+particle.tiltAngle = particle.tiltAngle + tiltOffset;
+```
+
+Noise is a perfect tool for simulating organic motion. Think of it as a smoother form of randomness.
+
+<CallOut>
+🚂  Not familiar with noise? Checkout this Coding Train episode for a primer: <a href="https://www.youtube.com/watch?v=Qf4dIN99e2w">Introduction - Perlin Noise and p5.js Tutorial</a>
+</CallOut>
+
+### Wobble
+
+In nature, things rarely move in straight lines. We're going to add a bit of wobble. This will simulate the effect of confetti wafting through the air.
+
+<ConfettiVis className="visualization" mb={4} singleParticle decay gravity tilt wobble />
+
+We'll once again use noise. This time, however, it will add an offset to the x-position of the particle.
+
+```js
+particle.x += Math.cos(particle.angle) * particle.velocity;
+
+const xOffset = Random.noise2D(
+  particle.x / particle.random,
+  particle.y / particle.random
+);
+
+// Add wobble using 2D noise
+particle.x = particle.x + xOffset;
+```
+
+That's much better. The movement feels a lot more natural now.
+
+### The particle system
+
+Moving on to the particle system. Each particle is an object. This object tracks all its visual characteristics and those related to motion.
+
+<ConfettiVis className="visualization" mb={4} randomSpread decay gravity tilt wobble />
+
+We also need to track the lifetime of each particle. Notice how they fade out after a while? That's their lifetime. We do this to track when the animation is complete and trigger another one. I chose to track the lifetime as ticks or frame count.
+
+It will be responsible for four aspects:
+
+- **Creating** the particles and seeding their initial attributes. For example, launch velocity, tilt and colour.
+- **Updating** their motion at each tick or frame. And marking them as dead once their allotted tick count has been reached.
+- **Drawing** the particle
+- **Resetting**  the particles once all of them are dead and triggering another pop
+
+Now, some attributes are defined at the system level and passed down. For example, start position, gravity, decay and the size of the particle. While others, such as colour, are set for each particle.
+
+```js
+// System Level Attributes
+{
+  particleCount: 90,
+  radiusRatio: 0.02,
+  animDelay: 600,
+  noInteractionWait: 5000,
+  velocityFactor: 0.15,
+  decay: 0.94,
+  gravity: 3,
+  x: 0,
+  y: 0,
+  colors,
+}
+```
+
+Some attributes are set at the system level but inform individual particles—for example, direction and velocity. We pick a direction of launch. Then each particle is launched in that direction ± a slight variance. The larger the variance, the wider the confetti will spread.
+
+### An even spread
+
+At this point, we have a confetti system. The fun thing about particle systems is that you can tweak their behaviour in all kinds of exciting ways. I wanted to recreate an effect similar to the [original image](https://www.artbasel.com/catalog/artwork/36465/Laura-Bel%C3%A9m-Carnival-Nights). Make the confetti pop from one location, but then get it to spread somewhat evenly across the canvas.
+
+<img alt="" src={confettiSpread} width="100%" maxWidth="300px" />
+
+Instead of cascading the launch angle down to the particle, we'll try something different. We start by picking a random start position. Based on the bounds, we calculate a random end position—a different one for each particle. Now we have a start point and an endpoint. With a bit of trigonometry, we can calculate the angle between them. And then calculate a lunch velocity as a function of the distance between the two points.
+
+```js
+function setEndLocation({ width, height }, x, y) {
+  const xBounds = [-x, width - x];
+  const yBounds = [-y, height - y];
+
+  return [x + Random.range(...xBounds), y + Random.range(...yBounds)];
+}
+
+function launchAngle([x1, y1], [x2, y2]) {
+  return Math.atan2(y2 - y1, x2 - x1);
+}
+
+function launchVelocity(maxDist, startPos, endPos, startVelocity) {
+  const d = dist(startPos, endPos);
+  return mapRange(d, 0, maxDist, startVelocity * 0.1, 1 * startVelocity);
+}
+```
+
+### Integrating it into an app
+
+<ConfettiVis className="visualization" mb={4} decay gravity tilt wobble />
+
+I originally built this as a [digital greeting card](https://carnival-nights.netlify.app). It sits inside a larger [Svelte app](https://github.com/winkerVSbecks/carnival-nights).
+
+Canvas is quite portable. You can render the DOM node using vanilla HTML or a SPA framework like React or Svelte. And once the DOM node mounts, initialize the animation. The animation then runs in its own loop. You can leave it unattached or trigger a refresh based on props.
+
+```html:title=Canvas.svelte
+<script>
+  import { onMount } from 'svelte';
+  import initConfettiSystem from './confetti-system';
+  let canvasEl;
+  onMount(() => {
+    setTimeout(() => {
+      initConfettiSystem(canvasEl);
+    }, 1000);
+  });
+</script>
+
+<canvas class="carnival-nights" bind:this="{canvasEl}"></canvas>
+```
+
+</Scroller>
+
+You now have a foundational particle system. You can simulate other effects just by tweaking the particle's attributes and behaviours. Create snow, rain or fireworks. [Canvas-confetti](https://www.kirilv.com/canvas-confetti/) is another really great example for reference. Or check out the [source code](https://github.com/winkerVSbecks/carnival-nights) for my greeting card to see how I added interactivity.
+
+<img src={flocking} alt="Flocking simulation" maxWidth="400px" />
+
+### Taking It to the Next Level
+
+With confetti, each particle follows the same rules but runs independently. There are systems where particles interact with each other and influence behaviour. [Flocking](https://www.youtube.com/watch?v=mhjuuHl6qHM) is an excellent example of this. In my next post, I'll cover one such system. Sign up for my newsletter to get an update.

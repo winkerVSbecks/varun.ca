@@ -19,11 +19,11 @@ export const useIntersection = (ref, selector, handler, options) => {
       });
 
       return () => {
-        observers.forEach(observer => {
+        observers.forEach((observer, idx) => {
           observer.disconnect();
         });
       };
     }
     return () => {};
-  }, [ref.current, options.threshold, options.rootMargin]);
+  }, [handler, options, ref, selector]);
 };

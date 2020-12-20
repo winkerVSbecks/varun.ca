@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useMemo } from 'react';
 import styled from 'styled-components';
 import { Box, Flex } from '@ds';
 import { useIntersection } from '@utils/useIntersection';
@@ -12,24 +12,28 @@ const StickyFigure = styled(Box).attrs({ as: 'figure', top: 5 })`
 
 const ContentWithoutFigures = styled(Box)`
   figure,
-  img {
+  img,
+  .visualization {
     display: none;
   }
 `;
 
+const options = { threshold: 1, rootMargin: '32px 0px -80% 0px' };
+const headingLevel = 'h3';
+
 export const Scroller = ({ figures = [], width, children }) => {
   const ScrollerContainerRef = useRef(null);
   const [activeFigure, setActiveFigure] = useState(0);
-  useIntersection(
-    ScrollerContainerRef,
-    'h3',
-    (entry, idx) => {
+  const handler = useMemo(
+    () => (entry, idx) => {
       if (entry.intersectionRatio === 1) {
         setActiveFigure(idx);
       }
     },
-    { threshold: 1, rootMargin: '32px 0px -80% 0px' }
+    []
   );
+
+  useIntersection(ScrollerContainerRef, headingLevel, handler, options);
 
   const figure = figures[activeFigure]
     ? figures[activeFigure]
