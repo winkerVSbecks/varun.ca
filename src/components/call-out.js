@@ -7,8 +7,8 @@ export const CallOut = props => (
     p={3}
     borderRadius={2}
     mb={4}
-    fontStyle="italic"
     fontSize={2}
+    color="neutral.1"
     {...props}
   />
 );

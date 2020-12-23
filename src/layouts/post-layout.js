@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { Box, Flex, H1, Text, Link, SimpleLink, Icon } from '@ds';
+import { Box, Flex, H1, Text, Link, SimpleLink } from '@ds';
 import { Footer } from '@components/footer';
 import { Date } from '@components/date';
 import { GlobalHeader } from '@components/global-header';
@@ -34,7 +34,6 @@ export default function PostLayout({ data: { mdx }, pageContext }) {
               fontSize={1}
               letterSpacing="tracked"
               fontWeight={6}
-              fontSize={1}
               display="flex"
               alignItems="center"
               to="/writing"
