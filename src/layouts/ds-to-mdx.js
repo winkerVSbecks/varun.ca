@@ -2,6 +2,7 @@ import React from 'react';
 import * as DesignSystem from '@ds';
 import { CallOut } from '@components/call-out';
 import { CodePen } from '@components/codepen';
+import { SourceCard } from '@components/source-card';
 
 export default {
   // Components
@@ -40,6 +41,7 @@ export default {
   Video: props => (
     <DesignSystem.Box as="video" width="100%" mb={4} {...props} />
   ),
+  SourceCard: SourceCard,
   // HTML elements
   h1: DesignSystem.H1,
   h2: DesignSystem.H2,

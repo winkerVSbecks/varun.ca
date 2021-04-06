@@ -63,13 +63,6 @@ export default function PostLayout({ data: { mdx }, pageContext }) {
         </Text>
         <Newsletter />
         <RelatedPosts posts={pageContext.relatedPosts} />
-        <object
-          aria-label="Sidebar webring"
-          type="image/svg+xml"
-          data="https://sidebar.io/webring/banner/hrtg.svg?color=444"
-          height="60"
-          width="225"
-        />
         <Footer />
       </Box>
     </Layout>
