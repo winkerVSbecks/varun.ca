@@ -22,3 +22,9 @@ export const Noise3D = loadable(() => import('./visualizations/noise-3d'), {
 export const Noise4D = loadable(() => import('./visualizations/noise-4d'), {
   fallback: <div>Loading...</div>,
 });
+export const Noise4DFancy = loadable(
+  () => import('./visualizations/noise-4d-fancy'),
+  {
+    fallback: <div>Loading...</div>,
+  }
+);

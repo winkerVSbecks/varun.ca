@@ -11,6 +11,7 @@ import {
   Noise2D,
   Noise3D,
   Noise4D,
+  Noise4DFancy,
 } from './lazy-scenes';
 
 import chromaticNoiseMp4 from '../../assets/chromatic-noise.mp4';
@@ -22,6 +23,7 @@ import particleMovementMp4 from '../../assets/particle-movement.mp4';
 import particlePathMp4 from '../../assets/particle-path.mp4';
 import flowFieldMp4 from '../../assets/flow-field.mp4';
 import marsMp4 from '../../assets/mars.mp4';
+import mars3DMp4 from '../../assets/mars-3d.mp4';
 import ghostPlanetsMp4 from '../../assets/ghost-planets.mp4';
 
 <Video autoplay loop muted playsInline display="block">
@@ -50,7 +52,7 @@ This idea of *organic randomness* appears again and again in creative coding. 
 
 There are two flavours of noise—Perlin and Simplex.
 
-Ken Perlin developed the first while working on Tron in the early 1980s and won an [Oscar](https://mrl.cs.nyu.edu/~perlin/doc/oscar.html) 🏆 for those special effects. He then improved on it with Simplex noise and made it a bit faster. I'll focus on the later and use the [simplex-noise](https://www.npmjs.com/package/simplex-noise) library for my examples.
+Ken Perlin developed the first while working on Tron in the early 1980s and won an [Oscar](https://mrl.cs.nyu.edu/~perlin/doc/oscar.html) 🏆 for those special effects. He then improved on it with Simplex noise and made it a bit faster. I'll focus on the latter and use the [simplex-noise](https://www.npmjs.com/package/simplex-noise) library for my examples.
 
 The noise function takes in a couple of inputs (which _drive_ the output) and returns a value between -1 and 1. The output is a mix of `Math.sin()` and `Math.random()`. A random wave is how I would describe it.
 
@@ -61,7 +63,7 @@ const simplex = new SimplexNoise();
 const y = simplex.noise2D(x * frequency, 0) * amplitude;
 ```
 
-The underlying mechanics are similar to how waves work so, you can control how quickly or how much it oscillates by adjusting frequency and amplitude.
+The underlying mechanics are similar to how waves work. You can control how quickly or how much it oscillates by adjusting frequency and amplitude.
 
 <NoiseWave />
 
@@ -69,13 +71,18 @@ Umm, noise… 2D, what's happening here?
 
 ## Noise Dimensions
 
-The noise algorithm can be implemented for multiple dimensions. Think of these as the number of inputs into the noise generator. Two for 2D, three for 3D and so on.
+The noise algorithm can be implemented for multiple dimensions. Think of these as the number of inputs into the noise generator—two for 2D, three for 3D and so on.
 
 Which dimension you pick depends on what variables you want to drive the generator with. Let's look at a few examples.
 
+<CallOut>
+  💡 Starting here, each example is embedded in a source card. With links to the
+  actual source code and, in some cases, variables you can tweak.
+</CallOut>
+
 ### Noise 1D — Wave Motion
 
-Techincally there is no noise1D. But, you can get 1D noise by passing in zero as the second argument to `simplex.noise2D`. Let's say you want to move a ball with an organic looking osciallating motion. Increment its `x` coordinate and use it to generate the `y` value.
+Technically there is no noise1D. You can get 1D noise by passing in zero as the second argument to simplex.noise2D. Let's say you want to move a ball with an organic-looking oscillating motion. Increment its x coordinate and use it to generate the y value.
 
 ```js
 x += 0.1;
@@ -131,7 +138,7 @@ Notice our use of amplitude in the above examples. It's a handy way to scale the
 
 ![mapping noise](../../assets/mapping-noise.svg)
 
-Now that we have the basics down, let's look at a few more applications of noise.
+Now that we have the basics down let's look at a few more applications of noise.
 
 ## Textures
 
@@ -139,13 +146,30 @@ The noise output for a 2D grid, with `(x,y)` coordinates, looks something like t
 
 ![raw noise output](../../assets/noise.png)
 
+Generated using:
+
+```js
+for (let y = 0; y < gridSize[1]; y++) {
+  for (let x = 0; x < gridSize[0]; x++) {
+    const n = simplex.noise2D(
+      x / (gridSize[0] * 0.75),
+      y / (gridSize[1] * 0.75)
+    );
+  }
+}
+```
+
 This is going to be our starting point.
 
-We can use the [Marching Squares algorithm](https://thecodingtrain.com/challenges/coding-in-the-cabana/005-marching-squares.html) to turn that 2D noise data into contours. For more on this, checkout on my post on [creating a generative image service](https://storybook.js.org/blog/generative-image-service/).
+We can use the [Marching Squares algorithm](https://thecodingtrain.com/challenges/coding-in-the-cabana/005-marching-squares.html) to turn that 2D noise data into contours. Using Canavas, SVG, WebGL or whatever else you prefer. I recently used this technique with SVG to create generative profile cards. For a full tutorial on that, check out [creating a generative image service](https://storybook.js.org/blog/generative-image-service/) 📸
 
 ![noise contours](../../assets/noise-rings.png)
 
 The cool thing about noise is that you can go up one dimension, layer in time and animate your image.
+
+```js
+simplex.noise3D(x / (gridSize[0] * 0.75), y / (gridSize[1] * 0.75), time);
+```
 
 <SourceCard
   name="basic-noise.js"
@@ -158,9 +182,9 @@ The cool thing about noise is that you can go up one dimension, layer in time an
 
 ## Fields
 
-Honestly, this 2D grid of noise data is super utilitarian. It's my go-to for all kinds of stuff. Noise fields are a particular favourite of mine.
+Honestly, this 2D grid of noise data is super utilitarian. It's my go-to for all kinds of stuff. One of which is noise fields—a particular favourite of mine.
 
-Let's go back to that initial grayscale output. Map that to a more interesting colour scale and you get plasma 🤩
+Let's go back to that initial grayscale output. Map that to a more interesting colour scale, and you get plasma 🤩
 
 <SourceCard
   name="plasma.js"
@@ -182,12 +206,12 @@ Or, start with a grid of rectangles. Then turn it into a vector field by using n
   </Video>
 </SourceCard>
 
-## Noisy Particels
+## Noisy Particles
 
-Vector fields are cool, but in my opinion, [flow fields](https://www.pinterest.ca/search/pins/?q=noise%20field) are a much more interesting visualization. Here's a plot I made last year.
+Vector fields are cool, but [flow fields](https://www.pinterest.ca/search/pins/?q=noise%20field) are an even more exciting visualization. Here's a plot I made last year.
 
 <SourceCard
-  name="flow-field.js"
+  name="flow-field-plot.js"
   link="https://github.com/winkerVSbecks/penplot-sketches/blob/master/sketches/flow-field.js"
 >
   <Video autoplay loop muted playsInline display="block" mb="0">
@@ -201,7 +225,7 @@ Alright, let's break down this process.
 
 ### Creating a Flow Field
 
-Step 1, create a vector field. Same as before. But this time, we’re not going to animate the vector field.
+Step 1, create a vector field. Same as before. But this time, we’re _not_ going to animate the vector field.
 
 Step 2, drop a bunch of particles onto the canvas. Their direction of movement is based on the underlying vector field. Take a step forward, get the new direction and repeat.
 
@@ -242,7 +266,7 @@ Add in more particles and colour, and we get our flow field.
 
 <SourceCard
   name="flow-field.js"
-  link="https://github.com/winkerVSbecks/penplot-sketches/blob/master/sketches/flow-field.js"
+  link="https://github.com/winkerVSbecks/sketchbook/blob/master/flow-field.js"
 >
   <Video autoplay loop muted playsInline display="block" mb="0">
     <source src={flowFieldMp4} type="video/mp4" />
@@ -254,11 +278,12 @@ Add in more particles and colour, and we get our flow field.
 Speaking of particles, noise shows up in particle systems too. For effects like rain, snow or confetti, you're looking to simulate a natural-looking motion. Imagine a confetti particle floating down to earth. The particles don't move in straight lines. They float and wiggle due to air resistance. Noise is a really great tool for adding in that organic variability.
 
 ```js
-const tiltOffset =
-  (simplex.noise2D(particle.x / particle.random, particle.y / particle.random) *
-    Math.PI) /
-  16;
-particle.tiltAngle = particle.tiltAngle + tiltOffset;
+const wiggle = {
+  x: simplex.noise2D(particle.x * frequency, time) * amplitude,
+  y: simplex.noise2D(particle.y * frequency, time) * amplitude,
+};
+particle.x += wiggle.x;
+particle.y += wiggle.y;
 ```
 
 For a deeper dive, check my post on [building a confetti cannon](/confetti) 🎉
@@ -301,7 +326,7 @@ The animation above is quite similar to the contours we looked at earlier. It's 
 
 Notice the `pragma` line? That's us importing webgl-noise. Then use it to generate noise data for each pixel position `vUv`.
 
-This part should look quite familiar.
+This part should look quite familiar by now.
 
 ```glsl{16-19}:title=fragment.glsl
 precision highp float;
@@ -334,11 +359,81 @@ void main() {
 }
 ```
 
-Fragment shaders have this concept of [distance functions](https://thebookofshaders.com/07/), used for drawing shapes. `patternZebra` is one such example that converts noise data into rings. Essentially it returns either `0` or `1`. Which we then use to pick a colour using `mix`. And finally, use another distance function to clip a circular boundary.
+Fragment shaders have this concept of [distance functions](https://thebookofshaders.com/07/) used for drawing shapes. `patternZebra` is one such example that converts noise data into rings. Essentially it returns either `0` or `1`. Which we then use to pick a colour using `mix`. And finally, use another distance function to clip a circular boundary.
 
 Seems quite basic?
 
-Well, the cool thing about fragment shaders is that you can turn it into a material and apply it to a more complex geometry. Like the example below 👻
+Well, the amazing thing about shaders is that you can turn them into a material and apply it to more complex geometry.
+
+### Noise Material
+
+We can take the same 2D mars shader from above. Convert it into a ThreeJS [shader material](https://threejs.org/docs/?q=shade#api/en/materials/ShaderMaterial). Then use the vertex position `vPosition` to generate noise instead of `vUv`.
+
+And voilà, we have a 3D Mars!
+
+```js
+const material = new THREE.ShaderMaterial({
+  extensions: {
+    derivatives: true,
+  },
+  uniforms: {
+    time: { value: 0 },
+    density: { value: 1.0 },
+  },
+  vertexShader: /*glsl*/ `
+    varying vec3 vPosition;
+    void main () {
+      vPosition = position;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+    `,
+  fragmentShader: glslify(/* glsl */ `
+    precision highp float;
+    varying vec3 vPosition;
+    uniform float time;
+    uniform float density;
+    #pragma glslify: noise = require(glsl-noise/simplex/4d);
+    #define PI 3.141592653589793
+    float patternZebra(float v){
+      float d = 1.0 / density;
+      float s = -cos(v / d * PI * 2.);
+      return smoothstep(.0, .1 * d, .1 * s / fwidth(s));
+    }
+    void main () {
+      float frequency = .6;
+      float amplitude = 1.5;
+      float v = noise(vec4(vPosition * frequency, sin(PI * time))) * amplitude;
+      float t = patternZebra(v);
+      vec3 fragColor = mix(vec3(1.,0.4,0.369), vec3(0.824,0.318,0.369), t);
+      gl_FragColor = vec4(fragColor, 1.);
+    }
+    `),
+});
+```
+
+<SourceCard
+  name="mars.js"
+  link="https://github.com/winkerVSbecks/3d-sketches/blob/master/sketches/mars.js"
+>
+  <Box bg="#323132">
+    <Video
+      autoplay
+      loop
+      muted
+      playsInline
+      display="block"
+      width="50%"
+      mx="auto"
+      mb="0"
+    >
+      <source src={mars3DMp4} type="video/mp4" />
+    </Video>
+  </Box>
+</SourceCard>
+
+This is honestly just a start. Shaders open up so many possibilities. Like the example below 👻
+
+Not only is noise mapping to colours but, also alpha.
 
 <SourceCard
   name="ghost-planets.js"
@@ -360,7 +455,9 @@ Well, the cool thing about fragment shaders is that you can turn it into a mater
   </Box>
 </SourceCard>
 
-Vertex displacement is quite similar. Instead of a fragment shader, we write a vertex shader that transforms each vertex of the sphere. Again, applied using a [shader material](https://threejs.org/docs/?q=shade#api/en/materials/ShaderMaterial).
+### Glossy Blobs
+
+The idea behind vertex displacement is quite similar. Instead of a fragment shader, we write a vertex shader that transforms each vertex of the sphere. Again, applied using a [shader material](https://threejs.org/docs/?q=shade#api/en/materials/ShaderMaterial).
 
 ```glsl{11-14}:title=vertex.glsl
 precision highp float;
@@ -382,4 +479,24 @@ void main () {
 }
 ```
 
-## Conclusion
+Oh, and throw on some [matcap](https://threejs.org/docs/#api/en/materials/MeshMatcapMaterial), and you've got some glossy animated blobs.
+
+<Noise4DFancy />
+
+## Your turn to make some noise
+
+That was quite a journey. Motion, textures, fields, particle systems and displacement—noise can do it all. It truly is the workhorse of the creative coding world.
+
+So obviously, you want to play with noise 😁
+
+I've put together a little starter CodePen for you. It spins up a grid of noise and maps it to an array of glyphs. Just start by modifying the array and see how far you can take it.
+
+```js
+const glyphs = ['¤', '✳', '●', '◔', '○', '◕', '◐', '◑', '◒'];
+```
+
+Or if you're looking for something more advanced, check out [noisedeck.app](https://noisedeck.app/). It's like a synthesizer but for visuals.
+
+Either way, don't forget to share your creations with me on [Twitter](https://mobile.twitter.com/winkerVSbecks).
+
+<CodePen hash="YzNRaLP" title="Noise Grid" height="600" defaultTab="result" />
