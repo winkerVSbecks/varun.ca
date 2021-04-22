@@ -20,6 +20,7 @@ const getMediaQuery = () => {
 export const useColorMode = () => {
   const [mode, setMode] = useState('light');
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     // initialize
     const stored = storage.get();
@@ -28,6 +29,7 @@ export const useColorMode = () => {
     if (!stored || stored === mode) return;
     setModeWithSideEffects(stored);
   }, []);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   const setModeWithSideEffects = () => {
     setMode(state => {
