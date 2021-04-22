@@ -201,7 +201,7 @@ At this point, we have a confetti system. The fun thing about particle systems i
 
 <img alt="" src={confettiSpread} width="100%" maxWidth="300px" />
 
-Instead of cascading the launch angle down to the particle, we'll try something different. We start by picking a random start position. Based on the bounds, we calculate a random end position—a different one for each particle. Now we have a start point and an endpoint. With a bit of trigonometry, we can calculate the angle between them. And then calculate a lunch velocity as a function of the distance between the two points.
+Instead of cascading the launch angle down to the particle, we'll try something different. We start by picking a random start position. Based on the bounds, we calculate a random end position—a different one for each particle. Now we have a start point and an endpoint. With a bit of trigonometry, we can calculate the angle between them. And then calculate a launch velocity as a function of the distance between the two points.
 
 ```js
 function setEndLocation({ width, height }, x, y) {
