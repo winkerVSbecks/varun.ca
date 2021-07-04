@@ -8,7 +8,7 @@ import { Footer } from '@components/footer';
 import { WritingFeatured } from '@components/writing-featured';
 import { SpeakingFeatured } from '@components/speaking-featured';
 import { ProjectsFeatured } from '@components/projects-featured';
-import { ExperimentsFeatured } from '@components/experiments-featured';
+import { SketchesFeatured } from '@components/sketches-featured';
 import { CycleMode } from '@components/cycle-mode';
 
 const Home = ({ data }) => {
@@ -17,7 +17,7 @@ const Home = ({ data }) => {
     writingFeatured: { posts },
     speakingFeatured: { speaking },
     projectsFeatured: { projects },
-    experimentsFeatured: { experiments },
+    sketchesFeatured: { sketches },
   } = data;
 
   return (
@@ -58,7 +58,7 @@ const Home = ({ data }) => {
           </Flex>
 
           <ProjectsFeatured projects={projects} />
-          <ExperimentsFeatured experiments={experiments} />
+          <SketchesFeatured sketches={sketches} />
         </main>
         <Footer px={3} />
       </Box>
@@ -121,11 +121,11 @@ export const pageQuery = graphql`
       }
     }
 
-    experimentsFeatured: allExperimentsJson(
+    sketchesFeatured: allSketchesJson(
       limit: 6
       filter: { featured: { eq: true } }
     ) {
-      experiments: nodes {
+      sketches: nodes {
         id
         name
         link

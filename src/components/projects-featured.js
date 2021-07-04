@@ -4,7 +4,7 @@ import { H1, Box, CardLink, HorizontalScroll, Stack } from '@ds';
 export const ProjectsFeatured = ({ projects, ...props }) => (
   <Box as="section" mb={6} {...props}>
     <H1 fontSize={3} mb={0} mt={3} pl={3}>
-      Projects
+      Work
     </H1>
 
     <HorizontalScroll p={3} mr={3}>
