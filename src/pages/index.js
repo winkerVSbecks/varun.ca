@@ -7,7 +7,7 @@ import { ProfileLinks } from '@components/profile-links';
 import { Footer } from '@components/footer';
 import { WritingFeatured } from '@components/writing-featured';
 import { SpeakingFeatured } from '@components/speaking-featured';
-import { ProjectsFeatured } from '@components/projects-featured';
+import { WorksFeatured } from '@components/works-featured';
 import { SketchesFeatured } from '@components/sketches-featured';
 import { CycleMode } from '@components/cycle-mode';
 
@@ -16,7 +16,7 @@ const Home = ({ data }) => {
     site,
     writingFeatured: { posts },
     speakingFeatured: { speaking },
-    projectsFeatured: { projects },
+    worksFeatured: { works },
     sketchesFeatured: { sketches },
   } = data;
 
@@ -57,7 +57,7 @@ const Home = ({ data }) => {
             <SpeakingFeatured speaking={speaking} mr={3} />
           </Flex>
 
-          <ProjectsFeatured projects={projects} />
+          <WorksFeatured works={works} />
           <SketchesFeatured sketches={sketches} />
         </main>
         <Footer px={3} />
@@ -107,17 +107,12 @@ export const pageQuery = graphql`
       }
     }
 
-    projectsFeatured: allProjectsJson(
-      limit: 6
-      filter: { featured: { eq: true } }
-    ) {
-      projects: nodes {
+    worksFeatured: allWorksJson(limit: 6) {
+      works: nodes {
         id
-        name
-        link
-        image {
-          publicURL
-        }
+        name: title
+        link: url
+        image
       }
     }
 
