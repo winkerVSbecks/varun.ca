@@ -1,4 +1,4 @@
-import { ShaderMaterial, Texture, TextureLoader } from 'three';
+import { ShaderMaterial, TextureLoader } from 'three';
 import { extend } from '@react-three/fiber';
 import glsl from 'babel-plugin-glsl/macro';
 import matCapUrl1 from '../../../assets/glowy.png';

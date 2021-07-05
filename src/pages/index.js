@@ -41,11 +41,15 @@ const Home = ({ data }) => {
               About
             </H1>
             <Text measure="wide" fontSize={[2, 3]}>
-              I’m a developer. With a background in engineering and creative
-              coding, I specialize in component-driven development, design
-              systems and computational design. Originally from New Delhi, I
-              currently live in Toronto and am a DX Engineer at{' '}
-              <Link to="https://www.chromatic.com/">Chromatic</Link>. In my
+              I’m UI developer specializing in{' '}
+              <Link to="https://componentdriven.org/">component-driven</Link>{' '}
+              development, design systems and generative art. I’m a DX Engineer
+              at <Link to="https://www.chromatic.com/">Chromatic</Link> and a
+              contributor to{' '}
+              <Link to="https://storybook.js.org/">Storybook</Link>.
+            </Text>
+            <Text measure="wide" fontSize={[2, 3]}>
+              Originally from New Delhi, I currently live in Toronto. In my
               spare time, I like to experiment with generative art, making{' '}
               <Link to="http://triangle.life">triangles</Link> and other playful
               experiences for the web.

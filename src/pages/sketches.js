@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
-import { Flex, PageHeader, CardLink, Box } from '@ds';
+import { PageHeader, CardLink, Box } from '@ds';
 import PageLayout from '@layouts/page-layout';
 
 const SketchesContainer = styled(Box)`
