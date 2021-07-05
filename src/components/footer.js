@@ -13,7 +13,7 @@ const socialLinks = [
   { title: 'Github', to: 'http://github.com/winkerVSbecks' },
   { title: 'CodePen', to: 'http://codepen.io/winkerVSbecks' },
   { title: 'Dribbble', to: 'http://dribbble.com/winkerVSbecks' },
-  { title: 'Email', to: 'mailto:varunvachhar@gmail.com' },
+  { title: 'Newsletter', to: 'https://tinyletter.com/winkerVSbecks' },
 ];
 
 export const Footer = props => (
