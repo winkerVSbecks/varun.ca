@@ -7,8 +7,8 @@ import { ProfileLinks } from '@components/profile-links';
 import { Footer } from '@components/footer';
 import { WritingFeatured } from '@components/writing-featured';
 import { SpeakingFeatured } from '@components/speaking-featured';
-import { ProjectsFeatured } from '@components/projects-featured';
-import { ExperimentsFeatured } from '@components/experiments-featured';
+import { WorksFeatured } from '@components/works-featured';
+import { SketchesFeatured } from '@components/sketches-featured';
 import { CycleMode } from '@components/cycle-mode';
 
 const Home = ({ data }) => {
@@ -16,8 +16,8 @@ const Home = ({ data }) => {
     site,
     writingFeatured: { posts },
     speakingFeatured: { speaking },
-    projectsFeatured: { projects },
-    experimentsFeatured: { experiments },
+    worksFeatured: { works },
+    sketchesFeatured: { sketches },
   } = data;
 
   return (
@@ -41,14 +41,17 @@ const Home = ({ data }) => {
               About
             </H1>
             <Text measure="wide" fontSize={[2, 3]}>
-              I’m a developer. With a background in engineering and creative
-              coding, I specialize in component-driven development, design
-              systems and computational design. Originally from New Delhi, I
-              currently live in Toronto and am a DX Engineer at{' '}
-              <Link to="https://www.chromatic.com/">Chromatic</Link>. In my
-              spare time, I like to experiment with generative art, making{' '}
-              <Link to="http://triangle.life">triangles</Link> and other playful
-              experiences for the web.
+              I’m a UI developer specializing in{' '}
+              <Link to="https://componentdriven.org/">component-driven</Link>{' '}
+              development, design systems and generative art. I’m a DX Engineer
+              at <Link to="https://www.chromatic.com/">Chromatic</Link> and a
+              contributor to{' '}
+              <Link to="https://storybook.js.org/">Storybook</Link>.
+            </Text>
+            <Text measure="wide" fontSize={[2, 3]}>
+              Originally from New Delhi, I currently live in Toronto. In my
+              spare time, I write about creative coding from a front-end
+              developer's perspective.
             </Text>
           </Box>
           <ProfileLinks />
@@ -57,8 +60,8 @@ const Home = ({ data }) => {
             <SpeakingFeatured speaking={speaking} mr={3} />
           </Flex>
 
-          <ProjectsFeatured projects={projects} />
-          <ExperimentsFeatured experiments={experiments} />
+          <WorksFeatured works={works} />
+          <SketchesFeatured sketches={sketches} />
         </main>
         <Footer px={3} />
       </Box>
@@ -107,25 +110,20 @@ export const pageQuery = graphql`
       }
     }
 
-    projectsFeatured: allProjectsJson(
-      limit: 6
-      filter: { featured: { eq: true } }
-    ) {
-      projects: nodes {
+    worksFeatured: allWorksJson(limit: 6) {
+      works: nodes {
         id
-        name
-        link
-        image {
-          publicURL
-        }
+        name: title
+        link: url
+        image
       }
     }
 
-    experimentsFeatured: allExperimentsJson(
+    sketchesFeatured: allSketchesJson(
       limit: 6
       filter: { featured: { eq: true } }
     ) {
-      experiments: nodes {
+      sketches: nodes {
         id
         name
         link

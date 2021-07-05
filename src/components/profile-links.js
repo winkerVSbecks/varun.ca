@@ -4,9 +4,9 @@ import { Box, SimpleLink, SrOnly } from '@ds';
 const profileLinks = [
   { title: 'Twitter', to: 'http://twitter.com/winkerVSbecks' },
   { title: 'Github', to: 'http://github.com/winkerVSbecks' },
-  { title: 'CodePen', to: 'http://codepen.io/winkerVSbecks' },
-  { title: 'Dribbble', to: 'http://dribbble.com/winkerVSbecks' },
-  { title: 'Email', to: 'mailto:varunvachhar@gmail.com' },
+  // { title: 'CodePen', to: 'http://codepen.io/winkerVSbecks' },
+  // { title: 'Dribbble', to: 'http://dribbble.com/winkerVSbecks' },
+  // { title: 'Email', to: 'mailto:varunvachhar@gmail.com' },
   { title: 'Newsletter', to: 'https://tinyletter.com/winkerVSbecks' },
 ];
 

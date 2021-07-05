@@ -65,7 +65,7 @@ export function SEO({
         ].concat(meta)}
       />
       <Facebook
-        desc={description}
+        description={description}
         image={`${siteUrl}${image || defaultImage}`}
         title={title}
         type={article ? 'article' : 'website'}
@@ -76,7 +76,7 @@ export function SEO({
       <Twitter
         title={title}
         image={`${siteUrl}${image || defaultImage}`}
-        desc={description}
+        description={description}
         username={author}
       />
     </>

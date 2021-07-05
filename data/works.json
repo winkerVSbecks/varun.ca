@@ -1,0 +1,80 @@
+[
+  {
+    "id": "PaintingWithGradients",
+    "title": "Painting with gradients",
+    "url": "/work/painting-with-gradients",
+    "image": "https://res.cloudinary.com/dpym7j3nj/video/upload/w_1600,h_1200,c_fill/v1624756216/portfolio/painting-with-gradients/gradient-painting-cover_rn4ait.png"
+  },
+  {
+    "id": "InfinitePipes",
+    "title": "Infinite pipes",
+    "url": "/work/infinite-pipes",
+    "image": "https://res.cloudinary.com/dpym7j3nj/video/upload/w_1600,h_1200,c_fill/v1624769021/portfolio/infinite-pipes/2021.06.27-00.38.18_ru3a4h.png"
+  },
+  {
+    "id": "MashingMesh",
+    "title": "Mashing Mesh",
+    "url": "/work/mashing-mesh",
+    "image": "https://res.cloudinary.com/dpym7j3nj/video/upload/w_1600,h_1200,c_fill/v1624760834/portfolio/mashing-mesh/2021.01.02-22.44.22_wskwio.png"
+  },
+  {
+    "id": "DragonSkin",
+    "title": "Dragon skin",
+    "url": "/work/dragon-skin",
+    "image": "https://res.cloudinary.com/dpym7j3nj/video/upload/w_1600,h_1200,c_fill/v1624749314/portfolio/dragon-skin/2021.05.15-12.40.00_iqztae.png"
+  },
+  {
+    "id": "GhostPlanets",
+    "title": "Ghost Planets",
+    "url": "/work/ghost-planets",
+    "image": "https://res.cloudinary.com/dpym7j3nj/video/upload/w_1600,h_1200,c_fill/v1624749305/portfolio/ghost-planets/ghost-planets_nfqvpf.png"
+  },
+  {
+    "id": "SomeCaterpillarsEvolve",
+    "title": "Some caterpillars evolve",
+    "url": "/work/some-caterpillars-evolve",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1624755787/portfolio/rlrr/rlrr-cover_ersnan.png"
+  },
+  {
+    "id": "ChamkeelePathar",
+    "title": "चमकीले पत्थर",
+    "url": "/work/chamkeele-pathar",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1624755964/portfolio/chamkeele-pathar/chamkeele-pathar-cover.png"
+  },
+  {
+    "id": "NotQuitePlatonicSolids",
+    "title": "Not quite platonic solids",
+    "url": "/work/not-quite-platonic-solids",
+    "image": "https://res.cloudinary.com/dpym7j3nj/video/upload/w_1600,h_1200,c_fill/v1624766614/portfolio/not-quite-platonic-solids/2021.03.02-20.50.44_idbqud.png"
+  },
+  {
+    "id": "GlassySolids",
+    "title": "Glassy solids",
+    "url": "/work/glassy-solids",
+    "image": "https://res.cloudinary.com/dpym7j3nj/video/upload/w_1600,h_1200,c_fill/v1624758980/portfolio/glassy-solids/2021.02.25-21.36.45_r4dug2_ldxono.png"
+  },
+  {
+    "id": "Torsions",
+    "title": "Torsions",
+    "url": "/work/torsions",
+    "image": "https://res.cloudinary.com/dpym7j3nj/video/upload/w_1600,h_1200,c_fill/v1624761653/portfolio/torsions/2020.10.18-21.28.06_iakksd.png"
+  },
+  {
+    "id": "Curtains",
+    "title": "Curtains",
+    "url": "/work/curtains",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1624841495/portfolio/curtains/springytriangles_zey06z.gif"
+  },
+  {
+    "id": "Homesick",
+    "title": "Homesick",
+    "url": "/workhttps://varun.ca/projects/homesick/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1625433493/homesick1_bschr3.png"
+  },
+  {
+    "id": "TetheredMotion",
+    "title": "Tethered Motion",
+    "url": "/workhttps://varun.ca/projects/tethered-motion/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435865/wave_z0gifz.gif"
+  }
+]

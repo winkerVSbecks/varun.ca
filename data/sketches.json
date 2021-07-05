@@ -1,0 +1,174 @@
+[
+  {
+    "name": "Stacks",
+    "link": "https://codepen.io/winkerVSbecks/full/pVGRxm",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435852/stacks_ykq0pk.jpg",
+    "featured": true
+  },
+  {
+    "name": "Isometric Ball",
+    "link": "https://codepen.io/winkerVSbecks/full/mLQjRX/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435808/isometric-ball_fiejgm.jpg",
+    "featured": false
+  },
+  {
+    "name": "Carnival Nights",
+    "link": "https://codepen.io/winkerVSbecks/full/rdXBLr/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435825/carnival-nights_agqf83.jpg",
+    "featured": false
+  },
+  {
+    "name": "Omniplan",
+    "link": "https://codepen.io/winkerVSbecks/full/Wzamxd/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435821/omniplan_kzmvcx.jpg",
+    "featured": false
+  },
+  {
+    "name": "Patterned Circles",
+    "link": "https://codepen.io/winkerVSbecks/full/rdQQBv/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435830/patterned-circles_npkjlx.jpg",
+    "featured": false
+  },
+  {
+    "name": "SA 15",
+    "link": "https://codepen.io/winkerVSbecks/full/gXOdEL/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435841/sa15_wduajm.jpg",
+    "featured": true
+  },
+  {
+    "name": "Amoeba",
+    "link": "https://codepen.io/winkerVSbecks/full/RLyNEE/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435818/amoeba_qjimq3.jpg",
+    "featured": false
+  },
+  {
+    "name": "Napoleon's Theorem",
+    "link": "https://codepen.io/winkerVSbecks/full/yoVQbp/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435818/napoleon-theorem_on9pr8.jpg",
+    "featured": true
+  },
+  {
+    "name": "Reactive O",
+    "link": "http://codepen.io/winkerVSbecks/full/RVVYbR/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435844/reactive-o_hyq0z1.jpg",
+    "featured": false
+  },
+  {
+    "name": "Nederland Expo 70",
+    "link": "http://codepen.io/winkerVSbecks/full/VPgpJL/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435816/nederland-expo-70_wnfnw1.jpg",
+    "featured": false
+  },
+  {
+    "name": "Luna 9 Flight",
+    "link": "https://winkervsbecks.github.io/luna-9-flight/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435812/luna-9_ioebcd.jpg",
+    "featured": true
+  },
+  {
+    "name": "Splash",
+    "link": "https://winkervsbecks.github.io/splash",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435841/splash_y5gkbr.jpg",
+    "featured": false
+  },
+  {
+    "name": "Touch ID",
+    "link": "http://codepen.io/winkerVSbecks/full/vGojNb/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573486138/touch-id_egmttr.png",
+    "featured": false
+  },
+  {
+    "name": "Chillwave",
+    "link": "http://winkervsbecks.github.io/chillwave",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435819/chillwave-alt_macebu.jpg",
+    "featured": true
+  },
+  {
+    "name": "Pizza Theorem",
+    "link": "http://winkervsbecks.github.io/pizza-theorem",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435825/pizza-theorem_ez0yhu.jpg",
+    "featured": false
+  },
+  {
+    "name": "Hooke’s Law",
+    "link": "http://winkervsbecks.github.io/hookes-law",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435843/spring_zs0ofz.jpg",
+    "featured": false
+  },
+  {
+    "name": "Truncation",
+    "link": "http://winkervsbecks.github.io/truncation/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435857/truncation_uevqkd.jpg",
+    "featured": true
+  },
+  {
+    "name": "Fermat Point",
+    "link": "http://winkervsbecks.github.io/fermat-point",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435839/fermat-point_zkqmdt.jpg"
+  },
+  {
+    "name": "चतुर्पाश्वीय",
+    "link": "http://winkervsbecks.github.io/react-tetrahedrons",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435850/tetrahedron_kfphdw.jpg",
+    "featured": false
+  },
+  {
+    "name": "Gems",
+    "link": "http://winkervsbecks.github.io/gems",
+    "repo": "https://github.com/winkerVSbecks/gems",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1625431795/gems_hclral.jpg",
+    "featured": false
+  },
+  {
+    "name": "OAM",
+    "link": "http://ooaamm.com",
+    "repo": "https://github.com/winkerVSbecks/oam-site",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1625431782/oam_sl8wli.jpg",
+    "featured": false
+  },
+  {
+    "name": "A Triangle Every Day",
+    "repo": "https://github.com/winkerVSbecks/a-triangle-everyday",
+    "link": "http://winkervsbecks.github.io/a-triangle-everyday",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1625431759/triangleninja_clxvtr.jpg",
+    "featured": false
+  },
+  {
+    "name": "Ellsworth Kelly Animated",
+    "repo": "https://github.com/winkerVSbecks/ellsworthKellyAnimated",
+    "link": "http://winkervsbecks.github.io/ellsworthKellyAnimated",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1625431754/ellsworth-kelly_rmtbj2.jpg",
+    "featured": false
+  },
+  {
+    "name": "The Core",
+    "link": "http://winkervsbecks.github.io/the-core",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435821/core_lsqb53.jpg",
+    "featured": false
+  },
+  {
+    "name": "Vector Field",
+    "link": "http://winkervsbecks.github.io/material-vector-field/",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435857/vector-field_frkwzp.jpg",
+    "featured": false
+  },
+  {
+    "name": "Jamie XX",
+    "link": "http://winkervsbecks.github.io/jamieXX",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1573435808/jamiexx_hvovfr.jpg",
+    "featured": false
+  },
+  {
+    "name": "Chaos Theory",
+    "repo": "https://github.com/winkervsbecks/chaos-theory/",
+    "link": "https://vimeo.com/23056893",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1625431693/chaostheory_ukgs2i.png",
+    "featured": false
+  },
+  {
+    "name": "Console Font",
+    "link": "/projects/consolefont",
+    "image": "https://res.cloudinary.com/dpym7j3nj/image/upload/v1625431817/consolefont_srarpr.png",
+    "featured": false
+  }
+]
