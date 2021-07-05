@@ -41,7 +41,7 @@ const Home = ({ data }) => {
               About
             </H1>
             <Text measure="wide" fontSize={[2, 3]}>
-              I’m UI developer specializing in{' '}
+              I’m a UI developer specializing in{' '}
               <Link to="https://componentdriven.org/">component-driven</Link>{' '}
               development, design systems and generative art. I’m a DX Engineer
               at <Link to="https://www.chromatic.com/">Chromatic</Link> and a
@@ -50,9 +50,8 @@ const Home = ({ data }) => {
             </Text>
             <Text measure="wide" fontSize={[2, 3]}>
               Originally from New Delhi, I currently live in Toronto. In my
-              spare time, I like to experiment with generative art, making{' '}
-              <Link to="http://triangle.life">triangles</Link> and other playful
-              experiences for the web.
+              spare time, I write about creative coding from a front-end
+              developer's perspective.
             </Text>
           </Box>
           <ProfileLinks />
