@@ -1,10 +1,20 @@
 import React from 'react';
-import { H1, Box, CardLink, HorizontalScroll, Stack } from '@ds';
+import styled from 'styled-components';
+import { H1, Box, CardLink, HorizontalScroll, Stack, SimpleLink } from '@ds';
+
+const WorkLink = styled(SimpleLink)`
+  :hover,
+  :focus,
+  :active {
+    color: initial;
+    text-decoration: none;
+  }
+`;
 
 export const WorksFeatured = ({ works, ...props }) => (
   <Box as="section" mb={6} {...props}>
     <H1 fontSize={3} mb={0} mt={3} pl={3}>
-      Work
+      <WorkLink to="/work">Work</WorkLink>
     </H1>
 
     <HorizontalScroll p={3} mr={3}>
