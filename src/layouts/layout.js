@@ -20,24 +20,24 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${props => props.theme.colors.neutral[7]};
+    background-color: ${(props) => props.theme.colors.neutral[7]};
     ${modeCustomProperties}
   }
 
   ${prismStyles}
 
   ::-moz-selection {
-    background: ${props => props.theme.colors.brand.selection};
+    background: ${(props) => props.theme.colors.brand.selection};
   }
 
   ::selection {
-    background: ${props => props.theme.colors.brand.selection};
+    background: ${(props) => props.theme.colors.brand.selection};
   }
 
   *:focus{
     outline-width: 1px;
     outline-style: dotted;
-    outline-color: ${props => props.theme.colors.neutral[1]};
+    outline-color: ${(props) => props.theme.colors.neutral[1]};
   }
 `;
 

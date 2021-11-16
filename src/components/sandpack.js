@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box } from '../design-system/primitives';
 import { Sandpack as SandpackComponent } from '@codesandbox/sandpack-react';
-import '@codesandbox/sandpack-react/dist/index.css';
 import { useColorMode } from '../use-color-mode';
 
 export const Sandpack = ({ editorHeight = 600, options, ...props }) => {
