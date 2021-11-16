@@ -26,7 +26,7 @@ WebGL is the magic sauce behind [Solar Storm](https://solarstorm.netlify.app/) ,
 This article shows you how to create breathtaking 3D animations using React Three Fiber (R3F). We'll walk through setting up a stage, creating geometry, adding lighting and enabling post-processing effects. What's more, you'll get to learn by recreating the animation below from scratch.
 
 <SourceCard
-  name="CDD Visualization"
+  name="Visualization"
   link="https://github.com/winkerVSbecks/storybook-blocks"
 >
   <Embed
@@ -51,7 +51,7 @@ With Three.js, the code for creating the geometry & material, combining it into 
 Storybook is my go-to tool for building meshes in isolation. That allows you to finesse them without worrying about other scene elements. No constant repositioning or toggling global lighting & effects. You can focus on getting the look and feel just right.
 
 <SourceCard
-  name="CDD Visualization Storybook"
+  name="Visualization Storybook"
   link="https://main--60fff54833991c0039d51492.chromatic.com/"
 >
   <Box bg="#323132">
@@ -84,7 +84,7 @@ The above is a demo of an introductory 3D scene—a rotating box. Notice how eve
 
 ## Decomposing & building the scene
 
-Now that we have the basics down, let’s go back to the CDD visualization we’re building. The high-level elements of this scene are:
+Now that we have the basics down, let’s go back to the visualization we’re building. The high-level elements of this scene are:
 
 - **Components:** these have Tetris block shapes with translucent material.
 - **Data & State:** these are flat planes with funky custom textures.
@@ -164,7 +164,7 @@ We have all the bits now; the next step is to animate them using [React Spring](
 
 <BasicAnimation />
 
-The CDD visualization has four states and the position, scale and colour of the meshes animate between each step. We can track all that info in an array and use component state for cycling between each step.
+The visualization has four states and the position, scale and colour of the meshes animate between each step. We can track all that info in an array and use component state for cycling between each step.
 
 ```js
 import React from 'react';
