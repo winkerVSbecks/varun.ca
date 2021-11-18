@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sandpack } from '@components/sandpack';
+import basingAnimImg from '../../../assets/basic-anim.gif';
 
 const code = /* jsx */ `import { Canvas } from "@react-three/fiber";
 import { useSpring, animated } from "@react-spring/three";
@@ -65,6 +66,7 @@ export default function () {
         },
       }}
       editorHeight={400}
+      fallbackImage={basingAnimImg}
     />
   );
 }
