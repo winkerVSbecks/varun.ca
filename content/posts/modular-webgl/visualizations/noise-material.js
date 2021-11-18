@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sandpack } from '@components/sandpack';
+import noiseShaderImg from '../../../assets/noise-shader.png';
 
 const shader = `import glsl from 'babel-plugin-glsl/macro';
 
@@ -163,6 +164,7 @@ export default function () {
           '@babel/core': '7.15.5',
         },
       }}
+      fallbackImage={noiseShaderImg}
     />
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sandpack } from '@components/sandpack';
+import hello3DImg from '../../../assets/hello-3d.png';
 
 const code = /* jsx */ `import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -62,6 +63,7 @@ export default function () {
           three: '^0.127.0',
         },
       }}
+      fallbackImage={hello3DImg}
     />
   );
 }

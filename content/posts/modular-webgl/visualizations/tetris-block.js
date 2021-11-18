@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sandpack } from '@components/sandpack';
+import tetrisImg from '../../../assets/tetris.png';
 
 const code = /* jsx */ `import React from "react";
 import * as THREE from "three";
@@ -96,6 +97,7 @@ export default function () {
           three: '^0.131.1',
         },
       }}
+      fallbackImage={tetrisImg}
     />
   );
 }
