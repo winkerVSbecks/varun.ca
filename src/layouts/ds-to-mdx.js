@@ -15,8 +15,10 @@ export default {
   CallOut,
   DemoSource: DesignSystem.DemoSource,
   CodePen,
-  Embed: props => <DesignSystem.Box as="iframe" mb={4} {...props} />,
-  AsciiDiagram: props => (
+  Embed: (props) => (
+    <DesignSystem.Box as="iframe" mb={4} border="none" {...props} />
+  ),
+  AsciiDiagram: (props) => (
     <DesignSystem.Text
       as="pre"
       lineHeight="solid"
@@ -27,7 +29,7 @@ export default {
       {...props}
     />
   ),
-  AsciiDiagramContainer: props => (
+  AsciiDiagramContainer: (props) => (
     <DesignSystem.Flex
       as="figure"
       mx="auto"
@@ -38,7 +40,7 @@ export default {
     />
   ),
   SrOnly: DesignSystem.SrOnly,
-  Video: props => (
+  Video: (props) => (
     <DesignSystem.Box as="video" width="100%" mb={4} {...props} />
   ),
   SourceCard: SourceCard,
@@ -57,10 +59,10 @@ export default {
   li: DesignSystem.ListItem,
   a: DesignSystem.Link,
   img: DesignSystem.Image,
-  figure: props => (
+  figure: (props) => (
     <DesignSystem.Box as="figure" mt={0} ml={0} mr={0} mb={4} {...props} />
   ),
-  figcaption: props => (
+  figcaption: (props) => (
     <DesignSystem.Text
       as="figcaption"
       textAlign="center"
@@ -70,7 +72,7 @@ export default {
       {...props}
     />
   ),
-  th: props => (
+  th: (props) => (
     <DesignSystem.Text
       as="th"
       fontFamily="code"
@@ -81,7 +83,7 @@ export default {
       {...props}
     />
   ),
-  td: props => (
+  td: (props) => (
     <DesignSystem.Text
       as="th"
       fontFamily="code"
