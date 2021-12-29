@@ -1,0 +1,41 @@
+---
+title: How to pick colours for generative art
+date: 2021-12-28
+image: ../../assets/chromatic-noise.gif
+draft: true
+---
+
+Colour can make or break an art piece. A good colour palette grabs the viewer's attention right away.
+
+## Found palettes + random
+
+```js
+Random.pick(colours);
+```
+
+## Found palettes + contrast checks
+
+One of many tricks I've picked up from Matt Desl
+
+paper + riso + contrast
+
+## Use a colour scale
+
+Chroma JS
+
+```js
+const colourScale = chroma
+  .cubehelix()
+  .rotations(3)
+  .gamma(0.5)
+  .scale()
+  .correctLightness()
+  .domain([-1, 1]);
+
+const n = Random.noise3D(x, y, time);
+context.fillStyle = colourScale(n);
+```
+
+## Generative palettes
+
+Fette palette

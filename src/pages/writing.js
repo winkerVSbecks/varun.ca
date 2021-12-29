@@ -26,7 +26,10 @@ const Writing = ({ data }) => {
 
 export const pageQuery = graphql`
   query Writing {
-    allMdx(sort: { fields: frontmatter___date, order: DESC }) {
+    allMdx(
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: { frontmatter: { draft: { ne: true } } }
+    ) {
       edges {
         node {
           id

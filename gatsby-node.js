@@ -28,7 +28,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const result = await graphql(`
     query {
-      allMdx(sort: { fields: [frontmatter___date], order: ASC }) {
+      allMdx(
+        sort: { fields: [frontmatter___date], order: ASC }
+        filter: { frontmatter: { draft: { ne: true } } }
+      ) {
         edges {
           node {
             id
@@ -59,10 +62,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       index - 3,
       index + 3,
     ]
-      .map(idx => posts[idx])
-      .filter(v => v)
+      .map((idx) => posts[idx])
+      .filter((v) => v)
       .slice(0, 3)
-      .map(post => ({
+      .map((post) => ({
         url: post.node.fields.slug,
         title: post.node.frontmatter.title,
         date: post.node.frontmatter.date,

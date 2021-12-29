@@ -82,6 +82,7 @@ export const pageQuery = graphql`
     writingFeatured: allMdx(
       limit: 4
       sort: { fields: frontmatter___date, order: DESC }
+      filter: { frontmatter: { draft: { ne: true } } }
     ) {
       posts: nodes {
         id
