@@ -59,10 +59,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       index - 3,
       index + 3,
     ]
-      .map(idx => posts[idx])
-      .filter(v => v)
+      .map((idx) => posts[idx])
+      .filter((v) => v)
       .slice(0, 3)
-      .map(post => ({
+      .map((post) => ({
         url: post.node.fields.slug,
         title: post.node.frontmatter.title,
         date: post.node.frontmatter.date,
