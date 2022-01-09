@@ -12,7 +12,7 @@ import {
   SparksBasicDemo,
   SparkStormBasicDemo,
 } from './lazy-scenes';
-import { LorenzAttractor } from './lorenz-attractor';
+import lorenzAttractorGif from '../../assets/lorenz-attractor.gif';
 
 <SolarStorm />
 
@@ -217,7 +217,18 @@ Lastly, we have the Spark Storm. With particles buzzing around the planet in a p
 
 You can use all kinds of mathematical models to create the movement. I decided to go with [Attractors](https://en.wikipedia.org/wiki/Attractor) mapped to the surface of a sphere. You've likely seen these attractors before. The Lorenz attractor creates this famous butterfly-like curve.
 
-<LorenzAttractor />
+<SourceCard
+  name="Lorenz attractor by Dan Quinn"
+  link="https://en.wikipedia.org/wiki/Lorenz_system#/media/File:A_Trajectory_Through_Phase_Space_in_a_Lorenz_Attractor.gif"
+>
+  <Box bg="#fff" py={4}>
+    <Image
+      mb={0}
+      src={lorenzAttractorGif}
+      alt="A sample trajectory through phase space is plotted near a Lorenz attractor"
+    />
+  </Box>
+</SourceCard>
 
 ```js
 const newPosition = attractor(currentPosition, timeStep);
