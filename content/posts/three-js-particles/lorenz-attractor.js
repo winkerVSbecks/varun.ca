@@ -11,6 +11,7 @@ export function LorenzAttractor() {
     >
       <Box bg="#fff" py={4}>
         <Image
+          mb={0}
           src={lorenzAttractorGif}
           alt="A sample trajectory through phase space is plotted near a Lorenz attractor"
         />

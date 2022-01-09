@@ -16,6 +16,20 @@ export const SparkStorm = loadable(
   }
 );
 
+export const SparksBasicDemo = loadable(
+  () => import('./visualizations/sparks-basic-demo'),
+  {
+    fallback: <div>Loading...</div>,
+  }
+);
+
+export const SparkStormBasicDemo = loadable(
+  () => import('./visualizations/spark-storm-basic-demo'),
+  {
+    fallback: <div>Loading...</div>,
+  }
+);
+
 export const SolarStorm = loadable(
   () => import('./visualizations/solar-storm'),
   {
