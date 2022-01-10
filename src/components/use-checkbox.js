@@ -6,7 +6,6 @@ const Label = styled(Text)`
   text-transform: capitalize;
   display: flex;
   align-items: center;
-  margin-bottom: 0;
 `;
 
 export function useCheckbox(name, defaultValue = false) {
@@ -14,7 +13,7 @@ export function useCheckbox(name, defaultValue = false) {
 
   return [
     value,
-    <Label as="label" htmlFor={name} fontSize={2}>
+    <Label as="label" htmlFor={name} fontSize={2} mb={[3, 0]}>
       {name}
       <Box
         as="input"

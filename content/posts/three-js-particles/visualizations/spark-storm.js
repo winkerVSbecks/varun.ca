@@ -156,7 +156,11 @@ export default function () {
       }
       controls={
         <>
-          <Flex alignItems="center" justifyContent="space-evenly">
+          <Flex
+            alignItems={['flex-start', 'center']}
+            justifyContent="space-evenly"
+            flexDirection={['column', 'row']}
+          >
             {tweakAnimateAttractor}
             {tweakMapToSphere}
           </Flex>
