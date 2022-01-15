@@ -69,7 +69,7 @@ export const ConfettiVis = ({
             id={tweak.name}
             name={tweak.name}
             value={tweakValue}
-            onChange={e => {
+            onChange={(e) => {
               setTweakValue(parseFloat(e.target.value, 10));
             }}
             min={tweak.min}
@@ -107,7 +107,7 @@ const colors = [
   '#FC4D5E',
   '#FDF349',
   '#459A69',
-].map(c => Color.parse(c).rgb);
+].map((c) => Color.parse(c).rgb);
 
 /**
  * Confetti Sketch
@@ -167,17 +167,17 @@ const sketch = ({ width, height, config, tweak, overrides }) => {
     context.fillRect(0, 0, width, height);
 
     // update physics
-    particles.forEach(particle => {
+    particles.forEach((particle) => {
       updateParticle({ width, height, config }, TICK, particle);
     });
     // draw
-    particles.forEach(particle => {
+    particles.forEach((particle) => {
       drawParticle({ context, config }, TICK, particle);
     });
 
     TICK++;
 
-    const animEnded = particles.every(p => !p.alive);
+    const animEnded = particles.every((p) => !p.alive);
 
     if (animEnded && !ANIMATION_CUED) {
       ANIMATION_CUED = true;
@@ -393,7 +393,7 @@ function runSketch(canvasEl, { width, height, ...props }) {
     running = false;
   };
 
-  let draw = sketch => {
+  let draw = (sketch) => {
     const render = sketch({
       width: scaledWidth,
       height: scaledHeight,

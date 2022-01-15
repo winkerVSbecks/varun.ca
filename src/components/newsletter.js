@@ -44,7 +44,9 @@ export const Newsletter = () => (
         id="tlemail"
         placeholder="email@example.com"
       />
-      <PrimaryButton as="input" type="submit" flex="none" value="Subscribe" />
+      <PrimaryButton type="submit" flex="none">
+        Subscribe
+      </PrimaryButton>
     </Flex>
   </Box>
 );

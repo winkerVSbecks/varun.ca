@@ -46,20 +46,21 @@ const HeadingBase = styled(Text)`
   align-items: center;
 
   .heading-anchor {
-    margin-left: -24px;
-    margin-right: 8px;
+    margin-left: -8px;
+    padding-right: 8px;
     transition: opacity 0.15s ease-in;
     opacity: 0;
     align-self: stretch;
     display: flex;
     align-items: center;
+    height: 100%;
   }
 
   .heading-anchor > svg {
     display: inline-block;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke: ${props => props.theme.colors.neutral[2]};
+    stroke: ${(props) => props.theme.colors.neutral[2]};
   }
 
   .heading-anchor:focus {

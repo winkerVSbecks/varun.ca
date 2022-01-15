@@ -15,8 +15,17 @@ import confettiHeader from '../../assets/confetti-header.gif';
 export const figures = [
   <img alt="" src={confettiParticle} />,
   <ConfettiVis singleParticle overrides={{ animDelay: 0 }} />,
-  <ConfettiVis singleParticle decay tweak={{ name: 'decay', value: 0.94, min: 0.8, max: 1, step: 0.01 }} />,
-  <ConfettiVis singleParticle decay gravity tweak={{ name: 'gravity', value: 3, min: 0, max: 10, step: 1 }} />,
+  <ConfettiVis
+    singleParticle
+    decay
+    tweak={{ name: 'decay', value: 0.94, min: 0.8, max: 1, step: 0.01 }}
+  />,
+  <ConfettiVis
+    singleParticle
+    decay
+    gravity
+    tweak={{ name: 'gravity', value: 3, min: 0, max: 10, step: 1 }}
+  />,
   <ConfettiVis singleParticle decay gravity tilt />,
   <ConfettiVis singleParticle decay gravity tilt wobble />,
   <ConfettiVis randomSpread decay gravity tilt wobble />,
@@ -24,7 +33,7 @@ export const figures = [
   <ConfettiVis decay gravity tilt wobble />,
 ];
 
-<img alt="" src={confettiHeader} width="100%" maxWidth="400px" />
+<Image alt="" src={confettiHeader} width="100%" maxWidth="400px" />
 
 Confetti cannons are fun! Both to play with and to build. Let's learn to make one. Along the way, we'll cover particle systems and a bit of high school physics. I'll also show you how to integrate a Canvas based animation into a larger application.
 
@@ -62,7 +71,12 @@ All combined, these tell us where the particle is, which direction it's moving i
 
 ### Let's move it
 
-<ConfettiVis className="visualization" mb={4} singleParticle overrides={{ animDelay: 0 }} />
+<ConfettiVis
+  className="visualization"
+  mb={4}
+  singleParticle
+  overrides={{ animDelay: 0 }}
+/>
 
 We'll use the [velocity components](https://www.khanacademy.org/science/physics/two-dimensional-motion/two-dimensional-projectile-mot/a/what-are-velocity-components) to move the particle.
 
@@ -83,7 +97,13 @@ This is the foundational movement we'll build on top of. Right now, it lacks any
 
 ### Decay
 
-<ConfettiVis className="visualization" mb={4} singleParticle decay tweak={{ name: 'decay', value: 0.94, min: 0.8, max: 1, step: 0.01 }} />
+<ConfettiVis
+  className="visualization"
+  mb={4}
+  singleParticle
+  decay
+  tweak={{ name: 'decay', value: 0.94, min: 0.8, max: 1, step: 0.01 }}
+/>
 
 Friction is the first of those forces. We model that as a decay multiplier.
 
@@ -99,7 +119,14 @@ particle.velocity *= particle.decay;
 
 What goes up must come down, with a bit of gravity.
 
-<ConfettiVis className="visualization" mb={4} singleParticle decay gravity tweak={{ name: 'gravity', value: 3, min: 0, max: 10, step: 1 }} />
+<ConfettiVis
+  className="visualization"
+  mb={4}
+  singleParticle
+  decay
+  gravity
+  tweak={{ name: 'gravity', value: 3, min: 0, max: 10, step: 1 }}
+/>
 
 The confetti's net motion is a combination of three forces: the initial launch, the decay and the gravity.
 
@@ -118,7 +145,14 @@ Too little gravity, and it'll look like the confetti was fired on the Moon. And 
 
 The confetti also tilts as it moves. Sometimes rotating just one way and sometimes back and forth.
 
-<ConfettiVis className="visualization" mb={4} singleParticle decay gravity tilt />
+<ConfettiVis
+  className="visualization"
+  mb={4}
+  singleParticle
+  decay
+  gravity
+  tilt
+/>
 
 Each particle will have a starting tilt angle. Chosen randomly at launch. Which is then animated using [noise](https://github.com/jwagner/simplex-noise.js). Which gives it a more natural tumbling look.
 
@@ -135,14 +169,25 @@ particle.tiltAngle = particle.tiltAngle + tiltOffset;
 Noise is a perfect tool for simulating organic motion. Think of it as a smoother form of randomness.
 
 <CallOut>
-🚂  Not familiar with noise? Checkout this Coding Train episode for a primer: <a href="https://www.youtube.com/watch?v=Qf4dIN99e2w">Introduction - Perlin Noise and p5.js Tutorial</a>
+  🚂 Not familiar with noise? Checkout this Coding Train episode for a primer:{' '}
+  <a href="https://www.youtube.com/watch?v=Qf4dIN99e2w">
+    Introduction - Perlin Noise and p5.js Tutorial
+  </a>
 </CallOut>
 
 ### Wobble
 
 In nature, things rarely move in straight lines. We're going to add a bit of wobble. This will simulate the effect of confetti wafting through the air.
 
-<ConfettiVis className="visualization" mb={4} singleParticle decay gravity tilt wobble />
+<ConfettiVis
+  className="visualization"
+  mb={4}
+  singleParticle
+  decay
+  gravity
+  tilt
+  wobble
+/>
 
 We'll once again use noise. This time, however, it will add an offset to the x-position of the particle.
 
@@ -164,7 +209,15 @@ That's much better. The movement feels a lot more natural now.
 
 Moving on to the particle system. Each particle is an object. This object tracks all its visual characteristics and those related to motion.
 
-<ConfettiVis className="visualization" mb={4} randomSpread decay gravity tilt wobble />
+<ConfettiVis
+  className="visualization"
+  mb={4}
+  randomSpread
+  decay
+  gravity
+  tilt
+  wobble
+/>
 
 We also need to track the lifetime of each particle. Notice how they fade out after a while? That's their lifetime. We do this to track when the animation is complete and trigger another one. I chose to track the lifetime as ticks or frame count.
 
@@ -173,7 +226,7 @@ It will be responsible for four aspects:
 - **Creating** the particles and seeding their initial attributes. For example, launch velocity, tilt and colour.
 - **Updating** their motion at each tick or frame. And marking them as dead once their allotted tick count has been reached.
 - **Drawing** the particle
-- **Resetting**  the particles once all of them are dead and triggering another pop
+- **Resetting** the particles once all of them are dead and triggering another pop
 
 Now, some attributes are defined at the system level and passed down. For example, start position, gravity, decay and the size of the particle. While others, such as colour, are set for each particle.
 
