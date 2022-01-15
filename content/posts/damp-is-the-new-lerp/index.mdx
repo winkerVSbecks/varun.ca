@@ -1,0 +1,46 @@
+---
+title: Damp is the new lerp
+date: 2021-12-28
+image: ../../assets/chromatic-noise.gif
+draft: true
+---
+
+https://mobile.twitter.com/onirenaud/status/1450469547111337990
+
+It all started with a tweet.
+
+## What is lerp?
+
+Lerp is a function that interpolates between two values using the parameter `t`. Where `t` is expected to be between `[0, 1]` range. It's super handy for interpolating between colors or creating keyframed animations.
+
+When you're working with a draw loop, you get three timing variables:
+
+1. `deltaTime`: the time elapsed since the last frame
+2. `time`: the time elapsed since the beginning of the draw loop
+3. `playHead`: the time elapsed since the beginning of the draw loop, but normalized to the range `[0, 1]`
+
+`playHead` works perfectly as the `t` parameter for `lerp` function. Here's an example of how you can use it to animate the x position of a circle:
+
+```js
+const xStart = width * 0.25;
+const xEnd = width * 0.75;
+const y = height * 0.5;
+
+function draw({ playhead }) {
+  const x = lerp(xStart, xEnd, t);
+  circle(x, y, radius / 2, 'white');
+}
+```
+
+## What is damp?
+
+```js
+const x = width * 0.25;
+const xEnd = width * 0.75;
+const y = height * 0.5;
+
+function draw({ deltaTime }) {
+  x = damp(x, xEnd, 3, deltaTime);
+  circle(x, y, radius / 2, 'white');
+}
+```
