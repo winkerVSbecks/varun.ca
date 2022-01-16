@@ -12,6 +12,7 @@ export default {
   box: DesignSystem.Box,
   Text: DesignSystem.Text,
   Image: DesignSystem.Image,
+  PImage: DesignSystem.Image,
   CallOut,
   DemoSource: DesignSystem.DemoSource,
   CodePen,
