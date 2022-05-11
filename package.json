@@ -10,6 +10,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@react-three/fiber": "^6.0.6",
+    "canvas-sketch": "^0.7.5",
     "canvas-sketch-util": "^1.10.0",
     "eases": "^1.0.8",
     "gatsby": "^2.22.3",

@@ -1,17 +1,30 @@
 ---
-title: Damp is the new lerp
-date: 2021-12-28
+title: Animating things with lerp
+date: 2022-05-07
 image: ../../assets/chromatic-noise.gif
-draft: true
 ---
 
-https://mobile.twitter.com/onirenaud/status/1450469547111337990
+import { LerpyRects } from './lerpy-rects';
 
-It all started with a tweet.
+<LerpyRects />
+
+<!-- Damp is the new lerp -->
+
+https://www.pinterest.ca/pin/316518680070320973/
+
+https://twitter.com/onirenaud/status/1450469547111337990
+
+It all started with a tweet. Lerp's become an indispensable tool for me when it comes to creating animations. It works really well for animating values over time.
 
 ## What is lerp?
 
 Lerp is a function that interpolates between two values using the parameter `t`. Where `t` is expected to be between `[0, 1]` range. It's super handy for interpolating between colors or creating keyframed animations.
+
+```js
+function lerp(min, max, t) {
+  return min * (1 - t) + max * t;
+}
+```
 
 When you're working with a draw loop, you get three timing variables:
 
@@ -35,6 +48,12 @@ function draw({ playhead }) {
 ## What is damp?
 
 ```js
+function damp(a, b, lambda, deltaTime) {
+  return lerp(a, b, 1 - Math.exp(-lambda * deltaTime));
+}
+```
+
+```js
 const x = width * 0.25;
 const xEnd = width * 0.75;
 const y = height * 0.5;
@@ -42,5 +61,30 @@ const y = height * 0.5;
 function draw({ deltaTime }) {
   x = damp(x, xEnd, 3, deltaTime);
   circle(x, y, radius / 2, 'white');
+}
+```
+
+## Spring
+
+```js
+let vx = 0;
+
+vx = lerp(vx, (end[0] - x2) * 0.4, deltaTime * 24);
+x2 += vx;
+```
+
+## slerp
+
+```js
+const dot = ([ax, ay], [bx, by]) =>
+  (ax * bx + ay * by) / (Math.hypot(ax, ay) * Math.hypot(bx, by));
+
+function slerp(p0, p1, t) {
+  const angle = Math.acos(dot(p0, p1));
+
+  const factor1 = Math.sin(angle * (1 - t)) / Math.sin(angle);
+  const factor2 = Math.sin(angle * t) / Math.sin(angle);
+
+  return [p0[0] * factor1 + p1[0] * factor2, p0[1] * factor1 + p1[1] * factor2];
 }
 ```
