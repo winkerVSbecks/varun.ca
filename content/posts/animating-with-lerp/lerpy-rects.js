@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import canvasSketch from 'canvas-sketch';
+import Random from 'canvas-sketch-util/random';
 import { Box, Flex, Text } from '@ds';
 import { movementTypes } from './sketch-utils';
 
@@ -21,7 +22,7 @@ const config = {
     h: 40,
   },
   span: 1,
-  movement: 'damp',
+  movement: Random.pick(['damp', 'spring', 'lerp', 'slerp']),
 };
 
 export const LerpyRects = ({
