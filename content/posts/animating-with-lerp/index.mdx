@@ -5,6 +5,7 @@ image: ../../assets/chromatic-noise.gif
 ---
 
 import { LerpyRects } from './lerpy-rects';
+import { MovementVis } from './movement-vis';
 
 <LerpyRects />
 
@@ -14,17 +15,9 @@ https://twitter.com/onirenaud/status/1450469547111337990
 
 It all started with a tweet. Lerp's become an indispensable tool for me when it comes to creating animations. It works really well for animating values over time.
 
-## What is lerp?
+## The basics
 
-Lerp is a function that interpolates between two values using the parameter `t`. Where `t` is expected to be between `[0, 1]` range. It's super handy for interpolating between colors or creating keyframed animations.
-
-```js
-function lerp(min, max, t) {
-  return min * (1 - t) + max * t;
-}
-```
-
-When you're working with a draw loop, you get three timing variables:
+hen you're working with a draw loop, you get three timing variables:
 
 1. `deltaTime`: the time elapsed since the last frame
 2. `time`: the time elapsed since the beginning of the draw loop
@@ -42,6 +35,22 @@ function draw({ playhead }) {
   circle(x, y, radius / 2, 'white');
 }
 ```
+
+## What is lerp?
+
+Lerp is a function that interpolates between two values using the parameter `t`. Where `t` is expected to be between `[0, 1]` range. It's super handy for interpolating between colors or creating keyframed animations.
+
+```js
+function lerp(min, max, t) {
+  return min * (1 - t) + max * t;
+}
+```
+
+<MovementVis
+  circles={[{ type: 'lerp', start: [0.2, 0.5], end: [0.8, 0.5] }]}
+  heightScale={0.3}
+  margin={20}
+/>
 
 ## What is damp?
 
@@ -62,6 +71,12 @@ function draw({ deltaTime }) {
 }
 ```
 
+<MovementVis
+  circles={[{ type: 'damp', start: [0.2, 0.5], end: [0.8, 0.5] }]}
+  heightScale={0.3}
+  margin={20}
+/>
+
 ## Spring
 
 ```js
@@ -70,6 +85,12 @@ let vx = 0;
 vx = lerp(vx, (end[0] - x2) * 0.4, deltaTime * 24);
 x2 += vx;
 ```
+
+<MovementVis
+  circles={[{ type: 'spring', start: [0.2, 0.5], end: [0.8, 0.5] }]}
+  heightScale={0.3}
+  margin={20}
+/>
 
 ## slerp
 
@@ -86,3 +107,35 @@ function slerp(p0, p1, t) {
   return [p0[0] * factor1 + p1[0] * factor2, p0[1] * factor1 + p1[1] * factor2];
 }
 ```
+
+<MovementVis
+  circles={[{ type: 'slerp', start: [0.2, 0.5], end: [0.8, 0.5] }]}
+  heightScale={0.3}
+  margin={20}
+/>
+
+---
+
+<MovementVis circles={[{ type: 'spring', random: true }]} />
+
+<MovementVis
+  circles={[
+    { type: 'lerp', start: [0.2, 0.2], end: [0.8, 0.2] },
+    { type: 'damp', start: [0.2, 0.4], end: [0.8, 0.4] },
+    { type: 'spring', start: [0.2, 0.6], end: [0.8, 0.6] },
+    { type: 'slerp', start: [0.2, 0.8], end: [0.8, 0.8] },
+  ]}
+/>
+
+<MovementVis
+  circles={[
+    { type: 'damp', start: [0.2, 0.2], end: [0.8, 0.2] },
+    { type: 'damp', start: [0.2, 0.4], end: [0.7, 0.4] },
+    { type: 'damp', start: [0.2, 0.6], end: [0.6, 0.6] },
+    { type: 'damp', start: [0.2, 0.8], end: [0.5, 0.8] },
+  ]}
+/>
+
+## Bonus: Animating colors
+
+TODO

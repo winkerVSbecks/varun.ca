@@ -1,7 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import canvasSketch from 'canvas-sketch';
 import Random from 'canvas-sketch-util/random';
-import { Box, Flex, Text } from '@ds';
+import { Box } from '@ds';
 import { movementTypes } from './sketch-utils';
 
 const config = {
@@ -22,45 +22,16 @@ const config = {
     h: 40,
   },
   span: 1,
-  movement: Random.pick(['damp', 'spring', 'lerp', 'slerp']),
+  movement: Random.pick(['damp', 'spring', 'lerp' /* , 'slerp' */]),
 };
 
-export const LerpyRects = ({
-  singleParticle = false,
-  decay = false,
-  gravity = false,
-  tilt = false,
-  wobble = false,
-  randomSpread = false,
-  width = 300,
-  height = 400,
-  tweak,
-  overrides,
-  ...props
-}) => {
+export const LerpyRects = (props) => {
   const canvasRef = useRef(null);
-  const sketchConfig = {
-    singleParticle,
-    decay,
-    gravity,
-    tilt,
-    wobble,
-    randomSpread,
-  };
-
-  const [tweakValue, setTweakValue] = useState(0);
-
-  useEffect(() => {
-    if (tweak) {
-      setTweakValue(tweak.value);
-    }
-  }, [tweak]);
 
   useEffect(() => {
     let manager;
     const initSketch = async () => {
       const settings = {
-        // dimensions: [window.innerWidth > 400 ? 300 : 275, 400],
         dimensions: [1080, 1080 / 2],
         animate: true,
         duration: 2,
@@ -80,57 +51,29 @@ export const LerpyRects = ({
         if (manager) manager.unload();
       };
     }
-  }, [canvasRef, sketchConfig, tweak, tweakValue, overrides]);
+  }, [canvasRef]);
 
   return (
-    <Flex flexDirection="column" alignItems="center" mb={4} {...props}>
-      <Box
-        as="canvas"
-        display="block"
-        ref={canvasRef}
-        bg="rgba(27, 25, 31, 1)"
-        p={3}
-        width="100%"
-      />
-      {tweak && (
-        <Flex alignItems="center" mt={3}>
-          <Text as="label" htmlFor={tweak.name} fontSize={2} mr={3} mb={0}>
-            {tweak.name}
-          </Text>
-          <Box
-            as="input"
-            flex="1 1 auto"
-            type="range"
-            id={tweak.name}
-            name={tweak.name}
-            value={tweakValue}
-            onChange={(e) => {
-              setTweakValue(parseFloat(e.target.value, 10));
-            }}
-            min={tweak.min}
-            max={tweak.max}
-            step={tweak.step}
-          />
-          <Text
-            fontSize={2}
-            ml={3}
-            mb={0}
-            width={30}
-            textAlign="right"
-            flex="none"
-          >
-            {tweakValue}
-          </Text>
-        </Flex>
-      )}
-    </Flex>
+    <Box
+      as="canvas"
+      display="block"
+      ref={canvasRef}
+      bg="rgba(27, 25, 31, 1)"
+      p={3}
+      width="100%"
+      mb={4}
+      onClick={() => {
+        config.movement = Random.pick(['damp', 'spring', 'lerp']);
+      }}
+      {...props}
+    />
   );
 };
 
 /**
- * Confetti Sketch
+ * Lerpy rects
  */
-const sketch = ({ width, height, tweak, overrides }) => {
+const sketch = () => {
   let horRects, vertRects;
 
   return {
