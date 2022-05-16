@@ -16,7 +16,7 @@ export const Sandpack = ({
   fallbackImage,
   ...props
 }) => {
-  const [mode] = useColorMode();
+  const [colorMode] = useColorMode();
   let source = Prism.highlight(
     props.files['/App.js'],
     Prism.languages.javascript,
@@ -46,7 +46,9 @@ export const Sandpack = ({
         display={['none', 'none', 'block']}
       >
         <SandpackComponent
-          theme={mode === 'dark' ? 'codesandbox-dark' : 'codesandbox-light'}
+          theme={
+            colorMode === 'dark' ? 'codesandbox-dark' : 'codesandbox-light'
+          }
           options={{
             editorHeight,
             ...options,

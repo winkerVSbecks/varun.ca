@@ -11,11 +11,11 @@ import { MovementVis } from './movement-vis';
 
 <!-- Damp is the new lerp -->
 
-https://twitter.com/onirenaud/status/1450469547111337990
+<!-- https://twitter.com/onirenaud/status/1450469547111337990 -->
 
 It all started with a tweet. Lerp's become an indispensable tool for me when it comes to creating animations. It works really well for animating values over time.
 
-## The basics
+## The basic ingredients
 
 hen you're working with a draw loop, you get three timing variables:
 
@@ -31,7 +31,10 @@ const xEnd = width * 0.75;
 const y = height * 0.5;
 
 function draw({ playhead }) {
+  // move the circle
   const x = lerp(xStart, xEnd, t);
+  const y = lerp(yStart, yEnd, t);
+  // Draw the circle
   circle(x, y, radius / 2, 'white');
 }
 ```
@@ -48,8 +51,9 @@ function lerp(min, max, t) {
 
 <MovementVis
   circles={[{ type: 'lerp', start: [0.2, 0.5], end: [0.8, 0.5] }]}
-  heightScale={0.3}
+  height={0.3 * 1080}
   margin={20}
+  trail
 />
 
 ## What is damp?
@@ -73,8 +77,22 @@ function draw({ deltaTime }) {
 
 <MovementVis
   circles={[{ type: 'damp', start: [0.2, 0.5], end: [0.8, 0.5] }]}
-  heightScale={0.3}
+  height={0.3 * 1080}
   margin={20}
+  controls={['lambda']}
+  trail
+/>
+
+The movement takes the same amount of time. The farther the destination is the faster the circle travels.
+
+<MovementVis
+  circles={[
+    { type: 'damp', start: [0.2, 0.2], end: [0.8, 0.2] },
+    { type: 'damp', start: [0.2, 0.4], end: [0.7, 0.4] },
+    { type: 'damp', start: [0.2, 0.6], end: [0.6, 0.6] },
+    { type: 'damp', start: [0.2, 0.8], end: [0.5, 0.8] },
+  ]}
+  controls={['motion']}
 />
 
 ## Spring
@@ -88,8 +106,10 @@ x2 += vx;
 
 <MovementVis
   circles={[{ type: 'spring', start: [0.2, 0.5], end: [0.8, 0.5] }]}
-  heightScale={0.3}
+  height={0.3 * 1080}
   margin={20}
+  controls={['stiffness', 'damping']}
+  trail
 />
 
 ## slerp
@@ -110,8 +130,9 @@ function slerp(p0, p1, t) {
 
 <MovementVis
   circles={[{ type: 'slerp', start: [0.2, 0.5], end: [0.8, 0.5] }]}
-  heightScale={0.3}
+  height={0.3 * 1080}
   margin={20}
+  trail
 />
 
 ---
@@ -124,15 +145,6 @@ function slerp(p0, p1, t) {
     { type: 'damp', start: [0.2, 0.4], end: [0.8, 0.4] },
     { type: 'spring', start: [0.2, 0.6], end: [0.8, 0.6] },
     { type: 'slerp', start: [0.2, 0.8], end: [0.8, 0.8] },
-  ]}
-/>
-
-<MovementVis
-  circles={[
-    { type: 'damp', start: [0.2, 0.2], end: [0.8, 0.2] },
-    { type: 'damp', start: [0.2, 0.4], end: [0.7, 0.4] },
-    { type: 'damp', start: [0.2, 0.6], end: [0.6, 0.6] },
-    { type: 'damp', start: [0.2, 0.8], end: [0.5, 0.8] },
   ]}
 />
 

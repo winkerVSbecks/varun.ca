@@ -42,11 +42,11 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Layout = ({ title, description, image, pathname, meta, children }) => {
-  const [mode, setColorMode] = useColorMode();
+  const [colorMode, setColorMode] = useColorMode();
 
   return (
-    <ThemeProvider theme={{ ...theme, ...createColorStyles(mode) }}>
-      <ColorModeContext.Provider value={{ mode, setColorMode }}>
+    <ThemeProvider theme={{ ...theme, ...createColorStyles(colorMode) }}>
+      <ColorModeContext.Provider value={{ mode: colorMode, setColorMode }}>
         <>
           <SEO
             title={title}
