@@ -10,12 +10,8 @@ import { ColorModeContext } from '../../../src/use-color-mode';
 const config = {
   colors: {
     bg: 'rgba(27, 25, 31, 0.0625)',
-    bgSolid: getComputedStyle(document.body).getPropertyValue(
-      '--varun-ca-colors-code-background'
-    ),
-    fg: getComputedStyle(document.body).getPropertyValue(
-      '--varun-ca-colors-neutral-0'
-    ),
+    bgSolid: '#1b191f',
+    fg: 'rgb(217,215,224)',
   },
   lambda: 6,
   spring: {
