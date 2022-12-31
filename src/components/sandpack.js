@@ -46,7 +46,7 @@ export const Sandpack = ({
         display={['none', 'none', 'block']}
       >
         <SandpackComponent
-          theme={mode === 'dark' ? 'codesandbox-dark' : 'codesandbox-light'}
+          theme={mode === 'dark' ? 'dark' : 'light'}
           options={{
             editorHeight,
             ...options,

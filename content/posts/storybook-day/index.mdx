@@ -1,0 +1,159 @@
+---
+title: Breakdown Of Storybook Day 3D Scene
+date: 2022-12-20
+image: ../../assets/solarstorm-particles.png
+---
+
+import { MVP } from './lazy-scenes';
+
+<!--
+  Visualizations To Do:
+  - [] Sphere packing (spheres (outline) -> position blocks -> scale blocks)
+  - [] Move blocks to avoid text
+  - [] Contact shadows with controls
+  - [] Depth of field focus distance visualization with camera near and far planes
+ -->
+
+Storybook's latest update, version 7.0, is a major milestone for the team. Not only have they re-engineered the codebase for improved performance and stability, but they've also added hundreds of new features and improvements. To celebrate this exciting release, the Storybook team is hosting their first-ever Storybook Day event.
+
+To truly make this occasion special, the team wanted to add a visually stunning 3D element to the event landing page. Using React Three Fiber, I created a 3D illustration that serves as the page's centrepiece. In this blog post, I'll break down the process of building this scene step by step, including adding animations and post-processing effects.
+
+<CallOut>
+  ℹ️ This post assumes foundational knowledge of React Three Fiber. If you're
+  new to 3D or not familiar with the R3F API, check out my{' '}
+  <a href="/modular-webgl/">intro post</a> for a primer.
+</CallOut>
+
+## Our strategy
+
+The scene consists of extruded text with blocks floating around it. Then we layered on translucent materials, shadows and depth of field effect to add some oomph.
+
+![layers of the scene: extruded text, floating shapes, contact shadows and depth of field](../../assets/scene-parts.gif)
+
+The rest of the site is built using NextJS, so it made sense to use the React-based [Poimandres](https://docs.pmnd.rs/) toolchain:
+
+- [@react-three/fiber](https://github.com/pmndrs/react-three-fiber) to setup the core 3D scene
+- [@react-three/drei](https://github.com/pmndrs/drei) for helpful utilities such as Text3D, Float and ContactShadows
+- [@react-three/postprocessing](https://github.com/pmndrs/postprocessing) for the DepthOfField effect
+
+Here's an MVP of the scene:
+
+<MVP />
+
+## The Details
+
+## Floating blocks
+
+The Float component from the `@react-three/drei` library allows you to create a floating effect for 3D objects in your scene. This can be useful for creating interactive experiences, such as hover effects or animated transitions.
+
+To use the Float component, you'll first need to install the @react-three/drei library by running the following command in your terminal:
+
+```
+npm install @react-three/drei
+```
+
+Next, let's import the Float component and wrap it around the 3D object that we want to give a floating effect. The Float component takes care of setting up the necessary animations and applying the floating effect to the object. It also provides several props that allow us to customize the floating effect, such as amplitude and frequency.
+
+```
+import { Float } from '@react-three/drei'
+
+<Float amplitude={0.1} frequency={1}>
+  {/* Our 3D object goes here */}
+</Float>
+```
+
+Now, when we render our scene, the 3D object will have a floating effect, moving up and down in a sinusoidal pattern.
+
+You can further customize the floating effect by adjusting the amplitude and frequency props. The amplitude prop determines the height of the floating effect, and the frequency prop determines how quickly the object moves up and down.
+
+```
+<Float amplitude={0.2} frequency={2}>
+  {/* Our 3D object goes here */}
+</Float>
+```
+
+Keep in mind that the Float component requires the presence of a parent object with a defined position and rotation. If you want to apply the floating effect to an object that doesn't have a parent object, you can use the Object3D component from Three.js to wrap the object and define its position and rotation.
+
+```
+import { Object3D } from 'three'
+
+<Object3D position={[0, 0, 0]} rotation={[0, 0, 0]}>
+  <Float amplitude={0.1} frequency={1}>
+    {/* Our 3D object goes here */}
+  </Float>
+</Object3D>
+```
+
+That's it! With just a few lines of code, we've added a floating effect to our 3D object.
+
+I hope this tutorial has helped you get started with creating a floating effect for 3D objects using the Float component from the `@react-three/drei` library. If you have any questions or feedback, feel free to leave a comment below. Happy coding!
+
+## Depth of field
+
+A depth of field effect can add a sense of realism and depth to a 3D scene by blurring objects that are out of focus.
+
+To add a depth of field effect to our scene, we can use the DepthOfField component from the @react-three/postprocessing library. First, let's install the library by running the following command in our terminal:
+
+```
+npm install @react-three/postprocessing
+```
+
+Next, let's import the DepthOfField component and add it to our scene. The DepthOfField component takes care of setting up the necessary postprocessing passes and rendering them to a texture. It also provides several props that allow us to customize the depth of field effect, such as focusDistance and aperture.
+
+```
+import { DepthOfField } from '@react-three/postprocessing'
+
+<Canvas>
+  <DepthOfField focusDistance={2} aperture={0.05} />
+  {/* Our 3D objects go here */}
+</Canvas>
+```
+
+Now, when we render our scene, objects that are closer to the focus distance will be in focus, while objects that are farther away will be blurred.
+
+You can further customize the depth of field effect by adjusting the focusDistance and aperture props. The focusDistance prop determines the distance from the camera at which objects are in focus, and the aperture prop determines the size of the lens aperture, which controls the amount of blur.
+
+You can also use the focalLength prop to adjust the focal length of the camera, which determines the magnification of the image and the distance at which objects are in focus.
+
+```
+<DepthOfField focusDistance={2} aperture={0.05} focalLength={50} />
+```
+
+That's it! With just a few lines of code, we've added a depth of field effect to our 3D scene.
+
+I hope this tutorial has helped you get started with creating a 3D illustration with React Three Fiber and adding a depth of field effect with the `@react-three/postprocessing` library. If you have any questions or feedback, feel free to leave a comment below. Happy coding!
+
+## Contact shadows
+
+Contact shadows can add a sense of realism to a 3D scene by creating shadows that accurately reflect the shape of an object and the surface it's resting on. This can be especially useful for creating detailed and realistic scenes with complex geometry.
+
+To add contact shadows to our scene, we can use the ContactShadows component from the @react-three/drei library. First, let's install the library by running the following command in our terminal:
+
+```
+npm install @react-three/drei
+```
+
+Next, let's import the ContactShadows component and add it to our scene. The ContactShadows component takes care of setting up the necessary render passes and rendering the contact shadows to a texture. It also provides several props that allow us to customize the appearance of the contact shadows, such as resolution and opacity.
+
+```
+import { ContactShadows } from '@react-three/drei'
+
+<Canvas>
+  <ContactShadows resolution={512} opacity={0.5} />
+  {/* Our 3D objects go here */}
+</Canvas>
+```
+
+Now, when we render our scene, objects that are in contact with other objects or the ground will cast contact shadows that accurately reflect their shape and the surface they're resting on.
+
+You can further customize the appearance of the contact shadows by adjusting the resolution and opacity props. The resolution prop determines the size of the texture used to render the contact shadows, which can affect the quality and performance of the effect. The opacity prop determines the transparency of the contact shadows, which can be useful for fine-tuning the balance between realism and readability.
+
+```
+<ContactShadows resolution={1024} opacity={0.7} />
+```
+
+Keep in mind that the ContactShadows component requires the presence of a light source in the scene to cast shadows. You can use the DirectionalLight component from Three.js or the PointLight component from React Three Fiber to add a light source to your scene.
+
+That's it! With just a few lines of code, we've added realistic contact shadows to our 3D scene.
+
+I hope this tutorial has helped you get started with adding contact shadows to your 3D scene using the `@react-three/drei` library. If you have any questions or feedback, feel free to leave a comment below. Happy coding!

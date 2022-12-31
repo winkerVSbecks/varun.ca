@@ -59,6 +59,8 @@ export default function () {
       }}
       customSetup={{
         dependencies: {
+          react: '^18.2.0',
+          'react-dom': '^18.2.0',
           '@react-three/fiber': '^6.0.6',
           three: '^0.127.0',
         },
