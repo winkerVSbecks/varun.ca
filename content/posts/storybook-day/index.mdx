@@ -5,6 +5,10 @@ image: ../../assets/solarstorm-particles.png
 ---
 
 import { MVP } from './lazy-scenes';
+import spherePacking from '../../assets/sphere-packing.mp4';
+import zOffset from '../../assets/z-offset.mp4';
+import focusDistance from '../../assets/focus-distance.mp4';
+import extrude from '../../assets/extrude.mp4';
 
 <!--
   Visualizations To Do:
@@ -16,7 +20,13 @@ import { MVP } from './lazy-scenes';
 
 Storybook's latest update, version 7.0, is a major milestone for the team. Not only have they re-engineered the codebase for improved performance and stability, but they've also added hundreds of new features and improvements. To celebrate this exciting release, the Storybook team is hosting their first-ever Storybook Day event.
 
-To truly make this occasion special, the team wanted to add a visually stunning 3D element to the event landing page. Using React Three Fiber, I created a 3D illustration that serves as the page's centrepiece. In this blog post, I'll break down the process of building this scene step by step, including adding animations and post-processing effects.
+To truly make this occasion special, the team wanted to add a visually stunning 3D element to the event landing page. Using React Three Fiber, I created a 3D illustration that serves as the page's centrepiece. This article explores the finer details of shipping a 3D scene using React Three Fiber. We'll cover a range of topics, including:
+
+- 🏗️ Randomly placing objects without any overlap using sphere packing
+- 🧱 Modelling tetris blocks
+- 👓 Creating a realistic translucent glass effect
+- 🎥 Adding post-processing effects such as depth of field and shadows
+- 🏎️ Performance optimizations to ensure smooth rendering on all devices
 
 <CallOut>
   ℹ️ This post assumes foundational knowledge of React Three Fiber. If you're
@@ -26,23 +36,65 @@ To truly make this occasion special, the team wanted to add a visually stunning 
 
 ## Our strategy
 
-The scene consists of extruded text with blocks floating around it. Then we layered on translucent materials, shadows and depth of field effect to add some oomph.
+The core scene consists of extruded text with blocks floating around it. The event site is built using NextJS, so it made sense to use [@react-three/fiber](https://github.com/pmndrs/react-three-fiber). While [@react-three/drei](https://github.com/pmndrs/drei) offered helpful utilities such as Text3D and Float.
 
-![layers of the scene: extruded text, floating shapes, contact shadows and depth of field](../../assets/scene-parts.gif)
-
-The rest of the site is built using NextJS, so it made sense to use the React-based [Poimandres](https://docs.pmnd.rs/) toolchain:
-
-- [@react-three/fiber](https://github.com/pmndrs/react-three-fiber) to setup the core 3D scene
-- [@react-three/drei](https://github.com/pmndrs/drei) for helpful utilities such as Text3D, Float and ContactShadows
-- [@react-three/postprocessing](https://github.com/pmndrs/postprocessing) for the DepthOfField effect
-
-Here's an MVP of the scene:
+Here's an MVP in code:
 
 <MVP />
+
+---
+
+Then we layered on translucent materials, shadows and depth of field effect to add some oomph.
+
+![layers of the scene: extruded text, floating shapes, contact shadows and depth of field](../../assets/scene-parts.gif)
 
 ## The Details
 
 ## Floating blocks
+
+<SourceCard
+  name="Sphere packing to spread out blocks"
+  link="https://github.com/storybookjs/storybook-day/blob/main/components/BlocksScene/BlocksScene.tsx#L22"
+>
+  <Box bg="#323132">
+    <Video autoplay loop muted playsInline display="block" mb="0">
+      <source src={spherePacking} type="video/mp4" />
+    </Video>
+  </Box>
+</SourceCard>
+
+<SourceCard
+  name="Z axis offset to prevent overlapping with text"
+  link="https://github.com/storybookjs/storybook-day/blob/main/components/BlocksScene/BlocksScene.tsx#L36"
+>
+  <Box bg="#323132">
+    <Video autoplay loop muted playsInline display="block" mb="0">
+      <source src={zOffset} type="video/mp4" />
+    </Video>
+  </Box>
+</SourceCard>
+
+<SourceCard
+  name="Z axis offset to prevent overlapping with text"
+  link="https://github.com/storybookjs/storybook-day/blob/main/components/BlocksScene/BlocksScene.tsx#L36"
+>
+  <Box bg="#323132">
+    <Video autoplay loop muted playsInline display="block" mb="0">
+      <source src={focusDistance} type="video/mp4" />
+    </Video>
+  </Box>
+</SourceCard>
+
+<SourceCard
+  name="Z axis offset to prevent overlapping with text"
+  link="https://github.com/storybookjs/storybook-day/blob/main/components/BlocksScene/BlocksScene.tsx#L36"
+>
+  <Box bg="#323132">
+    <Video autoplay loop muted playsInline display="block" mb="0">
+      <source src={extrude} type="video/mp4" />
+    </Video>
+  </Box>
+</SourceCard>
 
 The Float component from the `@react-three/drei` library allows you to create a floating effect for 3D objects in your scene. This can be useful for creating interactive experiences, such as hover effects or animated transitions.
 

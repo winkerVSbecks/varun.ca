@@ -13,7 +13,7 @@ export default function App() {
     <div style={{ height: '100vh' }}>
       <Canvas
         shadows
-        gl={{ antialias: false, stencil: false, depth: false }}
+        gl={{ antialias: false, stencil: false }}
         camera={{ position: [0, 0, 30], near: 0.1, far: 60, fov: 45 }}>
         <color attach="background" args={['#E3F3FF']} />
         {/* lights */}
@@ -31,9 +31,8 @@ export default function App() {
 
 const BlocksScene = /* jsx */ `import React, { Suspense } from 'react'
 import * as THREE from 'three'
-import { Float, ContactShadows } from '@react-three/drei'
+import { Float } from '@react-three/drei'
 import * as Random from 'canvas-sketch-util/random'
-import { EffectComposer, DepthOfField } from '@react-three/postprocessing'
 import { Block, blockTypes } from './Block'
 import { VersionText } from './VersionText'
 
@@ -67,18 +66,6 @@ export const BlocksScene = () => {
             <Block type={block.type} color={block.color} />
           </Float>
         ))}
-        <ContactShadows
-          position={[0, -8, 0]}
-          opacity={0.75}
-          scale={40}
-          blur={2}
-          far={9}
-          color="#333"
-          resolution={256}
-        />
-        <EffectComposer multisampling={8}>
-          <DepthOfField focusDistance={0.5} bokehScale={7} focalLength={0.2} />
-        </EffectComposer>
       </group>
     </Suspense>
   )
@@ -101,15 +88,11 @@ const textProps = {
   bevelSegments: 3,
 }
 
-const material = new THREE.MeshPhysicalMaterial({
-  thickness: 20,
-  roughness: 0.8,
-  clearcoat: 0.9,
-  clearcoatRoughness: 0.8,
-  transmission: 0.9,
-  ior: 1.25,
-  envMapIntensity: 0,
+const material = new THREE.MeshStandardMaterial({
   color: '#0aff4f',
+  roughness: 1,
+  metalness: 1,
+  flatShading: true
 })
 
 export const VersionText = () => (
