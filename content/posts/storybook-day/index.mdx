@@ -39,11 +39,11 @@ Here's an MVP in code, which will act as our starting point:
 
 On to the fun stuff. Notice how the blocks are randomly spread across the scene and sometimes overlap with the text or each other. It would be aesthetically more pleasing if the blocks had no overlap. That’s one example of little adjustments we made to take this scene from MVP to production ready. Let’s explore these techniques in detail.
 
-### Use sphere packing to place blocks
+### Sphere packing to place blocks
 
 The [pack-sphere](https://github.com/mattdesl/pack-spheres) library enabled us to evenly distribute the blocks and prevent any potential overlapping issues. This library employs a brute force approach to arrange spheres of varying radii within a cube.
 
-```jsx
+```js
 const spheres = pack({
   maxCount: 40,
   minRadius: 0.125,
@@ -79,7 +79,7 @@ Fixing the overlap between the "7.0" text and the blocks required a different ap
 
 Here's the entire process, in code:
 
-```jsx
+```js
 // Sphere packing
 const spheres = pack({
   maxCount: 40,
@@ -115,9 +115,11 @@ const blocks = spheres.map((sphere, index) => ({
 }));
 ```
 
-## Use extrusion to model tetris blocks
+## Extrusion to model tetris blocks
 
-Storybook branding uses tetris style blocks. We'll use the same style for our scene. We'll also add a few more blocks to make the scene more interesting.
+You may have noticed that we have only used primitive blocks so far. Hey, no hating on primitives, but Storybook branding uses tetris-style blocks, so we need to add those into the mix.
+
+Three.js has the concept of [ExtrudeGeometry](https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry). You can provide it with a 2D shape, using a syntax similar to SVG path or CSS shapes. It then extrudes it along the z-axis, which is perfect for tetris blocks.
 
 <SourceCard
   name="Extrude a tetris block"
@@ -129,6 +131,41 @@ Storybook branding uses tetris style blocks. We'll use the same style for our sc
     </Video>
   </Box>
 </SourceCard>
+
+The Extrude utility from Drei provides a convenient syntax for creating such shapes. For example, the "T" block was generated as follows:
+
+```jsx
+import { useMemo } from 'react';
+import * as THREE from 'three';
+import { Extrude } from '@react-three/drei';
+
+export const EXTRUDE_SETTINGS = {
+  steps: 2,
+  depth: 0.5625,
+  bevelEnabled: false,
+};
+
+export const TBlock = ({ type, color, ...props }) => {
+  const shape = useMemo(() => {
+    const _shape = new THREE.Shape();
+    _shape.moveTo(0, 0);
+    _shape.lineTo(SIDE, 0);
+    _shape.lineTo(SIDE, SIDE * 3);
+    _shape.lineTo(0, SIDE * 3);
+    _shape.lineTo(0, SIDE * 2);
+    _shape.lineTo(-SIDE, SIDE * 2);
+    _shape.lineTo(-SIDE, SIDE);
+    _shape.lineTo(0, SIDE);
+    return _shape;
+  }, []);
+
+  return (
+    <Extrude args={[shape, EXTRUDE_SETTINGS]} {...props}>
+      <meshPhongMaterial color={color} />
+    </Extrude>
+  );
+};
+```
 
 ## Add shadows
 
