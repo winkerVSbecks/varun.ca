@@ -88,11 +88,15 @@ const textProps = {
   bevelSegments: 3,
 }
 
-const material = new THREE.MeshStandardMaterial({
-  color: '#0aff4f',
-  roughness: 1,
-  metalness: 1,
-  flatShading: true
+const material = new THREE.MeshPhysicalMaterial({
+  thickness: 20,
+  roughness: 0.8,
+  clearcoat: 0.9,
+  clearcoatRoughness: 0.8,
+  transmission: 0.9,
+  ior: 1.25,
+  envMapIntensity: 0,
+  color: '#0aff4f'
 })
 
 export const VersionText = () => (
