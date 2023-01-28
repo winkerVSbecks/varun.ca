@@ -10,9 +10,9 @@ import zOffset from '../../assets/z-offset.mp4';
 import focusDistance from '../../assets/focus-distance.mp4';
 import extrude from '../../assets/extrude.mp4';
 
-Storybook's latest update, version 7.0, is a major milestone for the team. Not only have they re-engineered the codebase for improved performance and stability, but they've also added hundreds of new features and improvements. To celebrate this exciting release, the Storybook team is hosting their first-ever Storybook Day event.
+Storybook's version 7.0 is a major milestone, featuring a re-engineered codebase, improved performance, and hundreds of new features. To celebrate, the Storybook team is hosting their first ever user conference—[Storybook Day](https://storybook.js.org/day). To make the occasion even more special, the team wanted to add a visually stunning 3D element to the event landing page.
 
-To truly make this occasion special, the team wanted to add a visually stunning 3D element to the event landing page. Using React Three Fiber, we created a 3D illustration that serves as the page's centrepiece. This article explores the finer details of shipping a 3D scene using React Three Fiber. We'll cover a range of topics, including:
+Using React Three Fiber, we created a 3D illustration that serves as the page's centrepiece. This article explores the finer details of shipping a 3D scene using React Three Fiber. We'll cover a range of topics, including:
 
 - 🏗️ Randomly placing objects without any overlap using sphere packing
 - 🧱 Modelling tetris blocks
@@ -27,7 +27,7 @@ To truly make this occasion special, the team wanted to add a visually stunning 
 
 ## Our strategy
 
-The scene consists of extruded text with blocks floating around it. The event site is built using NextJS, so it made sense to use [@react-three/fiber](https://github.com/pmndrs/react-three-fiber). Additionally, [@react-three/drei](https://github.com/pmndrs/drei) provided helpful utilities such as Text3D and Float.
+The scene consists of extruded text with blocks floating around it. To build the event site, we used NextJS, so it made sense to also use [@react-three/fiber](https://github.com/pmndrs/react-three-fiber). Additionally, [@react-three/drei](https://github.com/pmndrs/drei) provided helpful utilities such as Text3D and Float.
 
 Here's an MVP in code, which will act as our starting point:
 
@@ -37,11 +37,21 @@ Here's an MVP in code, which will act as our starting point:
 
 ## The Details
 
-Notice how the blocks are randomly spread across the scene and sometimes overlap with the text or each other. It would be aesthetically more pleasing if the blocks had no overlap. That's one example of little adjustments we made to take this scene from MVP to production ready. Let's explore these techniques in detail.
+On to the fun stuff. Notice how the blocks are randomly spread across the scene and sometimes overlap with the text or each other. It would be aesthetically more pleasing if the blocks had no overlap. That’s one example of little adjustments we made to take this scene from MVP to production ready. Let’s explore these techniques in detail.
 
-## Use sphere packing to place blocks
+### Use sphere packing to place blocks
 
-One of these adjustments was addressing the overlap between objects. By implementing a sphere packing algorithm, we were able to evenly distribute the blocks and prevent them from overlapping with one another or the text. In the following sections, we'll be diving into the details of this and other techniques we used to refine and polish our 3D scene. Stay tuned for more!
+The [pack-sphere](https://github.com/mattdesl/pack-spheres) library enabled us to evenly distribute the blocks and prevent any potential overlapping issues. This library employs a brute force approach to arrange spheres of varying radii within a cube.
+
+```jsx
+const spheres = pack({
+  maxCount: 40,
+  minRadius: 0.125,
+  maxRadius: 0.25,
+});
+```
+
+Then scale the spheres to our scene space and stretch them horizontally along the x-axis. We then placed a block at the centre of each sphere, scaled to the radius of the sphere.
 
 <SourceCard
   name="Sphere packing to spread out blocks"
@@ -54,6 +64,8 @@ One of these adjustments was addressing the overlap between objects. By implemen
   </Box>
 </SourceCard>
 
+Fixing the overlap between the "7.0" text and the blocks required a different approach. We considered using [pack-sphere](https://github.com/mattdesl/pack-spheres) to check for collisions between the spheres and the text geometry. In the end, we chose a simpler solution: shifting the spheres slightly along the z-axis.
+
 <SourceCard
   name="Z axis offset to prevent overlapping with text"
   link="https://github.com/storybookjs/storybook-day/blob/main/components/BlocksScene/BlocksScene.tsx#L36"
@@ -64,6 +76,44 @@ One of these adjustments was addressing the overlap between objects. By implemen
     </Video>
   </Box>
 </SourceCard>
+
+Here's the entire process, in code:
+
+```jsx
+// Sphere packing
+const spheres = pack({
+  maxCount: 40,
+  minRadius: 0.125,
+  maxRadius: 0.25,
+}).map((sphere) => {
+  const inFront = sphere.position[2] >= 0;
+  return {
+    ...sphere,
+    position: [
+      sphere.position[0],
+      sphere.position[1],
+      // offset to avoid overlapping with the 7.0 text
+      inFront ? sphere.position[2] + 0.6 : sphere.position[2] - 0.6,
+    ],
+  };
+});
+
+const size = 5.5;
+// stretch horizontally
+const scale = [size * 6, size, size];
+
+const blocks = spheres.map((sphere, index) => ({
+  ...sphere,
+  id: index,
+  // scale position to scene space
+  position: sphere.position.map((v, idx) => v * scale[idx]),
+  // scale radius to scene space
+  size: sphere.radius * size * 1.5,
+  color: Random.pick(colors),
+  type: Random.pick(blockTypes),
+  rotation: new THREE.Quaternion(...Random.quaternion()),
+}));
+```
 
 ## Use extrusion to model tetris blocks
 
