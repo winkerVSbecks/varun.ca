@@ -1,23 +1,23 @@
 ---
 title: Breakdown Of Storybook Day 3D Scene
-date: 2022-12-20
+date: 2023-04-01
 image: ../../assets/solarstorm-particles.png
 ---
 
-import { MVP } from './lazy-scenes';
+import { MVP, Shadows } from './lazy-scenes';
 import spherePacking from '../../assets/sphere-packing.mp4';
 import zOffset from '../../assets/z-offset.mp4';
 import focusDistance from '../../assets/focus-distance.mp4';
 import extrude from '../../assets/extrude.mp4';
 
-Storybook's version 7.0 is a major milestone, featuring a re-engineered codebase, improved performance, and hundreds of new features. To celebrate, the Storybook team is hosting their first ever user conference—[Storybook Day](https://storybook.js.org/day). To make the occasion even more special, the team wanted to add a visually stunning 3D element to the event landing page.
+Storybook just hit a major milestone: version 7.0! With a re-engineered codebase and bunch of new features, it's faster and more stable than ever before. To celebrate, the team hosted their first ever user conference—[Storybook Day](https://storybook.js.org/day). And to make things even more special, we decided to add a visually stunning 3D element to the event landing page.
 
-Using React Three Fiber, we created a 3D illustration that serves as the page's centrepiece. This article explores the finer details of shipping a 3D scene using React Three Fiber. We'll cover a range of topics, including:
+We used React Three Fiber to build an eye-catching 3D illustration, inspired by Storybook's Tetris blocks branding. In this article, we'll dive into the nitty-gritty of shipping a 3D scene. Here's what we'll cover:
 
-- 🏗️ Randomly placing objects without any overlap using sphere packing
-- 🧱 Modelling tetris blocks using extrusion
-- 🎥 Adding post-processing effects such as depth of field and shadows
-- 🏎️ Performance optimizations to ensure smooth rendering on all devices
+- 🏗️ Avoid object overlap with sphere packing
+- 🧱 Model Tetris blocks with extrusion
+- 🎥 Enhance visuals with post-processing effects like depth of field and shadows
+- 🏎️ Optimize performance for glitch-free rendering on all devices
 
 <CallOut>
   ℹ️ This post assumes foundational knowledge of React Three Fiber. If you're
@@ -27,17 +27,15 @@ Using React Three Fiber, we created a 3D illustration that serves as the page's 
 
 ## Our strategy
 
-The scene consists of extruded text with blocks floating around it. To build the event site, we used NextJS, so it made sense to also use [@react-three/fiber](https://github.com/pmndrs/react-three-fiber). Additionally, [@react-three/drei](https://github.com/pmndrs/drei) provided helpful utilities such as Text3D and Float.
+To build the event site, we used NextJS and [@react-three/fiber](https://github.com/pmndrs/react-three-fiber), with a little help from [@react-three/drei](https://github.com/pmndrs/drei). This allowed us to create an eye-catching 3D scene, complete with floating Tetris blocks and extruded text.
 
-Here's an MVP in code, which will act as our starting point:
+Here's an MVP in code, that was our starting point:
 
 <MVP />
 
-<!-- ![layers of the scene: extruded text, floating shapes, contact shadows and depth of field](../../assets/scene-parts.gif) -->
-
 ## The Details
 
-On to the fun stuff. Notice how the blocks are randomly spread across the scene and sometimes overlap with the text or each other. It would be aesthetically more pleasing if the blocks had no overlap. That’s one example of little adjustments we made to take this scene from MVP to production ready. Let’s explore these techniques in detail.
+On to the fun stuff. Notice how the blocks are randomly spread across the scene and sometimes overlap with the text or each other. It would be aesthetically more pleasing if the blocks had no overlap. That's one example of little adjustments we made to take this scene from MVP to production ready. Let's explore these techniques in detail.
 
 ### Sphere packing to place blocks
 
@@ -51,7 +49,7 @@ const spheres = pack({
 });
 ```
 
-Then scale the spheres to our scene space and stretch them horizontally along the x-axis. We then placed a block at the centre of each sphere, scaled to the radius of the sphere.
+We then scaled the spheres to fit our scene space and stretched them horizontally along the x-axis. Lastly, we placed a block at the center of each sphere, scaled to the sphere's radius.
 
 <SourceCard
   name="Sphere packing to spread out blocks"
@@ -117,7 +115,7 @@ const blocks = spheres.map((sphere, index) => ({
 
 ## Extrusion to model tetris blocks
 
-You may have noticed that we have only used primitive blocks so far. Hey, no hating on primitives, but Storybook branding uses tetris-style blocks, so we need to add those into the mix.
+You may have noticed that we've only used primitive blocks so far. Hey, no hating on primitives, but Storybook branding uses tetris-style blocks, so we had to add those into the mix.
 
 Three.js has the concept of [ExtrudeGeometry](https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry). You can provide it with a 2D shape, using a syntax similar to SVG path or CSS shapes. It then extrudes it along the z-axis, which is perfect for tetris blocks.
 
@@ -171,33 +169,23 @@ Next, we layered on shadows and depth of field effect to add some oomph.
 
 ## Add shadows
 
-Shadows add a sense of depth and realism to the scene. You can configure lights and meshes within the scene to cast shadows using the [`castShadow`](https://threejs.org/docs/#api/en/lights/DirectionalLight.castShadow) prop. However, we still need a mechanism to render the shadows. Yet again, we reached for Drei.
+Shadows bring scenes to life by adding depth and realism. You can configure lights and meshes within the scene to cast shadows using the [`castShadow`](https://threejs.org/docs/#api/en/lights/DirectionalLight.castShadow) prop. However, we were looking for a softer look, so once again we reached for Drei, which offers a convenient contact shadows component.
 
-I cannot overstate how useful the Drei library is. It has utilities for all kinds of common effects, including contact shadows. In fact, the `ContactShadows` component makes this task trivial.
+Contact shadows is a "fake shadow" effect. It films the scene from below and renders the shadow into a catcher plane. The shadow is accumulated over several frames and is often softer and more realistic.
 
-The component calculates shadows and renders them to a texture. It also adds a plane to the scene to which the shadow texture is applied. You can then customize the look of the shadow by adjusting the resolution, opacity, blur, color, and other properties.
+To use it, add the `ContactShadows` component to the scene. Then customize the look by adjusting the resolution, opacity, blur, color, and other properties.
 
-TODO: turn into a sandbox
-
-```jsx
-import { Canvas } from '@react-three/fiber';
-import { ContactShadows } from '@react-three/drei';
-
-export const Scene = () => (
-  <Canvas>
-    <ContactShadows resolution={512} opacity={0.5} />
-    {/* Our 3D objects go here */}
-  </Canvas>
-);
-```
+<Shadows />
 
 ## Add depth of field effect
 
-At this stage, every object in the scene is rendered with the same sharpness, making the scene appear somewhat flat. Photographers, often use wide apertures and shallow depth of field to create a pleasing blurred aesthetic. We mimicked this effect by applying post-processing effects—using `[@react-three/postprocessing](https://docs.pmnd.rs/react-postprocessing/introduction)`—to our scene, giving it a more cinematic feel.
+At this stage, every object in the scene is rendered with the same sharpness, making the scene appear somewhat flat. Photographers, often use wide apertures and shallow depth of field to create a pleasing blurred aesthetic. We mimicked this effect by applying post-processing effects—using [@react-three/postprocessing](https://docs.pmnd.rs/react-postprocessing/introduction)—to our scene, giving it a more cinematic feel.
 
-**Post-processing pipeline**
+**Post-processing pipeline: Scene render -> pixel data -> effects composer -> pass 1: DoF -> pixel data -> pass 2: bloom -> pixel data -> etc. -> render to screen**
 
 The [EffectComposer](https://pmndrs.github.io/postprocessing/public/docs/class/src/core/EffectComposer.js~EffectComposer.html) manages and runs post-processing passes. It begins by rendering the scene to a buffer and then applies filters and effects one at a time before rendering the final image onto the screen.
+
+With the DepthOfField effect, you can pinpoint a specific distance (`focusDistance`) within your scene and make everything else beautifully blurry. But how do you define the focus distance? Is it measured in world units or something else?
 
 ```jsx
 import { Canvas } from '@react-three/fiber';
@@ -213,6 +201,22 @@ export const Scene = () => (
 );
 ```
 
+The camera's view is defined by a pyramid-shaped volume called the "view frustum." Objects within the minimum (near plane) and maximum (far plane) distances from the camera will be rendered.
+
+<figure px="4">
+  <img
+    alt="View Frustum this is a pyramid which has 2 clipping planes. Objects or parts of objects found outside the frustum, won't be rendered"
+    src="../../assets/viewport-3d-scene.png"
+  />
+  <figcaption>
+    <a href="https://obviam.net/posts/2011/06.3d-perspective-projections/">
+      From: Intro to 3D Programming - Perspective Projections
+    </a>
+  </figcaption>
+</figure>
+
+The `focusDistance` parameter determines the distance from the camera at which objects are considered in focus. Its value is normalized between 0 and 1, where 0 represents the near plane of the camera and 1 represents the far plane.
+
 <SourceCard
   name="Where to focus within the scene"
   link="https://github.com/storybookjs/storybook-day/blob/main/components/BlocksScene/BlocksScene.tsx#L97"
@@ -223,25 +227,6 @@ export const Scene = () => (
     </Video>
   </Box>
 </SourceCard>
-
-A depth of field effect can add a sense of realism and depth to a 3D scene by blurring objects that are out of focus.
-
-To add a depth of field effect to our scene, we can use the DepthOfField component from the @react-three/postprocessing library. First, let's install the library by running the following command in our terminal:
-
-```
-npm install @react-three/postprocessing
-```
-
-Next, let's import the DepthOfField component and add it to our scene. The DepthOfField component takes care of setting up the necessary postprocessing passes and rendering them to a texture. It also provides several props that allow us to customize the depth of field effect, such as focusDistance and aperture.
-
-```
-import { DepthOfField } from '@react-three/postprocessing'
-
-<Canvas>
-  <DepthOfField focusDistance={2} aperture={0.05} />
-  {/* Our 3D objects go here */}
-</Canvas>
-```
 
 Now, when we render our scene, objects that are closer to the focus distance will be in focus, while objects that are farther away will be blurred.
 
@@ -266,5 +251,7 @@ A material store is a React context that stores a reference to a material instan
 ## Wrap up
 
 3D is increasingly becoming a part of the web, and React Three Fiber is a great tool for creating 3D scenes with React. It's not uncommon to see polished 3D illustrations on the web but most tutorials focus on the basics. With this post, I wanted to pull the curtain back and focus on the final 20%. The little tweaks and happy accidents that can make a big difference.
+
+I cannot overstate how useful the Drei library is. It has utilities for all kinds of common effects, including contact shadows.
 
 If you have any questions or feedback, feel free to reach out via [twitter](https://twitter.com/winkerVSbecks). Happy coding!

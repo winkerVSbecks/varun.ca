@@ -4,16 +4,16 @@ import interBold from '../../assets/inter-bold.json';
 
 const App = /* jsx */ `import * as THREE from 'three'
 import * as React from 'react'
-import { BlocksScene } from './BlocksScene'
-
 import { Canvas } from '@react-three/fiber'
+import { ContactShadows, OrbitControls } from '@react-three/drei';
+import { BlocksScene } from './BlocksScene'
 
 export default function App() {
   return (
     <div style={{ height: '100vh' }}>
       <Canvas
         shadows
-        gl={{ antialias: false, stencil: false, depth: false }}
+        gl={{ antialias: false, stencil: false }}
         camera={{ position: [0, 0, 30], near: 0.1, far: 60, fov: 45 }}>
         <color attach="background" args={['#E3F3FF']} />
         {/* lights */}
@@ -23,6 +23,15 @@ export default function App() {
         <pointLight position={[-20, -20, -20]} intensity={1} />
         {/* Scene contents */}
         <BlocksScene />
+        {/* Shadows */}
+        <ContactShadows
+          resolution={512}
+          opacity={0.5}
+          position={[0, -8, 0]}
+          width={20}
+          height={10}
+          color="#333"
+        />
       </Canvas>
     </div>
   )
@@ -31,14 +40,13 @@ export default function App() {
 
 const BlocksScene = /* jsx */ `import React, { Suspense } from 'react'
 import * as THREE from 'three'
-import { Float, ContactShadows } from '@react-three/drei'
+import { Float } from '@react-three/drei'
 import * as Random from 'canvas-sketch-util/random'
-import { EffectComposer, DepthOfField } from '@react-three/postprocessing'
 import { Block, blockTypes } from './Block'
 import { VersionText } from './VersionText'
 
-const size = 5.5
-const colors = ['#FC521F', '#CA90FF', '#1EA7FD', '#FFAE00', '#37D5D3', '#FC521F', '#66BF3C']
+const size = 5.5;
+const colors = ['#FC521F', '#CA90FF', '#1EA7FD', '#FFAE00', '#37D5D3', '#FC521F', '#66BF3C'];
 
 const blocks = new Array(40).fill(0).map((_, index) => ({
   id: index,
@@ -47,7 +55,7 @@ const blocks = new Array(40).fill(0).map((_, index) => ({
   color: Random.pick(colors),
   type: Random.pick(blockTypes),
   rotation: new THREE.Quaternion(...Random.quaternion()),
-}))
+}));
 
 export const BlocksScene = () => {
   return (
@@ -67,18 +75,6 @@ export const BlocksScene = () => {
             <Block type={block.type} color={block.color} />
           </Float>
         ))}
-        <ContactShadows
-          position={[0, -8, 0]}
-          opacity={0.75}
-          scale={40}
-          blur={2}
-          far={9}
-          color="#333"
-          resolution={256}
-        />
-        <EffectComposer multisampling={8}>
-          <DepthOfField focusDistance={0.5} bokehScale={7} focalLength={0.2} />
-        </EffectComposer>
       </group>
     </Suspense>
   )
@@ -109,7 +105,7 @@ const material = new THREE.MeshPhysicalMaterial({
   transmission: 0.9,
   ior: 1.25,
   envMapIntensity: 0,
-  color: '#0aff4f',
+  color: '#0aff4f'
 })
 
 export const VersionText = () => (
@@ -180,7 +176,7 @@ export default function () {
   return (
     <Sandpack
       files={{
-        '/BlocksScene.tsx': { code: BlocksScene, active: true },
+        '/BlocksScene.tsx': BlocksScene,
         '/VersionText.tsx': VersionText,
         '/Block.tsx': Block,
         '/App.js': App,
