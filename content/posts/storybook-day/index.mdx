@@ -4,7 +4,7 @@ date: 2023-04-01
 image: ../../assets/solarstorm-particles.png
 ---
 
-import { MVP, Shadows } from './lazy-scenes';
+import { MVP, Shadows, DepthOfField } from './lazy-scenes';
 import spherePacking from '../../assets/sphere-packing.mp4';
 import zOffset from '../../assets/z-offset.mp4';
 import focusDistance from '../../assets/focus-distance.mp4';
@@ -228,23 +228,15 @@ The `focusDistance` parameter determines the distance from the camera at which o
   </Box>
 </SourceCard>
 
-Now, when we render our scene, objects that are closer to the focus distance will be in focus, while objects that are farther away will be blurred.
+We set the focus distance to 0.5, which is where the text is located. Objects closer to that threshold will be in focus, while those farther away will be blurred. Try adjusting the `focusDistance` slider in the sandbox below to see how it affects the scene.
 
-You can further customize the depth of field effect by adjusting the focusDistance and aperture props. The focusDistance prop determines the distance from the camera at which objects are in focus, and the aperture prop determines the size of the lens aperture, which controls the amount of blur.
+You can also further customize this effect by adjusting the `bokehScale` and `focalLength` props.
 
-You can also use the focalLength prop to adjust the focal length of the camera, which determines the magnification of the image and the distance at which objects are in focus.
+<DepthOfField />
 
-```
-<DepthOfField focusDistance={2} aperture={0.05} focalLength={50} />
-```
+## Using a material store for performance optimization
 
-That's it! With just a few lines of code, we've added a depth of field effect to our 3D scene.
-
-I hope this tutorial has helped you get started with creating a 3D illustration with React Three Fiber and adding a depth of field effect with the `@react-three/postprocessing` library. If you have any questions or feedback, feel free to leave a comment below. Happy coding!
-
-## Performance optimization: use a material store
-
-Shadows and depth of field effects can add a sense of realism and depth to a 3D scene, but they can also have a significant impact on performance. In this section, we'll look at how we can optimize the performance of our scene by using a material store.
+Shadows and depth of field are cool effects but they're also pretty expensive and significantly impact rendering performance. In this section, we'll look at how we can optimize the performance of our scene by using a material store.
 
 A material store is a React context that stores a reference to a material instance. This allows us to reuse the same material instance across multiple components, which can improve performance by reducing the number of materials that need to be created and rendered.
 
@@ -253,5 +245,7 @@ A material store is a React context that stores a reference to a material instan
 3D is increasingly becoming a part of the web, and React Three Fiber is a great tool for creating 3D scenes with React. It's not uncommon to see polished 3D illustrations on the web but most tutorials focus on the basics. With this post, I wanted to pull the curtain back and focus on the final 20%. The little tweaks and happy accidents that can make a big difference.
 
 I cannot overstate how useful the Drei library is. It has utilities for all kinds of common effects, including contact shadows.
+
+In conclusion, the team behind Storybook used React Three Fiber to create an impressive 3D illustration for their user conference landing page. They employed techniques such as sphere packing to avoid object overlap, extrusion to model Tetris blocks, and post-processing effects like shadows and depth of field to enhance the visuals. To optimize performance, they used a material store to reduce the number of materials that need to be created and rendered. Additionally, they described how to create a floating effect for 3D objects using the Float component from the `@react-three/drei` library.
 
 If you have any questions or feedback, feel free to reach out via [twitter](https://twitter.com/winkerVSbecks). Happy coding!

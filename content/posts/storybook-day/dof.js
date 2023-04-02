@@ -5,10 +5,18 @@ import interBold from '../../assets/inter-bold.json';
 const App = /* jsx */ `import * as THREE from 'three'
 import * as React from 'react'
 import { Canvas } from '@react-three/fiber'
-import { ContactShadows, OrbitControls } from '@react-three/drei';
-import { BlocksScene } from './BlocksScene'
+import { ContactShadows } from '@react-three/drei';
+import { EffectComposer, DepthOfField } from '@react-three/postprocessing';
+import { BlocksScene } from './BlocksScene';
+import { useControls } from 'leva';
 
 export default function App() {
+  const { focusDistance } = useControls({
+    focusDistance: {
+      value:  0.5, min: 0, max: 1, step: .05,
+    },
+  });
+
   return (
     <div style={{ height: '100vh' }}>
       <Canvas
@@ -32,6 +40,10 @@ export default function App() {
           height={10}
           color="#333"
         />
+        {/* Post-processing effects */}
+        <EffectComposer multisampling={8}>
+          <DepthOfField focusDistance={focusDistance} bokehScale={7} focalLength={0.2} />
+        </EffectComposer>
       </Canvas>
     </div>
   )
@@ -199,6 +211,7 @@ export default function () {
           '@react-three/drei': '^9.46.0',
           '@react-three/postprocessing': '^2.7.0',
           'canvas-sketch-util': '^1.10.0',
+          leva: '^0.9.0',
           three: '^0.147.0',
         },
       }}
