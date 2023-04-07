@@ -236,11 +236,82 @@ You can also further customize this effect by adjusting the `bokehScale` and `fo
 
 ## Using a material store for performance optimization
 
-Shadows and depth of field are cool effects but they're also pretty expensive and significantly impact rendering performance. In this section, we'll look at how we can optimize the performance of our scene by using a material store.
+Although shadows and depth of field are cool visual effects, they can be quite expensive to render and have a significant impact on performance. Seeking some advice on this topic, I reached out to [Paul Henschel aka @0xca0a](https://twitter.com/0xca0a). Among several perf optimizations, he suggested using a material store to avoid creating a new material instance for each block. Let's take a closer look at how this works.
 
-A material store is a React context that stores a reference to a material instance. This allows us to reuse the same material instance across multiple components, which can improve performance by reducing the number of materials that need to be created and rendered.
+The Block component uses the `color` prop to create a unique material for every instance. For example, every orange coloured block will have its own material instance. Pretty wasteful, right?
+
+```jsx
+export const Block = ({ type, color }: BlockProps) => {
+  const Component = BLOCK_TYPES[type].shape
+  return (
+    <Component args={BLOCK_TYPES[type].args as any} castShadow>
+      <meshPhongMaterial color={color} />
+    </Component>
+  )
+}
+```
+
+By using a material store, we could reuse the same material across multiple block instances. This improved performance by reducing the number of materials that need to be created and rendered.
+
+```jsx:title=src/components/BlocksScene/store.tsx
+import * as THREE from 'three';
+THREE.ColorManagement.legacyMode = false;
+
+const colors: string[] = [
+  '#FC521F',
+  '#CA90FF',
+  '#1EA7FD',
+  '#FFAE00',
+  '#37D5D3',
+  '#FC521F',
+  '#66BF3C',
+  '#0AB94F'
+];
+
+interface Materials {
+  [color: string]: THREE.MeshPhongMaterial;
+}
+
+const materials: Materials = colors.reduce(
+  (acc, color) => ({ ...acc, [color]: new THREE.MeshPhongMaterial({ color }) }),
+  {}
+);
+
+export { colors, materials };
+```
+
+The store generates a material for every possible block color and stores it in a plain object. Now, instead of creating a material for each instance, the block component simply references it from the material store.
+
+```jsx
+export const Block = ({ type, color }: BlockProps) => {
+  const Component = BLOCK_TYPES[type].shape;
+  return (
+    <Component
+      args={OTHER_TYPES[type as OtherBlockType].args as any}
+      material={materials[color]}
+      castShadow
+    />
+  );
+}
+```
 
 ## Wrap up
+
+The Storybook Day 3D scene showcases the limitless creative possibilities of React Three Fiber, NextJS, and @react-three/drei. We used sphere packing, extrusion, shadows, depth of field, and a material store to create an unforgettable event landing page. The result? A visually stunning and on-brand masterpiece that runs like butter on all devices.
+
+This breakdown of our process proves why these tools are essential for pushing the boundaries of web-based 3D experiences. Ready to take your skills to the next level? Let's go!
+
+In deconstructing this scene, I aimed to shed light on the final 20% of work that elevates a scene from "done" to "ready to ship". If you have any questions or feedback, feel free to reach out via [twitter](https://twitter.com/winkerVSbecks).
+
+Want to dive in deeper? The code is open-source and each aspect of the scene is broken down in the deployed Storybook.
+
+- 👨🏽‍💻 [GitHub repository](https://github.com/storybookjs/storybook-day/tree/main/components/BlocksScene)
+- 📚 [Deployed Storybook](https://main--6383d84cd73a2a81d33248b2.chromatic.com)
+- 🌏 [Live site:](https://storybook.js.org/day)
+
+---
+
+In conclusion, Storybook Day's 3D scene is a testament to the creative possibilities that React Three Fiber, along with NextJS and @react-three/drei, offers. By utilizing sphere packing, extrusion, and adding post-processing effects such as shadows and depth of field, we were able to create a visually stunning and on-brand event landing page. Additionally, performance optimization using a material store ensured a smooth, glitch-free experience on all devices. This comprehensive breakdown of the process behind the 3D scene highlights the power and flexibility of these tools, inspiring developers and designers to push the boundaries of web-based 3D experiences.
 
 3D is increasingly becoming a part of the web, and React Three Fiber is a great tool for creating 3D scenes with React. It's not uncommon to see polished 3D illustrations on the web but most tutorials focus on the basics. With this post, I wanted to pull the curtain back and focus on the final 20%. The little tweaks and happy accidents that can make a big difference.
 
