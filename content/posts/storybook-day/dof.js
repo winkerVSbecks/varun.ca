@@ -11,9 +11,15 @@ import { BlocksScene } from './BlocksScene';
 import { useControls } from 'leva';
 
 export default function App() {
-  const { focusDistance } = useControls({
+  const { focusDistance, bokehScale, focalLength } = useControls({
     focusDistance: {
-      value:  0.5, min: 0, max: 1, step: .05,
+      value: 0.5, min: 0, max: 1, step: .01,
+    },
+    bokehScale:{
+      value: 7, min: 0, max: 20, step: 1,
+    },
+    focalLength: {
+      value: 0.2, min: 0, max: 1, step: .01,
     },
   });
 
@@ -42,7 +48,7 @@ export default function App() {
         />
         {/* Post-processing effects */}
         <EffectComposer multisampling={8}>
-          <DepthOfField focusDistance={focusDistance} bokehScale={7} focalLength={0.2} />
+          <DepthOfField focusDistance={focusDistance} bokehScale={bokehScale} focalLength={focalLength} />
         </EffectComposer>
       </Canvas>
     </div>
