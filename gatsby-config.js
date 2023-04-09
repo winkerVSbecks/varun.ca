@@ -62,6 +62,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [process.env.GA_TRACKING_ID],
+      },
+    },
+    {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
         siteUrl: `https://varun.ca`,
