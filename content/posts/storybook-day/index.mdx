@@ -113,7 +113,7 @@ const blocks = spheres.map((sphere, index) => ({
 }));
 ```
 
-## Extrusion to model tetris blocks
+### Extrusion to model tetris blocks
 
 You may have noticed that we've only used primitive blocks so far. Hey, no hating on primitives, but Storybook branding uses tetris-style blocks, so we had to add those into the mix.
 
@@ -167,7 +167,7 @@ export const TBlock = ({ type, color, ...props }) => {
 
 Next, we layered on shadows and depth of field effect to add some oomph.
 
-## Add shadows
+### Shadows
 
 Shadows bring scenes to life by adding depth and realism. You can configure lights and meshes within the scene to cast shadows using the [`castShadow`](https://threejs.org/docs/#api/en/lights/DirectionalLight.castShadow) prop. However, we were looking for a softer look, so once again we reached for Drei, which offers a convenient contact shadows component.
 
@@ -177,7 +177,7 @@ To use it, add the `ContactShadows` component to the scene. Then customize the l
 
 <Shadows />
 
-## Add depth of field effect
+### Depth of field effect
 
 At this stage, every object in the scene is rendered with the same sharpness, making the scene appear somewhat flat. Photographers, often use wide apertures and shallow depth of field to create a pleasing blurred aesthetic. We mimicked this effect by applying post-processing effects—using [@react-three/postprocessing](https://docs.pmnd.rs/react-postprocessing/introduction)—to our scene, giving it a more cinematic feel.
 
@@ -234,7 +234,7 @@ You can also further customize this effect by adjusting the `bokehScale` and `fo
 
 <DepthOfField />
 
-## Using a material store for performance optimization
+### Using a material store for performance optimization
 
 Although shadows and depth of field are cool visual effects, they can be quite expensive to render and have a significant impact on performance. Seeking some advice on this topic, I reached out to [Paul Henschel aka @0xca0a](https://twitter.com/0xca0a). Among several perf optimizations, he suggested using a material store to avoid creating a new material instance for each block. Let's take a closer look at how this works.
 
