@@ -1,5 +1,5 @@
 ---
-title: Breakdown Of Storybook Day 3D Scene
+title: How we built the Storybook Day 3D animation
 date: 2023-04-20
 image: ../../assets/storybook-day-3d.png
 ---
@@ -19,7 +19,7 @@ import storybook7Mp4 from '../../assets/storybook-7.mp4';
 
 Storybook just hit a major milestone: version 7.0! With a re-engineered codebase and bunch of new features, it's faster and more stable than ever before. To celebrate, the team hosted their first ever user conference—[Storybook Day](https://storybook.js.org/day). And to make things even more special, we decided to add a visually stunning 3D element to the event landing page.
 
-We used React Three Fiber to build an eye-catching 3D illustration, inspired by Storybook's Tetris blocks branding. In this article, we'll dive into the nitty-gritty of shipping a 3D scene. Here's what we'll cover:
+We used React Three Fiber (R3F) to build an eye-catching 3D illustration, inspired by Storybook's Tetris blocks branding. In this article, we'll dive into the nitty-gritty of shipping a 3D scene. Here's what I'll cover:
 
 - 🏗️ Avoid object overlap with sphere packing
 - 🧱 Model Tetris blocks with extrusion
@@ -34,15 +34,17 @@ We used React Three Fiber to build an eye-catching 3D illustration, inspired by 
 
 ## Our strategy
 
-To build the event site, we used NextJS and [@react-three/fiber](https://github.com/pmndrs/react-three-fiber), with a little help from [@react-three/drei](https://github.com/pmndrs/drei). This allowed us to create an eye-catching 3D scene, complete with floating Tetris blocks and extruded text.
+We built the event site using NextJS and [@react-three/fiber](https://github.com/pmndrs/react-three-fiber), with a little help from [@react-three/drei](https://github.com/pmndrs/drei). This allowed us to create an eye-catching 3D scene, complete with floating Tetris blocks and extruded text.
 
-Here's an MVP in code, that was our starting point:
+We built the event site using NextJS and [@react-three/fiber](https://github.com/pmndrs/react-three-fiber), with a little help from [@react-three/drei](https://github.com/pmndrs/drei). The animation features floating Tetris blocks surrounding "7.0" extruded text.
+
+Here's an MVP in code.
 
 <MVP />
 
 ## The Details
 
-On to the fun stuff. Notice how the blocks are randomly spread across the scene and sometimes overlap with the text or each other. It would be aesthetically more pleasing if the blocks had no overlap. That's one example of little adjustments we made to take this scene from MVP to production ready. Let's explore these techniques in detail.
+On to the fun stuff. Notice how the blocks are randomly spread across the scene and sometimes overlap with the text or each other. It would be aesthetically more pleasing if the blocks had no overlap. That's one example of little adjustments we made to take this scene from MVP to production ready. Let's dive into these techniques.
 
 ### Sphere packing to place blocks
 
@@ -58,6 +60,8 @@ const spheres = pack({
 
 We then scaled the spheres to fit our scene space and stretched them horizontally along the x-axis. Lastly, we placed a block at the center of each sphere, scaled to the sphere's radius.
 
+That gave us a nice spread of blocks, with a satisfying mix of size and placement.
+
 <SourceCard
   name="Sphere packing to spread out blocks"
   link="https://github.com/storybookjs/storybook-day/blob/main/components/BlocksScene/BlocksScene.tsx#L22"
@@ -69,7 +73,9 @@ We then scaled the spheres to fit our scene space and stretched them horizontall
   </Box>
 </SourceCard>
 
-Fixing the overlap between the "7.0" text and the blocks required a different approach. We considered using [pack-sphere](https://github.com/mattdesl/pack-spheres) to check for collisions between the spheres and the text geometry. In the end, we chose a simpler solution: shifting the spheres slightly along the z-axis.
+To fix the overlap between the "7.0" text and the blocks, a different approach was needed. Initially, we thought of using pack-sphere to detect collisions between the spheres and the text geometry. However, we ended up opting for a simpler solution: slightly shifting the spheres along the z-axis.
+
+The text essentially parts the sea of blocks.
 
 <SourceCard
   name="Z axis offset to prevent overlapping with text"
@@ -124,7 +130,7 @@ const blocks = spheres.map((sphere, index) => ({
 
 You may have noticed that we've only used primitive blocks so far. Hey, no hating on primitives, but Storybook branding uses tetris-style blocks, so we had to add those into the mix.
 
-Three.js has the concept of [ExtrudeGeometry](https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry). You can provide it with a 2D shape, using a syntax similar to SVG path or CSS shapes. It then extrudes it along the z-axis, which is perfect for tetris blocks.
+The concept of [ExtrudeGeometry](https://threejs.org/docs/#api/en/geometries/ExtrudeGeometry) in Three.js is quite interesting. You can supply it with a 2D shape using a syntax similar to SVG path or CSS shapes, and it'll extrude it along the z-axis. This feature is perfect for creating Tetris blocks.
 
 <SourceCard
   name="Extrude a tetris block"
@@ -137,7 +143,7 @@ Three.js has the concept of [ExtrudeGeometry](https://threejs.org/docs/#api/en/g
   </Box>
 </SourceCard>
 
-The Extrude utility from Drei provides a convenient syntax for creating such shapes. For example, the "T" block was generated as follows:
+Drei's Extrude utility offers a relatively straightforward syntax for creating such shapes. Here's an example of how we generated the "T" block:
 
 ```jsx
 import { useMemo } from 'react';
@@ -178,7 +184,7 @@ Next, we layered on shadows and depth of field effect to add some oomph.
 
 Shadows bring scenes to life by adding depth and realism. You can configure lights and meshes within the scene to cast shadows using the [`castShadow`](https://threejs.org/docs/#api/en/lights/DirectionalLight.castShadow) prop. However, we were looking for a softer look, so once again we reached for Drei, which offers a convenient contact shadows component.
 
-Contact shadows is a "fake shadow" effect. It films the scene from below and renders the shadow into a catcher plane. The shadow is accumulated over several frames and is often softer and more realistic.
+Contact shadows are a "fake shadow" effect. They're generated by filming the scene from below and rendering the shadow onto a catcher plane. The shadow is accumulated over several frames, making it softer and more realistic.
 
 To use it, add the `ContactShadows` component to the scene. Then customize the look by adjusting the resolution, opacity, blur, color, and other properties.
 

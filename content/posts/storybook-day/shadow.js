@@ -6,9 +6,20 @@ const App = /* jsx */ `import * as THREE from 'three'
 import * as React from 'react'
 import { Canvas } from '@react-three/fiber'
 import { ContactShadows, OrbitControls } from '@react-three/drei';
+import { useControls } from 'leva';
 import { BlocksScene } from './BlocksScene'
 
 export default function App() {
+  const { opacity, resolution, color } = useControls({
+    opacity: {
+      value: 0.5, min: 0, max: 1, step: .1,
+    },
+    resolution:{
+      value: 512, min: 256, max: 1024, step: 64,
+    },
+    color: "#333",
+  });
+
   return (
     <div style={{ height: '100vh' }}>
       <Canvas
@@ -25,12 +36,12 @@ export default function App() {
         <BlocksScene />
         {/* Shadows */}
         <ContactShadows
-          resolution={512}
-          opacity={0.5}
+          resolution={resolution}
+          opacity={opacity}
           position={[0, -8, 0]}
           width={20}
           height={10}
-          color="#333"
+          color={color}
         />
       </Canvas>
     </div>
@@ -199,6 +210,7 @@ export default function () {
           '@react-three/drei': '^9.46.0',
           '@react-three/postprocessing': '^2.7.0',
           'canvas-sketch-util': '^1.10.0',
+          leva: '^0.9.0',
           three: '^0.147.0',
         },
       }}
