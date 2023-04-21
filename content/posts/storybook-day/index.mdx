@@ -181,9 +181,9 @@ To use it, add the `ContactShadows` component to the scene. Then customize the l
 
 At this stage, every object in the scene is rendered with the same sharpness, making the scene appear somewhat flat. Photographers, often use wide apertures and shallow depth of field to create a pleasing blurred aesthetic. We mimicked this effect by applying post-processing effects—using [@react-three/postprocessing](https://docs.pmnd.rs/react-postprocessing/introduction)—to our scene, giving it a more cinematic feel.
 
-**Post-processing pipeline: Scene render -> pixel data -> effects composer -> pass 1: DoF -> pixel data -> pass 2: bloom -> pixel data -> etc. -> render to screen**
-
 The [EffectComposer](https://pmndrs.github.io/postprocessing/public/docs/class/src/core/EffectComposer.js~EffectComposer.html) manages and runs post-processing passes. It begins by rendering the scene to a buffer and then applies filters and effects one at a time before rendering the final image onto the screen.
+
+#### Picking a focus distance
 
 With the DepthOfField effect, you can pinpoint a specific distance (`focusDistance`) within your scene and make everything else beautifully blurry. But how do you define the focus distance? Is it measured in world units or something else?
 
@@ -280,7 +280,7 @@ const materials: Materials = colors.reduce(
 export { colors, materials };
 ```
 
-The store generates a material for every possible block color and stores it in a plain object. Now, instead of creating a material for each instance, the block component simply references it from the material store.
+The store generates a material for every possible block color and stores it in a plain object. Now, instead of creating a material for each instance, the block component simply references it from the material store. We went from 40 materials to 8.
 
 ```jsx
 export const Block = ({ type, color }: BlockProps) => {
@@ -289,7 +289,6 @@ export const Block = ({ type, color }: BlockProps) => {
     <Component
       args={OTHER_TYPES[type as OtherBlockType].args as any}
       material={materials[color]}
-      castShadow
     />
   );
 }
@@ -297,10 +296,12 @@ export const Block = ({ type, color }: BlockProps) => {
 
 ## Wrap up
 
-3D is now part of the web's grain, and React Three Fiber is a fantastic tool for intertwining HTML and WebGL. The R3F ecosystem is rich, and libraries like drei and postprocessing simplify complex 3D tasks. The Storybook Day 3D scene perfectly showcases the platform's possibilities. We used sphere packing, extrusion, shadows, depth of field, and a material store to create an memorable event landing page. In deconstructing this scene, I aimed to shed light on the final 20% of work that elevates a scene from "done" to "ready to ship". If you have any questions or feedback, feel free to reach out via [twitter](https://twitter.com/winkerVSbecks).
+3D is now part of the web's grain, and R3F is a fantastic tool for intertwining HTML and WebGL. The R3F ecosystem is rich, and libraries like drei and postprocessing simplify complex 3D tasks. The Storybook Day 3D scene perfectly showcases the platform's possibilities. We used sphere packing, extrusion, shadows, depth of field, and a material store to create an memorable event landing page.
+
+In deconstructing this scene, I aimed to shed light on the final 20% of work that elevates a scene from "done" to "ready to ship". If you have any questions or feedback, feel free to reach out via [twitter](https://twitter.com/winkerVSbecks).
 
 Want to dive in deeper? The code is open-source and each aspect of the scene is broken down in the deployed Storybook.
 
 - 👨🏽‍💻 [GitHub repository](https://github.com/storybookjs/storybook-day/tree/main/components/BlocksScene)
 - 📚 [Deployed Storybook](https://main--6383d84cd73a2a81d33248b2.chromatic.com)
-- 🌏 [Live site:](https://storybook.js.org/day)
+- 🌏 [Live site](https://storybook.js.org/day)
