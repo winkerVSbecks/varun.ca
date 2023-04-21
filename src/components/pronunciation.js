@@ -1,35 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Box, Icon, TransparentButton } from '@ds';
 
 const StyledIcon = styled(Icon)`
-  transition: background-color ${props => props.theme.animations.easeIn};
+  transition: background-color ${(props) => props.theme.animations.easeIn};
 `;
 
 const PronunciationContainer = styled(Box)`
   :hover ${StyledIcon} {
-    background-color: ${props => props.theme.colors.brand.main};
+    background-color: ${(props) => props.theme.colors.brand.main};
   }
 `;
 
 const PronunciationButton = styled(TransparentButton)`
   :focus ${StyledIcon} {
-    background-color: ${props => props.theme.colors.brand.main};
+    background-color: ${(props) => props.theme.colors.brand.main};
   }
 `;
 
+const Audio = styled.audio`
+  display: none;
+`;
+
 export const Pronunciation = () => {
-  const nameAudio = useNameAudio();
+  const nameAudioRef = useRef(null);
 
   return (
     <PronunciationContainer as="span">
       Varun Vachhar
+      <Audio ref={nameAudioRef} src="/varun.mp3" />
       <PronunciationButton
         fontSize="inherit"
         fontWeight="inherit"
         aria-label="pronunciation"
         ml={1}
-        onClick={() => nameAudio.play()}
+        onClick={() => {
+          if (nameAudioRef.current) {
+            nameAudioRef.current.play();
+          }
+        }}
       >
         <StyledIcon
           role="img"
@@ -46,15 +55,3 @@ export const Pronunciation = () => {
     </PronunciationContainer>
   );
 };
-
-function useNameAudio() {
-  const [nameAudio, setNameAudio] = useState(null);
-
-  useEffect(() => {
-    setNameAudio(
-      new Audio('https://www.nameshouts.com/libs/media/varun_hi.mp3')
-    );
-  }, []);
-
-  return nameAudio;
-}

@@ -3,4 +3,3 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
-require('@codesandbox/sandpack-react/dist/index.css');
