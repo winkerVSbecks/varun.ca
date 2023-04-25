@@ -247,7 +247,7 @@ You can also further customize this effect by adjusting the `bokehScale` and `fo
 
 ### Using a material store for performance optimization
 
-Although shadows and depth of field are cool visual effects, they can be quite expensive to render and have a significant impact on performance. Seeking some advice on this topic, I reached out to [Paul Henschel aka @0xca0a](https://twitter.com/0xca0a). Among several perf optimizations, he suggested using a material store to avoid creating a new material instance for each block. Let's take a closer look at how this works.
+Although shadows and depth of field are cool visual effects, they can be quite expensive to render and have a significant impact on performance. Seeking some advice on this topic, I reached out to [Paul Henschel aka @0xca0a](https://twitter.com/0xca0a). Among several perf optimizations, they suggested using a material store to avoid creating a new material instance for each block. Let's take a closer look at how this works.
 
 The Block component uses the `color` prop to create a unique material for every instance. For example, every orange coloured block will have its own material instance. Pretty wasteful, right?
 
