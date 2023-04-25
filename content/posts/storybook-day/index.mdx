@@ -143,7 +143,7 @@ The concept of [ExtrudeGeometry](https://threejs.org/docs/#api/en/geometries/Ext
 
 Drei's Extrude utility offers a relatively straightforward syntax for creating such shapes. Here's an example of how we generated the "T" block:
 
-```jsx
+```js
 import { useMemo } from 'react';
 import * as THREE from 'three';
 import { Extrude } from '@react-three/drei';
@@ -198,7 +198,7 @@ The [EffectComposer](https://pmndrs.github.io/postprocessing/public/docs/class/s
 
 With the DepthOfField effect, you can pinpoint a specific distance (`focusDistance`) within your scene and make everything else beautifully blurry. But how do you define the focus distance? Is it measured in world units or something else?
 
-```jsx
+```js
 import { Canvas } from '@react-three/fiber';
 import { EffectComposer, DepthOfField } from '@react-three/postprocessing';
 
@@ -251,7 +251,7 @@ Although shadows and depth of field are cool visual effects, they can be quite e
 
 The Block component uses the `color` prop to create a unique material for every instance. For example, every orange coloured block will have its own material instance. Pretty wasteful, right?
 
-```jsx
+```js
 export const Block = ({ type, color }: BlockProps) => {
   const Component = BLOCK_TYPES[type].shape
   return (
@@ -264,7 +264,7 @@ export const Block = ({ type, color }: BlockProps) => {
 
 By using a material store, we could reuse the same material across multiple block instances. This improved performance by reducing the number of materials that need to be created and rendered.
 
-```jsx:title=src/components/BlocksScene/store.tsx
+```js:title=src/components/BlocksScene/store.tsx
 import * as THREE from 'three';
 THREE.ColorManagement.legacyMode = false;
 
@@ -293,7 +293,7 @@ export { colors, materials };
 
 The store generates a material for every possible block color and stores it in a plain object. Now, instead of creating a material for each instance, the block component simply references it from the material store. We went from 40 materials to 8.
 
-```jsx
+```js
 export const Block = ({ type, color }: BlockProps) => {
   const Component = BLOCK_TYPES[type].shape;
   return (
