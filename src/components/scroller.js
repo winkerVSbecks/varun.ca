@@ -11,8 +11,8 @@ const StickyFigure = styled(Box).attrs({ as: 'figure', top: 5 })`
 `;
 
 const ContentWithoutFigures = styled(Box)`
-  figure,
-  img,
+  figure:not(.show-in-both),
+  img:not(.show-in-both),
   .visualization {
     display: none;
   }
