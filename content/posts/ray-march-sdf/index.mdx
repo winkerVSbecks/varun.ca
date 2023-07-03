@@ -14,23 +14,23 @@ import rayDirection from '../../assets/ray-direction.svg';
 import fuckAroundFindOut from '../../assets/fuck-around-find-out.jpg';
 
 export const figures = [
-  <SdfCrystal activeIndex={0} />,
+  <SdfCrystal shaderIndex={0} />,
   <SdfCrystal
-    activeIndex={1}
+    shaderIndex={1}
     tweak={{ name: 'lensLength', value: 2, min: 0.1, max: 4, step: 0.1 }}
   />,
   <SdfCrystal
-    activeIndex={2}
+    shaderIndex={2}
     tweak={{ name: 'lensLength', value: 2, min: 0.1, max: 4, step: 0.1 }}
   />,
-  <SdfCrystal activeIndex={3} />,
-  <SdfCrystal activeIndex={4} />,
+  <SdfCrystal shaderIndex={3} />,
+  <SdfCrystal shaderIndex={4} />,
   <SdfCrystal
-    activeIndex={5}
+    shaderIndex={5}
     tweak={{ name: 'activeLayers', value: 3, min: 0, max: 3, step: 1 }}
   />,
   <SdfCrystal
-    activeIndex={6}
+    shaderIndex={6}
     tweak={{
       name: 'mixBaseAndIridescent',
       value: 0.5,
@@ -39,10 +39,15 @@ export const figures = [
       step: 0.1,
     }}
   />,
-  <img
-    alt="Edge curve bottom point motion"
-    src="http://placehold.it/800x800"
-    mb="3"
+  <SdfCrystal
+    shaderIndex={7}
+    tweak={{
+      name: 'constructionStep',
+      value: 1,
+      min: 0,
+      max: 3,
+      step: 1,
+    }}
   />,
 ];
 
@@ -131,7 +136,7 @@ Alright, onto the crystal. Let's take the technique I shared above and implement
 
 My goto tool for creative coding is [canvas-sketch](https://github.com/mattdesl/canvas-sketch). It offers a [utility function](https://github.com/mattdesl/canvas-sketch-util/blob/master/docs/shader.md#shader--createshaderopt) that creates a full-screen GLSL shader renderer using [regl](https://regl.party/). You can pass in your shader code and uniforms and it takes care of the rest. Here's an example of a shader that renders a gradient.
 
-<SdfCrystal className="visualization" mb={4} activeIndex={0} />
+<SdfCrystal className="visualization" mb={4} shaderIndex={0} />
 
 ```js
 const canvasSketch = require('canvas-sketch');
@@ -191,7 +196,8 @@ I'm also using a tool called `glslify` to wrap the shader code. This enables us 
 <SdfCrystal
   className="visualization"
   mb={4}
-  activeIndex={1}
+  inline
+  shaderIndex={1}
   tweak={{ name: 'lensLength', value: 2, min: 0.1, max: 4, step: 0.1 }}
 />
 
@@ -273,7 +279,8 @@ void main() {
 <SdfCrystal
   className="visualization"
   mb={4}
-  activeIndex={2}
+  inline
+  shaderIndex={2}
   tweak={{ name: 'lensLength', value: 2, min: 0.1, max: 4, step: 0.1 }}
 />
 
@@ -329,7 +336,7 @@ void main() {
 
 ### Calculating normals
 
-<SdfCrystal className="visualization" mb={4} activeIndex={3} />
+<SdfCrystal className="visualization" mb={4} inline shaderIndex={3} />
 
 For the classic material and lighting combination, we need to calculate surface normals. That is, a vector that points away from the surface at a given point.
 
@@ -373,7 +380,7 @@ Interested in adding lighting to the scene? What type would you prefer? Lambert,
 
 I chose `glsl-specular-blinn-phong`
 
-<SdfCrystal className="visualization" mb={4} activeIndex={4} />
+<SdfCrystal className="visualization" mb={4} inline shaderIndex={4} />
 
 ```glsl
 #pragma glslify: blinnPhongSpec = require('glsl-specular-blinn-phong')
@@ -413,7 +420,13 @@ I've been obsessed with iridescence and have been bookmarking cool shaders. This
 
 Let's add that to our scene.
 
-<SdfCrystal className="visualization" mb={4} activeIndex={5} />
+<SdfCrystal
+  className="visualization"
+  mb={4}
+  inline
+  shaderIndex={5}
+  tweak={{ name: 'activeLayers', value: 3, min: 0, max: 3, step: 1 }}
+/>
 
 ```glsl
 vec3 pal( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d ) {
@@ -473,7 +486,8 @@ One last little tweak with the lighting. We can actually blend the phong and iri
 <SdfCrystal
   className="visualization"
   mb={4}
-  activeIndex={6}
+  inline
+  shaderIndex={6}
   tweak={{
     name: 'mixBaseAndIridescent',
     value: 0.5,
@@ -503,15 +517,51 @@ if (collision.x > -0.5) {
 
 ### Crystal geometry
 
-We've got the look down but, what about the crystal shape?
+We've nailed the look, but what about the crystal shape?
 
-Integer posuere sapien in fermentum laoreet. Nam lobortis in nibh sed ornare. Quisque eleifend sem ut ligula scelerisque porttitor. Proin eu nibh magna. Mauris ullamcorper eros sed mi euismod, sit amet sodales erat pharetra. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin a dolor tristique, gravida nisl quis, vulputate lorem.
+You can file this under "stuff I don't quite understand, but that's not going to stop me from using it." The crystal geometry is a Rhombic Triacontahedron, which I discovered in a [The Art Of Code tutorial](https://www.youtube.com/watch?v=0RWaR7zApEo&t=50s).
 
-<img
-  alt="Edge curve combined motion"
-  src="http://placehold.it/800x800"
-  maxWidth="300px"
+<SdfCrystal
+  className="visualization"
+  mb={4}
+  inline
+  shaderIndex={7}
+  tweak={{
+    name: 'constructionStep',
+    value: 1,
+    min: 0,
+    max: 3,
+    step: 1,
+  }}
 />
+
+This shape is created by folding a plane onto itself using some "magic numbers" along a "magic direction." We repeat the process a few times until we achieve the desired crystal shape.
+
+Try using the slider to observe how the shape changes with each fold.
+
+```glsl
+float sdCrystal(vec3 p) {
+  float c = cos(3.1415/5.), s=sqrt(0.75-c*c); // magic numbers
+  vec3 n = vec3(-0.5, -c, s); // magic direction
+
+  // fold the space to add symmetry
+  p = abs(p);
+  // fold along the n direction
+  p -= 2.*min(0., dot(p, n))*n;
+
+  // fold the space again and along the n direction
+  p.xy = abs(p.xy);
+  p -= 2.*min(0., dot(p, n))*n;
+
+  // repeat the process
+  p.xy = abs(p.xy);
+  p -= 2.*min(0., dot(p, n))*n;
+
+  // distance to the surface
+  float d = p.z - 1.;
+  return d;
+}
+```
 
 </Scroller>
 

@@ -1,7 +1,9 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 import createShader from 'canvas-sketch-util/shader';
 import canvasSketch from 'canvas-sketch';
 import { Box, Flex, Text } from '@ds';
+import { ScrollerContext } from '@components/scroller';
+import { useInView } from '@utils/useInView';
 import shaders from './shaders';
 
 const params = {};
@@ -9,12 +11,15 @@ const params = {};
 export const SdfCrystal = ({
   width = 1080,
   height = 1080,
-  activeIndex = 0,
+  shaderIndex = 0,
   tweak,
+  inline = false,
   ...props
 }) => {
   const canvasRef = useRef(null);
   const [tweakValue, setTweakValue] = useState(0);
+  const activeFigure = useContext(ScrollerContext);
+  const inView = useInView(canvasRef);
 
   useEffect(() => {
     if (tweak) {
@@ -28,7 +33,7 @@ export const SdfCrystal = ({
 
     const start = async () => {
       const sketch = makeSketch(
-        shaders[activeIndex],
+        shaders[shaderIndex],
         tweak && {
           [tweak.name]: () => params[tweak.name],
         }
@@ -37,17 +42,16 @@ export const SdfCrystal = ({
         dimensions: [width, height],
         context: 'webgl',
         animate: true,
-        // duration: 10,
         canvas: canvasRef.current,
         hotkeys: false,
-        // resizeCanvas: true,
-        // scaleToFit: true,
-        // scaleToView: true,
         styleCanvas: false,
       });
     };
 
-    if (canvasRef.current) {
+    if (
+      canvasRef.current &&
+      (activeFigure === shaderIndex || (inline && inView))
+    ) {
       start();
     }
 
@@ -56,7 +60,7 @@ export const SdfCrystal = ({
         manager.unload();
       }
     };
-  }, [canvasRef, width, height, activeIndex]);
+  }, [canvasRef, width, height, shaderIndex, inView, activeFigure, inline]);
 
   return (
     <Flex flexDirection="column" alignItems="center" {...props}>
@@ -99,7 +103,7 @@ export const SdfCrystal = ({
 };
 
 const makeSketch =
-  (fragShader, uniforms) =>
+  (fragShader, uniforms = {}) =>
   ({ gl }) => {
     return createShader({
       gl,
@@ -109,6 +113,9 @@ const makeSketch =
         resolution: ({ width, height }) => [width, height],
         playhead: ({ playhead }) => playhead,
         lensLength: () => 2,
+        activeLayers: () => 3,
+        mixBaseAndIridescent: () => 0.5,
+        constructionStep: () => 0.0,
         ...uniforms,
       },
     });
