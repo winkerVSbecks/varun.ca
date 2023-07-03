@@ -1,7 +1,7 @@
 ---
 title: Iridescent crystal with raymarching and signed distance fields
 date: 2023-05-19
-image: ../../assets/torsions/torsions.gif
+image: ../../assets/iridescent-crystal.png
 maxWidth: 8
 ---
 
@@ -76,7 +76,7 @@ If you've ever come across demos on [Shadertoy](https://www.shadertoy.com/) or [
   <a href="https://blog.maximeheckel.com/posts/the-study-of-shaders-with-react-three-fiber/">
     Maxime Heckel's tutorial
   </a>{' '}
-  on shaders with React Three Fiber .
+  on shaders with React Three Fiber.
 </CallOut>
 
 ## Ray Marching
@@ -565,11 +565,15 @@ float sdCrystal(vec3 p) {
 
 </Scroller>
 
-## Now, your turn
+## And that's that!
 
-Checkout the [full source](https://github.com/winkerVSbecks/sketchbook/blob/master/torsions.js) on Github. And if you make something cool, I'd love to see it. You can find me on [Twitter](https://twitter.com/winkerVSbecks) and [Instagram](https://www.instagram.com/winkervsbecks/).
+Raymarching with SDF isn't better than the conventional mesh based approach, it's just different. However, it offers the ability to create unique and visually striking effects, making it a fantastic tool to have in your creative coding toolbox. Plus With glslify and the [stack.gl ecosystem](http://stack.gl/packages) you can use off-the-shelf modules to get going quickly.
+
+Checkout the [full source](https://github.com/winkerVSbecks/shader-sketches/blob/main/sketches/sdf-iridescent-crystal.js) on Github. Want to take it a step further? I've expanded this sketch to combine refraction and iridescence to make a [see through crystal](https://github.com/winkerVSbecks/shader-sketches/blob/main/sketches/refraction-iridescent.js).
 
 ### Reference
 
-- https://jasmcole.com/2019/10/03/signed-distance-fields/
-- https://www.shadertoy.com/view/ldfSWs
+- [Signed distance fields by Jason Cole](https://jasmcole.com/2019/10/03/signed-distance-fields/)
+- [3D distance functions by Inigo Quilez](https://iquilezles.org/articles/distfunctions/)
+- [Raymarching template](https://www.shadertoy.com/view/ldfSWs)
+- [Bending Light by The Art of Code (part 1)](https://youtu.be/NCpaaLkmXI8) & [part 2](https://youtu.be/0RWaR7zApEo)
