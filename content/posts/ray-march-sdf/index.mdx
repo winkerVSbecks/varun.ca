@@ -1,6 +1,6 @@
 ---
 title: Iridescent crystal with raymarching and signed distance fields
-date: 2023-05-19
+date: 2023-06-03
 image: ../../assets/iridescent-crystal.png
 maxWidth: 8
 ---
@@ -72,7 +72,7 @@ If you've ever come across demos on [Shadertoy](https://www.shadertoy.com/) or [
   </a>{' '}
   for a brief overview,{' '}
   <a href="https://youtu.be/f4s1h2YETNY">kishimisu's intro tutorial</a> that
-  breaks down basic GLSL concepts, and{' '}
+  breaks down basic GLSL concepts, or{' '}
   <a href="https://blog.maximeheckel.com/posts/the-study-of-shaders-with-react-three-fiber/">
     Maxime Heckel's tutorial
   </a>{' '}
@@ -81,7 +81,9 @@ If you've ever come across demos on [Shadertoy](https://www.shadertoy.com/) or [
 
 ## Ray Marching
 
-We select a position for the camera, then send rays from the camera to each pixel in the output image. We step along each ray, bit by bit, checking to see if we hit an object in the scene. If we did, we're done! If not, keep going up to some maximum number of steps along the ray.
+Ray Marching is a rendering technique that involves sending rays into a scene and checking for collisions with objects. Here's how it works:
+
+First, we select a position for the camera. Then, we send rays from the camera to each pixel in the output image. Along each ray, we step bit by bit, checking if there is a collision with an object in the scene. If a collision occurs, we're done! If not, we continue stepping along the ray up to a maximum number of steps.
 
 <figure>
   <img src={rayMarching} alt="" mb="0" width={['100%', '75%', '50%']} />
@@ -92,17 +94,7 @@ We select a position for the camera, then send rays from the camera to each pixe
   </figcaption>
 </figure>
 
-If you've done any kind of 3D work, you're probably familiar with the idea of defining geometry using vertices. For example, a cube is defined by 8 vertices. But with raymarching, we use a signed distance field to represent the entire scene.
-
-<CallOut>
-  🤔 <b>Raytracing vs Raymarching</b>
-  <br />
-  Raytracing is a very similar process to raymarching, the key difference is
-  that geometry is typically defined as triangles, spheres, etc. To find the
-  intersection between the view ray and the scene, we conduct a series of
-  geometric intersection tests. For example, does the ray intersect with a
-  triangle and, if so, which part of the triangle.
-</CallOut>
+The other important distinction is that we're not using vertices & triangles to define the geometry. If you've done any kind of 3D work, you're probably familiar with the idea of defining geometry using vertices. For example, a cube is defined by 8 vertices and 12 triangles. But with raymarching, we use something called "signed distance field" to represent the geometry.
 
 ### Signed Distance Field (SDF)
 
@@ -123,6 +115,16 @@ You can find functions for various [2D](https://iquilezles.org/articles/distfunc
 </p>
 
 Back to raymarching. When stepping along the ray, the obvious option is to take a tiny step at a time and check for collisions. But since SDF provides us with the distance to the surface, we know that we can step by that distance without going through the surface. Doing so both speeds up the process and improves accuracy.
+
+<CallOut>
+  🤔 <b>Raytracing vs Raymarching</b>
+  <br />
+  Raytracing is a very similar process to raymarching, the key difference is
+  that geometry is typically defined as triangles, spheres, etc. To find the
+  intersection between the view ray and the scene, we conduct a series of
+  geometric intersection tests. For example, does the ray intersect with a
+  triangle and, if so, which part of the triangle.
+</CallOut>
 
 ## Implementing a raymarched scene
 
@@ -213,8 +215,6 @@ The `rayDirection` is a vector that points from the origin towards a a pixel on 
 
 Once we obtain the ray direction, we proceed along it, checking for collisions. If a collision is detected, the distance to the surface is returned. Otherwise, we return `-1.0` to signify that no collision was found.
 
-`lensLength` here determines the field of view. Try changing it to see how it affects the scene.
-
 ```glsl
 precision highp float;
 varying vec2 vUv;
@@ -274,6 +274,8 @@ void main() {
 }
 ```
 
+`lensLength` here determines the field of view. Try changing it to see how it affects the scene.
+
 ### Using GLSL modules for raymarching
 
 <SdfCrystal
@@ -284,13 +286,11 @@ void main() {
   tweak={{ name: 'lensLength', value: 2, min: 0.1, max: 4, step: 0.1 }}
 />
 
-Implementing your own raymarching function is cool. In some cases, you even need to modify the inner workings to achieve a desired effect. However, in most instances, you can likely use the off-the-shelf module.
+Implementing your own raymarching function is cool. It's especially useful when you want to tweak the inner workings to achieve a specific effect. However, in most cases, you can probably just use an off-the-shelf module.
 
 Below, I've updated the sketch to use the `glsl-raytrace` module. Additionally, I'm using a `glsl-sdf-primitives` module to generate a torus and `glsl-rotate` to rotate it.
 
 The mechanics remain largely similar. The key difference is that geometry is now defined within a function called `doModel`, and raymarch returns a `vec2` containing the distance and material index. This is useful if you want to render multiple types of objects in a scene.
-
-Check it out! We've got a spinning donut 🍩 But it looks kinda flat. Let's add some depth to the scene.
 
 ```glsl
 precision highp float;
@@ -334,6 +334,8 @@ void main() {
 }
 ```
 
+Check it out! We've got a spinning donut 🍩 But it looks kinda flat. Let's add some depth to the scene.
+
 ### Calculating normals
 
 <SdfCrystal className="visualization" mb={4} inline shaderIndex={3} />
@@ -342,7 +344,7 @@ For the classic material and lighting combination, we need to calculate surface 
 
 With SDFs, we calculate the normal by taking the gradient of the SDF function (f) at a specific point, denoted as ∇f. I don't know about you, but the last time I took a gradient was in [MEC E 537 - Aerodynamics](https://apps.ualberta.ca/catalogue/course/mec_e/537). And that was a while ago 😅
 
-Luckily for us, we can use the `glsl-sdf-normal` module to compute the normal for us. The module uses the same `doModel` function that we defined for raymarching. If you're curious about the underlying math, check out [Jamie Wong's explanation](https://jamie-wong.com/2016/07/15/ray-marching-signed-distance-functions/#surface-normals-and-lighting).
+Luckily for us, we can use the `glsl-sdf-normal` module to compute normals for us. The module uses the same `doModel` function that we defined for raymarching. If you're curious about the underlying math, check out [Jamie Wong's explanation](https://jamie-wong.com/2016/07/15/ray-marching-signed-distance-functions/#surface-normals-and-lighting).
 
 ```glsl
 #pragma glslify: normal = require('glsl-sdf-normal', map = doModel)
@@ -374,7 +376,7 @@ My personal philosophy is very much:
 
 It's important to understand how things work, but I'm less focused on implementing everything from scratch and more intrigued by applying those concepts to create my own sketches and scenes. That's why I was super excited to come across [stack.gl/packages](http://stack.gl/packages).
 
-The stackgl ecosystem is full of little GLSL modules that "do one thing, and do it well". You can glue these together to create all kinds of effects.
+The stackgl ecosystem is full of little GLSL modules that you can glue these together to create all kinds of effects.
 
 Interested in adding lighting to the scene? What type would you prefer? Lambert, Phong, Beckmann, or Specular? Just grab the associated module and plug it into the scene.
 
@@ -412,11 +414,11 @@ if (collision.x > -0.5) {
 
 Stackgl isn't the only place where you can find useful code. My other favourite option is Shadertoy. I'm not going to lie, most things on shadertoy were too daunting for me. I couldn't even begin to figure out what the code was doing.
 
-That is, until I discovered that most work on shadertoy uses a combo of raymarching + SDF.
+That is, until I discovered that most work on shadertoy uses a combo of raymarching + SDF. This was certainly a lightbulb moment for me. It's like suddenly this cryptic code was deciphered and I could understand what it said.
 
-This was certainly a lightbulb moment for me. It's like suddenly this cryptic code was deciphered and I could understand what it said.
+I've been obsessed with iridescence and have been bookmarking cool shaders. Once I learnt the raymarching technique, that was it. I could revisit these shaders and try to understand how they work.
 
-I've been obsessed with iridescence and have been bookmarking cool shaders. This was it. I could revisit them and try to understand how they work. One such shader was [Thomas Hooper's Crystals](https://www.shadertoy.com/view/llcXWM). It's way more complex than our scene but the general structure is the same. There's a function for generating the geometry, there's raymarching loop and after checking for collision is the bit where the iridescence effect is applied.
+One such shader was [Thomas Hooper's Crystals](https://www.shadertoy.com/view/llcXWM). It's way more complex than our scene but the general structure is the same. There's a function for generating the geometry, there's raymarching loop and after checking for collision is the bit where the iridescence effect is applied.
 
 Let's add that to our scene.
 
@@ -481,7 +483,9 @@ There are three layers to the iridescent material: the base layer (the funky gra
 
 ### Mix Phong and Iridescence
 
-One last little tweak with the lighting. We can actually blend the phong and iridescence effects. Which enables you to have tinted iridescent objects. There's not a whole lot to it. Calculate the colors for the two effects and then blend them with the `mix` function.
+One last little tweak with the lighting. We can actually blend the phong and iridescence effects. Which enables you to have tinted iridescent objects.
+
+There's not a whole lot to it. Calculate the colors for the two effects and then blend them with the `mix` function.
 
 <SdfCrystal
   className="visualization"
@@ -535,7 +539,7 @@ You can file this under "stuff I don't quite understand, but that's not going to
   }}
 />
 
-This shape is created by folding a plane onto itself using some "magic numbers" along a "magic direction." We repeat the process a few times until we achieve the desired crystal shape.
+This shape is created by folding a plane onto itself using some "magic numbers" and along a "magic direction." We repeat the process a few times until we achieve the desired crystal shape.
 
 Try using the slider to observe how the shape changes with each fold.
 
@@ -567,9 +571,9 @@ float sdCrystal(vec3 p) {
 
 ## And that's that!
 
-Raymarching with SDF isn't better than the conventional mesh based approach, it's just different. However, it offers the ability to create unique and visually striking effects, making it a fantastic tool to have in your creative coding toolbox. Plus With glslify and the [stack.gl ecosystem](http://stack.gl/packages) you can use off-the-shelf modules to get going quickly.
+Raymarching with SDF isn't better than the conventional mesh based approach; it's just different. However, it offers the ability to create unique and visually striking effects, making it a fantastic tool to have in your creative coding toolbox. Plus, with glslify and the [stack.gl ecosystem](http://stack.gl/packages) you can use off-the-shelf modules to get going quickly.
 
-Checkout the [full source](https://github.com/winkerVSbecks/shader-sketches/blob/main/sketches/sdf-iridescent-crystal.js) on Github. Want to take it a step further? I've expanded this sketch to combine refraction and iridescence to make a [see through crystal](https://github.com/winkerVSbecks/shader-sketches/blob/main/sketches/refraction-iridescent.js).
+Checkout the [full source](https://github.com/winkerVSbecks/shader-sketches/blob/main/sketches/sdf-iridescent-crystal.js) for the crystal sketch on Github. Want to take it a step further? I've expanded this sketch to combine refraction and iridescence to make a [see through crystal](https://github.com/winkerVSbecks/shader-sketches/blob/main/sketches/refraction-iridescent.js).
 
 ### Reference
 
