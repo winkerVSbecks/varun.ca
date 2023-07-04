@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { useRef, useState, useMemo, createContext } from 'react';
 import styled from 'styled-components';
 import { Box, Flex } from '@ds';
 import { useIntersection } from '@utils/useIntersection';
@@ -11,8 +11,8 @@ const StickyFigure = styled(Box).attrs({ as: 'figure', top: 5 })`
 `;
 
 const ContentWithoutFigures = styled(Box)`
-  figure,
-  img,
+  figure:not(.show-in-both),
+  img:not(.show-in-both),
   .visualization {
     display: none;
   }
@@ -20,6 +20,8 @@ const ContentWithoutFigures = styled(Box)`
 
 const options = { threshold: 1, rootMargin: '32px 0px -80% 0px' };
 const headingLevel = 'h3';
+
+export const ScrollerContext = createContext(null);
 
 export const Scroller = ({ figures = [], width, children }) => {
   const ScrollerContainerRef = useRef(null);
@@ -40,20 +42,22 @@ export const Scroller = ({ figures = [], width, children }) => {
     : figures[figures.length - 1];
 
   return (
-    <Flex ref={ScrollerContainerRef} alignItems="flex-start">
-      <StickyFigure
-        display={['none', 'none', 'block']}
-        width={width}
-        mr={[3, 4]}
-      >
-        {figure}
-      </StickyFigure>
-      <ContentWithoutFigures display={['none', 'none', 'block']} maxWidth={7}>
-        {children}
-      </ContentWithoutFigures>
-      <Box display={['block', 'block', 'none']} maxWidth={7}>
-        {children}
-      </Box>
-    </Flex>
+    <ScrollerContext.Provider value={activeFigure}>
+      <Flex ref={ScrollerContainerRef} alignItems="flex-start">
+        <StickyFigure
+          display={['none', 'none', 'block']}
+          width={width}
+          mr={[3, 4]}
+        >
+          {figure}
+        </StickyFigure>
+        <ContentWithoutFigures display={['none', 'none', 'block']} maxWidth={7}>
+          {children}
+        </ContentWithoutFigures>
+        <Box display={['block', 'block', 'none']} maxWidth={7}>
+          {children}
+        </Box>
+      </Flex>
+    </ScrollerContext.Provider>
   );
 };
