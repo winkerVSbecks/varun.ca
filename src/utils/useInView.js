@@ -5,7 +5,6 @@ export const useInView = (ref, handler, options) => {
 
   useEffect(() => {
     if (ref.current && typeof IntersectionObserver === 'function') {
-      console.log(ref.current);
       const handleIntersect = (entries) => {
         setInView(entries[0].isIntersecting);
       };
