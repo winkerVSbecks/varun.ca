@@ -9,13 +9,12 @@ export const Newsletter = () => (
     as="form"
     bg="neutral.6"
     p={4}
-    action="https://tinyletter.com/winkerVSbecks"
+    action="https://buttondown.email/api/emails/embed-subscribe/vrn"
     method="post"
     target="popupwindow"
-    onsubmit="window.open('https://tinyletter.com/winkerVSbecks', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true"
+    onsubmit="window.open('https://buttondown.email/vrn', 'popupwindow')"
+    className="embeddable-buttondown-form"
   >
-    <input type="hidden" value="1" name="embed" />
-
     <Box mb={4}>
       <H3 fontSize={3} mb={2} mt={0}>
         Creative coding from a front-end developer's perspective
@@ -32,16 +31,16 @@ export const Newsletter = () => (
       </Text>
     </Box>
 
-    <SrOnly as="label" htmlFor="tlemail">
+    <SrOnly as="label" htmlFor="bd-email">
       Enter your email address
     </SrOnly>
 
     <Flex alignItems="center">
       <Input
-        type="text"
+        type="email"
         flex="1 1 auto"
         name="email"
-        id="tlemail"
+        id="bd-email"
         placeholder="email@example.com"
       />
       <PrimaryButton as="input" type="submit" flex="none" value="Subscribe" />

@@ -7,13 +7,13 @@ const profileLinks = [
   // { title: 'CodePen', to: 'http://codepen.io/winkerVSbecks' },
   // { title: 'Dribbble', to: 'http://dribbble.com/winkerVSbecks' },
   // { title: 'Email', to: 'mailto:varunvachhar@gmail.com' },
-  { title: 'Newsletter', to: 'https://tinyletter.com/winkerVSbecks' },
+  { title: 'Newsletter', to: 'https://buttondown.email/vrn' },
 ];
 
 export const ProfileLinks = () => (
   <Box as="nav" mb={6}>
     <SrOnly as="h2">profile links</SrOnly>
-    {profileLinks.map(link => (
+    {profileLinks.map((link) => (
       <SimpleLink
         key={link.to}
         to={link.to}

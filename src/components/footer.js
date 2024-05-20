@@ -13,13 +13,13 @@ const socialLinks = [
   { title: 'Github', to: 'http://github.com/winkerVSbecks' },
   { title: 'CodePen', to: 'http://codepen.io/winkerVSbecks' },
   { title: 'Dribbble', to: 'http://dribbble.com/winkerVSbecks' },
-  { title: 'Newsletter', to: 'https://tinyletter.com/winkerVSbecks' },
+  { title: 'Newsletter', to: 'https://buttondown.email/vrn' },
 ];
 
-export const Footer = props => (
+export const Footer = (props) => (
   <Box as="footer" pt={[3, 6]} mb={6} {...props}>
     <FlatList>
-      {siteLinks.map(link => (
+      {siteLinks.map((link) => (
         <Text key={link.to} as="li" display="inline-block" mb={0} mr={3}>
           <SimpleLink
             letterSpacing="tracked"
@@ -34,7 +34,7 @@ export const Footer = props => (
       ))}
     </FlatList>
     <FlatList display="block" mb={0}>
-      {socialLinks.map(link => (
+      {socialLinks.map((link) => (
         <Text key={link.to} as="li" display="inline-block" mb={0} mr={3}>
           <SimpleLink display="block" fontSize={1} to={link.to}>
             {link.title}
