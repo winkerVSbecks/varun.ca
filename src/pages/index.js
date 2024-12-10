@@ -41,17 +41,29 @@ const Home = ({ data }) => {
               About
             </H1>
             <Text measure="wide" fontSize={[2, 3]}>
-              I’m a UI developer specializing in{' '}
-              <Link to="https://componentdriven.org/">component-driven</Link>{' '}
-              development, design systems and generative art. I’m a DX Engineer
-              at <Link to="https://www.chromatic.com/">Chromatic</Link> and a
-              contributor to{' '}
+              Hi, I'm Varun, a DX engineer and a generative artist.
+            </Text>
+            <Text measure="wide" fontSize={[2, 3]}>
+              I began my career as a front-end developer, specializing in UI
+              engineering, CSS, and animation. My experience with{' '}
+              <Link to="https://componentdriven.org/">
+                component-driven development
+              </Link>{' '}
+              and design systems led me to Developer Experience. Currently, I'm
+              part of the DX team at{' '}
+              <Link to="https://www.chromatic.com/">Chromatic</Link> and
+              contribute to{' '}
               <Link to="https://storybook.js.org/">Storybook</Link>.
             </Text>
             <Text measure="wide" fontSize={[2, 3]}>
-              Originally from New Delhi, I currently live in Toronto. In my
-              spare time, I write about creative coding from a front-end
-              developer's perspective.
+              As a artist, I combine minimalist geometry with dynamic color
+              systems and looping motion. Using web technologies—Canvas, SVG,
+              WebGL & Shaders—I explore the interplay of structure and fluidity
+              through code.
+            </Text>
+            <Text measure="wide" fontSize={[2, 3]}>
+              Originally from New Delhi and now based in Toronto, I write about
+              creative coding from a front-end developer's perspective.
             </Text>
           </Box>
           <ProfileLinks />

@@ -2,11 +2,9 @@ import React from 'react';
 import { Box, SimpleLink, SrOnly } from '@ds';
 
 const profileLinks = [
-  { title: 'Twitter', to: 'http://twitter.com/winkerVSbecks' },
+  { title: 'BlueSky', to: 'https://bsky.app/profile/varun.ca' },
+  { title: 'Instagram', to: 'https://www.instagram.com/vvvrnv' },
   { title: 'Github', to: 'http://github.com/winkerVSbecks' },
-  // { title: 'CodePen', to: 'http://codepen.io/winkerVSbecks' },
-  // { title: 'Dribbble', to: 'http://dribbble.com/winkerVSbecks' },
-  // { title: 'Email', to: 'mailto:varunvachhar@gmail.com' },
   { title: 'Newsletter', to: 'https://buttondown.email/vrn' },
 ];
 
