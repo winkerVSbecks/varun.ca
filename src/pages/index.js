@@ -56,7 +56,7 @@ const Home = ({ data }) => {
               <Link to="https://storybook.js.org/">Storybook</Link>.
             </Text>
             <Text measure="wide" fontSize={[2, 3]}>
-              As a artist, I combine minimalist geometry with dynamic color
+              As an artist, I combine minimalist geometry with dynamic color
               systems and looping motion. Using web technologies—Canvas, SVG,
               WebGL & Shaders—I explore the interplay of structure and fluidity
               through code.
